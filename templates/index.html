@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server monitoring</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="content-title" align="center">Server monitoring</h1>
+      <div class="charts">
+        <canvas id="cpuChart"></canvas>
+        <canvas id="ramChart"></canvas>
+        <canvas id="diskChart"></canvas>
+      </div>
+      <div class="charts">
+        <canvas id="netRecvChart"></canvas>
+        <canvas id="netSentChart"></canvas>
+      </div>
+    </div>
+    <div class="system-info">
+      <p id="platform"></p>
+      <p id="model"></p>
+      <p id="cpu"></p>
+      <p id="gpu"></p>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

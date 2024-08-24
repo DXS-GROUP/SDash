@@ -1,0 +1,100 @@
+.content-title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 20%;
+  margin-bottom: 20%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e2d;
+  color: #fff;
+}
+
+html {
+  scrollbar-color: #fff transparent;
+  scrollbar-arrow-color: transparent transparent;
+}
+
+.container {
+  margin-top: 5%;
+  width: 80%;
+  margin-left: 10%;
+  display: block;
+  overflow: hidden;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.charts {
+  margin-left: 25%;
+  width: 50%;
+  border: none;
+  display: flexbox;
+  align-items: center;
+  justify-content: center;
+}
+
+.system-info {
+  margin-top: 10%;
+  display: flex;
+  width: 100%;
+  vertical-align: middle;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+canvas {
+  margin-top: 20%;
+  width: 100%;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (min-width: 899px) {
+  .charts {
+    width: 90%;
+    margin-left: 5%;
+  }
+  canvas {
+    margin-top: 20%;
+    width: 100%;
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .charts {
+    display: flex;
+    width: 30%;
+    margin-left: 35%;
+  }
+  canvas {
+    width: 30%;
+    margin: 10%;
+  }
+  .content-title {
+    margin-top: 7%;
+    margin-bottom: 7%;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .charts {
+    display: flex;
+    width: 20%;
+    margin-left: 40%;
+  }
+  canvas {
+    width: 30%;
+    margin: 10%;
+  }
+  .content-title {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}
