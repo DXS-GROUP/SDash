@@ -1,6 +1,7 @@
 import os
 import platform
 import socket
+import subprocess
 import sys
 import time
 from logging import info
@@ -97,6 +98,58 @@ def cpu_temp():
         return jsonify({"cpu_temp": cpu_temp})
     except Exception as e:
         return jsonify({"cpu_temp": "N/A", "error": str(e)})
+
+
+@app.route('/services', methods=['GET'])
+def list_services():
+    try:
+        output = subprocess.check_output(['systemctl', 'list-units', '--type=service', '--state=active,inactive,failed'], universal_newlines=True)
+        services = []
+        for line in output.strip().split('\n')[1:]:
+            if line.strip():  # Check if the line is not empty
+                service_name = line.split()[0]
+                services.append(service_name)
+        return jsonify(services)
+    except subprocess.CalledProcessError as e:
+        return jsonify({'error': str(e)}), 500
+    except Exception as e:
+        return jsonify({'error': 'An unexpected error occurred: ' + str(e)}), 500
+
+
+@app.route("/services/<service_name>/start", methods=["POST"])
+def start_service(service_name):
+    try:
+        subprocess.check_call(["systemctl", "start", service_name])
+        return (
+            jsonify({"message": f"Service {service_name} started successfully."}),
+            200,
+        )
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/services/<service_name>/stop", methods=["POST"])
+def stop_service(service_name):
+    try:
+        subprocess.check_call(["systemctl", "stop", service_name])
+        return (
+            jsonify({"message": f"Service {service_name} stopped successfully."}),
+            200,
+        )
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/services/<service_name>/restart", methods=["POST"])
+def restart_service(service_name):
+    try:
+        subprocess.check_call(["systemctl", "restart", service_name])
+        return (
+            jsonify({"message": f"Service {service_name} restarted successfully."}),
+            200,
+        )
+    except subprocess.CalledProcessError as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

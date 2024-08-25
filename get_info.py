@@ -1,5 +1,6 @@
 import platform
 import socket
+import subprocess
 import sys
 import time
 from logging import info
