@@ -1,4 +1,5 @@
 .content-title {
+  padding-top: 10%;
   font-size: 50px;
   font-weight: bold;
 }
@@ -28,12 +29,12 @@ html {
 }
 
 .container {
-  margin-top: 5%;
+  margin-top: 10%;
+  margin-bottom: 10%;
   width: 80%;
   height: 80%;
   margin-left: 10%;
   display: block;
-  overflow: hidden;
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
@@ -67,15 +68,16 @@ html {
 canvas {
   margin-top: 20%;
   width: 100%;
+  height: 60%;
   background: transparent;
   border-radius: 10px;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (min-width: 899px) {
+@media screen and (max-width: 999px) {
   .charts {
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
   }
   canvas {
     margin-top: 20%;
@@ -84,16 +86,20 @@ canvas {
     border-radius: 10px;
     box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
   }
+  .summary_data {
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1000px) {
   .charts {
     display: flex;
     width: 30%;
     margin-left: 35%;
   }
   canvas {
-    width: 30%;
+    width: 100%;
     margin: 10%;
   }
 }
@@ -105,7 +111,8 @@ canvas {
     margin-left: 40%;
   }
   canvas {
-    width: 30%;
+    width: 40%;
     margin: 10%;
+    margin-bottom: 20%;
   }
 }

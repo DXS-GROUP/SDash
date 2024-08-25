@@ -13,20 +13,20 @@
   <body>
     <div class="container">
       <h1 class="content-title" align="center">Server monitoring</h1>
-      <div align="center" id="summary_data"></div>
+      <div align="center" id="summary_data" class="summary_data"></div>
       <div class="charts">
         <canvas id="cpuChart"></canvas>
         <canvas id="ramChart"></canvas>
         <canvas id="diskChart"></canvas>
       </div>
-      <div align="center" id="summary_net_data"></div>
+      <div align="center" id="summary_net_data" class="summary_data"></div>
       <div class="charts">
         <canvas id="netRecvChart"></canvas>
         <canvas id="netSentChart"></canvas>
       </div>
-      <div align="center" id="summary_temp_data"></div>
+      <div align="center" id="summary_temp_data" class="summary_data"></div>
       <div class="charts">
-        <canvas id="cpuTempChart"></canvas>
+        <canvas id="cpuTempChart" style="height: 120%"></canvas>
       </div>
     </div>
     <div class="system-info">
@@ -44,6 +44,7 @@
       <p id="cpu"></p>
       <p id="gpu"></p>
     </div>
+
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='temp.js') }}"></script>
   </body>

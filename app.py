@@ -3,16 +3,27 @@ import platform
 import socket
 import sys
 import time
-from logging import info
 from os import environ
 from os.path import exists, isfile
 from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
 from flask import Flask, jsonify, render_template
+from loguru import logger
 
-from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
-                      model_info, os_name)
+from get_info import (fetch_cpu_info, get_ip_address, get_service_name,
+                      get_uptime, gpu_info, model_info, os_name)
+
+home_dir = os.environ["HOME"]
+log_file = home_dir + "/logs/ServerPage.log"
+
+logger.add(
+    log_file,
+    format="{time} {level} {message}",
+    level="DEBUG",
+    rotation="100 MB",
+    compression="zip",
+)
 
 app = Flask(__name__)
 
@@ -49,8 +60,11 @@ def usage():
     speed_recv = bytes_recv / elapsed_time / 1024
     speed_sent = bytes_sent / elapsed_time / 1024
 
-    # speed_recv = speed_recv / 1024
-    # speed_sent = speed_sent / 1024
+    logger.debug(f"CPU Usage: {cpu_usage}%")
+    logger.debug(f"RAM Usage: {ram_usage}%")
+    logger.debug(f"Disk Usage: {disk_usage}%")
+    logger.debug(f"Download Speed: {speed_recv:.2f} kB/s")
+    logger.debug(f"Upload Speed: {speed_sent:.2f} kB/s")
 
     return jsonify(
         {
@@ -71,11 +85,14 @@ def get_info():
     sys_gpu = gpu_info()
 
     device_ip = get_ip_address()
+    logger.info(f"Device IP: {device_ip}")
 
     device_uptime = get_uptime()
+    logger.info(f"Device Uptime: {device_uptime}")
 
     device_info = os.uname()
     device_name = device_info.nodename
+    logger.info(f"Device Name: {device_name}")
 
     return jsonify(
         {
@@ -94,10 +111,13 @@ def get_info():
 def cpu_temp():
     try:
         cpu_temp = psutil.sensors_temperatures()["coretemp"][0].current
+        logger.debug(f"CPU Temperature: {cpu_temp:.2f}°C")
         return jsonify({"cpu_temp": cpu_temp})
     except Exception as e:
+        logger.error(f"Error getting CPU temperature: {e}")
         return jsonify({"cpu_temp": "N/A", "error": str(e)})
 
 
 if __name__ == "__main__":
+    logger.info("Starting Flask application...")
     app.run(debug=False, port="3098", host=get_ip_address())

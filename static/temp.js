@@ -14,7 +14,7 @@ const cpuTempChart = new Chart(ctx, {
         responsive: true,
         scales: {
             x: {
-                display: true,
+                display: false,
                 title: {
                     display: true,
                     text: 'Time'

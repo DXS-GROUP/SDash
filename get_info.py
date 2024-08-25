@@ -16,6 +16,13 @@ def truncate_string(s, max_length):
     return s
 
 
+def get_service_name(port):
+    try:
+        return socket.getservbyport(port)
+    except OSError:
+        return "Unknown Service"
+
+
 def get_uptime():
     if platform.system() == "Linux":
         with open("/proc/uptime", "r") as f:
