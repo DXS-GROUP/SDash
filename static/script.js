@@ -4,16 +4,94 @@ const ctxDISK = document.getElementById('diskChart').getContext('2d');
 const ctxNetRecv = document.getElementById('netRecvChart').getContext('2d');
 const ctxNetSent = document.getElementById('netSentChart').getContext('2d');
 
+const cpuChart = new Chart(ctxCPU, {
+    type: 'doughnut',
+    data: {
+        labels: ['CPU Usage', 'Free'],
+        datasets: [{
+            label: 'CPU',
+            data: [0, 100],
+            backgroundColor: ['#e9bdbe', '#abd89b']
+        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                formatter: (value, context) => {
+                    return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
+                },
+                color: 'black',
+            }
+        }
+    }
+});
+
+const ramChart = new Chart(ctxRAM, {
+    type: 'doughnut',
+    data: {
+        labels: ['RAM Usage', 'Free'],
+        datasets: [{
+            label: 'RAM',
+            data: [0, 100],
+            backgroundColor: ['#e9bdbe', '#abd89b']
+        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                formatter: (value, context) => {
+                    return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
+                },
+                color: 'black',
+            }
+        }
+    }
+});
+
+const diskChart = new Chart(ctxDISK, {
+    type: 'doughnut',
+    data: {
+        labels: ['DISK Usage', 'Free'],
+        datasets: [{
+            label: 'DISK',
+            data: [0, 100],
+            backgroundColor: ['#e9bdbe', '#abd89b']
+        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                formatter: (value, context) => {
+                    return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
+                },
+                color: 'black',
+            }
+        }
+    }
+});
+
 const netRecvChart = new Chart(ctxNetRecv, {
     type: 'line',
     data: {
         labels: Array.from({ length: 60 }, (_, i) => i + 1),
         datasets: [{
-            label: 'Download speed kb/s',
+            label: 'Download Speed (kbit/s)',
             data: Array(60).fill(0),
             borderColor: '#FF6384',
-            fill: false
+            fill: true
         }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                align: 'end',
+                anchor: 'end',
+                formatter: (value) => {
+                    return value + ' kbit/s';
+                },
+                color: 'black',
+            }
+        }
     }
 });
 
@@ -22,48 +100,23 @@ const netSentChart = new Chart(ctxNetSent, {
     data: {
         labels: Array.from({ length: 60 }, (_, i) => i + 1),
         datasets: [{
-            label: 'Upload speed kb/s',
+            label: 'Upload Speed (kbit/s)',
             data: Array(60).fill(0),
             borderColor: '#36A2EB',
-            fill: false
+            fill: true
         }]
-    }
-});
-
-
-const cpuChart = new Chart(ctxCPU, {
-    type: 'doughnut',
-    data: {
-        labels: ['Usage CPU', 'Free'],
-        datasets: [{
-            label: 'CPU',
-            data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
-        }]
-    }
-});
-
-const ramChart = new Chart(ctxRAM, {
-    type: 'doughnut',
-    data: {
-        labels: ['Usage RAM', 'Free'],
-        datasets: [{
-            label: 'RAM',
-            data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
-        }]
-    }
-});
-
-const diskChart = new Chart(ctxDISK, {
-    type: 'doughnut',
-    data: {
-        labels: ['Usage DISK', 'Free'],
-        datasets: [{
-            label: 'DISK',
-            data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
-        }]
+    },
+    options: {
+        plugins: {
+            datalabels: {
+                align: 'end',
+                anchor: 'end',
+                formatter: (value) => {
+                    return value + ' kbit/s';
+                },
+                color: 'black',
+            }
+        }
     }
 });
 
@@ -90,6 +143,9 @@ function updateCharts() {
             netSentChart.data.datasets[0].data.shift();
             netSentChart.data.datasets[0].data.push(data.net_sent);
             netSentChart.update();
+
+            document.getElementById("summary_data").textContent = "CPU: " + data.cpu_usage.toFixed(2) + "% RAM: " + data.ram_usage.toFixed(2) + "% Disk: " + data.disk_usage.toFixed(2) + "%";
+            document.getElementById("summary_net_data").textContent = "Upload: " + data.net_sent.toFixed(2) + " kbit/s Download: " + data.net_recv.toFixed(2) + " kbit/s";
         });
 }
 
@@ -107,6 +163,5 @@ function updateSystemInfo() {
         });
 }
 
-
-setInterval(updateCharts, 100);
-setInterval(updateSystemInfo, 100);
+setInterval(updateCharts, 1000);
+setInterval(updateSystemInfo, 1000);

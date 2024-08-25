@@ -9,8 +9,9 @@ p {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #1e1e2d;
   color: #fff;
+  background-color: #1e1e2d;
+  background-size: cover;
 }
 
 html {
@@ -35,6 +36,7 @@ html {
   overflow: hidden;
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .charts {
@@ -59,6 +61,7 @@ html {
   justify-content: center;
   border-radius: 30px;
   background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 canvas {

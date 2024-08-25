@@ -90,5 +90,14 @@ def get_info():
     )
 
 
+@app.route("/cpu_temp")
+def cpu_temp():
+    try:
+        cpu_temp = psutil.sensors_temperatures()["coretemp"][0].current
+        return jsonify({"cpu_temp": cpu_temp})
+    except Exception as e:
+        return jsonify({"cpu_temp": "N/A", "error": str(e)})
+
+
 if __name__ == "__main__":
     app.run(debug=False, port="3098", host=get_ip_address())

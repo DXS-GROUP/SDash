@@ -10,6 +10,12 @@ from subprocess import DEVNULL, PIPE, Popen
 import psutil
 
 
+def truncate_string(s, max_length):
+    if len(s) > max_length:
+        return s[: max_length - 3] + "..."
+    return s
+
+
 def get_uptime():
     if platform.system() == "Linux":
         with open("/proc/uptime", "r") as f:
@@ -112,8 +118,14 @@ def gpu_info():
     else:
         gpu_info = ""
         if exists("/sys/class/dmi/id/product_name"):
-            gpu_info = (
-                run_command("lspci | grep -i vga").split(":")[2].split("(")[0].strip()
+            gpu_info = truncate_string(
+                (
+                    run_command("lspci | grep -i vga")
+                    .split(":")[2]
+                    .split("(")[0]
+                    .strip()
+                ),
+                50,
             )
         else:
             pass
