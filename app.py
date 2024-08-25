@@ -70,7 +70,11 @@ def usage():
         {
             "cpu_usage": cpu_usage,
             "ram_usage": ram_usage,
+            "ram_total": psutil.virtual_memory().total,
+            "ram_used": psutil.virtual_memory().used,
             "disk_usage": disk_usage,
+            "disk_total": psutil.disk_usage("/").total,
+            "disk_used": psutil.disk_usage("/").used,
             "net_recv": speed_recv,
             "net_sent": speed_sent,
         }

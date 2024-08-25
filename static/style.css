@@ -1,5 +1,14 @@
+:root {
+  --bg: #1e1e2d;
+  --fg2: #c4a3f1;
+  --fg: #c4a3f1;
+  --color1: #abd89b;
+  --color2: #e9bdbe;
+  --color3: #c4a3f1;
+  --color4: #7e9cd8;
+}
+
 .content-title {
-  padding-top: 10%;
   font-size: 50px;
   font-weight: bold;
 }
@@ -11,13 +20,63 @@ p {
 body {
   font-family: Arial, sans-serif;
   color: #fff;
-  background-color: #1e1e2d;
+  background-color: var(--bg);
   background-size: cover;
 }
 
 html {
   scrollbar-color: #fff transparent;
   scrollbar-arrow-color: transparent transparent;
+}
+
+.button {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  display: inline-block;
+  height: 2vh;
+  width: 5vw;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0.5vh;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--color3);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.7s ease;
+  transition: box-shadow 0.5s ease;
+  box-shadow:
+    0 0 0px var(--color3),
+    0 0 0px var(--color3);
+}
+
+@media (max-width: 992px) {
+  .button {
+    height: 5vh;
+    width: 23vw;
+  }
+}
+
+@media (min-width: 992px) {
+  .button {
+    height: 3vh;
+    width: 250px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .button {
+    height: 2vh;
+    width: 250px;
+  }
+}
+
+.dock {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  z-index: 56;
 }
 
 .clock {
@@ -28,15 +87,28 @@ html {
   box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
 }
 
+.tab-content {
+  display: none;
+  transition: opacity 1s ease;
+}
+.tab-content.active {
+  display: block;
+  opacity: 1;
+}
+.tab-content.hidden {
+  opacity: 0;
+}
+
 .container {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-top: 3%;
+  padding-bottom: 3%;
   width: 80%;
-  height: 80%;
+  height: auto;
   margin-left: 10%;
   display: block;
   border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
 }
 
@@ -47,22 +119,6 @@ html {
   display: flexbox;
   align-items: center;
   justify-content: center;
-}
-
-.system-info {
-  margin-top: 0%;
-  display: flex;
-  width: 80%;
-  margin: 10%;
-  padding-top: 5%;
-  padding-bottom: 5%;
-  vertical-align: middle;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
 }
 
 canvas {

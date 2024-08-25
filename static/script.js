@@ -144,7 +144,9 @@ function updateCharts() {
             netSentChart.data.datasets[0].data.push(data.net_sent);
             netSentChart.update();
 
-            document.getElementById("summary_data").textContent = "CPU: " + data.cpu_usage.toFixed(2) + "% RAM: " + data.ram_usage.toFixed(2) + "% Disk: " + data.disk_usage.toFixed(2) + "%";
+            document.getElementById("summary_data_cpu").textContent = "CPU: " + data.cpu_usage.toFixed(2) + "%"
+            document.getElementById("summary_data_ram").textContent = "RAM: " + (data.ram_used / 1024 / 1024 / 1024).toFixed(1) + "GB / " + (data.ram_total.toFixed(2) / 1024 / 1024 / 1024).toFixed(1) + "GB - " + data.ram_usage.toFixed(1) + " %"
+            document.getElementById("summary_data_disk").textContent = "Disk: " + (data.disk_used / 1024 / 1024 / 1024).toFixed(1) + "GB / " + (data.disk_total / 1024 / 1024 / 1024).toFixed(1) + "GB - " + data.disk_usage.toFixed(2) + " % ";
             document.getElementById("summary_net_data").textContent = "Upload: " + data.net_sent.toFixed(2) + " kbit/s Download: " + data.net_recv.toFixed(2) + " kbit/s";
         });
 }
@@ -165,3 +167,21 @@ function updateSystemInfo() {
 
 setInterval(updateCharts, 1000);
 setInterval(updateSystemInfo, 1000);
+
+function switchTab(tab) {
+    const tabs = ['monitor', 'info'];
+    tabs.forEach(t => {
+        const tabContent = document.getElementById(t);
+        if (t === tab) {
+            tabContent.classList.add('active');
+            tabContent.classList.remove('hidden');
+        } else {
+            tabContent.classList.remove('active');
+            tabContent.classList.add('hidden');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    switchTab('monitor');
+});
