@@ -1,4 +1,5 @@
 import platform
+import socket
 import sys
 import time
 from logging import info
@@ -7,6 +8,29 @@ from os.path import exists, isfile
 from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
+
+
+def get_uptime():
+    if platform.system() == "Linux":
+        with open("/proc/uptime", "r") as f:
+            uptime_seconds = float(f.readline().split()[0])
+    else:
+        return "Error."
+
+    days = uptime_seconds // (24 * 3600)
+    hours = (uptime_seconds % (24 * 3600)) // 3600
+    minutes = (uptime_seconds % 3600) // 60
+    seconds = uptime_seconds % 60
+
+    return f"{int(days)} d. {int(hours)} h. {int(minutes)} m. {int(seconds)} s."
+
+
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
 
 
 def run_command(command):

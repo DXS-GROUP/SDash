@@ -1,5 +1,6 @@
 import os
 import platform
+import socket
 import sys
 import time
 from logging import info
@@ -10,7 +11,8 @@ from subprocess import DEVNULL, PIPE, Popen
 import psutil
 from flask import Flask, jsonify, render_template
 
-from get_info import fetch_cpu_info, gpu_info, model_info, os_name
+from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
+                      model_info, os_name)
 
 app = Flask(__name__)
 
@@ -68,11 +70,17 @@ def get_info():
     sys_cpu = fetch_cpu_info()
     sys_gpu = gpu_info()
 
+    device_ip = get_ip_address()
+
+    device_uptime = get_uptime()
+
     device_info = os.uname()
     device_name = device_info.nodename
 
     return jsonify(
         {
+            "device_uptime": device_uptime,
+            "device_ip": device_ip,
             "sys_platform": sys_platform,
             "device_name": device_name,
             "sys_model": sys_model,
@@ -83,4 +91,4 @@ def get_info():
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port="3098")
+    app.run(debug=False, port="3098", host=get_ip_address())
