@@ -1,3 +1,4 @@
+import os
 import platform
 import sys
 import time
@@ -67,9 +68,13 @@ def get_info():
     sys_cpu = fetch_cpu_info()
     sys_gpu = gpu_info()
 
+    device_info = os.uname()
+    device_name = device_info.nodename
+
     return jsonify(
         {
             "sys_platform": sys_platform,
+            "device_name": device_name,
             "sys_model": sys_model,
             "sys_cpu": sys_cpu,
             "sys_gpu": sys_gpu,
@@ -78,4 +83,4 @@ def get_info():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False, port="3098")

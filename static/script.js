@@ -7,9 +7,9 @@ const ctxNetSent = document.getElementById('netSentChart').getContext('2d');
 const netRecvChart = new Chart(ctxNetRecv, {
     type: 'line',
     data: {
-        labels: Array.from({ length: 60 }, (_, i) => i + 1), // последние 60 секунд
+        labels: Array.from({ length: 60 }, (_, i) => i + 1),
         datasets: [{
-            label: 'Скорость загрузки (КБ/с)',
+            label: 'Download speed kb/s',
             data: Array(60).fill(0),
             borderColor: '#FF6384',
             fill: false
@@ -20,9 +20,9 @@ const netRecvChart = new Chart(ctxNetRecv, {
 const netSentChart = new Chart(ctxNetSent, {
     type: 'line',
     data: {
-        labels: Array.from({ length: 60 }, (_, i) => i + 1), // последние 60 секунд
+        labels: Array.from({ length: 60 }, (_, i) => i + 1),
         datasets: [{
-            label: 'Скорость выгрузки (КБ/с)',
+            label: 'Upload speed kb/s',
             data: Array(60).fill(0),
             borderColor: '#36A2EB',
             fill: false
@@ -97,10 +97,11 @@ function updateSystemInfo() {
     fetch('/system_info')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('platform').innerText = 'Platform: ' + data.sys_platform;
-            document.getElementById('model').innerText = 'Model: ' + data.sys_model;
-            document.getElementById('cpu').innerText = 'CPU: ' + data.sys_cpu;
-            document.getElementById('gpu').innerText = 'GPU: ' + data.sys_gpu;
+            document.getElementById('platform').innerText = '' + data.sys_platform;
+            document.getElementById('device_name').innerText = '' + data.device_name;
+            document.getElementById('model').innerText = '' + data.sys_model;
+            document.getElementById('cpu').innerText = '' + data.sys_cpu;
+            document.getElementById('gpu').innerText = '' + data.sys_gpu;
         });
 }
 

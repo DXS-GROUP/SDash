@@ -1,8 +1,10 @@
 .content-title {
   font-size: 50px;
   font-weight: bold;
-  margin-top: 20%;
-  margin-bottom: 20%;
+}
+
+p {
+  font-size: small;
 }
 
 body {
@@ -16,9 +18,18 @@ html {
   scrollbar-arrow-color: transparent transparent;
 }
 
+.clock {
+  font-size: 48px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+}
+
 .container {
   margin-top: 5%;
   width: 80%;
+  height: 80%;
   margin-left: 10%;
   display: block;
   overflow: hidden;
@@ -36,13 +47,18 @@ html {
 }
 
 .system-info {
-  margin-top: 10%;
+  margin-top: 5%;
   display: flex;
-  width: 100%;
+  width: 80%;
+  margin: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   vertical-align: middle;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 canvas {
@@ -77,10 +93,6 @@ canvas {
     width: 30%;
     margin: 10%;
   }
-  .content-title {
-    margin-top: 7%;
-    margin-bottom: 7%;
-  }
 }
 
 @media screen and (min-width: 1900px) {
@@ -92,9 +104,5 @@ canvas {
   canvas {
     width: 30%;
     margin: 10%;
-  }
-  .content-title {
-    margin-top: 10%;
-    margin-bottom: 10%;
   }
 }

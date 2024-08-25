@@ -24,6 +24,12 @@
       </div>
     </div>
     <div class="system-info">
+      <h1 class="content-title" align="center">Server Info</h1>
+      <div class="clock" id="clock">
+        <script src="{{ url_for('static', filename='clock.js') }}"></script>
+      </div>
+
+      <p id="device_name"></p>
       <p id="platform"></p>
       <p id="model"></p>
       <p id="cpu"></p>
