@@ -28,4 +28,11 @@ pip3 install -r requirements.txt
 python3 app.py
 ```
 
+<h3>Screenshots</h3>
+
+<img src="imgs/1.png" width="48%"/>
+<img src="imgs/2.png" width="48%"/>
+<img src="imgs/3.png" width="48%"/>
+<img src="imgs/4.png" width="48%"/>
+
 </div>
