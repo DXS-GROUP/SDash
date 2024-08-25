@@ -163,8 +163,5 @@ function updateSystemInfo() {
         });
 }
 
-
-
 setInterval(updateCharts, 1000);
 setInterval(updateSystemInfo, 1000);
-
