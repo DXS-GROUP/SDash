@@ -6,6 +6,8 @@ from loguru import logger
 from get_info import (fetch_cpu_info, get_ip_address, get_service_name,
                       get_uptime, gpu_info, model_info, os_name)
 
+import platform, subprocess
+
 home_dir = os.path.expanduser("~")
 log_file = os.path.join(home_dir, "logs", "ServerPage.log")
 
@@ -66,6 +68,7 @@ def usage():
             "disk_used": psutil.disk_usage("/").used,
             "net_recv": speed_recv,
             "net_sent": speed_sent,
+            "cpu_freq": psutil.cpu_freq().current
         }
     )
 
@@ -130,6 +133,30 @@ def open_file():
         return jsonify({'content': content})
     else:
         return jsonify({'error': 'File not found'}), 404
+
+@app.route('/shutdown', methods=['POST'])
+def shutdown():
+    if platform.system() == "Windows":
+        subprocess.call(["shutdown", "/s", "/t", "1"])
+    elif platform.system() == "Linux":
+        subprocess.call(["shutdown", "now"])
+    return redirect('/')
+
+@app.route('/reboot', methods=['POST'])
+def reboot():
+    if platform.system() == "Windows":
+        subprocess.call(["shutdown", "/r", "/t", "1"])
+    elif platform.system() == "Linux":
+        subprocess.call(["reboot"])
+    return redirect('/')
+
+@app.route('/sleep', methods=['POST'])
+def sleep():
+    if platform.system() == "Windows":
+        subprocess.call(["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"])
+    elif platform.system() == "Linux":
+        subprocess.call(["systemctl", "suspend"])
+    return redirect('/')
 
 if __name__ == "__main__":
     logger.info("Starting Flask application...")

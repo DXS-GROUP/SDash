@@ -22,7 +22,6 @@
         <option value="info">Info</option>
         <option value="services">Services</option>
         <option value="control">Control</option>
-        <option value="logs">Logs</option>
       </select>
     </div>
     <div class="container">
@@ -61,23 +60,18 @@
       </div>
       <div id="control" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Control</h1>
-      </div>
-      <div id="logs" class="tab-content" align="center">
-        <h1 class="content-title" align="center">Logs</h1>
-        <h3 align="center">Select a log file to download or open</h3>
-
-        <form action="{{ url_for('download') }}" method="post">
-          <select class="button" id="file-selector" name="file">
-            <option value="">Select a file</option>
-          </select>
-
-          <button class="button" type="submit">Download</button>
-        </form>
-
-        <button class="button" id="open-button">Open</button>
-
-        <h2>File Content:</h2>
-        <textarea id="file-content" readonly></textarea>
+        <form action="/shutdown" method="post">
+          <button class="button" type="submit">Shutdown</button>
+      </form>
+      <form action="/reboot" method="post">
+          <button class="button" type="submit">Reboot</button>
+      </form>
+      <form action="/sleep" method="post">
+          <button class="button" type="submit">Sleep</button>
+      </form>
+      <form action="/lock" method="post">
+        <button class="button" type="submit">Lock Screen</button>
+    </form>
       </div>
     </div>
 

@@ -198,7 +198,7 @@ function updateCharts() {
             netSentChart.data.datasets[0].data.push(data.net_sent);
             netSentChart.update();
 
-            document.getElementById("summary_data_cpu").textContent = "CPU: " + data.cpu_usage.toFixed(2) + "%"
+            document.getElementById("summary_data_cpu").textContent = "CPU: " + data.cpu_usage.toFixed(2) + "% - " + (data.cpu_freq/1000).toFixed(1) + "Ghz"
             document.getElementById("summary_data_ram").textContent = "RAM: " + (data.ram_used / 1024 / 1024 / 1024).toFixed(1) + "GB / " + (data.ram_total.toFixed(2) / 1024 / 1024 / 1024).toFixed(1) + "GB - " + data.ram_usage.toFixed(1) + " %"
             document.getElementById("summary_data_disk").textContent = "Disk: " + (data.disk_used / 1024 / 1024 / 1024).toFixed(1) + "GB / " + (data.disk_total / 1024 / 1024 / 1024).toFixed(1) + "GB - " + data.disk_usage.toFixed(2) + " % ";
             document.getElementById("summary_net_data").textContent = "Upload: " + data.net_sent.toFixed(2) + " kbit/s Download: " + data.net_recv.toFixed(2) + " kbit/s";
@@ -238,49 +238,6 @@ function updateCPUTempChart() {
             document.getElementById("summary_temp_data").textContent = "CPU Temp: " + data.cpu_temp.toFixed(2) + "°C";
         });
 }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    fetch('/files')
-        .then(response => response.json())
-        .then(data => {
-            const select = document.getElementById('file-selector');
-            data.forEach(file => {
-                const option = document.createElement('option');
-                option.value = file;
-                option.textContent = file;
-                select.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching files:', error));
-});
-
-document.getElementById('open-button').onclick = function() {
-    const selectedFile = document.getElementById('file-selector').value;
-    document.getElementById('file-content').value = "";
-    
-    if (selectedFile) {
-        fetch('/open_file', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ file: selectedFile })
-        })
-            .then(response => response.json())
-            .then(data => {
-                if (data.content) {
-                    document.getElementById('file-content').value = data.content;
-                } else {
-                    alert(data.error);
-                }
-            })
-            .catch(error => console.error('Error opening file:', error));
-    } else {
-        alert('Please select a file to open.');
-    }
-};
-
 
 setInterval(updateCharts, 1000);
 setInterval(updateSystemInfo, 1000);

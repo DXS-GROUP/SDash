@@ -1,5 +1,5 @@
 function switchTab(tab) {
-    const tabs = ['monitor', 'info', 'services', 'control', 'logs'];
+    const tabs = ['monitor', 'info', 'services', 'control'];
     tabs.forEach(t => {
         const tabContent = document.getElementById(t);
         if (t === tab) {
