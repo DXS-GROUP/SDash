@@ -8,7 +8,7 @@ from os.path import exists, isfile
 from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, send_file
 from loguru import logger
 
 from get_info import (fetch_cpu_info, get_ip_address, get_service_name,
@@ -121,6 +121,40 @@ def cpu_temp():
         logger.error(f"Error getting CPU temperature: {e}")
         return jsonify({"cpu_temp": "N/A", "error": str(e)})
 
+
+@app.route('/files')
+def files():
+    # Получаем список файлов из папки ~/logs/
+    log_directory = os.path.expanduser('~/logs/')
+    if os.path.exists(log_directory):
+        files = os.listdir(log_directory)
+    else:
+        files = []
+    return jsonify(files)
+
+@app.route('/download', methods=['POST'])
+def download():
+    selected_file = request.form['file']  # Получаем имя файла из формы
+    file_path = os.path.join(os.path.expanduser('~/logs/'), selected_file)
+    
+    # Проверяем, существует ли файл перед отправкой
+    if os.path.isfile(file_path):
+        return send_file(file_path, as_attachment=True)
+    else:
+        return "File not found", 404
+
+@app.route('/open_file', methods=['POST'])
+def open_file():
+    selected_file = request.json['file']  # Используем request.json для получения JSON-данных
+    file_path = os.path.join(os.path.expanduser('~/logs/'), selected_file)
+
+    # Читаем содержимое файла
+    if os.path.isfile(file_path):
+        with open(file_path, 'r') as f:
+            content = f.read()
+        return jsonify({'content': content})
+    else:
+        return jsonify({'error': 'File not found'}), 404
 
 if __name__ == "__main__":
     logger.info("Starting Flask application...")

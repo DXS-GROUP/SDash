@@ -3,6 +3,14 @@ const ctxRAM = document.getElementById('ramChart').getContext('2d');
 const ctxDISK = document.getElementById('diskChart').getContext('2d');
 const ctxNetRecv = document.getElementById('netRecvChart').getContext('2d');
 const ctxNetSent = document.getElementById('netSentChart').getContext('2d');
+const ctx = document.getElementById('cpuTempChart').getContext('2d');
+
+const bg = "#1e1e2d";
+const fg = "#c4a3f1";
+const color1 = "#abd89b";
+const color2 = "#e9bdbe";
+const color3 = "#c4a3f1";
+const color4 = "#7e9cd8";
 
 const cpuChart = new Chart(ctxCPU, {
     type: 'doughnut',
@@ -11,7 +19,7 @@ const cpuChart = new Chart(ctxCPU, {
         datasets: [{
             label: 'CPU',
             data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
+            backgroundColor: [color1, color4]
         }]
     },
     options: {
@@ -33,7 +41,7 @@ const ramChart = new Chart(ctxRAM, {
         datasets: [{
             label: 'RAM',
             data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
+            backgroundColor: [color1, color4]
         }]
     },
     options: {
@@ -55,7 +63,7 @@ const diskChart = new Chart(ctxDISK, {
         datasets: [{
             label: 'DISK',
             data: [0, 100],
-            backgroundColor: ['#e9bdbe', '#abd89b']
+            backgroundColor: [color1, color4]
         }]
     },
     options: {
@@ -77,11 +85,16 @@ const netRecvChart = new Chart(ctxNetRecv, {
         datasets: [{
             label: 'Download Speed (kbit/s)',
             data: Array(60).fill(0),
-            borderColor: '#FF6384',
+            borderColor: color3,
             fill: true
         }]
     },
     options: {
+        scales: {
+            x: {
+                display: false
+            }
+        },
         plugins: {
             datalabels: {
                 align: 'end',
@@ -102,19 +115,60 @@ const netSentChart = new Chart(ctxNetSent, {
         datasets: [{
             label: 'Upload Speed (kbit/s)',
             data: Array(60).fill(0),
-            borderColor: '#36A2EB',
+            borderColor: color1,
             fill: true
         }]
     },
     options: {
+        scales: {
+            x: {
+                display: false
+            }
+        },
         plugins: {
             datalabels: {
+                display: true,
                 align: 'end',
                 anchor: 'end',
                 formatter: (value) => {
                     return value + ' kbit/s';
                 },
                 color: 'black',
+            }
+        }
+    }
+})
+
+
+const cpuTempChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'CPU Temp (°C)',
+            data: [],
+            borderColor: '#abd89b',
+            fill: true,
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            x: {
+                display: false,
+                title: {
+                    display: true,
+                    text: 'Time'
+                }
+            },
+            y: {
+                display: true,
+                title: {
+                    display: true,
+                    text: 'Temp (°C)'
+                },
+                min: 0,
+                max: 100
             }
         }
     }
@@ -165,23 +219,69 @@ function updateSystemInfo() {
         });
 }
 
-setInterval(updateCharts, 1000);
-setInterval(updateSystemInfo, 1000);
 
-function switchTab(tab) {
-    const tabs = ['monitor', 'info'];
-    tabs.forEach(t => {
-        const tabContent = document.getElementById(t);
-        if (t === tab) {
-            tabContent.classList.add('active');
-            tabContent.classList.remove('hidden');
-        } else {
-            tabContent.classList.remove('active');
-            tabContent.classList.add('hidden');
-        }
-    });
+function updateCPUTempChart() {
+    fetch('/cpu_temp')
+        .then(response => response.json())
+        .then(data => {
+            const now = new Date().toLocaleTimeString();
+            cpuTempChart.data.labels.push(now);
+            cpuTempChart.data.datasets[0].data.push(data.cpu_temp);
+
+            if (cpuTempChart.data.labels.length > 10) {
+                cpuTempChart.data.labels.shift();
+                cpuTempChart.data.datasets[0].data.shift();
+            }
+
+            cpuTempChart.update();
+
+            document.getElementById("summary_temp_data").textContent = "CPU Temp: " + data.cpu_temp.toFixed(2) + "°C";
+        });
 }
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    switchTab('monitor');
+    fetch('/files')
+        .then(response => response.json())
+        .then(data => {
+            const select = document.getElementById('file-selector');
+            data.forEach(file => {
+                const option = document.createElement('option');
+                option.value = file;
+                option.textContent = file;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching files:', error));
 });
+
+document.getElementById('open-button').onclick = function() {
+    const selectedFile = document.getElementById('file-selector').value;
+    document.getElementById('file-content').value = "";
+    
+    if (selectedFile) {
+        fetch('/open_file', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ file: selectedFile })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.content) {
+                    document.getElementById('file-content').value = data.content;
+                } else {
+                    alert(data.error);
+                }
+            })
+            .catch(error => console.error('Error opening file:', error));
+    } else {
+        alert('Please select a file to open.');
+    }
+};
+
+
+setInterval(updateCharts, 1000);
+setInterval(updateSystemInfo, 1000);
+setInterval(updateCPUTempChart, 1000);

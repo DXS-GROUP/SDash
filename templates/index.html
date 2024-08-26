@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,12 +12,18 @@
   </head>
   <body>
     <div class="dock">
-      <button id="show_monitor" class="button" onclick="switchTab('monitor')">
-        Monitor
-      </button>
-      <button id="show_info" class="button" onclick="switchTab('info')">
-        Info
-      </button>
+      <select
+        id="tab-selector"
+        class="button"
+        align="center"
+        onchange="switchTab(this.value)"
+      >
+        <option value="monitor">Monitor</option>
+        <option value="info">Info</option>
+        <option value="services">Services</option>
+        <option value="control">Control</option>
+        <option value="logs">Logs</option>
+      </select>
     </div>
     <div class="container">
       <div id="monitor" class="tab-content active">
@@ -50,9 +56,32 @@
         <p id="cpu"></p>
         <p id="gpu"></p>
       </div>
+      <div id="services" class="tab-content" align="center">
+        <h1 class="content-title" align="center">Services</h1>
+      </div>
+      <div id="control" class="tab-content" align="center">
+        <h1 class="content-title" align="center">Server Control</h1>
+      </div>
+      <div id="logs" class="tab-content" align="center">
+        <h1 class="content-title" align="center">Logs</h1>
+        <h3 align="center">Select a log file to download or open</h3>
+
+        <form action="{{ url_for('download') }}" method="post">
+          <select class="button" id="file-selector" name="file">
+            <option value="">Select a file</option>
+          </select>
+
+          <button class="button" type="submit">Download</button>
+        </form>
+
+        <button class="button" id="open-button">Open</button>
+
+        <h2>File Content:</h2>
+        <textarea id="file-content" readonly></textarea>
+      </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="{{ url_for('static', filename='temp.js') }}"></script>
+    <script src="{{ url_for('static', filename='tabs.js') }}"></script>
   </body>
 </html>
