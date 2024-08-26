@@ -1,21 +1,13 @@
 import os
-import platform
-import socket
-import sys
 import time
-from os import environ
-from os.path import exists, isfile
-from subprocess import DEVNULL, PIPE, Popen
-
 import psutil
 from flask import Flask, jsonify, render_template, request, send_file
 from loguru import logger
-
 from get_info import (fetch_cpu_info, get_ip_address, get_service_name,
                       get_uptime, gpu_info, model_info, os_name)
 
-home_dir = os.environ["HOME"]
-log_file = home_dir + "/logs/ServerPage.log"
+home_dir = os.path.expanduser("~")
+log_file = os.path.join(home_dir, "logs", "ServerPage.log")
 
 logger.add(
     log_file,
@@ -31,11 +23,9 @@ prev_bytes_recv = psutil.net_io_counters().bytes_recv
 prev_bytes_sent = psutil.net_io_counters().bytes_sent
 prev_time = time.time()
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/usage")
 def usage():
@@ -54,11 +44,10 @@ def usage():
 
     prev_bytes_recv = net_io.bytes_recv
     prev_bytes_sent = net_io.bytes_sent
-
     prev_time = current_time
 
-    speed_recv = bytes_recv / elapsed_time / 1024
-    speed_sent = bytes_sent / elapsed_time / 1024
+    speed_recv = bytes_recv / elapsed_time / 1024  # kB/s
+    speed_sent = bytes_sent / elapsed_time / 1024  # kB/s
 
     logger.debug(f"CPU Usage: {cpu_usage}%")
     logger.debug(f"RAM Usage: {ram_usage}%")
@@ -80,14 +69,8 @@ def usage():
         }
     )
 
-
 @app.route("/system_info")
 def get_info():
-    sys_platform = os_name()
-    sys_model = model_info()
-    sys_cpu = fetch_cpu_info()
-    sys_gpu = gpu_info()
-
     device_ip = get_ip_address()
     logger.info(f"Device IP: {device_ip}")
 
@@ -102,14 +85,13 @@ def get_info():
         {
             "device_uptime": device_uptime,
             "device_ip": device_ip,
-            "sys_platform": sys_platform,
+            "sys_platform": os_name(),
             "device_name": device_name,
-            "sys_model": sys_model,
-            "sys_cpu": sys_cpu,
-            "sys_gpu": sys_gpu,
+            "sys_model": model_info(),
+            "sys_cpu": fetch_cpu_info(),
+            "sys_gpu": gpu_info(),
         }
     )
-
 
 @app.route("/cpu_temp")
 def cpu_temp():
@@ -121,23 +103,17 @@ def cpu_temp():
         logger.error(f"Error getting CPU temperature: {e}")
         return jsonify({"cpu_temp": "N/A", "error": str(e)})
 
-
 @app.route('/files')
 def files():
-    # Получаем список файлов из папки ~/logs/
     log_directory = os.path.expanduser('~/logs/')
-    if os.path.exists(log_directory):
-        files = os.listdir(log_directory)
-    else:
-        files = []
+    files = os.listdir(log_directory) if os.path.exists(log_directory) else []
     return jsonify(files)
 
 @app.route('/download', methods=['POST'])
 def download():
-    selected_file = request.form['file']  # Получаем имя файла из формы
+    selected_file = request.form['file']
     file_path = os.path.join(os.path.expanduser('~/logs/'), selected_file)
     
-    # Проверяем, существует ли файл перед отправкой
     if os.path.isfile(file_path):
         return send_file(file_path, as_attachment=True)
     else:
@@ -145,10 +121,9 @@ def download():
 
 @app.route('/open_file', methods=['POST'])
 def open_file():
-    selected_file = request.json['file']  # Используем request.json для получения JSON-данных
+    selected_file = request.json['file']
     file_path = os.path.join(os.path.expanduser('~/logs/'), selected_file)
 
-    # Читаем содержимое файла
     if os.path.isfile(file_path):
         with open(file_path, 'r') as f:
             content = f.read()
@@ -158,4 +133,4 @@ def open_file():
 
 if __name__ == "__main__":
     logger.info("Starting Flask application...")
-    app.run(debug=False, port="3098", host=get_ip_address())
+    app.run(debug=False, port=3098, host=get_ip_address())

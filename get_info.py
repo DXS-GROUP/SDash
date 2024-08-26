@@ -2,18 +2,14 @@ import platform
 import socket
 import sys
 import time
-from logging import info
-from os import environ
-from os.path import exists, isfile
+from os import environ, path
 from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
 
 
 def truncate_string(s, max_length):
-    if len(s) > max_length:
-        return s[: max_length - 3] + "..."
-    return s
+    return s if len(s) <= max_length else f"{s[:max_length - 3]}..."
 
 
 def get_service_name(port):
@@ -24,117 +20,64 @@ def get_service_name(port):
 
 
 def get_uptime():
-    if platform.system() == "Linux":
-        with open("/proc/uptime", "r") as f:
-            uptime_seconds = float(f.readline().split()[0])
-    else:
+    if platform.system() != "Linux":
         return "Error."
 
-    days = uptime_seconds // (24 * 3600)
-    hours = (uptime_seconds % (24 * 3600)) // 3600
-    minutes = (uptime_seconds % 3600) // 60
-    seconds = uptime_seconds % 60
+    with open("/proc/uptime", "r") as f:
+        uptime_seconds = float(f.readline().split()[0])
+
+    days, remainder = divmod(uptime_seconds, 86400)
+    hours, remainder = divmod(remainder, 3600)
+    minutes, seconds = divmod(remainder, 60)
 
     return f"{int(days)} d. {int(hours)} h. {int(minutes)} m. {int(seconds)} s."
 
 
 def get_ip_address():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    ip = s.getsockname()[0]
-    s.close()
-    return ip
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+        s.connect(("8.8.8.8", 80))
+        return s.getsockname()[0]
 
 
 def run_command(command):
-    process = Popen(
-        command, stdout=PIPE, universal_newlines=True, shell=True, stderr=DEVNULL
-    )
-    stdout, stderr = process.communicate()
-    del stderr
-    return stdout
+    process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True, stderr=DEVNULL)
+    stdout, _ = process.communicate()
+    return stdout.strip()
 
 
 def os_name():
-    if isfile("/bedrock/etc/os-release"):
-        os_file = "/bedrock/etc/os-release"
-    elif isfile("/etc/os-release"):
-        os_file = "/etc/os-release"
-
-    pretty_name = (
-        run_command(("cat " + os_file + " | grep 'PRETTY_NAME'"))
-        .replace("PRETTY_NAME=", "")
-        .replace('''"''', "")
-    )
+    os_file = "/etc/os-release" if path.isfile("/etc/os-release") else "/bedrock/etc/os-release"
+    pretty_name = run_command(f"grep 'PRETTY_NAME' {os_file}").replace('PRETTY_NAME=', '').replace('"', '')
     return pretty_name
 
 
 def model_info():
     product_info = ""
-    if exists("/sys/devices/virtual/dmi/id/product_name"):
+    if path.exists("/sys/devices/virtual/dmi/id/product_name"):
         with open("/sys/devices/virtual/dmi/id/product_name", "r") as f:
-            line = f.read().rstrip("\n")
-            product_info = line
+            product_info = f.read().strip()
 
-    if exists("/sys/devices/virtual/dmi/id/product_version"):
-        line = run_command("cat /sys/devices/virtual/dmi/id/product_version").rstrip(
-            "\n"
-        )
-        if product_info == "":
-            product_info = line
-        else:
-            product_info = str(product_info + " " + line)
+    if path.exists("/sys/devices/virtual/dmi/id/product_version"):
+        version_info = run_command("cat /sys/devices/virtual/dmi/id/product_version")
+        product_info += f" {version_info.strip()}" if product_info else version_info.strip()
+
     return product_info
 
 
 def fetch_cpu_info():
-    cpu_count = len(run_command("ls /sys/class/cpuid/ | sort").split("\n")) - 1
-    cpu_info = (
-        run_command("cat /proc/cpuinfo | grep 'model name'")
-        .split("\n")[0]
-        .replace("model name	: ", "")
-        .replace("Core(TM)", "")
-        .replace("(R)", "")
-        .replace("CPU", "")
-        .replace("  ", " ")
-        .split("@")[0]
-    )
-    cpu_max_freq = int(
-        run_command("cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq")
-    )
+    cpu_count = len(run_command("ls /sys/class/cpuid/ | sort").splitlines())
+    cpu_info = run_command("grep 'model name' /proc/cpuinfo").split(":")[1].strip()
+    cpu_max_freq = int(run_command("cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq")) / 1000
 
-    cpu_max_freq_mhz = cpu_max_freq / 1000
-    cpu_max_freq_ghz = cpu_max_freq / 1000 / 1000
-
-    if cpu_max_freq_ghz > 1:
-        cpu_freq_info = str(str(round(cpu_max_freq_ghz, 3)) + "GHz")
-    else:
-        cpu_freq_info = str(str(round(cpu_max_freq_mhz, 3)) + "MHz")
-
-    full_cpu_info = f"{cpu_info}({cpu_count}) @ {cpu_freq_info}"
-    del cpu_freq_info, cpu_count, cpu_info, cpu_max_freq_mhz, cpu_max_freq_ghz
-    return full_cpu_info
+    cpu_freq_info = f"{cpu_max_freq:.3f}MHz" if cpu_max_freq < 1000 else f"{cpu_max_freq / 1000:.3f}GHz"
+    return f"{cpu_info} ({cpu_count}) @ {cpu_freq_info}"
 
 
 def gpu_info():
-    if sys.platform == "darwin":  # Check for macOS
-        gpu_info = run_command(
-            "system_profiler SPDisplaysDataType | awk '/Chipset Model:/ {print $3, $4, $5, $6, $7}'"
-        )
-        return gpu_info.strip()
-    else:
-        gpu_info = ""
-        if exists("/sys/class/dmi/id/product_name"):
-            gpu_info = truncate_string(
-                (
-                    run_command("lspci | grep -i vga")
-                    .split(":")[2]
-                    .split("(")[0]
-                    .strip()
-                ),
-                50,
-            )
-        else:
-            pass
+    if sys.platform == "darwin":
+        return run_command("system_profiler SPDisplaysDataType | awk '/Chipset Model:/ {print $3, $4, $5, $6, $7}'").strip()
 
-        return gpu_info
+    if path.exists("/sys/class/dmi/id/product_name"):
+        return truncate_string(run_command("lspci | grep -i vga").split(":")[2].split("(")[0].strip(), 50)
+
+    return ""
