@@ -3,12 +3,13 @@
   --fg: #d5d9d6;
   --accent: #31363F;
   --accent-hover: #76ABAE;
-  --accent-pressed: #4C4A48;
+  --accent-pressed: #31363F;
 }
 
 .content-title {
   font-size: 50px;
   font-weight: bold;
+  animation: fadeIn 1s ease;
 }
 
 textarea {
@@ -20,10 +21,12 @@ textarea {
   scrollbar-arrow-color: transparent transparent;
   width: 96%;
   height: 80vh;
+  animation: slideInLeft 1s ease;
 }
 
 p {
   font-size: small;
+  animation: fadeIn 1s ease;
 }
 
 body {
@@ -32,6 +35,7 @@ body {
   background-color: var(--bg);
   background-size: cover;
   font-size: small;
+  animation: fadeIn 1s ease;
 }
 
 html {
@@ -50,6 +54,15 @@ select.button {
   transition: background-color 0.7s ease;
   z-index: 10000;
   margin-bottom: 2%;
+  animation: slideInDown 1s ease;
+}
+
+select.button:hover {
+  background-color: var(--accent-hover);
+}
+
+select.button:active {
+  background-color: var(--accent-pressed);
 }
 
 .button {
@@ -57,7 +70,7 @@ select.button {
   font-weight: 400;
   font-style: normal;
   display: inline-block;
-  height: 2vh;
+  height: 3vh;
   width: 30%;
   margin-left: 5px;
   margin-right: 5px;
@@ -66,9 +79,40 @@ select.button {
   border-radius: 10px;
   background-color: var(--accent);
   color: var(--fg);
-  font-size: medium;
+  font-size: small;
   cursor: pointer;
   transition: background-color 0.7s ease;
+  animation: slideInUp 1s ease;
+}
+
+.button:hover {
+  background-color: var(--accent-hover);
+  border: none;
+}
+
+.button:active {
+  background-color: var(--accent-pressed);
+  border: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
 
 @media (max-width: 992px) {
@@ -79,7 +123,7 @@ select.button {
 
 @media (min-width: 2000px) {
   .button {
-    height: 2vh;
+    height: 3vh;
   }
 }
 
@@ -88,6 +132,7 @@ select.button {
   display: flex;
   justify-content: center;
   z-index: 56;
+  animation: fadeIn 1s ease;
 }
 
 .clock {
@@ -96,6 +141,7 @@ select.button {
   border-radius: 10px;
   margin-bottom: 2%;
   box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1s ease;
 }
 
 .tab-content {
@@ -105,6 +151,7 @@ select.button {
 .tab-content.active {
   display: block;
   opacity: 1;
+  animation: fadeIn 1s ease;
 }
 .tab-content.hidden {
   opacity: 0;
@@ -122,6 +169,7 @@ select.button {
   border-radius: 30px;
   background-color: var(--bg);
   backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease;
 }
 
 .charts {
@@ -130,12 +178,14 @@ select.button {
   display: flexbox;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 1s ease;
 }
 
 .net-canvas {
   background: transparent;
   border-radius: 10px;
   box-shadow: 0 0 0px var(--accent);
+  animation: fadeIn 1s ease;
 }
 
 .canvas {
@@ -145,14 +195,16 @@ select.button {
   background: transparent;
   border-radius: 10px;
   box-shadow: 0 0 0px var(--accent);
+  animation: fadeIn 1s ease;
 }
 
 .summary_data {
   margin-top: 1%;
   margin-bottom: 1%;
+  animation: fadeIn 1s ease;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and (max-width: 599px) {
   .charts {
     width: 80%;
     margin-left: 10%;
@@ -181,7 +233,7 @@ select.button {
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 600px) {
   .charts {
     display: flex;
     width: 30%;
@@ -189,6 +241,14 @@ select.button {
   }
   .canvas {
     width: 100%;
-    margin: 10%;
+    margin: 0%;
+  }
+  
+  select.button {
+    animation: slideInDown 1s ease;
+  }
+  
+  .button {
+    animation: slideInUp 1s ease;
   }
 }
