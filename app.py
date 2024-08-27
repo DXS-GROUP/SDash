@@ -160,4 +160,4 @@ def sleep():
 
 if __name__ == "__main__":
     logger.info("Starting Flask application...")
-    app.run(debug=False, port=3098, host=get_ip_address())
+    app.run(debug=False, host=get_ip_address())
