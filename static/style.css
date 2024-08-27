@@ -1,9 +1,74 @@
 :root {
   --bg: #222831;
   --fg: #d5d9d6;
-  --accent: #31363F;
-  --accent-hover: #76ABAE;
-  --accent-pressed: #31363F;
+  --accent: #31363f;
+  --accent-hover: #76abae;
+  --accent-pressed: #31363f;
+}
+
+.info-table {
+  width: 50%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+
+.info-table td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.info-table td:first-child {
+  font-weight: bold;
+  width: 30%;
+}
+
+.info-table td:last-child {
+  width: 70%;
+}
+
+.control {
+  height: 100vh;
+  display: flex;
+}
+
+.p_buttons {
+  margin-top: 30%;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 2%;
+}
+
+.power_button {
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  display: block;
+  margin: 2%;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+  background-color: var(--accent-hover);
+}
+
+.power_button img {
+  width: 70%;
+  height: auto;
+}
+
+.power_button:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 576px) {
+  .power_button {
+    margin: 2%;
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .content-title {
@@ -96,23 +161,39 @@ select.button:active {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideInLeft {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInDown {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 992px) {
@@ -243,11 +324,11 @@ select.button:active {
     width: 100%;
     margin: 0%;
   }
-  
+
   select.button {
     animation: slideInDown 1s ease;
   }
-  
+
   .button {
     animation: slideInUp 1s ease;
   }
@@ -263,11 +344,11 @@ select.button:active {
     width: 100%;
     margin: 0%;
   }
-  
+
   select.button {
     animation: slideInDown 1s ease;
   }
-  
+
   .button {
     animation: slideInUp 1s ease;
   }

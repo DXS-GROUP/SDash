@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -47,28 +47,59 @@
       </div>
       <div id="info" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Info</h1>
-        <p id="device_uptime"></p>
-        <p id="device_ip"></p>
-        <p id="device_name"></p>
-        <p id="platform"></p>
-        <p id="model"></p>
-        <p id="cpu"></p>
-        <p id="gpu"></p>
+        <table class="info-table">
+          <tr>
+            <td>Device Uptime</td>
+            <td id="device_uptime"></td>
+          </tr>
+          <tr>
+            <td>Device IP</td>
+            <td id="device_ip"></td>
+          </tr>
+          <tr>
+            <td>Device Name</td>
+            <td id="device_name"></td>
+          </tr>
+          <tr>
+            <td>Platform</td>
+            <td id="platform"></td>
+          </tr>
+          <tr>
+            <td>Model</td>
+            <td id="model"></td>
+          </tr>
+          <tr>
+            <td>CPU</td>
+            <td id="cpu"></td>
+          </tr>
+          <tr>
+            <td>GPU</td>
+            <td id="gpu"></td>
+          </tr>
+        </table>
       </div>
       <div id="services" class="tab-content" align="center">
         <h1 class="content-title" align="center">Services</h1>
       </div>
       <div id="control" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Control</h1>
-        <form action="/shutdown" method="post">
-          <button class="button" type="submit">Shutdown</button>
-      </form>
-      <form action="/reboot" method="post">
-          <button class="button" type="submit">Reboot</button>
-      </form>
-      <form action="/sleep" method="post">
-          <button class="button" type="submit">Sleep</button>
-      </form>
+        <div class="p_buttons">
+          <form action="/shutdown" method="post">
+            <button class="power_button" type="submit">
+              <img src="../static/on-off-button.png" />
+            </button>
+          </form>
+          <form action="/reboot" method="post">
+            <button class="power_button" type="submit">
+              <img src="../static/refresh.png" />
+            </button>
+          </form>
+          <form action="/sleep" method="post">
+            <button class="power_button" type="submit">
+              <img src="../static/sleep.png" />
+            </button>
+          </form>
+        </div>
       </div>
     </div>
 
