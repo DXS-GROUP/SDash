@@ -6,7 +6,7 @@ const ctxNetSent = document.getElementById('netSentChart').getContext('2d');
 const ctx = document.getElementById('cpuTempChart').getContext('2d');
 
 const bg = "#1e1e2d";
-const fg = "#c4a3f1";
+const fg = "#d5d9d6";
 const color1 = "#abd89b";
 const color2 = "#e9bdbe";
 const color3 = "#c4a3f1";
@@ -28,7 +28,7 @@ const cpuChart = new Chart(ctxCPU, {
                 formatter: (value, context) => {
                     return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
                 },
-                color: 'black',
+                color: fg,
             }
         }
     }
@@ -50,7 +50,7 @@ const ramChart = new Chart(ctxRAM, {
                 formatter: (value, context) => {
                     return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
                 },
-                color: 'black',
+                color: fg,
             }
         }
     }
@@ -72,7 +72,7 @@ const diskChart = new Chart(ctxDISK, {
                 formatter: (value, context) => {
                     return context.chart.data.labels[context.dataIndex] + ': ' + value + '%';
                 },
-                color: 'black',
+                color: fg,
             }
         }
     }
@@ -82,10 +82,11 @@ const netRecvChart = new Chart(ctxNetRecv, {
     type: 'line',
     data: {
         labels: Array.from({ length: 60 }, (_, i) => i + 1),
+        display: false,
         datasets: [{
             label: 'Download Speed (kbit/s)',
             data: Array(60).fill(0),
-            borderColor: color3,
+            borderColor: fg,
             fill: true
         }]
     },
@@ -102,7 +103,7 @@ const netRecvChart = new Chart(ctxNetRecv, {
                 formatter: (value) => {
                     return value + ' kbit/s';
                 },
-                color: 'black',
+                color: fg,
             }
         }
     }
@@ -115,7 +116,7 @@ const netSentChart = new Chart(ctxNetSent, {
         datasets: [{
             label: 'Upload Speed (kbit/s)',
             data: Array(60).fill(0),
-            borderColor: color1,
+            borderColor: fg,
             fill: true
         }]
     },
@@ -133,12 +134,11 @@ const netSentChart = new Chart(ctxNetSent, {
                 formatter: (value) => {
                     return value + ' kbit/s';
                 },
-                color: 'black',
+                color: fg,
             }
         }
     }
-})
-
+});
 
 const cpuTempChart = new Chart(ctx, {
     type: 'line',
@@ -147,7 +147,7 @@ const cpuTempChart = new Chart(ctx, {
         datasets: [{
             label: 'CPU Temp (°C)',
             data: [],
-            borderColor: '#abd89b',
+            borderColor: fg,
             fill: true,
         }]
     },
@@ -218,7 +218,6 @@ function updateSystemInfo() {
             document.getElementById('gpu').innerText = 'GPU: ' + data.sys_gpu;
         });
 }
-
 
 function updateCPUTempChart() {
     fetch('/cpu_temp')
