@@ -1,110 +1,71 @@
 :root {
-  --bg: #1e1e2d;
-  --fg2: #c4a3f1;
-  --fg: #c4a3f1;
-  --color1: #abd89b;
-  --color2: #e9bdbe;
-  --color3: #c4a3f1;
-  --color4: #7e9cd8;
-}
-
-.content-title {
-  font-size: 50px;
-  font-weight: bold;
-}
-
-textarea {
-  background-color: var(--color4);
-  color: var(--bg);
-  border: none;
-  border-radius: 20px;
-  scrollbar-color: #fff transparent;
-  scrollbar-arrow-color: transparent transparent;
-  width: 96%;
-  height: 80vh;
-}
-
-p {
-  font-size: small;
+  --bg: #f3f2f1;
+  --fg: #323130;
+  --accent: #819cd4;
+  --accent-hover: #106ebe;
+  --accent-pressed: #819cd4;
+  --border-color: #e1dfdd;
+  --border-radius: 4px;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: #fff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--fg);
   background-color: var(--bg);
-  background-size: cover;
-  font-size: small;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
-html {
-  scrollbar-color: #fff transparent;
-  scrollbar-arrow-color: transparent transparent;
+.content-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-select.button {
-  appearance: none;
-  background-color: var(--color4);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  padding-left: 1%;
-  transition: background-color 0.7s ease;
-  z-index: 10000;
-  margin-bottom: 2%;
+textarea {
+  background-color: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  width: 96%;
+  height: 80vh;
+  padding: 10px;
+  font-size: 14px;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--accent);
 }
 
 .button {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   display: inline-block;
-  height: 2vh;
-  width: 40%;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-top: 0.5vh;
+  background-color: var(--accent);
+  color: #fff;
   border: none;
-  border-radius: 10px;
-  background-color: var(--color4);
-  font-size: 16px;
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  margin-top: 1%;
+  width: 20%;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.7s ease;
-  transition: box-shadow 0.5s ease;
-  box-shadow: 0 0 0px var(--color3), 0 0 0px var(--color3);
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 992px) {
-  .button {
-    height: 5vh;
-  }
+.button:hover {
+  background-color: var(--accent-hover);
 }
 
-@media (min-width: 992px) {
-  .button {
-    height: 3vh;
-  }
-}
-
-@media (min-width: 2000px) {
-  .button {
-    height: 2vh;
-  }
+.button:active {
+  background-color: var(--accent-pressed);
 }
 
 .dock {
-  align-items: center;
   display: flex;
   justify-content: center;
-  z-index: 56;
-}
-
-.clock {
-  font-size: 48px;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 2%;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
 }
 
 .tab-content {
@@ -119,41 +80,39 @@ select.button {
   opacity: 0;
 }
 
+
 .container {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  width: 80%;
-  height: auto;
-  margin-left: 10%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
   display: block;
-  border-radius: 30px;
-  background-color: rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .charts {
-  margin-left: 25%;
-  width: 50%;
+  margin-left: 15%;
+  width: 70%;
   border: none;
   display: flexbox;
   align-items: center;
   justify-content: center;
 }
 
-canvas {
-  margin-top: 20%;
+.charts canvas {
   width: 100%;
-  height: 50%;
-  background: transparent;
-  border-radius: 10px;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  height: auto;
+  margin: 10px;
+  background-color: var(--bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .summary_data {
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 799px) {
@@ -165,8 +124,6 @@ canvas {
     margin-top: 20%;
     width: 100%;
     background: transparent;
-    border-radius: 10px;
-    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
   }
   .summary_data {
     margin-top: 10%;
@@ -181,8 +138,6 @@ canvas {
     height: auto;
     margin-left: 2%;
     display: block;
-    border-radius: 30px;
-    background-color: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
   }
 }
@@ -202,8 +157,9 @@ canvas {
 @media screen and (min-width: 1900px) {
   .charts {
     display: flex;
-    width: 20%;
-    margin-left: 40%;
+    width: 30%;
+    margin-top: 1%;
+    margin-left: 35%;
   }
   canvas {
     width: 40%;
