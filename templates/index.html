@@ -27,23 +27,49 @@
     <div class="container">
       <div id="monitor" class="tab-content active">
         <h1 class="content-title" align="center">Server monitoring</h1>
-        <div align="center" id="summary_data_cpu" class="summary_data"></div>
-        <div align="center" id="summary_data_ram" class="summary_data"></div>
-        <div align="center" id="summary_data_disk" class="summary_data"></div>
-        <div class="charts">
-          <canvas id="cpuChart" class="canvas"></canvas>
-          <canvas id="ramChart" class="canvas"></canvas>
-          <canvas id="diskChart" class="canvas"></canvas>
+        <div class="cards">
+          <div class="summary_data" id="summary_data_cpu">
+            <img src="../static/microchip.png"/>
+            <h3 id="summary_data_cpu_text" style="color: #222831;"></h3>
+            <div class="progress-bar">
+              <div class="progress" id="cpu-progress"></div>
+              <span id="cpu-value"></span>
+            </div>
+          </div>
+          
+          <div class="summary_data" id="summary_data_ram">
+            <img src="../static/ram-memory.png"/>
+            <h3 id="summary_data_ram_text" style="color: #222831;"></h3>
+            <div class="progress-bar">
+              <div class="progress" id="ram-progress"></div>
+              <span id="ram-value"></span>
+            </div>
+          </div>
+          
+          <div class="summary_data" id="summary_data_disk">
+            <img src="../static/memory-card.png"/>
+            <h3 id="summary_data_disk_text" style="color: #222831;"></h3>
+            <div class="progress-bar">
+              <div class="progress" id="disk-progress"></div>
+              <span id="disk-value"></span>
+            </div>
+          </div>
         </div>
-        <div align="center" id="summary_net_data" class="summary_data"></div>
-        <div class="charts" width="100vw">
-          <canvas id="netRecvChart" class="net-canvas"></canvas>
-          <canvas id="netSentChart" class="net-canvas"></canvas>
+        <div align="center" id="summary_net_data" class="summary_data_text"></div>
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <div class="net_summary_data" id="net_summary_data">
+            <img src="../static/arrows.png" />
+            <div style="display: block;">
+              <h3 id="upload_speed">UPLOAD SPEED</h3>
+              <h3 id="download_speed">DOWNLOAD SPEED</h3>
+            </div>
+          </div>
         </div>
-        <div align="center" id="summary_temp_data" class="summary_data"></div>
-        <div class="charts">
-          <canvas id="cpuTempChart"></canvas>
+        <div align="center" id="summary_temp_data" class="summary_data_text"></div>
+        <div style="display: flex;">
+
         </div>
+        
       </div>
       <div id="info" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Info</h1>

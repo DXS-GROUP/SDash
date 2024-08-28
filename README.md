@@ -28,7 +28,7 @@
   <h3>Run server</h3>
   
   ```
-  python3 app.py
+  python3 server.py
   ```
   
   <h3>Screenshots</h3>
