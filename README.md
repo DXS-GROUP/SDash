@@ -33,9 +33,8 @@
   
   <h3>Screenshots</h3>
   
-  <img src="imgs/1.png" width="48%"/>
-  <img src="imgs/2.png" width="48%"/>
-  <img src="imgs/3.png" width="48%"/>
-  <img src="imgs/4.png" width="48%"/>
+  <img src="imgs/1.png" width="80%"/>
+  <img src="imgs/2.png" width="80%"/>
+  <img src="imgs/3.png" width="80%"/>
 
 </div>
