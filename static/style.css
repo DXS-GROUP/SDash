@@ -37,7 +37,6 @@ body {
 }
 
 .info-table {
-  width: 50%;
   border-collapse: collapse;
   font-size: 16px;
   animation: fadeIn 1s ease;
@@ -45,18 +44,18 @@ body {
 
 .info-table td {
   padding: 10px;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
   transition: background-color 0.3s ease;
 }
 
 .info-table td:first-child {
   font-weight: bold;
-  width: 30%;
+  text-align: left;
 }
 
 .info-table td:last-child {
-  width: 70%;
+  text-align: right;
 }
 
 .control {
@@ -66,44 +65,34 @@ body {
 }
 
 .p_buttons {
-  margin-top: 30%;
-  display: block;
-  align-items: center;
-  justify-content: center;
-  margin: 2%;
+  margin-top: 50vh;
+  display: flex;
+  flex-direction: column;
+  margin: 1vh;
 }
 
 .power_button {
-  width: 100px;
-  height: 100px;
+  height: 12vh;
+  aspect-ratio: 1 / 1;
   border: none;
   border-radius: 10px;
-  overflow: hidden;
   display: block;
-  margin: 2%;
+  margin: 1vh;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s, background-color 0.3s;
-  background-color: var(--accent-hover);
+  background-color: var(--accent);
   animation: fadeIn 1s ease;
 }
 
 .power_button img {
-  width: 70%;
-  height: auto;
+  height: 5vh;
+  aspect-ratio: 1 / 1;
 }
 
 .power_button:hover {
   transform: scale(1.05);
-  background-color: var(--accent);
-}
-
-@media (max-width: 576px) {
-  .power_button {
-    margin: 2%;
-    width: 60px;
-    height: 60px;
-  }
+  background-color: var(--accent-hover);
 }
 
 .content-title {
@@ -130,13 +119,11 @@ p {
 }
 
 select.button {
-  appearance: none;
   background-color: var(--accent);
   color: var(--fg);
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  padding-left: 1%;
   transition: background-color 0.7s ease, transform 0.3s ease;
   z-index: 10000;
   margin-bottom: 2%;

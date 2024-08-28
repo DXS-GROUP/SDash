@@ -44,13 +44,13 @@ const colors = {
     try {
       const data = await fetch('/system_info').then(response => response.json());
   
-      document.getElementById('device_uptime').innerText = 'Uptime: ' + data.device_uptime;
-      document.getElementById('device_ip').innerText = 'IP: ' + data.device_ip;
-      document.getElementById('platform').innerText = 'Platform: ' + data.sys_platform;
-      document.getElementById('device_name').innerText = 'Device: ' + data.device_name;
-      document.getElementById('model').innerText = 'Host: ' + data.sys_model;
-      document.getElementById('cpu').innerText = 'CPU: ' + data.sys_cpu;
-      document.getElementById('gpu').innerText = 'GPU: ' + data.sys_gpu;
+      document.getElementById('device_uptime').innerText = data.device_uptime;
+      document.getElementById('device_ip').innerText = data.device_ip;
+      document.getElementById('platform').innerText = data.sys_platform;
+      document.getElementById('device_name').innerText = data.device_name;
+      document.getElementById('model').innerText = data.sys_model;
+      document.getElementById('cpu').innerText = data.sys_cpu;
+      document.getElementById('gpu').innerText = data.sys_gpu;
     } catch (error) {
       console.error('Error updating system info:', error);
     }
