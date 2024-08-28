@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9e2b0243-db15-4dea-81c0-0589f23f6661" width="99%"/>
+  <img src="https://github.com/user-attachments/assets/aae7ee84-3e6c-4265-9079-9cea4690e98d" width="99%"/>
   <br>
   <br>
   <a href="https://t.me/DXS_TechSupport_bot"><kbd> <br>Tech Support<br> </kbd></a>  <a href="https://discord.gg/tnHSEc2cZv"><kbd> <br>Discord server<br> </kbd></a>
@@ -18,10 +18,10 @@
   <h3>Installing</h3>
   
   ```
-  git clone https://github.com/Nighty3098/ServerMonitor
-  cd ServerMonitor
-  python3 -m venv monitoring
-  source monitoring/bin/activate
+  git clone https://github.com/Nighty3098/SDash
+  cd SDash
+  python3 -m venv SDash
+  source SDash/bin/activate
   pip3 install -r requirements.txt
   ```
   
