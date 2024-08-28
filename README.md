@@ -18,7 +18,7 @@
   <h3>Installing</h3>
   
   ```
-  git clone https://github.com/Nighty3098/SDash
+  git clone https://github.com/SDashS/SDash
   cd SDash
   python3 -m venv SDash
   source SDash/bin/activate
