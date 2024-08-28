@@ -7,28 +7,35 @@ const color4 = "#7e9cd8";
 
 function updateIndicators() {
     fetch('/usage')
-      .then(response => response.json())
-      .then(data => {
-        const cpuProgress = document.getElementById('cpu-progress');
-        const ramProgress = document.getElementById('ram-progress');
-        const diskProgress = document.getElementById('disk-progress');
-  
-        cpuProgress.style.width = `${data.cpu_usage}%`;
-        document.getElementById('cpu-value').textContent = `CPU: ${data.cpu_usage.toFixed(2)}%`;
-  
-        ramProgress.style.width = `${data.ram_usage}%`;
-        document.getElementById('ram-value').textContent = `RAM: ${(data.ram_used / 1024 / 1024 / 1024).toFixed(1)}GB / ${(data.ram_total / 1024 / 1024 / 1024).toFixed(1)}GB - ${data.ram_usage.toFixed(1)}%`;
-  
-        diskProgress.style.width = `${data.disk_usage}%`;
-        document.getElementById('disk-value').textContent = `Disk: ${(data.disk_used / 1024 / 1024 / 1024).toFixed(1)}GB / ${(data.disk_total / 1024 / 1024 / 1024).toFixed(1)}GB - ${data.disk_usage.toFixed(2)}%`;
+        .then(response => response.json())
+        .then(data => {
+            const cpuProgress = document.getElementById('cpu-progress');
+            const ramProgress = document.getElementById('ram-progress');
+            const diskProgress = document.getElementById('disk-progress');
 
-        document.getElementById('summary_data_cpu_text').innerHTML = 'CPU USAGE: ' + data.cpu_usage + '%'
-        document.getElementById('summary_data_ram_text').innerHTML = 'RAM USAGE: ' + data.ram_usage + '%'
-        document.getElementById('summary_data_disk_text').innerHTML = 'DISK USAGE: ' + data.disk_usage + '%'
+            cpuProgress.style.width = `${data.cpu_usage}%`;
+            document.getElementById('cpu-value').textContent = `CPU: ${data.cpu_usage.toFixed(2)}%`;
 
-        document.getElementById('upload_speed').innerHTML = 'UPLOAD SPEED: ' + data.net_sent.toFixed(2) + 'kb/s'
-        document.getElementById('download_speed').innerHTML = 'DOWNLOAD SPEED: ' + data.net_recv.toFixed(2) + 'kb/s'
-      });
+            ramProgress.style.width = `${data.ram_usage}%`;
+            document.getElementById('ram-value').textContent = `RAM: ${(data.ram_used / 1024 / 1024 / 1024).toFixed(1)}GB / ${(data.ram_total / 1024 / 1024 / 1024).toFixed(1)}GB - ${data.ram_usage.toFixed(1)}%`;
+
+            diskProgress.style.width = `${data.disk_usage}%`;
+            document.getElementById('disk-value').textContent = `Disk: ${(data.disk_used / 1024 / 1024 / 1024).toFixed(1)}GB / ${(data.disk_total / 1024 / 1024 / 1024).toFixed(1)}GB - ${data.disk_usage.toFixed(2)}%`;
+
+            document.getElementById('summary_data_cpu_text').innerHTML = 'CPU USAGE: <br>' + data.cpu_usage + '%';
+            document.getElementById('summary_data_ram_text').innerHTML = 'RAM USAGE: <br>' + data.ram_usage + '%';
+            document.getElementById('summary_data_disk_text').innerHTML = 'DISK USAGE: <br>' + data.disk_usage + '%';
+
+            document.getElementById('upload_speed').innerHTML = 'UPLOAD SPEED: ' + data.net_sent.toFixed(2) + 'kb/s';
+            document.getElementById('download_speed').innerHTML = 'DOWNLOAD SPEED: ' + data.net_recv.toFixed(2) + 'kb/s';
+        });
+
+    fetch('/cpu_temp')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('summary_data_cpu_temp_text').innerHTML = 'CPU: ' + data.cpu_temp.toFixed(1) + '°C - ' + (data.cpu_freq / 1000).toFixed(1) + 'GHz'
+                ;
+        });
 }
 
 function updateSystemInfo() {

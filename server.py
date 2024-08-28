@@ -1,10 +1,14 @@
 import os
+import platform
+import subprocess
 import time
+
 import psutil
-from flask import Flask, jsonify, render_template, redirect
+from flask import Flask, jsonify, redirect, render_template
 from loguru import logger
-from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info, model_info, os_name)
-import platform, subprocess
+
+from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
+                      model_info, os_name)
 
 home_dir = os.path.expanduser("~")
 log_file = os.path.join(home_dir, "logs", "ServerPage.log")
@@ -22,9 +26,11 @@ app = Flask(__name__)
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/usage")
 def usage():
@@ -63,8 +69,9 @@ def usage():
         disk_used=psutil.disk_usage("/").used,
         net_recv=speed_recv,
         net_sent=speed_sent,
-        cpu_freq=psutil.cpu_freq().current
+        cpu_freq=psutil.cpu_freq().current,
     )
+
 
 @app.route("/system_info")
 def get_info():
@@ -85,36 +92,41 @@ def get_info():
         device_name=device_name,
         sys_model=model_info(),
         sys_cpu=fetch_cpu_info(),
-        sys_gpu=gpu_info()
+        sys_gpu=gpu_info(),
     )
+
 
 @app.route("/cpu_temp")
 def cpu_temp():
     try:
         cpu_temp = psutil.sensors_temperatures()["coretemp"][0].current
         logger.debug(f"CPU Temperature: {cpu_temp:.2f}°C")
-        return jsonify(cpu_temp=cpu_temp)
+        return jsonify(cpu_temp=cpu_temp, cpu_freq=psutil.cpu_freq().current)
     except Exception as e:
         logger.error(f"Error getting CPU temperature: {e}")
         return jsonify(cpu_temp="N/A", error=str(e))
 
-@app.route('/shutdown', methods=['POST'])
+
+@app.route("/shutdown", methods=["POST"])
 def shutdown():
     subprocess.call(["shutdown", "/s" if platform.system() == "Windows" else "now"])
-    return redirect('/')
+    return redirect("/")
 
-@app.route('/reboot', methods=['POST'])
+
+@app.route("/reboot", methods=["POST"])
 def reboot():
     subprocess.call(["shutdown", "/r" if platform.system() == "Windows" else "reboot"])
-    return redirect('/')
+    return redirect("/")
 
-@app.route('/sleep', methods=['POST'])
+
+@app.route("/sleep", methods=["POST"])
 def sleep():
     if platform.system() == "Windows":
         subprocess.call(["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"])
     elif platform.system() == "Linux":
         subprocess.call(["systemctl", "suspend"])
-    return redirect('/')
+    return redirect("/")
+
 
 if __name__ == "__main__":
     logger.info("Starting Flask application...")

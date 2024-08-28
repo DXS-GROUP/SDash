@@ -281,7 +281,7 @@ select.button:active {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.net_summary_data {
+.summary_data_2 {
   display: flex;
   width: 30%;
   align-items: center;
@@ -297,18 +297,19 @@ select.button:active {
   width: 20%;
 }
 
-.net_summary_data img {
+.summary_data_2 img {
   width: 20%;
 }
 
-.net_summary_data h3 {
+.summary_data_2 h3 {
   color: var(--bg);
   font-size: 13px;
   font-weight: bold;
   margin-top: 10px;
 }
 
-.summary_data, .net_summary_data span {
+.summary_data,
+.summary_data_2 span {
   font-size: 13px;
   font-weight: bold;
   margin-top: 10px;
@@ -324,7 +325,7 @@ select.button:active {
   .summary_data img {
     width: 40%;
   }
-  .net_summary_data img {
+  .summary_data_2 img {
     width: 20%;
   }
   .summary_data_text {
@@ -345,8 +346,8 @@ select.button:active {
     width: 50%;
   }
 
-  .net_summary_data {
-    width: 80%;
+  .summary_data_2 {
+    width: 90%;
   }
 }
 
@@ -363,7 +364,7 @@ select.button:active {
     display: flex;
     width: 10%;
   }
-  .net_summary_data img {
+  .summary_data_2 img {
     width: 10%;
   }
 }
