@@ -5,8 +5,8 @@ const colors = {
     color2: "#e9bdbe",
     color3: "#c4a3f1",
     color4: "#7e9cd8"
-  };
-  
+};
+
   const updateIndicators = async () => {
     try {
       const [usage, cpuTemp] = await Promise.all([

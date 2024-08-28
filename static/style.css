@@ -9,16 +9,20 @@
 }
 
 html {
-  background-color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  background: var(--bg) no-repeat center;
 }
 
 body {
+  min-height: 90vh;
   font-family: "M PLUS Rounded 1c", system-ui;
   background-color: var(--bg);
-  font-family: Arial, sans-serif;
   color: var(--fg);
   background-color: transparent;
-  background-size: cover;
+  backdrop-filter: blur(10px);
   font-size: small;
   animation: fadeIn 1s ease;
 }
