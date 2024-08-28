@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Server monitoring</title>
+    <title>SDashboard</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
@@ -18,7 +18,7 @@
         align="center"
         onchange="switchTab(this.value)"
       >
-        <option align="center" value="monitor">Monitor</option>
+        <option align="center" value="monitor">Dashboard</option>
         <option align="center" value="info">Info</option>
         <option align="center" value="services">Services</option>
         <option align="center" value="control">Control</option>
@@ -26,10 +26,10 @@
     </div>
     <div class="container">
       <div id="monitor" class="tab-content active">
-        <h1 class="content-title" align="center">DASHBOARD</h1>
+        <h1 class="content-title" align="center">SDashboard</h1>
         <div class="cards">
           <div class="summary_data" align="center" id="summary_data_cpu">
-            <img src="../static/microchip.png" />
+            <img src="../static/icons/microchip.png" />
             <h3 id="summary_data_cpu_text" style="color: #222831"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="cpu-progress"></div>
@@ -38,7 +38,7 @@
           </div>
 
           <div class="summary_data" align="center" id="summary_data_ram">
-            <img src="../static/ram-memory.png" />
+            <img src="../static/icons/ram-memory.png" />
             <h3 id="summary_data_ram_text" style="color: #222831"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="ram-progress"></div>
@@ -47,7 +47,7 @@
           </div>
 
           <div class="summary_data" align="center" id="summary_data_disk">
-            <img src="../static/memory-card.png" />
+            <img src="../static/icons/memory-card.png" />
             <h3 id="summary_data_disk_text" style="color: #222831"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="disk-progress"></div>
@@ -65,14 +65,14 @@
           "
         >
           <div class="summary_data_2" id="summary_data_2">
-            <img src="../static/arrows.png" />
+            <img src="../static/icons/arrows.png" />
             <div style="display: block">
               <h3 id="upload_speed">UPLOAD SPEED</h3>
               <h3 id="download_speed">DOWNLOAD SPEED</h3>
             </div>
           </div>
           <div align="center" id="summary_temp_data" class="summary_data_2">
-            <img src="../static/temperature.png" />
+            <img src="../static/icons/temperature.png" />
             <h3 id="summary_data_cpu_temp_text" style="color: #222831"></h3>
           </div>
         </div>
@@ -118,17 +118,17 @@
         <div class="p_buttons">
           <form action="/shutdown" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/on-off-button.png" />
+              <img src="../static/icons/on-off-button.png" />
             </button>
           </form>
           <form action="/reboot" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/refresh.png" />
+              <img src="../static/icons/refresh.png" />
             </button>
           </form>
           <form action="/sleep" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/sleep.png" />
+              <img src="../static/icons/sleep.png" />
             </button>
           </form>
         </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap');
+
 :root {
   --bg: #222831;
   --fg: #d5d9d6;
@@ -11,6 +13,7 @@ html {
 }
 
 body {
+  font-family: "M PLUS Rounded 1c", system-ui;
   background-color: var(--bg);
   font-family: Arial, sans-serif;
   color: var(--fg);
@@ -30,6 +33,7 @@ body {
 }
 
 .progress {
+  font-family: "M PLUS Rounded 1c", system-ui;
   width: 0%;
   height: 100%;
   background-color: var(--accent-hover);
@@ -37,6 +41,7 @@ body {
 }
 
 .info-table {
+  font-family: "M PLUS Rounded 1c", system-ui;
   border-collapse: collapse;
   font-size: 16px;
   animation: fadeIn 1s ease;
@@ -59,6 +64,7 @@ body {
 }
 
 .control {
+  font-family: "M PLUS Rounded 1c", system-ui;
   height: 100vh;
   display: flex;
   animation: fadeIn 1s ease;
@@ -96,21 +102,12 @@ body {
 }
 
 .content-title {
+  font-family: "Pacifico", cursive;
   font-size: 50px;
   font-weight: bold;
   animation: fadeIn 1s ease;
-}
-
-textarea {
-  background-color: var(--accent);
-  color: var(--bg);
-  border: none;
-  border-radius: 20px;
-  scrollbar-color: var(--fg) transparent;
-  scrollbar-arrow-color: transparent transparent;
-  width: 96%;
-  height: 80vh;
-  animation: slideInLeft 1s ease;
+  margin-top: 6%;
+  margin-bottom: 6%;
 }
 
 p {
@@ -119,6 +116,7 @@ p {
 }
 
 select.button {
+  font-family: "M PLUS Rounded 1c", system-ui;
   background-color: var(--accent);
   color: var(--fg);
   border: none;
@@ -140,7 +138,7 @@ select.button:active {
 }
 
 .button {
-  font-family: "Quicksand", sans-serif;
+  font-family: "M PLUS Rounded 1c", system-ui;
   font-weight: 400;
   font-style: normal;
   display: inline-block;
@@ -240,6 +238,7 @@ select.button:active {
 }
 
 .container {
+  font-family: "M PLUS Rounded 1c", system-ui;
   margin-top: 1%;
   margin-bottom: 1%;
   padding-top: 1%;
@@ -254,6 +253,7 @@ select.button:active {
 }
 
 .summary_data {
+  font-family: "M PLUS Rounded 1c", system-ui;
   transition: transform 0.5s, opacity 0.5s;
   display: flex;
   width: 40%;
@@ -271,6 +271,7 @@ select.button:active {
 }
 
 .summary_data_2 {
+  font-family: "M PLUS Rounded 1c", system-ui;
   transition: transform 0.5s, opacity 0.5s;
   display: flex;
   width: 40%;
@@ -311,6 +312,7 @@ select.button:active {
 }
 
 .cards {
+  font-family: "M PLUS Rounded 1c", system-ui;
   display: flex;
   align-items: center;
   justify-content: center;
