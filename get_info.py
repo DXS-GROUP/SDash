@@ -10,11 +10,9 @@ import psutil
 def truncate_string(s, max_length):
     return s if len(s) <= max_length else f"{s[:max_length - 3]}..."
 
-def get_service_name(port):
-    try:
-        return socket.getservbyport(port)
-    except OSError:
-        return "Unknown Service"
+def run_command(command):
+    process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True, stderr=DEVNULL)
+    return process.communicate()[0].strip()
 
 def get_uptime():
     if platform.system() != "Linux":
@@ -29,10 +27,6 @@ def get_ip_address():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         s.connect(("8.8.8.8", 80))
         return s.getsockname()[0]
-
-def run_command(command):
-    process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True, stderr=DEVNULL)
-    return process.communicate()[0].strip()
 
 def os_name():
     os_file = "/etc/os-release" if path.isfile("/etc/os-release") else "/bedrock/etc/os-release"

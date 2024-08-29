@@ -7,8 +7,10 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
-    />
+      />
+    <link rel="stylesheet" href="node_modules/@xterm/xterm/css/xterm.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="node_modules/@xterm/xterm/lib/xterm.js"></script>
   </head>
   <body>
     <div class="dock">
@@ -17,7 +19,7 @@
         class="button"
         align="center"
         onchange="switchTab(this.value)"
-      >
+        >
         <option align="center" value="monitor">Dashboard</option>
         <option align="center" value="info">Info</option>
         <option align="center" value="services">Services</option>
@@ -36,7 +38,6 @@
               <span id="cpu-value"></span>
             </div>
           </div>
-
           <div class="summary_data" align="center" id="summary_data_ram">
             <img src="../static/icons/ram-memory.png" />
             <h3 id="summary_data_ram_text" style="color: #222831"></h3>
@@ -45,7 +46,6 @@
               <span id="ram-value"></span>
             </div>
           </div>
-
           <div class="summary_data" align="center" id="summary_data_disk">
             <img src="../static/icons/memory-card.png" />
             <h3 id="summary_data_disk_text" style="color: #222831"></h3>
@@ -55,15 +55,15 @@
             </div>
           </div>
         </div>
-        <br><br><br><br>
+        <br /><br /><br /><br />
         <div
           style="
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
           "
-        >
+          >
           <div class="summary_data_2" id="summary_data_2">
             <img src="../static/icons/arrows.png" />
             <div style="display: block">
@@ -112,29 +112,34 @@
       </div>
       <div id="services" class="tab-content" align="center">
         <h1 class="content-title" align="center">Services</h1>
+        <div id="terminal"></div>
+        <script>
+          var term = new Terminal();
+          term.open(document.getElementById("terminal"));
+          term.write("Hello from \x1B[1;3;31mxterm.js\x1B[0m $ ");
+        </script>
       </div>
       <div id="control" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Control</h1>
         <div class="p_buttons">
           <form action="/shutdown" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/on-off-button.png" />
+            <img src="../static/icons/on-off-button.png" />
             </button>
           </form>
           <form action="/reboot" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/refresh.png" />
+            <img src="../static/icons/refresh.png" />
             </button>
           </form>
           <form action="/sleep" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/sleep.png" />
+            <img src="../static/icons/sleep.png" />
             </button>
           </form>
         </div>
       </div>
     </div>
-
     <script src="{{ url_for('static', filename='script.js') }}"></script>
     <script src="{{ url_for('static', filename='tabs.js') }}"></script>
   </body>

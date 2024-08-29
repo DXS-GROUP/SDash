@@ -95,7 +95,6 @@ def get_info():
         sys_gpu=gpu_info(),
     )
 
-
 @app.route("/cpu_temp")
 def cpu_temp():
     try:
