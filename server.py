@@ -3,9 +3,12 @@ import platform
 import subprocess
 import time
 
+import pynvml
 import psutil
 from flask import Flask, jsonify, redirect, render_template
 from loguru import logger
+
+from services import get_services
 
 from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
                       model_info, os_name)
@@ -72,7 +75,6 @@ def usage():
         cpu_freq=psutil.cpu_freq().current,
     )
 
-
 @app.route("/system_info")
 def get_info():
     device_ip = get_ip_address()
@@ -98,13 +100,42 @@ def get_info():
 @app.route("/cpu_temp")
 def cpu_temp():
     try:
-        cpu_temp = psutil.sensors_temperatures()["coretemp"][0].current
-        logger.debug(f"CPU Temperature: {cpu_temp:.2f}°C")
-        return jsonify(cpu_temp=cpu_temp, cpu_freq=psutil.cpu_freq().current)
+        temperatures = psutil.sensors_temperatures().get("coretemp", [])
+        
+        if not temperatures:
+            raise ValueError("No temperature data available for coretemp")
+
+        core_temps = [temp.current for temp in temperatures]
+        
+        avg_temp = sum(core_temps) / len(core_temps)
+        
+        logger.debug(f"CPU Temperatures: {core_temps}, Average Temperature: {avg_temp:.2f}°C")
+        
+        return jsonify(cpu_temp=avg_temp, cpu_freq=psutil.cpu_freq().current)
     except Exception as e:
         logger.error(f"Error getting CPU temperature: {e}")
         return jsonify(cpu_temp="N/A", error=str(e))
 
+@app.route("/gpu_temp")
+def gpu_temp():
+    try:
+        pynvml.nvmlInit()
+        device_count = pynvml.nvmlDeviceGetCount()
+        temperatures = []
+
+        for i in range(device_count):
+            handle = pynvml.nvmlDeviceGetHandleByIndex(i)
+            temp = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
+            temperatures.append(temp)
+            logger.debug(f"GPU {i} Temperature: {temp}°C")
+
+        avg_temp = sum(temperatures) / len(temperatures) if temperatures else None
+        return jsonify(gpu_temp=avg_temp)
+    except Exception as e:
+        logger.error(f"Error getting GPU temperature: {e}")
+        return jsonify(gpu_temp="N/A", error=str(e))
+    finally:
+        pynvml.nvmlShutdown()
 
 @app.route("/shutdown", methods=["POST"])
 def shutdown():
@@ -125,6 +156,26 @@ def sleep():
     elif platform.system() == "Linux":
         subprocess.call(["systemctl", "suspend"])
     return redirect("/")
+
+
+@app.route('/api/services', methods=['GET'])
+def api_services():
+    return jsonify(get_services())
+
+@app.route('/api/service/<action>/<service_name>', methods=['POST'])
+def manage_service(action, service_name):
+    try:
+        service = psutil.win_service_get(service_name)
+        if action == 'restart':
+            service.restart()
+        elif action == 'stop':
+            service.stop()
+        elif action == 'disable':
+            service.stop()
+            service.disable()
+        return jsonify({"status": "success", "action": action, "service": service_name})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
 
 
 if __name__ == "__main__":

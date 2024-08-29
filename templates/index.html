@@ -64,14 +64,17 @@
           >
           <div class="summary_data_2" id="summary_data_2">
             <img src="../static/icons/arrows.png" />
-            <div style="display: block">
+            <div style="display: flex; flex-direction: column;">
               <h3 id="upload_speed">UPLOAD SPEED</h3>
               <h3 id="download_speed">DOWNLOAD SPEED</h3>
             </div>
           </div>
-          <div align="center" id="summary_temp_data" class="summary_data_2">
+          <div id="summary_temp_data" class="summary_data_2">
             <img src="../static/icons/temperature.png" />
-            <h3 id="summary_data_cpu_temp_text" style="color: #222831"></h3>
+            <div style="display: flex; flex-direction: column;">
+              <h3 id="summary_data_cpu_temp_text" style="color: #222831"></h3>
+              <h3 id="summary_data_gpu_temp_text" style="color: #222831"></h3>
+            </div>
           </div>
         </div>
       </div>
@@ -110,6 +113,24 @@
       </div>
       <div id="services" class="tab-content" align="center">
         <h1 class="content-title" align="center">Services</h1>
+        <table id="services-table">
+          <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Error</th>
+                  <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody id="services-body"></tbody>
+        </table>
+        <div id="context-menu" class="context-menu">
+            <ul>
+                <li id="restart">Restart</li>
+                <li id="stop">Stop</li>
+                <li id="disable">Disable</li>
+            </ul>
+        </div>
       </div>
       <div id="control" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Control</h1>
