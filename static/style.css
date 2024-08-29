@@ -10,6 +10,8 @@
 
 html {
   background-color: var(--bg);
+  scrollbar-color: var(--accent-hover) transparent;
+  scrollbar-arrow-color: transparent transparent;
 }
 
 body {

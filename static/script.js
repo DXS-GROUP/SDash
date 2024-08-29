@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
                       <td>${service.name}</td>
                       <td>${service.status}</td>
                       <td>${service.error || 'None'}</td>
-                      <td><button class="context-menu-button">Actions</button></td>
                   `;
                   row.addEventListener('contextmenu', function(event) {
                       event.preventDefault();
@@ -88,25 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
               });
           });
   }
-
-  contextMenu.addEventListener('click', function(event) {
-      const action = event.target.id;
-      if (action) {
-          fetch(`/api/service/${action}/${selectedService}`, { method: 'POST' })
-              .then(response => response.json())
-              .then(data => {
-                  alert(`Service ${data.service} ${data.action} ${data.status}`);
-                  contextMenu.style.display = 'none';
-                  fetchServices();
-              });
-      }
-  });
-
-  window.addEventListener('click', function(event) {
-      if (!contextMenu.contains(event.target)) {
-          contextMenu.style.display = 'none';
-      }
-  });
 
   fetchServices();
 });
