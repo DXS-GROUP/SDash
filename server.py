@@ -116,27 +116,6 @@ def cpu_temp():
         logger.error(f"Error getting CPU temperature: {e}")
         return jsonify(cpu_temp="N/A", error=str(e))
 
-@app.route("/gpu_temp")
-def gpu_temp():
-    try:
-        pynvml.nvmlInit()
-        device_count = pynvml.nvmlDeviceGetCount()
-        temperatures = []
-
-        for i in range(device_count):
-            handle = pynvml.nvmlDeviceGetHandleByIndex(i)
-            temp = pynvml.nvmlDeviceGetTemperature(handle, pynvml.NVML_TEMPERATURE_GPU)
-            temperatures.append(temp)
-            logger.debug(f"GPU {i} Temperature: {temp}°C")
-
-        avg_temp = sum(temperatures) / len(temperatures) if temperatures else None
-        return jsonify(gpu_temp=avg_temp)
-    except Exception as e:
-        logger.error(f"Error getting GPU temperature: {e}")
-        return jsonify(gpu_temp="N/A", error=str(e))
-    finally:
-        pynvml.nvmlShutdown()
-
 @app.route("/shutdown", methods=["POST"])
 def shutdown():
     subprocess.call(["shutdown", "/s" if platform.system() == "Windows" else "now"])
