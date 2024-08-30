@@ -34,7 +34,6 @@
   <h3>Screenshots</h3>
   
   <img src="https://github.com/user-attachments/assets/79094188-4412-404f-86b5-2e09f36ffa0c" width="80%"/>
-  <img src="https://github.com/user-attachments/assets/33340636-14c6-4966-9ce5-5a2d9e73c4ca" width="80%"/>
   <img src="https://github.com/user-attachments/assets/5b129ccb-4920-430c-9c99-e8c109556f32" width="80%"/>
 
 </div>
