@@ -9,7 +9,6 @@ import psutil
 from flask import Flask, jsonify, render_template, request
 
 from API.get_info import fetch_cpu_info, get_ip_address, get_uptime, gpu_info, model_info, os_name
-from API.services import get_services
 from config import dictConfig, app
 from API.func import convert_seconds_to_hhmm
 
@@ -85,25 +84,6 @@ def perform_action(action):
         subprocess.call(actions[action])
         return redirect("/")
     return jsonify({"error": "Invalid action"}), 400
-
-@app.route("/api/services", methods=["GET"])
-def api_services():
-    return jsonify(get_services())
-
-@app.route("/api/service/<action>/<service_name>", methods=["POST"])
-def manage_service(action, service_name):
-    try:
-        service = psutil.win_service_get(service_name)
-        if action == "restart":
-            service.restart()
-        elif action == "stop":
-            service.stop()
-        elif action == "disable":
-            service.stop()
-            service.disable()
-        return jsonify({"status": "success", "action": action, "service": service_name})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
 
 @app.route("/api/battery", methods=["GET"])
 def battery_status():

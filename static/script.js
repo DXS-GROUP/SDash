@@ -10,18 +10,26 @@ const colors = {
 
 const updateIndicators = async () => {
     try {
-        const [usage, cpuTemp] = await Promise.all([
+        const [usage, cpuTemp, userIP] = await Promise.all([
             fetch('/api/usage').then(response => response.json()),
-            fetch('/api/cpu_temp').then(response => response.json())
+            fetch('/api/cpu_temp').then(response => response.json()),
+            fetch('/api/user_ip').then(response => response.json())
         ]);
 
         updateProgressBars(usage);
         updateSummaryTexts(usage);
         updateNetworkSpeeds(usage);
         updateCpuTemperature(cpuTemp);
+        getUserIp(userIP);
     } catch (error) {
         console.error('Error updating indicators:', error);
     }
+};
+
+const getUserIp = (userIP) => {
+    const user_ip = userIP.ip;
+
+    console.debug("User IP: " + user_ip);
 };
 
 const updateProgressBars = (usage) => {
@@ -57,7 +65,6 @@ const updateProgressBars = (usage) => {
     } else {
         progressElements.disk.style.backgroundColor = colors.normal;
     }
-
 };
 
 const updateSummaryTexts = (usage) => {
@@ -67,6 +74,10 @@ const updateSummaryTexts = (usage) => {
     document.getElementById('summary_data_cpu_text').innerHTML = `CPU USAGE: <br>${usage.cpu_usage}%`;
     document.getElementById('summary_data_ram_text').innerHTML = `RAM USAGE: <br>${usage.ram_usage}%`;
     document.getElementById('summary_data_disk_text').innerHTML = `DISK USAGE: <br>${usage.disk_usage}%`;
+
+    console.debug("CPU USAGE: " + usage.cpu_usage);
+    console.debug("RAM USAGE: " + usage.ram_usage);
+    console.debug("DISK USAGE: " + usage.disk_usage);
 };
 
 const updateNetworkSpeeds = (usage) => {
@@ -81,8 +92,10 @@ const updateCpuTemperature = (cpuTemp) => {
     } else if (cpuTemp.cpu_temp.toFixed(0) > 60) {
         document.getElementById('summary_data_cpu_temp_text').style.color = colors.critical;
     } else {
-      document.getElementById('summary_data_cpu_temp_text').style.color = ""; // reset to default color
+        document.getElementById('summary_data_cpu_temp_text').style.color = "";
     }
+
+    console.debug(`CPU TEMP: ${cpuTemp.cpu_temp.toFixed(1)}°C - ${(cpuTemp.cpu_freq / 1000).toFixed(1)}GHz`);
 };
 
 const updateSystemInfo = async () => {
@@ -119,6 +132,8 @@ const fetchBatteryStatus = async () => {
         const imgElement = document.querySelector('#battery-status img');
 
         if (data.charge !== null) {
+            console.debug(`BATTERY: ${data.charge.toFixed(2)}%`);
+
             const status = data.plugged ? "Charging" : "Not Charging";
             chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}%`;
             batteryProgress.style.width = `${data.charge}%`;
@@ -150,38 +165,6 @@ const fetchBatteryStatus = async () => {
     }
 };
 
-const fetchServices = async () => {
-    const servicesBody = document.getElementById('services-body');
-    const contextMenu = document.getElementById('context-menu');
-    let selectedService = '';
-
-    try {
-        const response = await fetch('/api/services');
-        const data = await response.json();
-        servicesBody.innerHTML = '';
-
-        data.forEach(service => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${service.name}</td>
-                <td>${service.status}</td>
-                <td>${service.error || 'None'}</td>
-            `;
-            row.addEventListener('contextmenu', function(event) {
-                event.preventDefault();
-                selectedService = service.name;
-                contextMenu.style.display = 'block';
-                contextMenu.style.left = `${event.pageX}px`;
-                contextMenu.style.top = `${event.pageY}px`;
-            });
-            servicesBody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Error fetching services:', error);
-    }
-};
-
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
-setInterval(fetchServices, 1000);
