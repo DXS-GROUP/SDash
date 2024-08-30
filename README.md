@@ -16,7 +16,8 @@
   <img src="https://github.com/Nighty3098/DevIcons/blob/main/badges/badges_javascript.png?raw=true" width="50px" />
   <br>
   <h3>Installing</h3>
-  
+  <div align="left">
+    
   ```
   git clone https://github.com/SDashS/SDash
   cd SDash
@@ -24,12 +25,20 @@
   source SDash/bin/activate
   pip3 install -r requirements.txt
   ```
+</div>
   
   <h3>Run server</h3>
+
+<div align="left">
   
-  ```
-  python3 server.py
-  ```
+```
+python3 server.py
+```
+
+</div>
+
+  <h3>Usage</h3>
+  Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   Ctrl   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
   
   <h3>Screenshots</h3>
   
