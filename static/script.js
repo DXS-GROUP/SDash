@@ -127,19 +127,17 @@ const fetchBatteryStatus = async () => {
                 imgElement.src = "../static/icons/battery-bolt.svg";
             }
             else{
-                imgElement.src = "../static/icons/battery_full.svg";
-            }
-
-            if (data.charge.toFixed(0) < 15) {
-                batteryProgress.style.backgroundColor = colors.critical;
-                imgElement.src = "../static/icons/battery-exclamation.svg";
-            } else if (data.charge.toFixed(0) < 30) {
-                batteryProgress.style.backgroundColor = colors.warning;
-            } else if (data.charge.toFixed(0) > 90) {
-                batteryProgress.style.backgroundColor = colors.normal;
-                imgElement.src = "../static/icons/battery_full.svg";
-            } else {
-                batteryProgress.style.backgroundColor = colors.normal;
+                if (data.charge.toFixed(0) < 15) {
+                    batteryProgress.style.backgroundColor = colors.critical;
+                    imgElement.src = "../static/icons/battery-exclamation.svg";
+                } else if (data.charge.toFixed(0) < 30) {
+                    batteryProgress.style.backgroundColor = colors.warning;
+                } else if (data.charge.toFixed(0) > 90) {
+                    batteryProgress.style.backgroundColor = colors.normal;
+                    imgElement.src = "../static/icons/battery_full.svg";
+                } else {
+                    batteryProgress.style.backgroundColor = colors.normal;
+                }
             }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
