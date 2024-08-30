@@ -7,7 +7,7 @@ from logging.config import dictConfig
 
 import psutil
 import pynvml
-from flask import Flask, jsonify, redirect, render_template
+from flask import Flask, jsonify, redirect, render_template, request
 
 from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
                       model_info, os_name)
@@ -38,6 +38,12 @@ app = Flask(__name__)
 
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
+
+
+def convert_seconds_to_hhmm(seconds):
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    return f"{hours:02}:{minutes:02}"
 
 
 @app.route("/")
@@ -166,9 +172,38 @@ def battery_status():
     if battery:
         charge = battery.percent
         plugged = battery.power_plugged
-        return jsonify(charge=charge, plugged=plugged)
+        time_to_full = None
+        time_to_empty = None
+
+        if plugged:
+            time_to_full = (
+                convert_seconds_to_hhmm(battery.secsleft)
+                if battery.secsleft != psutil.POWER_TIME_UNKNOWN
+                else None
+            )
+        else:
+            time_to_empty = (
+                convert_seconds_to_hhmm(battery.secsleft)
+                if battery.secsleft != psutil.POWER_TIME_UNKNOWN
+                else None
+            )
+
+        return jsonify(
+            {
+                "charge": charge,
+                "plugged": plugged,
+                "time_to_full": time_to_full,
+                "time_to_empty": time_to_empty,
+            }
+        )
     else:
-        return jsonify(charge=None, plugged=None)
+        return jsonify(charge=None, plugged=None, time_to_full=None, time_to_empty=None)
+
+
+@app.route("/api/user_ip")
+def get_user_ip():
+    ip_address = request.headers.get("X-Forwarded-For", request.remote_addr)
+    return jsonify({"ip": ip_address})
 
 
 @app.errorhandler(404)
