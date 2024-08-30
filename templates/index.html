@@ -1,170 +1,157 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SDashboard</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  </head>
-  <body>
-    <div class="dock">
-      <select
-        id="tab-selector"
-        class="button"
-        align="center"
-        onchange="switchTab(this.value)"
-      >
-        <option align="center" value="monitor">Dashboard</option>
-        <option align="center" value="info">Info</option>
-        <option align="center" value="services">Services</option>
-        <option align="center" value="control">Control</option>
-      </select>
-    </div>
-
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <div class="tab-buttons">
-                    <button class="tab-button active" data-tab="monitor">Dashboard</button>
-                    <button class="tab-button" data-tab="info">Info</button>
-                    <button class="tab-button" data-tab="services">Services</button>
-                    <button class="tab-button" data-tab="control">Control</button>
-                </div>
-            </div>
-        </div>
-
-    <div class="container">
-      <div id="monitor" class="tab-content active">
-        <h1 class="content-title" align="center">SDashboard</h1>
-        <div class="cards">
-          <div class="summary_data" align="center" id="summary_data_cpu">
-            <img src="../static/icons/cpu.svg" />
-            <h3 id="summary_data_cpu_text"></h3>
-            <div class="progress-bar" align="left">
-              <div class="progress" id="cpu-progress"></div>
-              <span id="cpu-value"></span>
-            </div>
-          </div>
-          <div class="summary_data" align="center" id="summary_data_ram">
-            <img src="../static/icons/ram.svg" />
-            <h3 id="summary_data_ram_text"></h3>
-            <div class="progress-bar" align="left">
-              <div class="progress" id="ram-progress"></div>
-              <span id="ram-value"></span>
-            </div>
-          </div>
-        </div>
-        <div class="cards">
-          <div class="summary_data" align="center" id="summary_data_disk">
-            <img src="../static/icons/storage.svg" />
-            <h3 id="summary_data_disk_text"></h3>
-            <div class="progress-bar" align="left">
-              <div class="progress" id="disk-progress"></div>
-              <span id="disk-value"></span>
-            </div>
-          </div>
-          <div id="battery-status" class="summary_data" align="center">
-            <img src="../static/icons/battery_full.svg" />
-            <h3 id="charge"></h3>
-            <div class="progress-bar" align="left">
-              <div class="progress" id="battery-progress"></div>
-              <span id="battery-value"></span>
-            </div>
-          </div>
-        </div>
-        <br /><br /><br /><br />
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-          "
+  <div class="root">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>SDashboard</title>
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+      <div class="dock">
+        <select
+          id="tab-selector"
+          class="button"
+          align="center"
+          onchange="switchTab(this.value)"
         >
-          <div class="summary_data_2" id="summary_data_2">
-            <img src="../static/icons/arrow.svg" />
-            <h3 id="upload_speed">UPLOAD SPEED</h3>
-            <h3 id="download_speed">DOWNLOAD SPEED</h3>
+          <option align="center" value="monitor">Dashboard</option>
+          <option align="center" value="info">Info</option>
+          <option align="center" value="control">Control</option>
+        </select>
+      </div>
+      <div id="modal" class="modal">
+          <div class="modal-content" align="center">
+              <span class="close-button">&times;</span>
+              <div class="tab-buttons">
+                  <button class="tab-button active" data-tab="monitor">Dashboard</button>
+                  <button class="tab-button" data-tab="info">Info</button>
+                  <button class="tab-button" data-tab="control">Control</button>
+              </div>
+              <a href="https://github.com/SDashS/SDash"><button class="button">Source</button></a><br>
           </div>
-          <div id="summary_temp_data" class="summary_data_2">
-            <img src="../static/icons/temp.svg" />
-            <h3 id="summary_data_cpu_temp_text"></h3>
+      </div>
+
+      <div class="container">
+        <div id="monitor" class="tab-content active">
+          <h1 class="content-title" align="center">SDashboard</h1>
+          <div class="cards">
+            <div class="summary_data" align="center" id="summary_data_cpu">
+              <img src="../static/icons/cpu.svg" />
+              <h3 id="summary_data_cpu_text"></h3>
+              <div class="progress-bar" align="left">
+                <div class="progress" id="cpu-progress"></div>
+                <span id="cpu-value"></span>
+              </div>
+            </div>
+            <div class="summary_data" align="center" id="summary_data_ram">
+              <img src="../static/icons/ram.svg" />
+              <h3 id="summary_data_ram_text"></h3>
+              <div class="progress-bar" align="left">
+                <div class="progress" id="ram-progress"></div>
+                <span id="ram-value"></span>
+              </div>
+            </div>
           </div>
+          <div class="cards">
+            <div class="summary_data" align="center" id="summary_data_disk">
+              <img src="../static/icons/storage.svg" />
+              <h3 id="summary_data_disk_text"></h3>
+              <div class="progress-bar" align="left">
+                <div class="progress" id="disk-progress"></div>
+                <span id="disk-value"></span>
+              </div>
+            </div>
+            <div id="battery-status" class="summary_data" align="center">
+              <img src="../static/icons/battery_full.svg" />
+              <h3 id="charge"></h3>
+              <div class="progress-bar" align="left">
+                <div class="progress" id="battery-progress"></div>
+                <span id="battery-value"></span>
+              </div>
+            </div>
+          </div>
+          <br /><br /><br /><br />
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+            "
+          >
+            <div class="summary_data_2" id="summary_data_2">
+              <img src="../static/icons/arrow.svg" />
+              <h3 id="upload_speed">UPLOAD SPEED</h3>
+              <h3 id="download_speed">DOWNLOAD SPEED</h3>
+            </div>
+            <div id="summary_temp_data" class="summary_data_2">
+              <img src="../static/icons/temp.svg" />
+              <h3 id="summary_data_cpu_temp_text"></h3>
+            </div>
+          </div>
+      </div>
         </div>
-    </div>
-      </div>
-      <div id="info" class="tab-content" align="center">
-        <h1 class="content-title" align="center">Server Info</h1>
-        <table class="info-table" align="center">
-          <tr>
-            <td>Device Uptime</td>
-            <td id="device_uptime"></td>
-          </tr>
-          <tr>
-            <td>Device IP</td>
-            <td id="device_ip"></td>
-          </tr>
-          <tr>
-            <td>Device Name</td>
-            <td id="device_name"></td>
-          </tr>
-          <tr>
-            <td>Platform</td>
-            <td id="platform"></td>
-          </tr>
-          <tr>
-            <td>Model</td>
-            <td id="model"></td>
-          </tr>
-          <tr>
-            <td>CPU</td>
-            <td id="cpu"></td>
-          </tr>
-          <tr>
-            <td>GPU</td>
-            <td id="gpu"></td>
-          </tr>
-        </table>
-      </div>
-      <div id="services" class="tab-content" align="center">
-        <h1 class="content-title" align="center">Services</h1>
-        <table id="services-table">
-          <thead>
+        <div id="info" class="tab-content" align="center">
+          <h1 class="content-title" align="center">Server Info</h1>
+          <table class="info-table" align="center">
             <tr>
-              <th>Name</th>
-              <th>Status</th>
-              <th>Error</th>
+              <td>Device Uptime</td>
+              <td id="device_uptime"></td>
             </tr>
-          </thead>
-          <tbody id="services-body"></tbody>
-        </table>
-      </div>
-      <div id="control" class="tab-content" align="center">
-        <h1 class="content-title" align="center">Server Control</h1>
-        <div class="p_buttons">
-          <form action="/api/actions/shutdown" method="post">
-            <button class="power_button" type="submit">
-              <img src="../static/icons/off.svg" />
-            </button>
-          </form>
-          <form action="/api/actions/reboot" method="post">
-            <button class="power_button" type="submit">
-              <img src="../static/icons/reboot.svg" />
-            </button>
-          </form>
-          <form action="/api/actions/sleep" method="post">
-            <button class="power_button" type="submit">
-              <img src="../static/icons/sleep.svg" />
-            </button>
-          </form>
+            <tr>
+              <td>Device IP</td>
+              <td id="device_ip"></td>
+            </tr>
+            <tr>
+              <td>Device Name</td>
+              <td id="device_name"></td>
+            </tr>
+            <tr>
+              <td>Platform</td>
+              <td id="platform"></td>
+            </tr>
+            <tr>
+              <td>Model</td>
+              <td id="model"></td>
+            </tr>
+            <tr>
+              <td>CPU</td>
+              <td id="cpu"></td>
+            </tr>
+            <tr>
+              <td>GPU</td>
+              <td id="gpu"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="control" class="tab-content" align="center">
+          <h1 class="content-title" align="center">Server Control</h1>
+          <div class="p_buttons">
+            <form action="/api/actions/shutdown" method="post">
+              <button class="power_button" type="submit">
+                <img src="../static/icons/off.svg" />
+              </button>
+            </form>
+            <form action="/api/actions/reboot" method="post">
+              <button class="power_button" type="submit">
+                <img src="../static/icons/reboot.svg" />
+              </button>
+            </form>
+            <form action="/api/actions/sleep" method="post">
+              <button class="power_button" type="submit">
+                <img src="../static/icons/sleep.svg" />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="{{ url_for('static', filename='tabs.js') }}"></script>
-  </body>
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+      <script src="{{ url_for('static', filename='tabs.js') }}"></script>
+    </body>
+  </div>
 </html>

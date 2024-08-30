@@ -12,14 +12,25 @@
 }
 
 html {
-  background-color: var(--bg);
-  scrollbar-color: var(--accent-hover) transparent;
-  scrollbar-arrow-color: transparent transparent;
+  height: 100%;
+  width: 100%;
+  display: inline;
+
+  background: radial-gradient(circle at 5% 5%, var(--accent-pressed) 1%, transparent 15.5%) fixed, radial-gradient(circle at 100% 90%, var(--accent-pressed) 30%, var(--bg) 40.5%);
+
+  scrollbar-color: var(--accent-hover) var(--bg);
+  scrollbar-arrow-color: var(--bg) var(--bg);
+
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 body {
+  overflow-y: scroll;
+  margin: 0;
+  padding: 0;
   font-family: "M PLUS Rounded 1c", system-ui;
-  background-color: var(--bg);
   color: var(--fg);
   font-size: small;
   animation: fadeIn 2s ease;
@@ -41,9 +52,9 @@ body {
 .modal-content {
   background-color: var(--bg);
   margin: 15% auto;
-  padding: 20px;
-  border: 2px solid var(--accent-pressed);
+  border: 0px solid var(--accent-pressed);
   width: 50%;
+  padding: 20px;
   border-radius: 20px;
   animation: slideInDown 1s ease;
 }
@@ -245,7 +256,7 @@ select.button:active {
   transition:
     background-color 0.7s ease,
     transform 0.6s ease;
-  animation: slideInUp 1s ease;
+  animation: slideInDown 1s ease;
 }
 
 .button:hover {
@@ -350,6 +361,14 @@ select.button:active {
 }
 
 .summary_data {
+  /* From https://css.glass */
+  background: rgba(48, 52, 70, 0.49);
+  border-radius: 16px;
+  box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 2px solid rgba(48, 52, 70, 0.47);
+
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
     transform 0.5s,
@@ -361,16 +380,20 @@ select.button:active {
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: var(--accent);
-  border: 0px solid var(--accent-pressed);
-  border-radius: 10px;
   margin: 10px;
-  backdrop-filter: blur(5px);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
 
 .summary_data_2 {
+  /* From https://css.glass */
+  background: rgba(48, 52, 70, 0.49);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 2px solid rgba(48, 52, 70, 0.47);
+
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
     transform 0.5s,
@@ -381,10 +404,6 @@ select.button:active {
   flex-direction: column;
   width: 20%;
   padding: 10px;
-  backdrop-filter: blur(5px);
-  background-color: var(--accent);
-  border: 0px solid var(--accent-pressed);
-  border-radius: 10px;
   margin: 10px;
   opacity: 0;
   animation: fadeIn 1s ease forwards;
@@ -471,6 +490,6 @@ select.button:active {
   }
 
   .summary_data {
-    width: 12%;
+    width: 17%;
   }
 }

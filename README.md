@@ -42,13 +42,9 @@ python3 server.py
   
   <h3>Screenshots</h3>
   
-  <img src="imgs/1.png" width="75%"/>
-  <img src="imgs/1_2.jpg" width="20%"/>
-  <img src="imgs/1_1.png" width="75%"/>
-  <img src="imgs/1_2_2.jpg" width="20%"/>
-  <img src="imgs/3.png" width="75%"/>
-  <img src="imgs/3_1.jpg" width="20%"/>
-  <img src="imgs/2.png" width="75%"/>
-
+  <img src="imgs/1.png" width="90%"/><br><br>
+  <img src="imgs/2.png" width="90%"/><br><br>
+  <img src="imgs/3.png" width="90%"/><br><br>
+  <img src="imgs/4.png" width="90%"/>
 
 </div>
