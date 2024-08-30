@@ -10,8 +10,8 @@ const colors = {
 const updateIndicators = async () => {
   try {
       const [usage, cpuTemp] = await Promise.all([
-          fetch('/usage').then(response => response.json()),
-          fetch('/cpu_temp').then(response => response.json())
+          fetch('/api/usage').then(response => response.json()),
+          fetch('/api/cpu_temp').then(response => response.json())
       ]);
 
       const cpuProgress = document.getElementById('cpu-progress');
@@ -42,7 +42,7 @@ const updateIndicators = async () => {
 
 const updateSystemInfo = async () => {
   try {
-      const data = await fetch('/system_info').then(response => response.json());
+      const data = await fetch('/api/system_info').then(response => response.json());
 
       document.getElementById('device_uptime').innerText = data.device_uptime;
       document.getElementById('device_ip').innerText = data.device_ip;
@@ -56,8 +56,26 @@ const updateSystemInfo = async () => {
   }
 };
 
-setInterval(updateIndicators, 1000);
-setInterval(updateSystemInfo, 1000);
+function fetchBatteryStatus() {
+    fetch('/api/battery')
+        .then(response => response.json())
+        .then(data => {
+            const chargeElement = document.getElementById('charge');
+            const batteryProgress = document.getElementById('battery-progress');
+
+            if (data.charge !== null) {
+                const status = data.plugged ? "Charging" : "Not Charging";
+                chargeElement.innerHTML = "BATTERY USAGE: <br>" + data.charge.toFixed(2) + "%" + " - " + status;
+                batteryProgress.style.width = `${data.charge}%`;
+            } else {
+                const status = "None";
+                chargeElement.innerHTML = "No battery detected" + '<br>' + status;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching battery status:', error);
+        });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   const servicesBody = document.getElementById('services-body');
@@ -90,3 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   fetchServices();
 });
+
+setInterval(fetchBatteryStatus, 1000);
+setInterval(updateIndicators, 1000);
+setInterval(updateSystemInfo, 1000);
