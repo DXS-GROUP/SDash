@@ -56,8 +56,23 @@ const updateSystemInfo = async () => {
   }
 };
 
-setInterval(updateIndicators, 1000);
-setInterval(updateSystemInfo, 1000);
+function fetchBatteryStatus() {
+    fetch('/api/battery')
+        .then(response => response.json())
+        .then(data => {
+            const chargeElement = document.getElementById('summary_data_battery_text');
+
+            if (data.charge !== null) {
+                chargeElement.textContent = data.charge.toFixed(2) + "%" + '<br>' + data.plugged ? "Charging" : "Not Charging";
+            } else {
+                chargeElement.textContent = "No battery detected";
+                statusElement.textContent = "None";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching battery status:', error);
+        });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
   const servicesBody = document.getElementById('services-body');
@@ -91,26 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
   fetchServices();
 });
 
-function fetchBatteryStatus() {
-    fetch('/api/battery')
-        .then(response => response.json())
-        .then(data => {
-            const chargeElement = document.getElementById('charge');
-            const statusElement = document.getElementById('status');
-
-            if (data.charge !== null) {
-                chargeElement.textContent = data.charge;
-                statusElement.textContent = data.plugged ? "Charging" : "Not Charging";
-            } else {
-                chargeElement.textContent = "No battery detected";
-                statusElement.textContent = "";
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching battery status:', error);
-        });
-}
-
-// Обновляем статус батареи каждые 5 секунд
-setInterval(fetchBatteryStatus, 5000);
-fetchBatteryStatus(); // Первоначальный вызов
+setInterval(fetchBatteryStatus, 1000);
+setInterval(updateIndicators, 1000);
+setInterval(updateSystemInfo, 1000);
