@@ -6,13 +6,7 @@ from os import environ, path
 from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
-
-def truncate_string(s, max_length):
-    return s if len(s) <= max_length else f"{s[:max_length - 3]}..."
-
-def run_command(command):
-    process = Popen(command, stdout=PIPE, universal_newlines=True, shell=True, stderr=DEVNULL)
-    return process.communicate()[0].strip()
+from API.func import convert_seconds_to_hhmm, truncate_string, run_command
 
 def get_uptime():
     if platform.system() != "Linux":

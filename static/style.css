@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #222831;
-  --fg: #d5d9d6;
-  --accent: #31363f;
-  --accent-hover: #76abae;
-  --accent-pressed: #31363f;
+  --bg: #232634;
+  --fg: #c6d0f5;
+  --accent: #303446;
+  --accent-hover: #ca9ee6;
+  --accent-pressed: #babbf1;
+  --critical: #e78284;
+  --warning: #e5c890;
+  --normal: #a6d189;
 }
 
 html {
@@ -39,7 +42,7 @@ body {
   background-color: var(--bg);
   margin: 15% auto;
   padding: 20px;
-  border: 2px solid var(--fg);
+  border: 2px solid var(--accent-pressed);
   width: 50%;
   border-radius: 20px;
   animation: slideInDown 1s ease;
@@ -56,7 +59,7 @@ body {
 
 .close-button:hover,
 .close-button:focus {
-  color: black;
+  color: var(--accent-hover);
   text-decoration: none;
   cursor: pointer;
 }
@@ -69,7 +72,7 @@ body {
 
 .tab-button {
   background-color: var(--accent-pressed);
-  color: var(--fg);
+  color: var(--bg);
   border: none;
   outline: none;
   cursor: pointer;
@@ -187,11 +190,11 @@ body {
 
 .content-title {
   font-family: "Pacifico", cursive;
-  font-size: 50px;
+  font-size: 70px;
   font-weight: bold;
   animation: fadeIn 2s ease;
-  margin-top: 6%;
-  margin-bottom: 6%;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 p {
@@ -202,8 +205,8 @@ p {
 select.button {
   font-family: "M PLUS Rounded 1c", system-ui;
   background-color: var(--accent);
+  border: 0px solid var(--accent-pressed);
   color: var(--fg);
-  border: none;
   border-radius: 10px;
   cursor: pointer;
   transition:
@@ -233,8 +236,8 @@ select.button:active {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 0.5vh;
-  border: none;
   border-radius: 10px;
+  border: 0px solid var(--accent-pressed);
   background-color: var(--accent);
   color: var(--fg);
   font-size: small;
@@ -358,11 +361,11 @@ select.button:active {
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: var(--fg);
+  background-color: var(--accent);
+  border: 0px solid var(--accent-pressed);
   border-radius: 10px;
   margin: 10px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 0px var(--fg);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
@@ -379,16 +382,12 @@ select.button:active {
   width: 20%;
   padding: 10px;
   backdrop-filter: blur(5px);
-  background-color: var(--fg);
+  background-color: var(--accent);
+  border: 0px solid var(--accent-pressed);
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 0 0 0px var(--fg);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
-}
-
-.summary_data img {
-  margin-top: auto;
 }
 
 .summary_data div {
@@ -405,7 +404,7 @@ select.button:active {
 }
 
 .summary_data_2 h3 {
-  color: var(--bg);
+  color: var(--fg);
   font-size: 13px;
   font-weight: bold;
 }
