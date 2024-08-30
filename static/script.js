@@ -124,6 +124,7 @@ const fetchBatteryStatus = async () => {
             batteryProgress.style.width = `${data.charge}%`;
 
             if (data.plugged) {
+                batteryProgress.style.backgroundColor = colors.accent_hover;
                 imgElement.src = "../static/icons/battery-bolt.svg";
             }
             else{
