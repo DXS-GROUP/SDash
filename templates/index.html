@@ -42,7 +42,7 @@
         <h1 class="content-title" align="center">SDashboard</h1>
         <div class="cards">
           <div class="summary_data" align="center" id="summary_data_cpu">
-            <img src="../static/icons/microchip.png" />
+            <img src="../static/icons/cpu.svg" />
             <h3 id="summary_data_cpu_text"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="cpu-progress"></div>
@@ -50,7 +50,7 @@
             </div>
           </div>
           <div class="summary_data" align="center" id="summary_data_ram">
-            <img src="../static/icons/ram-memory.png" />
+            <img src="../static/icons/ram.svg" />
             <h3 id="summary_data_ram_text"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="ram-progress"></div>
@@ -60,7 +60,7 @@
         </div>
         <div class="cards">
           <div class="summary_data" align="center" id="summary_data_disk">
-            <img src="../static/icons/memory-card.png" />
+            <img src="../static/icons/storage.svg" />
             <h3 id="summary_data_disk_text"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="disk-progress"></div>
@@ -68,7 +68,7 @@
             </div>
           </div>
           <div id="battery-status" class="summary_data" align="center">
-            <img src="../static/icons/full-battery.png" />
+            <img src="../static/icons/battery_full.svg" />
             <h3 id="charge"></h3>
             <div class="progress-bar" align="left">
               <div class="progress" id="battery-progress"></div>
@@ -86,13 +86,13 @@
           "
         >
           <div class="summary_data_2" id="summary_data_2">
-            <img src="../static/icons/arrows.png" />
+            <img src="../static/icons/arrow.svg" />
             <h3 id="upload_speed">UPLOAD SPEED</h3>
             <h3 id="download_speed">DOWNLOAD SPEED</h3>
 
           </div>
           <div id="summary_temp_data" class="summary_data_2">
-            <img src="../static/icons/temperature.png" />
+            <img src="../static/icons/temp.svg" />
             <h3 id="summary_data_cpu_temp_text"></h3>
 
           </div>
@@ -150,17 +150,17 @@
         <div class="p_buttons">
           <form action="/api/actions/shutdown" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/on-off-button.png" />
+              <img src="../static/icons/off.svg" />
             </button>
           </form>
           <form action="/api/actions/reboot" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/refresh.png" />
+              <img src="../static/icons/reboot.svg" />
             </button>
           </form>
           <form action="/api/actions/sleep" method="post">
             <button class="power_button" type="submit">
-              <img src="../static/icons/sleep.png" />
+              <img src="../static/icons/sleep.svg" />
             </button>
           </form>
         </div>

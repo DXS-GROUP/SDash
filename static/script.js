@@ -1,10 +1,11 @@
 const colors = {
-    bg: "#282A36",
-    fg: "#F8F8F2",
-    color1: "#abd89b",
-    color2: "#e9bdbe",
-    color3: "#c4a3f1",
-    color4: "#7e9cd8"
+    bg: "#232634",
+    fg: "#c6d0f5",
+    accent: "#303446",
+    accent_hover: "#ca9ee6",
+    critical: "#e78284",
+    warning: "#e5c890",
+    normal: "#a6d189"
 };
 
 const updateIndicators = async () => {
@@ -32,29 +33,29 @@ const updateProgressBars = (usage) => {
 
     progressElements.cpu.style.width = `${usage.cpu_usage}%`;
     if (usage.cpu_usage > 90) {
-        progressElements.cpu.style.backgroundColor = "#FF5555";
+        progressElements.cpu.style.backgroundColor = colors.critical;
     } else if (usage.cpu_usage > 70) {
-        progressElements.cpu.style.backgroundColor = "#FFB86C";
+        progressElements.cpu.style.backgroundColor = colors.warning;
     } else {
-        progressElements.cpu.style.backgroundColor = "#50FA7B";
+        progressElements.cpu.style.backgroundColor = colors.normal;
     }
 
     progressElements.ram.style.width = `${usage.ram_usage}%`;
     if (usage.ram_usage > 90) {
-        progressElements.ram.style.backgroundColor = "#FF5555";
+        progressElements.ram.style.backgroundColor = colors.critical;
     } else if (usage.ram_usage > 80) {
-        progressElements.ram.style.backgroundColor = "#FFB86C";
+        progressElements.ram.style.backgroundColor = colors.warning;
     } else {
-        progressElements.ram.style.backgroundColor = "#50FA7B";
+        progressElements.ram.style.backgroundColor = colors.normal;
     }
 
     progressElements.disk.style.width = `${usage.disk_usage}%`;
     if (usage.disk_usage > 90) {
-        progressElements.disk.style.backgroundColor = "#FF5555";
+        progressElements.disk.style.backgroundColor = colors.critical;
     } else if (usage.disk_usage > 80) {
-        progressElements.disk.style.backgroundColor = "#FFB86C";
+        progressElements.disk.style.backgroundColor = colors.warning;
     } else {
-        progressElements.disk.style.backgroundColor = "#50FA7B";
+        progressElements.disk.style.backgroundColor = colors.normal;
     }
 
 };
@@ -76,9 +77,9 @@ const updateNetworkSpeeds = (usage) => {
 const updateCpuTemperature = (cpuTemp) => {
     document.getElementById('summary_data_cpu_temp_text').innerHTML = `CPU: ${cpuTemp.cpu_temp.toFixed(1)}°C - ${(cpuTemp.cpu_freq / 1000).toFixed(1)}GHz`;
     if (cpuTemp.cpu_temp.toFixed(0) > 45) {
-        document.getElementById('summary_data_cpu_temp_text').style.color = "#FFB86C";
+        document.getElementById('summary_data_cpu_temp_text').style.color = colors.warning;
     } else if (cpuTemp.cpu_temp.toFixed(0) > 60) {
-        document.getElementById('summary_data_cpu_temp_text').style.color = "#FF5555";
+        document.getElementById('summary_data_cpu_temp_text').style.color = colors.critical;
     } else {
       document.getElementById('summary_data_cpu_temp_text').style.color = ""; // reset to default color
     }
@@ -122,11 +123,11 @@ const fetchBatteryStatus = async () => {
             batteryProgress.style.width = `${data.charge}%`;
 
             if (data.charge.toFixed(0) < 15) {
-                batteryProgress.style.backgroundColor = "#FF5555";
+                batteryProgress.style.backgroundColor = colors.critical;
             } else if (data.charge.toFixed(0) < 30) {
-                batteryProgress.style.backgroundColor = "#FFB86C";
+                batteryProgress.style.backgroundColor = colors.warning;
             } else {
-                batteryProgress.style.backgroundColor = "#50FA7B";
+                batteryProgress.style.backgroundColor = colors.normal;
             }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
