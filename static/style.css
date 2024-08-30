@@ -42,7 +42,7 @@ body {
   border: 2px solid var(--fg);
   width: 50%;
   border-radius: 20px;
-  animation: slideInDown 0.5s ease;
+  animation: slideInDown 1s ease;
 }
 
 .close-button {
@@ -50,6 +50,7 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: pointer;
   transition: color 0.3s ease;
 }
 
