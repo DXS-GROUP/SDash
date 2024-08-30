@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
   --bg: #222831;
@@ -112,7 +112,9 @@ body {
   margin: 1vh;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s, background-color 0.3s;
+  transition:
+    transform 0.3s,
+    background-color 0.3s;
   background-color: var(--accent);
   animation: fadeIn 1s ease;
 }
@@ -148,7 +150,9 @@ select.button {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.7s ease, transform 0.3s ease;
+  transition:
+    background-color 0.7s ease,
+    transform 0.3s ease;
   z-index: 10000;
   margin-bottom: 2%;
   animation: slideInDown 1s ease;
@@ -179,7 +183,9 @@ select.button:active {
   color: var(--fg);
   font-size: small;
   cursor: pointer;
-  transition: background-color 0.7s ease, transform 0.3s ease;
+  transition:
+    background-color 0.7s ease,
+    transform 0.3s ease;
   animation: slideInUp 1s ease;
 }
 
@@ -280,7 +286,9 @@ select.button:active {
 
 .summary_data {
   font-family: "M PLUS Rounded 1c", system-ui;
-  transition: transform 0.5s, opacity 0.5s;
+  transition:
+    transform 0.5s,
+    opacity 0.5s;
   display: flex;
   width: 40%;
   flex-direction: column;
@@ -298,7 +306,9 @@ select.button:active {
 
 .summary_data_2 {
   font-family: "M PLUS Rounded 1c", system-ui;
-  transition: transform 0.5s, opacity 0.5s;
+  transition:
+    transform 0.5s,
+    opacity 0.5s;
   display: flex;
   width: 40%;
   align-items: center;
@@ -392,7 +402,7 @@ select.button:active {
   .summary_data_2 {
     width: 60%;
   }
-  
+
   .summary_data {
     width: 60%;
   }
@@ -414,7 +424,7 @@ select.button:active {
     display: flex;
     width: 20%;
   }
-  
+
   .summary_data_2 img {
     width: 10%;
   }

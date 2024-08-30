@@ -7,7 +7,7 @@
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='style.css') }}"
-      />
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
@@ -17,7 +17,7 @@
         class="button"
         align="center"
         onchange="switchTab(this.value)"
-        >
+      >
         <option align="center" value="monitor">Dashboard</option>
         <option align="center" value="info">Info</option>
         <option align="center" value="services">Services</option>
@@ -56,26 +56,31 @@
         <br /><br /><br /><br />
         <div
           style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
           "
-          >
+        >
           <div class="summary_data_2" id="summary_data_2">
             <img src="../static/icons/arrows.png" />
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column">
               <h3 id="upload_speed">UPLOAD SPEED</h3>
               <h3 id="download_speed">DOWNLOAD SPEED</h3>
             </div>
           </div>
           <div id="summary_temp_data" class="summary_data_2">
             <img src="../static/icons/temperature.png" />
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column">
               <h3 id="summary_data_cpu_temp_text" style="color: #222831"></h3>
             </div>
           </div>
         </div>
+        <div id="battery-status">
+            <p>Charge: <span id="charge">Loading...</span>%</p>
+            <p>Status: <span id="status">Loading...</span></p>
+        </div>
+    </div>
       </div>
       <div id="info" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Info</h1>
@@ -114,11 +119,11 @@
         <h1 class="content-title" align="center">Services</h1>
         <table id="services-table">
           <thead>
-              <tr>
-                  <th>Name</th>
-                  <th>Status</th>
-                  <th>Error</th>
-              </tr>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Error</th>
+            </tr>
           </thead>
           <tbody id="services-body"></tbody>
         </table>
@@ -126,19 +131,19 @@
       <div id="control" class="tab-content" align="center">
         <h1 class="content-title" align="center">Server Control</h1>
         <div class="p_buttons">
-          <form action="/shutdown" method="post">
+          <form action="/api/actions/shutdown" method="post">
             <button class="power_button" type="submit">
-            <img src="../static/icons/on-off-button.png" />
+              <img src="../static/icons/on-off-button.png" />
             </button>
           </form>
-          <form action="/reboot" method="post">
+          <form action="/api/actions/reboot" method="post">
             <button class="power_button" type="submit">
-            <img src="../static/icons/refresh.png" />
+              <img src="../static/icons/refresh.png" />
             </button>
           </form>
-          <form action="/sleep" method="post">
+          <form action="/api/actions/sleep" method="post">
             <button class="power_button" type="submit">
-            <img src="../static/icons/sleep.png" />
+              <img src="../static/icons/sleep.png" />
             </button>
           </form>
         </div>

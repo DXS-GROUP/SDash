@@ -45,7 +45,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/usage")
+@app.route("/api/usage")
 def usage():
     global prev_net_io, prev_time
 
@@ -80,7 +80,7 @@ def usage():
     )
 
 
-@app.route("/system_info")
+@app.route("/api/system_info")
 def get_info():
     device_ip = get_ip_address()
 
@@ -100,7 +100,7 @@ def get_info():
     )
 
 
-@app.route("/cpu_temp")
+@app.route("/api/cpu_temp")
 def cpu_temp():
     try:
         temperatures = psutil.sensors_temperatures().get("coretemp", [])
@@ -118,19 +118,19 @@ def cpu_temp():
         return jsonify(cpu_temp="N/A", error=str(e))
 
 
-@app.route("/shutdown", methods=["POST"])
+@app.route("/api/actions/shutdown", methods=["POST"])
 def shutdown():
     subprocess.call(["shutdown", "/s" if platform.system() == "Windows" else "now"])
     return redirect("/")
 
 
-@app.route("/reboot", methods=["POST"])
+@app.route("/api/actions/reboot", methods=["POST"])
 def reboot():
     subprocess.call(["shutdown", "/r" if platform.system() == "Windows" else "reboot"])
     return redirect("/")
 
 
-@app.route("/sleep", methods=["POST"])
+@app.route("/api/actions/sleep", methods=["POST"])
 def sleep():
     if platform.system() == "Windows":
         subprocess.call(["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"])
@@ -158,6 +158,17 @@ def manage_service(action, service_name):
         return jsonify({"status": "success", "action": action, "service": service_name})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
+
+
+@app.route("/api/battery", methods=["GET"])
+def battery_status():
+    battery = psutil.sensors_battery()
+    if battery:
+        charge = battery.percent
+        plugged = battery.power_plugged
+        return jsonify(charge=charge, plugged=plugged)
+    else:
+        return jsonify(charge=None, plugged=None)
 
 
 @app.errorhandler(404)

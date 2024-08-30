@@ -10,8 +10,8 @@ const colors = {
 const updateIndicators = async () => {
   try {
       const [usage, cpuTemp] = await Promise.all([
-          fetch('/usage').then(response => response.json()),
-          fetch('/cpu_temp').then(response => response.json())
+          fetch('/api/usage').then(response => response.json()),
+          fetch('/api/cpu_temp').then(response => response.json())
       ]);
 
       const cpuProgress = document.getElementById('cpu-progress');
@@ -42,7 +42,7 @@ const updateIndicators = async () => {
 
 const updateSystemInfo = async () => {
   try {
-      const data = await fetch('/system_info').then(response => response.json());
+      const data = await fetch('/api/system_info').then(response => response.json());
 
       document.getElementById('device_uptime').innerText = data.device_uptime;
       document.getElementById('device_ip').innerText = data.device_ip;
@@ -90,3 +90,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
   fetchServices();
 });
+
+function fetchBatteryStatus() {
+    fetch('/api/battery')
+        .then(response => response.json())
+        .then(data => {
+            const chargeElement = document.getElementById('charge');
+            const statusElement = document.getElementById('status');
+
+            if (data.charge !== null) {
+                chargeElement.textContent = data.charge;
+                statusElement.textContent = data.plugged ? "Charging" : "Not Charging";
+            } else {
+                chargeElement.textContent = "No battery detected";
+                statusElement.textContent = "";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching battery status:', error);
+        });
+}
+
+// Обновляем статус батареи каждые 5 секунд
+setInterval(fetchBatteryStatus, 5000);
+fetchBatteryStatus(); // Первоначальный вызов
