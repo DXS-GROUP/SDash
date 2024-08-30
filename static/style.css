@@ -140,7 +140,7 @@ body {
 
 .info-table td {
   padding: 10px;
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
   transition: background-color 0.6s ease;
 }
