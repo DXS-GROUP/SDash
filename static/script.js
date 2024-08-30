@@ -65,7 +65,7 @@ function fetchBatteryStatus() {
 
             if (data.charge !== null) {
                 chargeElement.innerHTML = data.charge.toFixed(2) + "%" + '<br>' + data.plugged ? "Charging" : "Not Charging";
-                batteryProgress.style.width = `${usage.charge}%`;
+                batteryProgress.style.width = `${data.charge}%`;
             } else {
                 chargeElement.innerHTML = "No battery detected" + '<br>' + "None";
             }
