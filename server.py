@@ -1,27 +1,37 @@
+import logging
 import os
 import platform
 import subprocess
 import time
+from logging.config import dictConfig
 
-import pynvml
 import psutil
+import pynvml
 from flask import Flask, jsonify, redirect, render_template
-from loguru import logger
-
-from services import get_services
 
 from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
                       model_info, os_name)
+from services import get_services
 
 home_dir = os.path.expanduser("~")
-log_file = os.path.join(home_dir, "logs", "ServerPage.log")
+log_file_path = os.path.join(home_dir, "/logs/ServerPanel.log")
 
-logger.add(
-    log_file,
-    format="{time} {level} {message}",
-    level="DEBUG",
-    rotation="100 MB",
-    compression="zip",
+dictConfig(
+    {
+        "version": 1,
+        "formatters": {
+            "default": {
+                "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+            }
+        },
+        "handlers": {
+            "wsgi": {
+                "class": "logging.StreamHandler",
+                "stream": "ext://flask.logging.wsgi_errors_stream",
+                "formatter": "default",
+            },
+        },
+    }
 )
 
 app = Flask(__name__)
@@ -56,12 +66,6 @@ def usage():
     speed_recv = bytes_recv / elapsed_time / 1024  # kB/s
     speed_sent = bytes_sent / elapsed_time / 1024  # kB/s
 
-    logger.debug(f"CPU Usage: {cpu_usage}%")
-    logger.debug(f"RAM Usage: {ram_usage}%")
-    logger.debug(f"Disk Usage: {disk_usage}%")
-    logger.debug(f"Download Speed: {speed_recv:.2f} kB/s")
-    logger.debug(f"Upload Speed: {speed_sent:.2f} kB/s")
-
     return jsonify(
         cpu_usage=cpu_usage,
         ram_usage=ram_usage,
@@ -75,17 +79,15 @@ def usage():
         cpu_freq=psutil.cpu_freq().current,
     )
 
+
 @app.route("/system_info")
 def get_info():
     device_ip = get_ip_address()
-    logger.info(f"Device IP: {device_ip}")
 
     device_uptime = get_uptime()
-    logger.info(f"Device Uptime: {device_uptime}")
 
     device_info = os.uname()
     device_name = device_info.nodename
-    logger.info(f"Device Name: {device_name}")
 
     return jsonify(
         device_uptime=device_uptime,
@@ -97,24 +99,24 @@ def get_info():
         sys_gpu=gpu_info(),
     )
 
+
 @app.route("/cpu_temp")
 def cpu_temp():
     try:
         temperatures = psutil.sensors_temperatures().get("coretemp", [])
-        
+
         if not temperatures:
             raise ValueError("No temperature data available for coretemp")
 
         core_temps = [temp.current for temp in temperatures]
-        
+
         avg_temp = sum(core_temps) / len(core_temps)
-        
-        logger.debug(f"CPU Temperatures: {core_temps}, Average Temperature: {avg_temp:.2f}°C")
-        
+
         return jsonify(cpu_temp=avg_temp, cpu_freq=psutil.cpu_freq().current)
     except Exception as e:
-        logger.error(f"Error getting CPU temperature: {e}")
+
         return jsonify(cpu_temp="N/A", error=str(e))
+
 
 @app.route("/shutdown", methods=["POST"])
 def shutdown():
@@ -137,19 +139,20 @@ def sleep():
     return redirect("/")
 
 
-@app.route('/api/services', methods=['GET'])
+@app.route("/api/services", methods=["GET"])
 def api_services():
     return jsonify(get_services())
 
-@app.route('/api/service/<action>/<service_name>', methods=['POST'])
+
+@app.route("/api/service/<action>/<service_name>", methods=["POST"])
 def manage_service(action, service_name):
     try:
         service = psutil.win_service_get(service_name)
-        if action == 'restart':
+        if action == "restart":
             service.restart()
-        elif action == 'stop':
+        elif action == "stop":
             service.stop()
-        elif action == 'disable':
+        elif action == "disable":
             service.stop()
             service.disable()
         return jsonify({"status": "success", "action": action, "service": service_name})
@@ -157,6 +160,10 @@ def manage_service(action, service_name):
         return jsonify({"status": "error", "message": str(e)})
 
 
+@app.errorhandler(404)
+def not_found(error):
+    return render_template("error.html"), 404
+
+
 if __name__ == "__main__":
-    logger.info("Starting Flask application...")
     app.run(debug=True, host=get_ip_address())
