@@ -206,6 +206,12 @@ def get_user_ip():
     return jsonify({"ip": ip_address})
 
 
+@app.route("/navigate", methods=["POST"])
+def navigate():
+    page = request.form["page"]
+    return f"Navigating to {page} page"
+
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("error.html"), 404

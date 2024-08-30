@@ -17,12 +17,75 @@ html {
 body {
   font-family: "M PLUS Rounded 1c", system-ui;
   background-color: var(--bg);
-  font-family: Arial, sans-serif;
   color: var(--fg);
-  background-color: transparent;
-  background-size: cover;
   font-size: small;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fadeOut 1s ease;
+}
+
+.modal-content {
+  background-color: var(--bg);
+  margin: 15% auto;
+  padding: 20px;
+  border: 2px solid var(--fg);
+  width: 50%;
+  border-radius: 20px;
+  animation: slideInDown 0.5s ease;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tab-buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.tab-button {
+  background-color: var(--accent-pressed);
+  color: var(--fg);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 1%;
+  border-radius: 10px;
+  transition:
+    background-color 0.6s ease,
+    transform 0.6s ease;
+}
+
+.tab-button.active {
+  background-color: var(--accent-hover);
+}
+
+.tab-button:hover {
+  transform: scale(1.05);
 }
 
 .context-menu {
@@ -43,6 +106,7 @@ body {
 .context-menu li {
   padding: 8px 12px;
   cursor: pointer;
+  transition: background-color 0.6s ease;
 }
 
 .context-menu li:hover {
@@ -55,7 +119,7 @@ body {
   background-color: var(--bg);
   border-radius: 10px;
   overflow: hidden;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .progress {
@@ -70,30 +134,21 @@ body {
   font-family: "M PLUS Rounded 1c", system-ui;
   border-collapse: collapse;
   font-size: 16px;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .info-table td {
   padding: 10px;
   text-align: center;
   vertical-align: middle;
-  transition: background-color 0.3s ease;
-}
-
-.info-table td:first-child {
-  font-weight: bold;
-  text-align: left;
-}
-
-.info-table td:last-child {
-  text-align: right;
+  transition: background-color 0.6s ease;
 }
 
 .control {
   font-family: "M PLUS Rounded 1c", system-ui;
   height: 100vh;
   display: flex;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .p_buttons {
@@ -116,7 +171,7 @@ body {
     transform 0.3s,
     background-color 0.3s;
   background-color: var(--accent);
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .power_button img {
@@ -133,14 +188,14 @@ body {
   font-family: "Pacifico", cursive;
   font-size: 50px;
   font-weight: bold;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
   margin-top: 6%;
   margin-bottom: 6%;
 }
 
 p {
   font-size: small;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 select.button {
@@ -152,7 +207,7 @@ select.button {
   cursor: pointer;
   transition:
     background-color 0.7s ease,
-    transform 0.3s ease;
+    transform 0.6s ease;
   z-index: 10000;
   margin-bottom: 2%;
   animation: slideInDown 1s ease;
@@ -185,7 +240,7 @@ select.button:active {
   cursor: pointer;
   transition:
     background-color 0.7s ease,
-    transform 0.3s ease;
+    transform 0.6s ease;
   animation: slideInUp 1s ease;
 }
 
@@ -251,7 +306,13 @@ select.button:active {
   display: flex;
   justify-content: center;
   z-index: 56;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
+}
+
+@media (min-width: 800px) {
+  .dock {
+    display: none;
+  }
 }
 
 .tab-content {
@@ -262,7 +323,7 @@ select.button:active {
 .tab-content.active {
   display: block;
   opacity: 1;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .tab-content.hidden {
@@ -281,7 +342,7 @@ select.button:active {
   display: block;
   border-radius: 30px;
   background-color: transparent;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .summary_data {
@@ -360,7 +421,7 @@ select.button:active {
   justify-content: center;
   height: auto;
   font-family: "M PLUS Rounded 1c", system-ui;
-  animation: fadeIn 1s ease;
+  animation: fadeIn 2s ease;
 }
 
 .summary_data:hover {
