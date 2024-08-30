@@ -50,7 +50,7 @@ body {
 }
 
 .progress-bar {
-  width: 100%;
+  width: 80%;
   height: 20px;
   background-color: var(--bg);
   border-radius: 10px;

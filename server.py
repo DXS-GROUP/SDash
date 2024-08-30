@@ -166,9 +166,34 @@ def battery_status():
     if battery:
         charge = battery.percent
         plugged = battery.power_plugged
-        return jsonify(charge=charge, plugged=plugged)
+        time_to_full = None
+        time_to_empty = None
+
+        if plugged:
+            # Расчет времени до полной зарядки
+            time_to_full = (
+                battery.secsleft
+                if battery.secsleft != psutil.POWER_TIME_UNKNOWN
+                else None
+            )
+        else:
+            # Расчет времени до полной разрядки
+            time_to_empty = (
+                battery.secsleft
+                if battery.secsleft != psutil.POWER_TIME_UNKNOWN
+                else None
+            )
+
+        return jsonify(
+            {
+                "charge": charge,
+                "plugged": plugged,
+                "time_to_full": time_to_full,
+                "time_to_empty": time_to_empty,
+            }
+        )
     else:
-        return jsonify(charge=None, plugged=None)
+        return jsonify(charge=None, plugged=None, time_to_full=None, time_to_empty=None)
 
 
 @app.route("/api/user_ip")
