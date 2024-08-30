@@ -60,13 +60,14 @@ function fetchBatteryStatus() {
     fetch('/api/battery')
         .then(response => response.json())
         .then(data => {
-            const chargeElement = document.getElementById('summary_data_battery_text');
+            const chargeElement = document.getElementById('charge');
+            const batteryProgress = document.getElementById('battery-progress');
 
             if (data.charge !== null) {
-                chargeElement.textContent = data.charge.toFixed(2) + "%" + '<br>' + data.plugged ? "Charging" : "Not Charging";
+                chargeElement.innerHTML = data.charge.toFixed(2) + "%" + '<br>' + data.plugged ? "Charging" : "Not Charging";
+                batteryProgress.style.width = `${usage.charge}%`;
             } else {
-                chargeElement.textContent = "No battery detected";
-                statusElement.textContent = "None";
+                chargeElement.innerHTML = "No battery detected" + '<br>' + "None";
             }
         })
         .catch(error => {
