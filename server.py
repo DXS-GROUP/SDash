@@ -40,6 +40,12 @@ prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
 
+def convert_seconds_to_hhmm(seconds):
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    return f"{hours:02}:{minutes:02}"
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -170,16 +176,14 @@ def battery_status():
         time_to_empty = None
 
         if plugged:
-            # Расчет времени до полной зарядки
             time_to_full = (
-                battery.secsleft
+                convert_seconds_to_hhmm(battery.secsleft)
                 if battery.secsleft != psutil.POWER_TIME_UNKNOWN
                 else None
             )
         else:
-            # Расчет времени до полной разрядки
             time_to_empty = (
-                battery.secsleft
+                convert_seconds_to_hhmm(battery.secsleft)
                 if battery.secsleft != psutil.POWER_TIME_UNKNOWN
                 else None
             )
