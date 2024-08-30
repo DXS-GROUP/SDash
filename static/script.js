@@ -70,7 +70,7 @@ function fetchBatteryStatus() {
 				batteryProgress.style.width = `${data.charge}%`;
 			} else {
 				const status = "None";
-				chargeElement.innerHTML = "No battery detected" + '<br>' + status;
+				chargeElement.innerHTML = "No battery detected" + '<br>' + "None";
                 // batteryBlock.style.display = 'none';
 			}
 		})
@@ -112,3 +112,4 @@ setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
 setInterval(fetchServices, 1000);
+
