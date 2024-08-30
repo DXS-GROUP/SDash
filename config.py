@@ -1,0 +1,25 @@
+import logging
+from logging.config import dictConfig
+import os
+from flask import Flask
+
+home_dir = os.path.expanduser("~")
+log_file_path = os.path.join(home_dir, "logs/ServerPanel.log")
+
+app = Flask(__name__)
+
+dictConfig({
+    "version": 1,
+    "formatters": {
+        "default": {
+            "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+        }
+    },
+    "handlers": {
+        "wsgi": {
+            "class": "logging.StreamHandler",
+            "stream": "ext://flask.logging.wsgi_errors_stream",
+            "formatter": "default",
+        },
+    },
+})

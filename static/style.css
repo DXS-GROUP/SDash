@@ -1,11 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #222831;
-  --fg: #d5d9d6;
-  --accent: #31363f;
-  --accent-hover: #76abae;
-  --accent-pressed: #31363f;
+  --bg: #282A36;
+  --fg: #F8F8F2;
+  --accent: #44475A;
+  --accent-hover: #BD93F9;
+  --accent-pressed: #44475A;
+  --critical: #FF5555;
+  --warning: #FFB86C;
+  --normal: #50FA7B;
 }
 
 html {
@@ -39,7 +42,7 @@ body {
   background-color: var(--bg);
   margin: 15% auto;
   padding: 20px;
-  border: 2px solid var(--fg);
+  border: 2px solid var(--accent);
   width: 50%;
   border-radius: 20px;
   animation: slideInDown 1s ease;
@@ -358,11 +361,11 @@ select.button:active {
   align-items: center;
   padding: 10px;
   margin-bottom: 20px;
-  background-color: var(--fg);
+  background-color: var(--accent);
   border-radius: 10px;
   margin: 10px;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 0px var(--fg);
+  box-shadow: 0 0 0px var(--accent);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
@@ -379,10 +382,10 @@ select.button:active {
   width: 20%;
   padding: 10px;
   backdrop-filter: blur(5px);
-  background-color: var(--fg);
+  background-color: var(--accent);
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 0 0 0px var(--fg);
+  box-shadow: 0 0 0px var(--accent);
   opacity: 0;
   animation: fadeIn 1s ease forwards;
 }
@@ -405,7 +408,7 @@ select.button:active {
 }
 
 .summary_data_2 h3 {
-  color: var(--bg);
+  color: var(--fg);
   font-size: 13px;
   font-weight: bold;
 }
