@@ -64,10 +64,12 @@ function fetchBatteryStatus() {
             const batteryProgress = document.getElementById('battery-progress');
 
             if (data.charge !== null) {
-                chargeElement.innerHTML = "Battery" + data.charge.toFixed(2) + "%" + "<br />" + data.plugged ? "Charging" : "Not Charging";
+                const status = data.plugged ? "Charging" : "Not Charging";
+                chargeElement.innerHTML = "Battery" + data.charge.toFixed(2) + "%" + "<br />" + status;
                 batteryProgress.style.width = `${data.charge}%`;
             } else {
-                chargeElement.innerHTML = "No battery detected" + '<br>' + "None";
+                const status = "None";
+                chargeElement.innerHTML = "No battery detected" + '<br>' + status;
             }
         })
         .catch(error => {
