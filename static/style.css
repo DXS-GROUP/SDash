@@ -16,7 +16,7 @@ html {
   width: 100%;
   display: inline;
 
-  background: radial-gradient(circle at 20% 80%, var(--accent-hover) 10%, transparent 20%) fixed, radial-gradient(circle at 80% 20%, var(--bg) 40%, transparent 50%), linear-gradient(230deg, var(--accent-hover) 0%, var(--bg) 60%);
+  background: radial-gradient(circle at 5% 5%, var(--accent-pressed) 1%, transparent 15.5%) fixed, radial-gradient(circle at 100% 90%, var(--accent-pressed) 30%, var(--bg) 40.5%);
 
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
@@ -366,10 +366,10 @@ select.button:active {
   /* From https://css.glass */
   background: rgba(48, 52, 70, 0.49);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 1px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid rgba(48, 52, 70, 0.47);
 
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
@@ -391,10 +391,10 @@ select.button:active {
   /* From https://css.glass */
   background: rgba(48, 52, 70, 0.49);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 1px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid rgba(48, 52, 70, 0.47);
 
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
