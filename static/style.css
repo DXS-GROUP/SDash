@@ -27,8 +27,6 @@ html {
 }
 
 body {
-  height: 100%;
-  width: 100%;
   overflow-y: scroll;
   margin: 0;
   padding: 0;
@@ -366,7 +364,7 @@ select.button:active {
   /* From https://css.glass */
   background: rgba(48, 52, 70, 0.49);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
