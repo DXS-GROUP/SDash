@@ -31,8 +31,8 @@ const updateIndicators = async () => {
 		document.getElementById('summary_data_ram_text').innerHTML = 'RAM USAGE: <br>' + usage.ram_usage + '%';
 		document.getElementById('summary_data_disk_text').innerHTML = 'DISK USAGE: <br>' + usage.disk_usage + '%';
 
-		document.getElementById('upload_speed').innerHTML = 'UPLOAD SPEED: <br>' + usage.net_sent.toFixed(2) + 'kb/s';
-		document.getElementById('download_speed').innerHTML = 'DOWNLOAD SPEED: <br>' + usage.net_recv.toFixed(2) + 'kb/s';
+		document.getElementById('upload_speed').innerHTML = 'UPLOAD SPEED: ' + usage.net_sent.toFixed(2) + 'kb/s';
+		document.getElementById('download_speed').innerHTML = 'DOWNLOAD SPEED: ' + usage.net_recv.toFixed(2) + 'kb/s';
 
 		document.getElementById('summary_data_cpu_temp_text').innerHTML = 'CPU: ' + cpuTemp.cpu_temp.toFixed(1) + '°C - ' + (cpuTemp.cpu_freq / 1000).toFixed(1) + 'GHz';
 	} catch (error) {
@@ -62,6 +62,7 @@ function fetchBatteryStatus() {
 		.then(data => {
 			const chargeElement = document.getElementById('charge');
 			const batteryProgress = document.getElementById('battery-progress');
+            const batteryBlock = document.getElementById('battery-status');
 
 			if (data.charge !== null) {
 				const status = data.plugged ? "Charging" : "Not Charging";
@@ -70,6 +71,7 @@ function fetchBatteryStatus() {
 			} else {
 				const status = "None";
 				chargeElement.innerHTML = "No battery detected" + '<br>' + status;
+                // batteryBlock.style.display = 'none';
 			}
 		})
 		.catch(error => {

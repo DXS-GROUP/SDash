@@ -7,7 +7,7 @@ from logging.config import dictConfig
 
 import psutil
 import pynvml
-from flask import Flask, jsonify, redirect, render_template
+from flask import Flask, jsonify, redirect, render_template, request
 
 from get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
                       model_info, os_name)
@@ -169,6 +169,12 @@ def battery_status():
         return jsonify(charge=charge, plugged=plugged)
     else:
         return jsonify(charge=None, plugged=None)
+
+
+@app.route("/api/user_ip")
+def get_user_ip():
+    ip_address = request.headers.get("X-Forwarded-For", request.remote_addr)
+    return jsonify({"ip": ip_address})
 
 
 @app.errorhandler(404)

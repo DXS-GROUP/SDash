@@ -290,7 +290,8 @@ select.button:active {
     transform 0.5s,
     opacity 0.5s;
   display: flex;
-  width: 40%;
+  width: 30%;
+  aspect-ratio: 2 / 1;
   flex-direction: column;
   align-items: center;
   padding: 10px;
@@ -310,10 +311,11 @@ select.button:active {
     transform 0.5s,
     opacity 0.5s;
   display: flex;
-  width: 40%;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 20%;
   padding: 10px;
-  margin-bottom: 20px;
   backdrop-filter: blur(5px);
   background-color: var(--fg);
   border-radius: 10px;
@@ -324,35 +326,40 @@ select.button:active {
 }
 
 .summary_data img {
+  margin-top: auto;
+}
+
+.summary_data div {
+  margin-bottom: auto;
+}
+
+.summary_data img {
   width: 20%;
-  margin-right: 3%;
 }
 
 .summary_data_2 img {
-  width: 20%;
-  margin-right: 3%;
+  margin-top: 3%;
+  width: 10%;
 }
 
 .summary_data_2 h3 {
   color: var(--bg);
   font-size: 13px;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .summary_data,
 .summary_data_2 span {
   font-size: 13px;
   font-weight: bold;
-  margin-top: 10px;
 }
 
 .cards {
-  height: auto;
-  font-family: "M PLUS Rounded 1c", system-ui;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: auto;
+  font-family: "M PLUS Rounded 1c", system-ui;
   animation: fadeIn 1s ease;
 }
 
@@ -365,24 +372,8 @@ select.button:active {
 }
 
 @media screen and (max-width: 599px) {
-  .cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
   .summary_data img {
     width: 15%;
-  }
-
-  .summary_data_2 img {
-    width: 20%;
-  }
-
-  .summary_data_text {
-    margin-top: 10%;
-    margin-bottom: 10%;
   }
 
   .container {
@@ -405,11 +396,8 @@ select.button:active {
   }
 
   .summary_data {
-    width: 60%;
+    width: 50%;
   }
-}
-
-@media screen and (min-width: 600px) {
 }
 
 @media screen and (min-width: 1000px) {
@@ -422,11 +410,6 @@ select.button:active {
   }
 
   .summary_data {
-    display: flex;
-    width: 20%;
-  }
-
-  .summary_data_2 img {
-    width: 10%;
+    width: 12%;
   }
 }
