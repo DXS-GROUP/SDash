@@ -117,8 +117,8 @@ const fetchBatteryStatus = async () => {
         const batteryProgress = document.getElementById('battery-progress');
 
         if (data.charge !== null) {
-            const status = data.plugged ? "" : "";
-            chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}% - ${status}`;
+            const status = data.plugged ? "Charging" : "Not Charging";
+            chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}%`;
             batteryProgress.style.width = `${data.charge}%`;
 
             if (data.charge.toFixed(0) < 15) {
