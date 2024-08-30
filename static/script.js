@@ -121,10 +121,10 @@ const fetchBatteryStatus = async () => {
             chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}% - ${status}`;
             batteryProgress.style.width = `${data.charge}%`;
 
-            if (data.charge.toFixed(0) < 30) {
-                batteryProgress.style.backgroundColor = "#FFB86C";
-            } else if (data.charge.toFixed(0) < 15) {
+            if (data.charge.toFixed(0) < 15) {
                 batteryProgress.style.backgroundColor = "#FF5555";
+            } else if (data.charge.toFixed(0) < 30) {
+                batteryProgress.style.backgroundColor = "#FFB86C";
             } else {
                 batteryProgress.style.backgroundColor = "#50FA7B";
             }
