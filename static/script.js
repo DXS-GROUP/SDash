@@ -116,16 +116,28 @@ const fetchBatteryStatus = async () => {
         const data = await response.json();
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
+        const imgElement = document.querySelector('#battery-status img');
 
         if (data.charge !== null) {
             const status = data.plugged ? "Charging" : "Not Charging";
             chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}%`;
             batteryProgress.style.width = `${data.charge}%`;
 
+            if (data.plugged) {
+                imgElement.src = "../static/icons/battery-bolt.svg";
+            }
+            else{
+                imgElement.src = "../static/icons/battery_full.svg";
+            }
+
             if (data.charge.toFixed(0) < 15) {
                 batteryProgress.style.backgroundColor = colors.critical;
+                imgElement.src = "../static/icons/battery-exclamation.svg";
             } else if (data.charge.toFixed(0) < 30) {
                 batteryProgress.style.backgroundColor = colors.warning;
+            } else if (data.charge.toFixed(0) > 90) {
+                batteryProgress.style.backgroundColor = colors.normal;
+                imgElement.src = "../static/icons/battery_full.svg";
             } else {
                 batteryProgress.style.backgroundColor = colors.normal;
             }
