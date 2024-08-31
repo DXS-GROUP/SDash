@@ -121,7 +121,7 @@ const updateGpuTemperature = (gpuTemp) => {
         document.getElementById('summary_data_gpu_temp_text').style.color = "";
     }
 
-    console.debug("GPU: " + gpuTemp.gpu_temp.toFixed(1) + "°C - " + gpuTemp.gpu_freq.toFixed(1) + "MHz");
+    console.debug("GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz");
 };
 
 const updateSystemInfo = async () => {
