@@ -25,18 +25,19 @@
   source SDash/bin/activate
   pip3 install -r requirements.txt
   ```
-</div>
+  </div>
   
   <h3>Run server</h3>
+</div>
 
-<div align="left">
-  
+> [!IMPORTANT]
+> This service has been tested on Arch, Debian, Ubuntu, Fedora based systems
+
 ```
 python3 server.py
 ```
 
-</div>
-
+<div align="center">
   <h3>Usage</h3>
   Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
   
