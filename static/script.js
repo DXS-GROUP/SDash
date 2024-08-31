@@ -8,6 +8,17 @@ const colors = {
     normal: "#a6d189"
 };
 
+const system_colors = {
+    manjaro: "#50FA7B",
+    arch: "#8BE9FD",
+    kali: "#6272A4",
+    endevaour: "##BD93F9",
+    centos: "#F1FA8C",
+    debian: "#FF5555",
+    ubuntu: "#FFB86C",
+    suse: "#50FA7B"
+}
+
 const updateIndicators = async () => {
     try {
         const [usage, cpuTemp, userIP] = await Promise.all([
@@ -108,16 +119,16 @@ const updateSystemInfo = async () => {
             deviceName: document.getElementById('device_name'),
             model: document.getElementById('model'),
             cpu: document.getElementById('cpu'),
-            gpu: document.getElementById('gpu')
+            gpu: document.getElementById('gpu'),
         };
 
-        systemInfoElements.uptime.innerText = data.device_uptime;
-        systemInfoElements.ip.innerText = data.device_ip;
-        systemInfoElements.platform.innerText = data.sys_platform;
-        systemInfoElements.deviceName.innerText = data.device_name;
-        systemInfoElements.model.innerText = data.sys_model;
-        systemInfoElements.cpu.innerText = data.sys_cpu;
-        systemInfoElements.gpu.innerText = data.sys_gpu;
+        systemInfoElements.uptime.innerText = "UPTIME: " + data.device_uptime;
+        systemInfoElements.ip.innerText = "DEVICE IP: " + data.device_ip;
+        systemInfoElements.platform.innerText = "SYSTEM: " + data.sys_platform;
+        systemInfoElements.deviceName.innerText = "DEVICE: " + data.device_name;
+        systemInfoElements.model.innerText = "MODEL: " + data.sys_model;
+        systemInfoElements.cpu.innerText = "DEVICE CPU: " + data.sys_cpu;
+        systemInfoElements.gpu.innerText = "DEVICE GPU: " + data.sys_gpu;
     } catch (error) {
         console.error('Error updating system info:', error);
     }
@@ -130,6 +141,7 @@ const fetchBatteryStatus = async () => {
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
         const imgElement = document.querySelector('#battery-status img');
+        const batteryBlock = document.getElementById('battery-status');
 
         if (data.charge !== null) {
             console.debug(`BATTERY: ${data.charge.toFixed(2)}%`);
@@ -159,11 +171,48 @@ const fetchBatteryStatus = async () => {
             }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
+            // batteryBlock.style.display = 'none';
         }
     } catch (error) {
         console.error('Error fetching battery status:', error);
     }
 };
+
+fetch('/get_os')
+    .then(response => response.json())
+    .then(data => {
+        const main_block = document.getElementsByClassName('html')[0];
+
+        if (main_block) {
+            var osName = data.os_name;
+            var logoColor = 'gray';
+
+            if (osName.toLowerCase().includes('arch')) {
+                logoColor = system_colors.arch;
+            } else if (osName.toLowerCase().includes('debian')) {
+                logoColor = system_colors.debian;
+            } else if (osName.toLowerCase().includes('ubuntu')) {
+                logoColor = system_colors.ubuntu;
+            } else if (osName.toLowerCase().includes('suse')) {
+                logoColor = system_colors.suse;
+            } else if (osName.toLowerCase().includes('manjaro')) {
+                logoColor = system_colors.manjaro;
+            } else if (osName.toLowerCase().includes('centos')) {
+                logoColor = system_colors.centos;
+            } else if (osName.toLowerCase().includes('kali')) {
+                logoColor = system_colors.kali;
+            } else if (osName.toLowerCase().includes('endeavour')) {
+                logoColor = system_colors.endevaour;
+            }
+
+            const backgroundStyle = "radial-gradient(circle at 5% 5%," + logoColor + " 1%,transparent 15.5%)fixed,radial-gradient(circle at 100% 90%," + logoColor + " 30%," + colors.bg + " 40.5%)";
+
+            main_block.style.background = backgroundStyle;
+        } else {
+            console.error("Element with class 'html' not found.");
+        }
+    })
+    .catch(error => console.error(error))
 
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
