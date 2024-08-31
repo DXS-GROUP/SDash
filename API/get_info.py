@@ -32,7 +32,7 @@ def model_info():
     return f"{product_info} {version_info}" if version_info else product_info
 
 def fetch_cpu_info():
-    cpu_info = run_command("cat /proc/cpuinfo | grep 'model name' | uniq | cut -d: -f2 | awk '{print $5}'")
+    cpu_info = run_command("cat /proc/cpuinfo | grep 'model name' | uniq | cut -d: -f2")
     cpu_max_freq = int(run_command("cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq")) / 1000
     cpu_freq_info = f"{cpu_max_freq:.3f}MHz" if cpu_max_freq < 1000 else f"{cpu_max_freq / 1000:.3f}GHz"
     return f"{cpu_info} @ {cpu_freq_info}"
