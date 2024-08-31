@@ -6,11 +6,12 @@ import time
 from logging.config import dictConfig
 
 import psutil
+import pynvml
 from flask import Flask, jsonify, redirect, render_template, request
 
 from API.func import convert_seconds_to_hhmm
-from API.get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
-                          model_info, os_name, fetch_arch)
+from API.get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
+                          get_uptime, gpu_info, model_info, os_name)
 from config import app, dictConfig
 
 prev_net_io = psutil.net_io_counters()
@@ -78,23 +79,31 @@ def cpu_temp():
         return jsonify(cpu_temp="N/A", error=str(e))
 
 
-@app.route("/api/actions/<action>", methods=["POST"])
-def perform_action(action):
-    actions = {
-        "shutdown": ["shutdown", "/s" if platform.system() == "Windows" else "now"],
-        "reboot": ["shutdown", "/r" if platform.system() == "Windows" else "reboot"],
-        "sleep": (
-            ["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"]
-            if platform.system() == "Windows"
-            else ["systemctl", "suspend"]
-        ),
-    }
+@app.route("/api/gpu_temp")
+def gpu_temp():
+    try:
+        pynvml.nvmlInit()
+        device_count = pynvml.nvmlDeviceGetCount()
+        if device_count:
+            device = pynvml.nvmlDeviceGetHandleByIndex(0)
+            return jsonify(
+                gpu_temp=pynvml.nvmlDeviceGetTemperature(
+                    device, pynvml.NVML_TEMPERATURE_GPU
+                ),
+                gpu_freq=pynvml.nvmlDeviceGetUtilizationRates(device).gpu,
+            )
+        else:
+            return jsonify(gpu_temp="None", gpu_freq="None")
+    except Exception as e:
+        return jsonify(gpu_temp="N/A", error=str(e))
 
-    if action in actions:
-        subprocess.call(actions[action])
-        return redirect("/")
-    return jsonify({"error": "Invalid action"}), 400
-
+@app.route('/api/disk_temperature', methods=['GET'])
+def disk_temperature():
+    disk_temp = get_disk_temperature()
+    if disk_temp:
+        return jsonify(disk_temp)
+    else:
+        return jsonify(None)
 
 @app.route("/api/battery", methods=["GET"])
 def battery_status():
@@ -133,7 +142,8 @@ def navigate():
     page = request.form["page"]
     return f"Navigating to {page} page"
 
-@app.route('/get_os')
+
+@app.route("/get_os")
 def get_os_color():
     os_name_str = os_name()
-    return jsonify({'os_name': os_name_str})
+    return jsonify({"os_name": os_name_str})
