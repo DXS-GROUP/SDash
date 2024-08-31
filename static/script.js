@@ -112,13 +112,18 @@ const updateCpuTemperature = (cpuTemp) => {
 };
 
 const updateGpuTemperature = (gpuTemp) => {
-    document.getElementById('summary_data_gpu_temp_text').innerHTML = "GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz";
-    if (gpuTemp.gpu_temp > 45) {
-        document.getElementById('summary_data_gpu_temp_text').style.color = colors.warning;
-    } else if (gpuTemp.gpu_temp > 60) {
-        document.getElementById('summary_data_gpu_temp_text').style.color = colors.critical;
-    } else {
-        document.getElementById('summary_data_gpu_temp_text').style.color = "";
+    if (gpuTemp.gpu_temp != "None") {
+        document.getElementById('summary_data_gpu_temp_text').innerHTML = "GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz";
+        if (gpuTemp.gpu_temp > 45) {
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.warning;
+        } else if (gpuTemp.gpu_temp > 60) {
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.critical;
+        } else {
+            document.getElementById('summary_data_gpu_temp_text').style.color = "";
+        }
+    }
+    else {
+        document.getElementById('summary_data_gpu_temp_text').style.display = "None";
     }
 
     console.debug("GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz");
