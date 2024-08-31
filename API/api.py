@@ -10,7 +10,7 @@ from flask import Flask, jsonify, redirect, render_template, request
 
 from API.func import convert_seconds_to_hhmm
 from API.get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
-                          model_info, os_name)
+                          model_info, os_name, fetch_arch)
 from config import app, dictConfig
 
 prev_net_io = psutil.net_io_counters()
@@ -61,6 +61,7 @@ def get_info():
         sys_model=model_info(),
         sys_cpu=fetch_cpu_info(),
         sys_gpu=gpu_info(),
+        cpu_arch=fetch_arch(),
     )
 
 
