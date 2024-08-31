@@ -130,6 +130,7 @@ const fetchBatteryStatus = async () => {
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
         const imgElement = document.querySelector('#battery-status img');
+        const batteryBlock = document.getElementById('battery-status');
 
         if (data.charge !== null) {
             console.debug(`BATTERY: ${data.charge.toFixed(2)}%`);
@@ -159,6 +160,7 @@ const fetchBatteryStatus = async () => {
             }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
+            // batteryBlock.style.display = 'none';
         }
     } catch (error) {
         console.error('Error fetching battery status:', error);

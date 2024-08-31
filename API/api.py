@@ -6,14 +6,16 @@ import time
 from logging.config import dictConfig
 
 import psutil
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 
-from API.get_info import fetch_cpu_info, get_ip_address, get_uptime, gpu_info, model_info, os_name
-from config import dictConfig, app
 from API.func import convert_seconds_to_hhmm
+from API.get_info import (fetch_cpu_info, get_ip_address, get_uptime, gpu_info,
+                          model_info, os_name)
+from config import app, dictConfig
 
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
+
 
 @app.route("/api/usage")
 def usage():
@@ -48,6 +50,7 @@ def usage():
         cpu_freq=psutil.cpu_freq().current,
     )
 
+
 @app.route("/api/system_info")
 def get_info():
     return jsonify(
@@ -59,6 +62,7 @@ def get_info():
         sys_cpu=fetch_cpu_info(),
         sys_gpu=gpu_info(),
     )
+
 
 @app.route("/api/cpu_temp")
 def cpu_temp():
@@ -72,12 +76,17 @@ def cpu_temp():
     except Exception as e:
         return jsonify(cpu_temp="N/A", error=str(e))
 
+
 @app.route("/api/actions/<action>", methods=["POST"])
 def perform_action(action):
     actions = {
         "shutdown": ["shutdown", "/s" if platform.system() == "Windows" else "now"],
         "reboot": ["shutdown", "/r" if platform.system() == "Windows" else "reboot"],
-        "sleep": ["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"] if platform.system() == "Windows" else ["systemctl", "suspend"]
+        "sleep": (
+            ["rundll32", "powrprof.dll,SetSuspendState", "0", "1", "0"]
+            if platform.system() == "Windows"
+            else ["systemctl", "suspend"]
+        ),
     }
 
     if action in actions:
@@ -85,14 +94,23 @@ def perform_action(action):
         return redirect("/")
     return jsonify({"error": "Invalid action"}), 400
 
+
 @app.route("/api/battery", methods=["GET"])
 def battery_status():
     battery = psutil.sensors_battery()
     if battery:
         charge = battery.percent
         plugged = battery.power_plugged
-        time_to_full = convert_seconds_to_hhmm(battery.secsleft) if plugged and battery.secsleft != psutil.POWER_TIME_UNKNOWN else None
-        time_to_empty = convert_seconds_to_hhmm(battery.secsleft) if not plugged and battery.secsleft != psutil.POWER_TIME_UNKNOWN else None
+        time_to_full = (
+            convert_seconds_to_hhmm(battery.secsleft)
+            if plugged and battery.secsleft != psutil.POWER_TIME_UNKNOWN
+            else None
+        )
+        time_to_empty = (
+            convert_seconds_to_hhmm(battery.secsleft)
+            if not plugged and battery.secsleft != psutil.POWER_TIME_UNKNOWN
+            else None
+        )
 
         return jsonify(
             charge=charge,
@@ -102,10 +120,12 @@ def battery_status():
         )
     return jsonify(charge=None, plugged=None, time_to_full=None, time_to_empty=None)
 
+
 @app.route("/api/user_ip")
 def get_user_ip():
     ip_address = request.headers.get("X-Forwarded-For", request.remote_addr)
     return jsonify({"ip": ip_address})
+
 
 @app.route("/navigate", methods=["POST"])
 def navigate():

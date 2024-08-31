@@ -3,8 +3,7 @@ import platform
 import subprocess
 import time
 import psutil
-from setproctitle import getproctitle
-from setproctitle import setproctitle
+from setproctitle import setproctitle, getproctitle
 
 from flask import Flask, jsonify, render_template, request
 from API.get_info import fetch_cpu_info, get_ip_address, get_uptime, gpu_info, model_info, os_name

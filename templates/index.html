@@ -39,43 +39,45 @@
       <div class="container">
         <div id="monitor" class="tab-content active">
           <h1 class="content-title" align="center">SDashboard</h1>
-          <div class="cards">
-            <div class="summary_data" align="center" id="summary_data_cpu">
-              <img src="../static/icons/cpu.svg" />
-              <h3 id="summary_data_cpu_text"></h3>
-              <div class="progress-bar" align="left">
-                <div class="progress" id="cpu-progress"></div>
-                <span id="cpu-value"></span>
+          <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="cards">
+              <div class="summary_data" align="center" id="summary_data_cpu">
+                <img src="../static/icons/cpu.svg" />
+                <h3 id="summary_data_cpu_text"></h3>
+                <div class="progress-bar" align="left">
+                  <div class="progress" id="cpu-progress"></div>
+                  <span id="cpu-value"></span>
+                </div>
+              </div>
+              <div class="summary_data" align="center" id="summary_data_ram">
+                <img src="../static/icons/ram.svg" />
+                <h3 id="summary_data_ram_text"></h3>
+                <div class="progress-bar" align="left">
+                  <div class="progress" id="ram-progress"></div>
+                  <span id="ram-value"></span>
+                </div>
               </div>
             </div>
-            <div class="summary_data" align="center" id="summary_data_ram">
-              <img src="../static/icons/ram.svg" />
-              <h3 id="summary_data_ram_text"></h3>
-              <div class="progress-bar" align="left">
-                <div class="progress" id="ram-progress"></div>
-                <span id="ram-value"></span>
+            <div class="cards">
+              <div class="summary_data" align="center" id="summary_data_disk">
+                <img src="../static/icons/storage.svg" />
+                <h3 id="summary_data_disk_text"></h3>
+                <div class="progress-bar" align="left">
+                  <div class="progress" id="disk-progress"></div>
+                  <span id="disk-value"></span>
+                </div>
+              </div>
+              <div id="battery-status" class="summary_data" align="center">
+                <img src="../static/icons/battery_full.svg" />
+                <h3 id="charge"></h3>
+                <div class="progress-bar" align="left">
+                  <div class="progress" id="battery-progress"></div>
+                  <span id="battery-value"></span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="cards">
-            <div class="summary_data" align="center" id="summary_data_disk">
-              <img src="../static/icons/storage.svg" />
-              <h3 id="summary_data_disk_text"></h3>
-              <div class="progress-bar" align="left">
-                <div class="progress" id="disk-progress"></div>
-                <span id="disk-value"></span>
-              </div>
-            </div>
-            <div id="battery-status" class="summary_data" align="center">
-              <img src="../static/icons/battery_full.svg" />
-              <h3 id="charge"></h3>
-              <div class="progress-bar" align="left">
-                <div class="progress" id="battery-progress"></div>
-                <span id="battery-value"></span>
-              </div>
-            </div>
-          </div>
-          <br /><br /><br /><br />
+          <br />
           <div
             style="
               display: flex;
@@ -85,12 +87,18 @@
             "
           >
             <div class="summary_data_2" id="summary_data_2">
-              <img src="../static/icons/arrow.svg" />
+              <div>
+                <img src="../static/icons/arrow.svg" />
+                <h3 style="width: 100%;" align="right">NETWORK</h3>
+              </div>
               <h3 id="upload_speed">UPLOAD SPEED</h3>
               <h3 id="download_speed">DOWNLOAD SPEED</h3>
             </div>
             <div id="summary_temp_data" class="summary_data_2">
-              <img src="../static/icons/temp.svg" />
+              <div>
+                <img src="../static/icons/temp.svg" />
+                <h3 style="width: 100%;" align="right">TEMPERATURE</h3>
+              </div>
               <h3 id="summary_data_cpu_temp_text"></h3>
             </div>
           </div>
