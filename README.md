@@ -30,7 +30,10 @@
   <h3>Run server</h3>
 
 <div align="left">
-  
+
+> [!warning]
+> This service has been tested on Arch, Debian, Ubuntu, Fedora
+
 ```
 python3 server.py
 ```
