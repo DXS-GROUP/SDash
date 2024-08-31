@@ -23,7 +23,7 @@ fetch('/get_os')
 
             if (osName.toLowerCase().includes('arch')) {
                 logoColor = system_colors.arch;
-                logoPath = "../static/logo/linux.svg";
+                logoPath = "../static/logo/arch.svg";
             } else if (osName.toLowerCase().includes('debian')) {
                 logoColor = system_colors.debian;
                 logoPath = "../static/logo/debian.svg";
@@ -35,7 +35,7 @@ fetch('/get_os')
                 logoPath = "../static/logo/suse.svg";
             } else if (osName.toLowerCase().includes('manjaro')) {
                 logoColor = system_colors.manjaro;
-                logoPath = "../static/logo/linux.svg";
+                logoPath = "../static/logo/manjaro.svg";
             } else if (osName.toLowerCase().includes('centos')) {
                 logoColor = system_colors.centos;
                 logoPath = "../static/logo/centos.svg";

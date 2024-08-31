@@ -17,10 +17,8 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
-
   background-attachment: fixed;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -103,9 +101,7 @@ body {
   padding: 10px 20px;
   margin: 1%;
   border-radius: 10px;
-  transition:
-    background-color 0.6s ease,
-    transform 0.6s ease;
+  transition: background-color 0.6s ease, transform 0.6s ease;
 }
 
 .tab-button.active {
@@ -196,9 +192,7 @@ body {
   margin: 1vh;
   align-items: center;
   justify-content: center;
-  transition:
-    transform 0.3s,
-    background-color 0.3s;
+  transition: transform 0.3s, background-color 0.3s;
   background-color: var(--accent);
   animation: fadeIn 2s ease;
 }
@@ -234,13 +228,10 @@ select.button {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
-
   font-family: "M PLUS Rounded 1c", system-ui;
   color: var(--fg);
   cursor: pointer;
-  transition:
-    background-color 0.7s ease,
-    transform 0.6s ease;
+  transition: background-color 0.7s ease, transform 0.6s ease;
   z-index: 10000;
   margin-bottom: 2%;
   animation: slideInDown 1s ease;
@@ -262,7 +253,6 @@ select.button:active {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
-
   font-family: "M PLUS Rounded 1c", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -275,9 +265,7 @@ select.button:active {
   color: var(--fg);
   font-size: small;
   cursor: pointer;
-  transition:
-    background-color 0.7s ease,
-    transform 0.6s ease;
+  transition: background-color 0.7s ease, transform 0.6s ease;
   animation: slideInDown 1s ease;
 }
 
@@ -384,7 +372,6 @@ select.button:active {
   border-radius: 30px;
   background-color: transparent;
   animation: fadeIn 2s ease;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -397,11 +384,8 @@ select.button:active {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
-
   font-family: "M PLUS Rounded 1c", system-ui;
-  transition:
-    transform 0.5s,
-    opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
   display: flex;
   width: 30%;
   aspect-ratio: 2 / 1;
@@ -420,11 +404,8 @@ select.button:active {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
-
   font-family: "M PLUS Rounded 1c", system-ui;
-  transition:
-    transform 0.5s,
-    opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -443,7 +424,6 @@ select.button:active {
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
-
   width: 40%;
   padding: 5%;
 }
@@ -537,7 +517,6 @@ h3 {
 
   .system_info {
     width: 80%;
-    padding: 5%;
   }
 }
 
