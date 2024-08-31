@@ -95,15 +95,17 @@ def gpu_temp():
         else:
             return jsonify(gpu_temp="None", gpu_freq="None")
     except Exception as e:
-        return jsonify(gpu_temp="N/A", error=str(e))
+        return jsonify(gpu_temp="None", gpu_freq="None", error=str(e))
 
-@app.route('/api/disk_temperature', methods=['GET'])
+
+@app.route("/api/disk_temperature", methods=["GET"])
 def disk_temperature():
     disk_temp = get_disk_temperature()
     if disk_temp:
         return jsonify(disk_temp)
     else:
         return jsonify(None)
+
 
 @app.route("/api/battery", methods=["GET"])
 def battery_status():
