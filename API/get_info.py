@@ -15,7 +15,7 @@ def get_uptime():
     with open("/proc/uptime", "r") as f:
         uptime_seconds = float(f.readline().split()[0])
 
-    return f"{round(uptime_seconds // 86400)}d {round(uptime_seconds % 86400 // 3600)}h {round(uptime_seconds % 3600 // 60)}m {uptime_seconds % 60:.0f}s"
+    return f"{round(uptime_seconds // 86400)}days {round(uptime_seconds % 86400 // 3600)}hours {round(uptime_seconds % 3600 // 60)}minutes"
 
 def get_ip_address():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
@@ -32,11 +32,10 @@ def model_info():
     return f"{product_info} {version_info}" if version_info else product_info
 
 def fetch_cpu_info():
-    cpu_count = len(run_command("ls /sys/class/cpuid/ | sort").splitlines())
-    cpu_info = run_command("grep 'model name' /proc/cpuinfo").split(":")[1].strip()
+    cpu_info = run_command("cat /proc/cpuinfo | grep 'model name' | uniq | cut -d: -f2")
     cpu_max_freq = int(run_command("cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq")) / 1000
     cpu_freq_info = f"{cpu_max_freq:.3f}MHz" if cpu_max_freq < 1000 else f"{cpu_max_freq / 1000:.3f}GHz"
-    return f"{cpu_info} ({cpu_count}) @ {cpu_freq_info}"
+    return f"{cpu_info} @ {cpu_freq_info}"
 
 def gpu_info():
     if sys.platform == "darwin":
@@ -46,3 +45,7 @@ def gpu_info():
         return truncate_string(run_command("lspci | grep -i vga").split(":")[2].split("(")[0].strip(), 50)
 
     return ""
+
+def fetch_arch():
+    arch = platform.machine()
+    return f"{arch}"

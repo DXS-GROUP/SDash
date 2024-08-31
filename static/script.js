@@ -119,16 +119,18 @@ const updateSystemInfo = async () => {
             deviceName: document.getElementById('device_name'),
             model: document.getElementById('model'),
             cpu: document.getElementById('cpu'),
+            cpuArch: document.getElementById('cpu_arch'),
             gpu: document.getElementById('gpu'),
         };
 
-        systemInfoElements.uptime.innerText = "UPTIME: " + data.device_uptime;
-        systemInfoElements.ip.innerText = "DEVICE IP: " + data.device_ip;
-        systemInfoElements.platform.innerText = "SYSTEM: " + data.sys_platform;
-        systemInfoElements.deviceName.innerText = "DEVICE: " + data.device_name;
-        systemInfoElements.model.innerText = "MODEL: " + data.sys_model;
-        systemInfoElements.cpu.innerText = "DEVICE CPU: " + data.sys_cpu;
-        systemInfoElements.gpu.innerText = "DEVICE GPU: " + data.sys_gpu;
+        systemInfoElements.platform.innerText = data.sys_platform;
+        systemInfoElements.uptime.innerHTML = data.device_uptime;
+        systemInfoElements.ip.innerText = data.device_ip;
+        systemInfoElements.deviceName.innerText = data.device_name;
+        systemInfoElements.model.innerText = data.sys_model;
+        systemInfoElements.cpu.innerText = data.sys_cpu;
+        systemInfoElements.gpu.innerText = data.sys_gpu;
+        systemInfoElements.cpuArch.innerText = data.cpu_arch;
     } catch (error) {
         console.error('Error updating system info:', error);
     }
