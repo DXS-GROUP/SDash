@@ -131,3 +131,8 @@ def get_user_ip():
 def navigate():
     page = request.form["page"]
     return f"Navigating to {page} page"
+
+@app.route('/get_os')
+def get_os_color():
+    os_name_str = os_name()
+    return jsonify({'os_name': os_name_str})

@@ -427,6 +427,19 @@ select.button:active {
   animation: fadeIn 1s ease forwards;
 }
 
+.system_info {
+  background: rgba(48, 52, 70, 0.49);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 2px solid rgba(48, 52, 70, 0.47);
+
+  height: auto;
+  width: 60%;
+  padding: 5%;
+}
+
 h3 {
   font-size: 13px;
   font-weight: bold;
@@ -512,6 +525,11 @@ h3 {
 
   .summary_data {
     width: 60%;
+  }
+
+  .system_info {
+    width: 80%;
+    padding: 5%;
   }
 }
 

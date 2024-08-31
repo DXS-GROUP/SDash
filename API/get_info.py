@@ -15,7 +15,7 @@ def get_uptime():
     with open("/proc/uptime", "r") as f:
         uptime_seconds = float(f.readline().split()[0])
 
-    return f"{uptime_seconds // 86400} d. {uptime_seconds % 86400 // 3600} h. {uptime_seconds % 3600 // 60} m. {uptime_seconds % 60:.0f} s."
+    return f"{round(uptime_seconds // 86400)}d {round(uptime_seconds % 86400 // 3600)}h {round(uptime_seconds % 3600 // 60)}m {uptime_seconds % 60:.0f}s"
 
 def get_ip_address():
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
