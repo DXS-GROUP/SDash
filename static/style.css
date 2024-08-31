@@ -341,6 +341,10 @@ select.button:active {
 .dock {
   align-items: center;
   display: flex;
+  position: fixed;
+  top: 1%;
+  width: 90%;
+  height: auto;
   justify-content: center;
   z-index: 56;
   animation: fadeIn 2s ease;

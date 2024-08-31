@@ -1,38 +1,36 @@
 <!doctype html>
 <html lang="en" class="html">
-<div class="logo">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SDashboard</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
     </head>
-    <body>
-        <div class="dock">
-            <select id="tab-selector" class="button" align="center" onchange="switchTab(this.value)">
-                <option value="monitor">Dashboard</option>
-                <option value="info">Info</option>
-                <option value="control">Control</option>
-            </select>
-        </div>
-        <div id="modal" class="modal">
-            <div class="modal-content" align="center">
-                <span class="close-button">&times;</span>
-                <div class="tab-buttons">
-                    <button class="tab-button active" data-tab="monitor">Dashboard</button>
-                    <button class="tab-button" data-tab="info">Info</button>
-                    <button class="tab-button" data-tab="control">Control</button>
-                </div>
-                <a href="https://github.com/SDashS/SDash">
-                    <button class="button">Source</button>
-                </a>
-                <br>
+    <div class="dock">
+        <select id="tab-selector" class="button" onchange="switchTab(this.value)">
+            <option value="monitor">Dashboard</option>
+            <option value="info">Info</option>
+            <option value="control">Control</option>
+        </select>
+    </div>
+    <div class="root">
+    <div id="modal" class="modal">
+        <div class="modal-content" align="center">
+            <span class="close-button">&times;</span>
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="monitor">Dashboard</button>
+                <button class="tab-button" data-tab="info">Info</button>
+                <button class="tab-button" data-tab="control">Control</button>
             </div>
+            <a href="https://github.com/SDashS/SDash">
+                <button class="button">Source</button>
+            </a>
+            <br>
         </div>
-
+    </div>
+    <body>
         <div class="container">
             <div id="monitor" class="tab-content active">
-                <h1 class="content-title" align="center">SDashboard</h1>
                 <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
                     <div class="cards">
                         <div id="os-logos"></div>
@@ -130,7 +128,6 @@
                 </div>
             </div>
             <div id="control" class="tab-content" align="center">
-                <h1 class="content-title" align="center">Server Control</h1>
                 <div class="p_buttons">
                     <form action="/api/actions/shutdown" method="post">
                         <button class="power_button" type="submit">
@@ -151,10 +148,9 @@
             </div>
         </div>
     </div>
+</div>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 <script src="{{ url_for('static', filename='tabs.js') }}"></script>
 <script src="{{ url_for('static', filename='bg.js') }}"></script>
 </body>
-</div>
-
 </html>
