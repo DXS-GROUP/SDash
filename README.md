@@ -43,13 +43,14 @@ python3 server.py
   
   <h3>Screenshots</h3>
   
-  <img src="imgs/1.png" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/3880543f-428f-46dd-b4c5-ed4106cb69c2" width="45%"/>
   <img src="imgs/1_.png" width="45%"/>
-  <img src="imgs/2.png" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/ce43be3c-32c1-4451-b596-fc2d0413b81d" width="45%"/>
   <img src="imgs/2_.png" width="45%"/>
-  <img src="imgs/3.png" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/f80d9367-cf7b-4983-8efb-e45cf448f9c4" width="45%"/>
   <img src="imgs/3_.png" width="45%"/>
-  <img src="imgs/4.png" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/f7f18e17-4e9d-4267-b299-37e23d5f8731" width="45%"/>
   <img src="imgs/4_.png" width="45%"/>
+
 
 </div>
