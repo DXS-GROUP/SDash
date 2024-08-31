@@ -17,6 +17,7 @@ from config import app, dictConfig
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
+
 @app.route("/api/usage")
 def usage():
     global prev_net_io, prev_time
@@ -83,7 +84,7 @@ def gpu_temp():
     try:
         pynvml.nvmlInit()
         device_count = pynvml.nvmlDeviceGetCount()
-        if device_count:
+        if device_count > 0:
             device = pynvml.nvmlDeviceGetHandleByIndex(0)
             return jsonify(
                 gpu_temp=pynvml.nvmlDeviceGetTemperature(
@@ -91,8 +92,7 @@ def gpu_temp():
                 ),
                 gpu_freq=pynvml.nvmlDeviceGetUtilizationRates(device).gpu,
             )
-        else:
-            return jsonify(gpu_temp="None", gpu_freq="None")
+        return jsonify(gpu_temp="None", gpu_freq="None")
     except Exception as e:
         return jsonify(gpu_temp="None", gpu_freq="None", error=str(e))
 
@@ -100,10 +100,7 @@ def gpu_temp():
 @app.route("/api/disk_temperature", methods=["GET"])
 def disk_temperature():
     disk_temp = get_disk_temperature()
-    if disk_temp:
-        return jsonify(disk_temp)
-    else:
-        return jsonify(None)
+    return jsonify(disk_temp) if disk_temp else jsonify(None)
 
 
 @app.route("/api/battery", methods=["GET"])
