@@ -21,9 +21,10 @@ const system_colors = {
 
 const updateIndicators = async () => {
     try {
-        const [usage, cpuTemp, userIP] = await Promise.all([
+        const [usage, cpuTemp, gpuTemp, userIP] = await Promise.all([
             fetch('/api/usage').then(response => response.json()),
             fetch('/api/cpu_temp').then(response => response.json()),
+            fetch('/api/gpu_temp').then(response => response.json()),
             fetch('/api/user_ip').then(response => response.json())
         ]);
 
@@ -31,6 +32,7 @@ const updateIndicators = async () => {
         updateSummaryTexts(usage);
         updateNetworkSpeeds(usage);
         updateCpuTemperature(cpuTemp);
+        updateGpuTemperature(gpuTemp);
         getUserIp(userIP);
     } catch (error) {
         console.error('Error updating indicators:', error);
@@ -109,6 +111,24 @@ const updateCpuTemperature = (cpuTemp) => {
     console.debug(`CPU TEMP: ${cpuTemp.cpu_temp.toFixed(1)}°C - ${(cpuTemp.cpu_freq / 1000).toFixed(1)}GHz`);
 };
 
+const updateGpuTemperature = (gpuTemp) => {
+    if (gpuTemp.gpu_temp != "None") {
+        document.getElementById('summary_data_gpu_temp_text').innerHTML = "GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz";
+        if (gpuTemp.gpu_temp > 45) {
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.warning;
+        } else if (gpuTemp.gpu_temp > 60) {
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.critical;
+        } else {
+            document.getElementById('summary_data_gpu_temp_text').style.color = "";
+        }
+    }
+    else {
+        document.getElementById('summary_data_gpu_temp_text').style.display = "None";
+    }
+
+    console.debug("GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz");
+};
+
 const updateSystemInfo = async () => {
     try {
         const data = await fetch('/api/system_info').then(response => response.json());
@@ -146,7 +166,7 @@ const fetchBatteryStatus = async () => {
         const batteryBlock = document.getElementById('battery-status');
 
         if (data.charge !== null) {
-            console.debug(`BATTERY: ${data.charge.toFixed(2)}%`);
+            console.debug(`BATTERY: ${data.charge.toFixed(2)}% `);
 
             const status = data.plugged ? "Charging" : "Not Charging";
             chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}%`;
@@ -156,7 +176,7 @@ const fetchBatteryStatus = async () => {
                 batteryProgress.style.backgroundColor = colors.accent_hover;
                 imgElement.src = "../static/icons/battery-bolt.svg";
             }
-            else{
+            else {
                 if (data.charge.toFixed(0) < 15) {
                     batteryProgress.style.backgroundColor = colors.critical;
                     imgElement.src = "../static/icons/battery-exclamation.svg";

@@ -7,7 +7,6 @@ from subprocess import DEVNULL, PIPE, Popen
 
 import psutil
 from API.func import convert_seconds_to_hhmm, truncate_string, run_command
-
 def get_uptime():
     if platform.system() != "Linux":
         return "Error."
