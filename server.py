@@ -7,8 +7,8 @@ from setproctitle import setproctitle, getproctitle
 
 from flask import Flask, jsonify, render_template, request
 from API.get_info import fetch_cpu_info, get_ip_address, get_uptime, gpu_info, model_info, os_name
-from config import *
-from API.api import *
+from config import dictConfig
+from API.api import app
 
 @app.route("/")
 def index():

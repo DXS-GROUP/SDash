@@ -47,6 +47,16 @@ body {
   animation: fadeIn 2s ease;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.align-left {
+  text-align: left;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -182,7 +192,8 @@ body {
   margin-top: 50vh;
   display: flex;
   flex-direction: column;
-  margin: 1vh;
+  margin-left: 0.5vh;
+  margin-right: 0.5vh;
 }
 
 .power_button {
@@ -398,7 +409,6 @@ select.button:active {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  margin-bottom: 20px;
   margin: 10px;
   opacity: 0;
   animation: fadeIn 1s ease forwards;

@@ -163,42 +163,44 @@ const fetchBatteryStatus = async () => {
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
         const imgElement = document.querySelector('#battery-status img');
-        const batteryBlock = document.getElementById('battery-status');
 
         if (data.charge !== null) {
-            console.debug(`BATTERY: ${data.charge.toFixed(2)}% `);
+            const charge = data.charge.toFixed(2);
+            console.debug(`BATTERY: ${charge}%`);
 
-            const status = data.plugged ? "Charging" : "Not Charging";
-            chargeElement.innerHTML = `BATTERY USAGE: <br>${data.charge.toFixed(2)}%`;
-            batteryProgress.style.width = `${data.charge}%`;
+            chargeElement.innerHTML = `BATTERY USAGE: <br>${charge}%`;
+            batteryProgress.style.width = `${charge}%`;
 
             if (data.plugged) {
                 batteryProgress.style.backgroundColor = colors.accent_hover;
                 imgElement.src = "../static/icons/battery-bolt.svg";
-            }
-            else {
-                if (data.charge.toFixed(0) < 15) {
-                    batteryProgress.style.backgroundColor = colors.critical;
-                    imgElement.src = "../static/icons/battery-exclamation.svg";
-                } else if (data.charge.toFixed(0) < 20) {
-                    batteryProgress.style.backgroundColor = colors.warning;
-                    imgElement.src = "../static/icons/battery-exclamation.svg";
-                } else if (data.charge.toFixed(0) > 90) {
-                    batteryProgress.style.backgroundColor = colors.normal;
-                    imgElement.src = "../static/icons/battery_full.svg";
-                } else {
-                    batteryProgress.style.backgroundColor = colors.normal;
-                    imgElement.src = "../static/icons/battery_full.svg";
-                }
+            } else {
+                setBatteryStatus(charge, batteryProgress, imgElement);
             }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
-            // batteryBlock.style.display = 'none';
         }
     } catch (error) {
         console.error('Error fetching battery status:', error);
     }
-};
+}
+
+const setBatteryStatus = (charge, batteryProgress, imgElement) => {
+    let backgroundColor;
+    let imgSrc = "../static/icons/battery_full.svg";
+
+    if (charge < 15) {
+        backgroundColor = colors.critical;
+        imgSrc = "../static/icons/battery-exclamation.svg";
+    } else if (charge < 20) {
+        backgroundColor = colors.warning;
+    } else {
+        backgroundColor = colors.normal;
+    }
+
+    batteryProgress.style.backgroundColor = backgroundColor;
+    imgElement.src = imgSrc;
+}
 
 fetch('/get_os')
     .then(response => response.json())
@@ -206,8 +208,8 @@ fetch('/get_os')
         const main_block = document.getElementsByClassName('html')[0];
 
         if (main_block) {
-            var osName = data.os_name;
-            var logoColor = 'gray';
+            const osName = data.os_name;
+            let logoColor = 'gray';
 
             if (osName.toLowerCase().includes('arch')) {
                 logoColor = system_colors.arch;
