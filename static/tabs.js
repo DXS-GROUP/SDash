@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabButtons = document.getElementsByClassName('tab-button');
 
     document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey && event.shiftKey && event.key === 'C') {
+        if (event.shiftKey && event.key === 'C') {
             modal.style.display = 'block';
         }
     });

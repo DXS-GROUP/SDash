@@ -38,7 +38,7 @@ python3 server.py
 </div>
 
   <h3>Usage</h3>
-  Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   Ctrl   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
+  Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
   
   <h3>Screenshots</h3>
   

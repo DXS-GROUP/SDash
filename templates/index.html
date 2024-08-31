@@ -1,147 +1,160 @@
 <!doctype html>
 <html lang="en" class="html">
-  <div class="root">
+<div class="logo">
     <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>SDashboard</title>
-      <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='style.css') }}"
-      />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SDashboard</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
     </head>
     <body>
-      <div class="dock">
-        <select
-          id="tab-selector"
-          class="button"
-          align="center"
-          onchange="switchTab(this.value)"
-        >
-          <option value="monitor">Dashboard</option>
-          <option value="info">Info</option>
-          <option value="control">Control</option>
-        </select>
-      </div>
-      <div id="modal" class="modal">
-          <div class="modal-content" align="center">
-              <span class="close-button">&times;</span>
-              <div class="tab-buttons">
-                  <button class="tab-button active" data-tab="monitor">Dashboard</button>
-                  <button class="tab-button" data-tab="info">Info</button>
-                  <button class="tab-button" data-tab="control">Control</button>
-              </div>
-              <a href="https://github.com/SDashS/SDash"><button class="button">Source</button></a><br>
-          </div>
-      </div>
+        <div class="dock">
+            <select id="tab-selector" class="button" align="center" onchange="switchTab(this.value)">
+                <option value="monitor">Dashboard</option>
+                <option value="info">Info</option>
+                <option value="control">Control</option>
+            </select>
+        </div>
+        <div id="modal" class="modal">
+            <div class="modal-content" align="center">
+                <span class="close-button">&times;</span>
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="monitor">Dashboard</button>
+                    <button class="tab-button" data-tab="info">Info</button>
+                    <button class="tab-button" data-tab="control">Control</button>
+                </div>
+                <a href="https://github.com/SDashS/SDash">
+                    <button class="button">Source</button>
+                </a>
+                <br>
+            </div>
+        </div>
 
-      <div class="container">
-        <div id="monitor" class="tab-content active">
-          <h1 class="content-title" align="center">SDashboard</h1>
-          <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
-            <div class="cards">
-              <div class="summary_data" align="center" id="summary_data_cpu">
-                <img src="../static/icons/cpu.svg" alt="cpu"/>
-                <h3 id="summary_data_cpu_text"></h3>
-                <div class="progress-bar" align="left">
-                  <div class="progress" id="cpu-progress"></div>
-                  <span id="cpu-value"></span>
+        <div class="container">
+            <div id="monitor" class="tab-content active">
+                <h1 class="content-title" align="center">SDashboard</h1>
+                <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
+                    <div class="cards">
+                        <div id="os-logos"></div>
+                        <div class="summary_data" align="center" id="summary_data_cpu">
+                            <img src="../static/icons/cpu.svg" alt="cpu" />
+                            <h3 id="summary_data_cpu_text"></h3>
+                            <div class="progress-bar" align="left">
+                                <div class="progress" id="cpu-progress"></div>
+                                <span id="cpu-value"></span>
+                            </div>
+                        </div>
+                        <div class="summary_data" align="center" id="summary_data_ram">
+                            <img src="../static/icons/ram.svg" alt="ram" />
+                            <h3 id="summary_data_ram_text"></h3>
+                            <div class="progress-bar" align="left">
+                                <div class="progress" id="ram-progress"></div>
+                                <span id="ram-value"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards">
+                        <div class="summary_data" align="center" id="summary_data_disk">
+                            <img src="../static/icons/storage.svg" alt="storage" />
+                            <h3 id="summary_data_disk_text"></h3>
+                            <div class="progress-bar" align="left">
+                                <div class="progress" id="disk-progress"></div>
+                                <span id="disk-value"></span>
+                            </div>
+                        </div>
+                        <div id="battery-status" class="summary_data" align="center">
+                            <img src="../static/icons/battery_full.svg" alt="battery" />
+                            <h3 id="charge"></h3>
+                            <div class="progress-bar" align="left">
+                                <div class="progress" id="battery-progress"></div>
+                                <span id="battery-value"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="summary_data" align="center" id="summary_data_ram">
-                <img src="../static/icons/ram.svg" alt="ram"/>
-                <h3 id="summary_data_ram_text"></h3>
-                <div class="progress-bar" align="left">
-                  <div class="progress" id="ram-progress"></div>
-                  <span id="ram-value"></span>
-                </div>
-              </div>
-            </div>
-            <div class="cards">
-              <div class="summary_data" align="center" id="summary_data_disk">
-                <img src="../static/icons/storage.svg" alt="storage"/>
-                <h3 id="summary_data_disk_text"></h3>
-                <div class="progress-bar" align="left">
-                  <div class="progress" id="disk-progress"></div>
-                  <span id="disk-value"></span>
-                </div>
-              </div>
-              <div id="battery-status" class="summary_data" align="center">
-                <img src="../static/icons/battery_full.svg" alt="battery"/>
-                <h3 id="charge"></h3>
-                <div class="progress-bar" align="left">
-                  <div class="progress" id="battery-progress"></div>
-                  <span id="battery-value"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <br />
-          <div
-            style="
+                <br />
+                <div style="
               display: flex;
               align-items: center;
               justify-content: center;
               flex-direction: column;
-            "
-          >
-            <div class="summary_data_2" id="summary_data_2">
-              <div>
-                <img src="../static/icons/arrow.svg" alt="net"/>
-                <h3 style="width: 100%;" align="right">NETWORK</h3>
-              </div>
-              <h3 id="upload_speed">UPLOAD SPEED</h3>
-              <h3 id="download_speed">DOWNLOAD SPEED</h3>
+            ">
+                    <div class="summary_data_2" id="summary_data_2">
+                        <div>
+                            <img src="../static/icons/arrow.svg" alt="net" />
+                            <h3 style="width: 100%;" align="right">NETWORK</h3>
+                        </div>
+                        <h3 id="upload_speed">UPLOAD SPEED</h3>
+                        <h3 id="download_speed">DOWNLOAD SPEED</h3>
+                    </div>
+                    <div id="summary_temp_data" class="summary_data_2">
+                        <div>
+                            <img src="../static/icons/temp.svg" alt="temp" />
+                            <h3 style="width: 100%;" align="right">TEMPERATURE</h3>
+                        </div>
+                        <h3 id="summary_data_cpu_temp_text"></h3>
+                        <h3 id="summary_data_gpu_temp_text"></h3>
+                    </div>
+                </div>
             </div>
-            <div id="summary_temp_data" class="summary_data_2">
-              <div>
-                <img src="../static/icons/temp.svg" alt="temp"/>
-                <h3 style="width: 100%;" align="right">TEMPERATURE</h3>
-              </div>
-              <h3 id="summary_data_cpu_temp_text"></h3>
-              <h3 id="summary_data_gpu_temp_text"></h3>
+            <div id="info" class="tab-content" align="center">
+                <div class="system_info" id="system_info">
+                    <p>
+                        <a id="device_name" style="font-size: 40px; text-decoration: underline;"></a>
+                    </p>
+                    <p>
+                        <a id="platform" style="font-size: 30px;"></a>
+                    </p>
+                    <br />
+                    <br />
+                    <div style="margin-left: 10%;" align="left">
+                        <p>UPTIME:
+                            <a id="device_uptime" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                        <p>IP:
+                            <a id="device_ip" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                        <p>MODEL:
+                            <a id="model" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                        <p>ARCH:
+                            <a id="cpu_arch" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                        <p>CPU:
+                            <a id="cpu" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                        <p>GPU:
+                            <a id="gpu" style="font-size: 15px; font-weight: bold;"></a>
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
-        </div>
-        <div id="info" class="tab-content" align="center">
-          <div class="system_info" id="system_info">
-            <p><a id="device_name" style="font-size: 40px; text-decoration: underline;"></a></p>
-            <p><a id="platform" style="font-size: 30px;"></a></p>
-            <br /><br />
-            <div style="margin-left: 10%;" align="left">
-              <p>UPTIME: <a id="device_uptime" style="font-size: 15px; font-weight: bold;"></a></p>
-              <p>IP: <a id="device_ip" style="font-size: 15px; font-weight: bold;"></a></p>
-              <p>MODEL: <a id="model" style="font-size: 15px; font-weight: bold;"></a></p>
-              <p>ARCH: <a id="cpu_arch" style="font-size: 15px; font-weight: bold;"></a></p>
-              <p>CPU: <a id="cpu" style="font-size: 15px; font-weight: bold;"></a></p>
-              <p>GPU: <a id="gpu" style="font-size: 15px; font-weight: bold;"></a></p>
+            <div id="control" class="tab-content" align="center">
+                <h1 class="content-title" align="center">Server Control</h1>
+                <div class="p_buttons">
+                    <form action="/api/actions/shutdown" method="post">
+                        <button class="power_button" type="submit">
+                            <img src="../static/icons/off.svg" alt="" />
+                        </button>
+                    </form>
+                    <form action="/api/actions/reboot" method="post">
+                        <button class="power_button" type="submit">
+                            <img src="../static/icons/reboot.svg" alt="" />
+                        </button>
+                    </form>
+                    <form action="/api/actions/sleep" method="post">
+                        <button class="power_button" type="submit">
+                            <img src="../static/icons/sleep.svg" alt="" />
+                        </button>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-        <div id="control" class="tab-content" align="center">
-          <h1 class="content-title" align="center">Server Control</h1>
-          <div class="p_buttons">
-            <form action="/api/actions/shutdown" method="post">
-              <button class="power_button" type="submit">
-                <img src="../static/icons/off.svg" alt=""/>
-              </button>
-            </form>
-            <form action="/api/actions/reboot" method="post">
-              <button class="power_button" type="submit">
-                <img src="../static/icons/reboot.svg" alt=""/>
-              </button>
-            </form>
-            <form action="/api/actions/sleep" method="post">
-              <button class="power_button" type="submit">
-                <img src="../static/icons/sleep.svg" alt=""/>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
-      <script src="{{ url_for('static', filename='tabs.js') }}"></script>
-    </body>
-  </div>
+    </div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='tabs.js') }}"></script>
+<script src="{{ url_for('static', filename='bg.js') }}"></script>
+</body>
+</div>
+
 </html>

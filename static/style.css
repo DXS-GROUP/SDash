@@ -14,20 +14,9 @@
 html {
   height: 100%;
   width: 100%;
-  display: inline;
-
-  background:
-    radial-gradient(
-        circle at 5% 5%,
-        var(--accent-pressed) 1%,
-        transparent 15.5%
-      )
-      fixed,
-    radial-gradient(
-      circle at 100% 90%,
-      var(--accent-pressed) 30%,
-      var(--bg) 40.5%
-    );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
@@ -45,6 +34,9 @@ body {
   color: var(--fg);
   font-size: small;
   animation: fadeIn 2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .center {
@@ -189,7 +181,6 @@ body {
 }
 
 .p_buttons {
-  margin-top: 50vh;
   display: flex;
   flex-direction: column;
   margin-left: 0.5vh;
@@ -389,6 +380,10 @@ select.button:active {
   border-radius: 30px;
   background-color: transparent;
   animation: fadeIn 2s ease;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .summary_data {
@@ -445,7 +440,6 @@ select.button:active {
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid rgba(48, 52, 70, 0.47);
 
-  height: auto;
   width: 40%;
   padding: 5%;
 }
