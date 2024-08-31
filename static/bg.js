@@ -62,7 +62,7 @@ fetch('/get_os')
             console.debug(logoPath)
             console.debug(logoColor)
 
-            const backgroundStyle = "radial-gradient(circle at 5% 5%," + logoColor + " 1%,transparent 15.5%)fixed,radial-gradient(circle at 100% 90%," + logoColor + " 30%," + colors.bg + " 40.5%)";
+            const backgroundStyle = "" + colors.bg + "";
 
             main_block.style.background = backgroundStyle;
             system_block.style.backgroundImage = `url('${logoPath}')`;
