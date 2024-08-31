@@ -9,7 +9,6 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
       />
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </head>
     <body>
       <div class="dock">
@@ -19,9 +18,9 @@
           align="center"
           onchange="switchTab(this.value)"
         >
-          <option align="center" value="monitor">Dashboard</option>
-          <option align="center" value="info">Info</option>
-          <option align="center" value="control">Control</option>
+          <option value="monitor">Dashboard</option>
+          <option value="info">Info</option>
+          <option value="control">Control</option>
         </select>
       </div>
       <div id="modal" class="modal">
@@ -42,7 +41,7 @@
           <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
             <div class="cards">
               <div class="summary_data" align="center" id="summary_data_cpu">
-                <img src="../static/icons/cpu.svg" />
+                <img src="../static/icons/cpu.svg" alt="cpu"/>
                 <h3 id="summary_data_cpu_text"></h3>
                 <div class="progress-bar" align="left">
                   <div class="progress" id="cpu-progress"></div>
@@ -50,7 +49,7 @@
                 </div>
               </div>
               <div class="summary_data" align="center" id="summary_data_ram">
-                <img src="../static/icons/ram.svg" />
+                <img src="../static/icons/ram.svg" alt="ram"/>
                 <h3 id="summary_data_ram_text"></h3>
                 <div class="progress-bar" align="left">
                   <div class="progress" id="ram-progress"></div>
@@ -60,7 +59,7 @@
             </div>
             <div class="cards">
               <div class="summary_data" align="center" id="summary_data_disk">
-                <img src="../static/icons/storage.svg" />
+                <img src="../static/icons/storage.svg" alt="storage"/>
                 <h3 id="summary_data_disk_text"></h3>
                 <div class="progress-bar" align="left">
                   <div class="progress" id="disk-progress"></div>
@@ -68,7 +67,7 @@
                 </div>
               </div>
               <div id="battery-status" class="summary_data" align="center">
-                <img src="../static/icons/battery_full.svg" />
+                <img src="../static/icons/battery_full.svg" alt="battery"/>
                 <h3 id="charge"></h3>
                 <div class="progress-bar" align="left">
                   <div class="progress" id="battery-progress"></div>
@@ -88,7 +87,7 @@
           >
             <div class="summary_data_2" id="summary_data_2">
               <div>
-                <img src="../static/icons/arrow.svg" />
+                <img src="../static/icons/arrow.svg" alt="net"/>
                 <h3 style="width: 100%;" align="right">NETWORK</h3>
               </div>
               <h3 id="upload_speed">UPLOAD SPEED</h3>
@@ -96,7 +95,7 @@
             </div>
             <div id="summary_temp_data" class="summary_data_2">
               <div>
-                <img src="../static/icons/temp.svg" />
+                <img src="../static/icons/temp.svg" alt="temp"/>
                 <h3 style="width: 100%;" align="right">TEMPERATURE</h3>
               </div>
               <h3 id="summary_data_cpu_temp_text"></h3>
@@ -125,17 +124,17 @@
           <div class="p_buttons">
             <form action="/api/actions/shutdown" method="post">
               <button class="power_button" type="submit">
-                <img src="../static/icons/off.svg" />
+                <img src="../static/icons/off.svg" alt=""/>
               </button>
             </form>
             <form action="/api/actions/reboot" method="post">
               <button class="power_button" type="submit">
-                <img src="../static/icons/reboot.svg" />
+                <img src="../static/icons/reboot.svg" alt=""/>
               </button>
             </form>
             <form action="/api/actions/sleep" method="post">
               <button class="power_button" type="submit">
-                <img src="../static/icons/sleep.svg" />
+                <img src="../static/icons/sleep.svg" alt=""/>
               </button>
             </form>
           </div>

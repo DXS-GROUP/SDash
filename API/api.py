@@ -17,7 +17,6 @@ from config import app, dictConfig
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
-
 @app.route("/api/usage")
 def usage():
     global prev_net_io, prev_time
