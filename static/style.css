@@ -13,6 +13,7 @@
 
 html {
   width: 100%;
+  height: auto;
   background-color: var(--bg);
   display: flex;
   scrollbar-color: var(--accent-hover) var(--bg);
@@ -24,6 +25,7 @@ html {
 
 body {
   width: 100%;
+  height: 100%;
   overflow-y: scroll;
   margin: 0;
   padding: 0;
@@ -426,7 +428,6 @@ select.button:active {
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--accent);
   width: 60%;
-  height: 100%;
   padding: 5%;
 }
 
@@ -472,7 +473,6 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: auto;
   font-family: "M PLUS Rounded 1c", system-ui;
   animation: fadeIn 2s ease;
 }
@@ -485,13 +485,9 @@ h3 {
   transform: scale(1.06);
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .cards {
     flex-direction: column;
-  }
-
-  .system_info {
-    width: 90%;
   }
 
   .summary_data img {
@@ -515,9 +511,9 @@ h3 {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (max-width: 1500px) and (min-width: 800px) {
   html {
-    height: 100%;
+    height: auto;
     flex-direction: column;
     justify-content: center;
   }
@@ -543,7 +539,13 @@ h3 {
   }
 }
 
-@media screen and (min-width: 1700px) {
+@media screen and (min-width: 1500px) {
+  html {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .summary_data {
     width: 20%;
   }
