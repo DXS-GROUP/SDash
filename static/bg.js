@@ -62,12 +62,20 @@ fetch('/get_os')
             console.debug(logoPath)
             console.debug(logoColor)
 
-            main_block.style.backgroundImage = `url('${logoPath}')`;
-            main_block.style.backgroundRepeat = 'no-repeat';
-            main_block.style.backgroundPosition = 'center';
-            main_block.style.backgroundSize = '25%';
+            fetch(logoPath)
+                .then(response => response.text())
+                .then(svg => {
+                    const pathElement = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('path'); 
 
-            document.documentElement.style.setProperty('--accent-hover', logoColor);
+                    pathElement.style.fill = logoColor;
+
+                    main_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+                    main_block.style.backgroundRepeat = 'no-repeat';
+                    main_block.style.backgroundPosition = 'center';
+                    main_block.style.backgroundSize = '25%';
+
+                    document.documentElement.style.setProperty('--accent-hover', logoColor);
+                });
         } else {
             console.error("Element with class 'html' not found.");
         }

@@ -366,7 +366,7 @@ select.button:active {
 }
 
 .summary_data {
-  background-color: var(--accent)  40%;
+  background-color: var(--accent)  60%;
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -386,7 +386,7 @@ select.button:active {
 }
 
 .summary_data_2 {
-  background-color: var(--accent)  40%;
+  background-color: var(--accent)  60%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
@@ -406,7 +406,7 @@ select.button:active {
 }
 
 .system_info {
-  background-color: var(--accent) 40%;
+  background-color: var(--accent) 60%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
