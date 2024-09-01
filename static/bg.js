@@ -65,11 +65,11 @@ fetch('/get_os')
             fetch(logoPath)
                 .then(response => response.text())
                 .then(svg => {
-                    const pathElement = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('path'); 
+                    const pathElement = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('path');
 
                     pathElement.style.fill = logoColor;
 
-                    main_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+                    // main_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
                     main_block.style.backgroundRepeat = 'no-repeat';
                     main_block.style.backgroundPosition = 'center';
                     main_block.style.backgroundSize = '25%';
