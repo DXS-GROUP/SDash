@@ -42,12 +42,12 @@ python3 server.py
   Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
   
   <h3>Screenshots</h3>
-  
-  <img src="imgs/img_1.png" width="90%"/>
-  <img src="imgs/img_2.png" width="90%"/>
-  <img src="imgs/img_3.png" width="90%"/>
-  <img src="imgs/img_4.png" width="90%"/>
-  <img src="imgs/img_5.png" width="90%"/>
-  <img src="imgs/img_6.png" width="90%"/>
+
+![img_1](https://github.com/user-attachments/assets/0f62f946-9711-49a4-be9c-11551288c98f)
+![img_2](https://github.com/user-attachments/assets/aacf0536-f3bf-48b8-8b8c-ca4b3b102fc1)
+![img_3](https://github.com/user-attachments/assets/b74d5c71-310f-48ed-b595-042e34f7fbd6)
+![img_4](https://github.com/user-attachments/assets/b7fb9d13-bc7c-41ed-be2e-b9e1dfce78b0)
+![img_5](https://github.com/user-attachments/assets/73c92807-b688-4512-aca3-2cbce558b6b6)
+![img_6](https://github.com/user-attachments/assets/62d0c382-1c3f-44d0-a3a7-832d9fea200e)
 
 </div>
