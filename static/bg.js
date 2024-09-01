@@ -15,8 +15,6 @@ fetch('/get_os')
     .then(data => {
         const main_block = document.getElementsByClassName('html')[0];
         const system_block = document.getElementById('system_info');
-        const block = document.getElementById('summary_data');
-        const block_2 = document.getElementById('summary_data_2');
 
         if (main_block) {
             const osName = data.os_name;
