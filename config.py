@@ -7,8 +7,6 @@ from flask import Flask
 home_dir = os.path.expanduser("~")
 log_file_path = os.path.join(home_dir, "logs/ServerPanel.log")
 
-app = Flask(__name__)
-
 dictConfig(
     {
         "version": 1,

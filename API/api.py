@@ -12,7 +12,9 @@ from flask import Flask, jsonify, redirect, render_template, request
 from API.func import convert_seconds_to_hhmm
 from API.get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
                           get_uptime, gpu_info, model_info, os_name)
-from config import app, dictConfig
+from config import dictConfig
+
+app = Flask(__name__)
 
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
@@ -145,3 +147,13 @@ def navigate():
 def get_os_color():
     os_name_str = os_name()
     return jsonify({"os_name": os_name_str})
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template("error.html"), 404
