@@ -1,11 +1,11 @@
 const colors = {
-    bg: "#232634",
-    fg: "#c6d0f5",
-    accent: "#303446",
+    bg: "#181926",
+    fg: "#cad3f5",
+    accent: "#24273a",
     accent_hover: "#ca9ee6",
-    critical: "#e78284",
+    critical: "#ed8796",
     warning: "#e5c890",
-    normal: "#a6d189"
+    normal: "#a6da95"
 };
 
 const updateIndicators = async () => {

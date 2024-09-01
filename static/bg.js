@@ -1,13 +1,13 @@
 const system_colors = {
-    manjaro: "#50FA7B",
-    arch: "#8BE9FD",
-    kali: "#6272A4",
-    endevaour: "#BD93F9",
-    centos: "#F1FA8C",
-    debian: "#FF5555",
-    ubuntu: "#FFB86C",
-    suse: "#50FA7B",
-    parrot: "#191849"
+    manjaro: "#a6d189",
+    arch: "#babbf1",
+    kali: "#babbf1",
+    endevaour: "#ca9ee6",
+    centos: "#e5c890",
+    debian: "#e78284",
+    ubuntu: "#e5c890",
+    suse: "#a6d189",
+    parrot: "#ca9ee6"
 }
 
 fetch('/get_os')
@@ -62,13 +62,20 @@ fetch('/get_os')
             console.debug(logoPath)
             console.debug(logoColor)
 
-            const backgroundStyle = "radial-gradient(circle at 5% 5%," + logoColor + " 1%,transparent 15.5%)fixed,radial-gradient(circle at 100% 90%," + logoColor + " 30%," + colors.bg + " 40.5%)";
+            fetch(logoPath)
+                .then(response => response.text())
+                .then(svg => {
+                    const pathElement = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('path'); 
 
-            main_block.style.background = backgroundStyle;
-            system_block.style.backgroundImage = `url('${logoPath}')`;
-            system_block.style.backgroundRepeat = 'no-repeat';
-            system_block.style.backgroundPosition = 'center';
-            system_block.style.backgroundSize = '30%';
+                    pathElement.style.fill = logoColor;
+
+                    main_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+                    main_block.style.backgroundRepeat = 'no-repeat';
+                    main_block.style.backgroundPosition = 'center';
+                    main_block.style.backgroundSize = '25%';
+
+                    document.documentElement.style.setProperty('--accent-hover', logoColor);
+                });
         } else {
             console.error("Element with class 'html' not found.");
         }

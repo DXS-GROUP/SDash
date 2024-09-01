@@ -1,22 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #232634;
-  --fg: #c6d0f5;
-  --accent: #303446;
+  --bg: #181926;
+  --fg: #cad3f5;
+  --accent: #24273a;
   --accent-hover: #ca9ee6;
   --accent-pressed: #babbf1;
-  --critical: #e78284;
+  --critical: #ed8796;
   --warning: #e5c890;
-  --normal: #a6d189;
+  --normal: #a6da95;
 }
 
 html {
-  height: 100%;
   width: 100%;
+  background-color: var(--bg);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
   background-attachment: fixed;
@@ -25,6 +23,7 @@ html {
 }
 
 body {
+  width: 100%;
   overflow-y: scroll;
   margin: 0;
   padding: 0;
@@ -63,7 +62,7 @@ body {
 .modal-content {
   background-color: var(--bg);
   margin: 15% auto;
-  border: 0px solid var(--accent-pressed);
+  border: 2px solid var(--accent);
   width: 50%;
   padding: 20px;
   border-radius: 20px;
@@ -95,7 +94,7 @@ body {
 .tab-button {
   background-color: var(--accent-pressed);
   color: var(--bg);
-  border: none;
+  border: 2px solid var(--accent);
   outline: none;
   cursor: pointer;
   padding: 10px 20px;
@@ -110,15 +109,6 @@ body {
 
 .tab-button:hover {
   transform: scale(1.05);
-}
-
-.context-menu {
-  display: none;
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
 }
 
 .context-menu ul {
@@ -186,14 +176,14 @@ body {
 .power_button {
   height: 12vh;
   aspect-ratio: 1 / 1;
-  border: none;
+  border: 2px solid var(--accent);
   border-radius: 10px;
   display: block;
   margin: 1vh;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s, background-color 0.3s;
-  background-color: var(--accent);
+  background-color: var(--accent)  40%;
   animation: fadeIn 2s ease;
 }
 
@@ -222,12 +212,12 @@ p {
 }
 
 select.button {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent)  40%;
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid var(--accent);
   font-family: "M PLUS Rounded 1c", system-ui;
   color: var(--fg);
   cursor: pointer;
@@ -247,12 +237,13 @@ select.button:active {
 }
 
 .button {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent-pressed);
+  color: var(--bg);
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid var(--accent);
   font-family: "M PLUS Rounded 1c", system-ui;
   font-weight: 400;
   font-style: normal;
@@ -262,7 +253,6 @@ select.button:active {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 0.5vh;
-  color: var(--fg);
   font-size: small;
   cursor: pointer;
   transition: background-color 0.7s ease, transform 0.6s ease;
@@ -271,7 +261,7 @@ select.button:active {
 
 .button:hover {
   background-color: var(--accent-hover);
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .button:active {
@@ -329,9 +319,8 @@ select.button:active {
 .dock {
   align-items: center;
   display: flex;
-  position: fixed;
-  top: 1%;
-  width: 90%;
+  margin-top: 1%;
+  width: 100%;
   height: auto;
   justify-content: center;
   z-index: 56;
@@ -368,7 +357,6 @@ select.button:active {
   width: 80%;
   height: auto;
   margin-left: 10%;
-  display: block;
   border-radius: 30px;
   background-color: transparent;
   animation: fadeIn 2s ease;
@@ -378,12 +366,12 @@ select.button:active {
 }
 
 .summary_data {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent)  60%;
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid var(--accent);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition: transform 0.5s, opacity 0.5s;
   display: flex;
@@ -394,16 +382,16 @@ select.button:active {
   padding: 10px;
   margin: 10px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
 .summary_data_2 {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent)  60%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid rgba(48, 52, 70, 0.47);
+  border: 2px solid var(--accent);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition: transform 0.5s, opacity 0.5s;
   display: flex;
@@ -414,17 +402,18 @@ select.button:active {
   padding: 10px;
   margin: 10px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
 .system_info {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent) 60%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid rgba(48, 52, 70, 0.47);
-  width: 40%;
+  border: 2px solid var(--accent);
+  width: 60%;
+  height: 100%;
   padding: 5%;
 }
 
@@ -483,24 +472,17 @@ h3 {
   transform: scale(1.06);
 }
 
-@media screen and (max-width: 599px) {
-  .system_block {
-    width: 95%;
+@media screen and (max-width: 700px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  .system_info {
+    width: 90%;
   }
 
   .summary_data img {
     width: 15%;
-  }
-
-  .container {
-    margin-top: 0.2%;
-    margin-bottom: 0.2%;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    width: 96%;
-    height: auto;
-    margin-left: 2%;
-    display: block;
   }
 
   .button {
@@ -508,19 +490,25 @@ h3 {
   }
 
   .summary_data_2 {
-    width: 60%;
+    width: 85%;
   }
 
   .summary_data {
-    width: 60%;
+    width: 85%;
   }
 
   .system_info {
-    width: 80%;
+    width: 90%;
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
+  html {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   select.button {
     animation: slideInDown 1s ease;
   }
@@ -530,10 +518,28 @@ h3 {
   }
 
   .summary_data {
-    width: 17%;
+    width: 30%;
   }
 
-  .system_block {
+  .summary_data_2 {
     width: 40%;
+  }
+
+  .system_info {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .summary_data {
+    width: 20%;
+  }
+
+  .summary_data_2 {
+    width: 20%;
+  }
+
+  .system_info {
+    width: 35%;
   }
 }

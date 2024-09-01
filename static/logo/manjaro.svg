@@ -10,7 +10,25 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs1" />
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect1"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,1,1,0,0,0,1 @ F,0,0,1,0,1.0852814,0,1 @ F,0,0,1,0,1.1063741,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0.7613749,0,1 @ F,0,1,1,0,1.0508419,0,1 @ F,0,1,1,0,0,0,1 | F,0,0,1,0,0,0,1 @ F,0,0,1,0,1.0545492,0,1 @ F,0,0,1,0,1.0050707,0,1 @ F,0,0,1,0,1.1821006,0,1 @ F,0,0,1,0,0,0,1 | F,0,0,1,0,1.097822,0,1 @ F,0,0,1,0,1.0664556,0,1 @ F,0,0,1,0,1.0781006,0,1 @ F,0,0,1,0,1.0530484,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
   <sodipodi:namedview
      id="namedview1"
      pagecolor="#505050"
@@ -20,19 +38,22 @@
      inkscape:pageopacity="0"
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
-     inkscape:zoom="11.875"
-     inkscape:cx="11.957895"
-     inkscape:cy="12"
-     inkscape:window-width="1647"
-     inkscape:window-height="1062"
-     inkscape:window-x="378"
-     inkscape:window-y="145"
+     inkscape:zoom="23.75"
+     inkscape:cx="9.2"
+     inkscape:cy="13.726316"
+     inkscape:window-width="2001"
+     inkscape:window-height="1167"
+     inkscape:window-x="234"
+     inkscape:window-y="80"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg1" />
   <title
      id="title1">manjaro</title>
   <path
-     d="M2 2V22H7.6V7.6H14.8V2H2M9.2 9.2V22H14.8V9.2H9.2M16.4 2V22H22V2H16.4Z"
+     d="M 2,2 V 20.914719 A 1.0852814,1.0852814 45 0 0 3.0852814,22 H 6.4936259 A 1.1063741,1.1063741 135 0 0 7.6,20.893626 L 7.6,7.6 h 6.438625 A 0.7613749,0.7613749 135 0 0 14.8,6.8386251 V 3.0508419 A 1.0508419,1.0508419 45 0 0 13.749158,2 H 2 M 9.2,9.2 V 20.945451 A 1.0545492,1.0545492 45 0 0 10.254549,22 h 3.54038 A 1.0050707,1.0050707 135 0 0 14.8,20.994929 l 0,-10.612828 A 1.1821006,1.1821006 45 0 0 13.617899,9.2 H 9.2 M 16.4,3.097822 V 20.933544 A 1.0664556,1.0664556 45 0 0 17.466456,22 h 3.455443 A 1.0781006,1.0781006 135 0 0 22,20.921899 V 3.0530484 A 1.0530484,1.0530484 45 0 0 20.946952,2 h -3.44913 A 1.097822,1.097822 135 0 0 16.4,3.097822 Z"
      id="path1"
-     style="fill:#ffffff;fill-opacity:1;opacity:0.2" />
+     style="opacity:0.8;fill:#a6da95;fill-opacity:0.8"
+     inkscape:path-effect="#path-effect1"
+     inkscape:original-d="M 2,2 V 22 H 7.6 V 7.6 h 7.2 V 2 C 10.533333,2 6.2666667,2 2,2 M 9.2,9.2 V 22 h 5.6 V 9.2 H 9.2 M 16.4,2 V 22 H 22 V 2 Z"
+     sodipodi:nodetypes="ccccccccccccccccc" />
 </svg>
