@@ -183,7 +183,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: transform 0.3s, background-color 0.3s;
-  background-color: var(--accent);
+  background-color: var(--accent)  40%;
   animation: fadeIn 2s ease;
 }
 
@@ -212,7 +212,7 @@ p {
 }
 
 select.button {
-  background-color: var(--accent);
+  background-color: var(--accent)  40%;
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -366,7 +366,7 @@ select.button:active {
 }
 
 .summary_data {
-  background-color: var(--accent);
+  background-color: var(--accent)  40%;
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -386,7 +386,7 @@ select.button:active {
 }
 
 .summary_data_2 {
-  background-color: var(--accent);
+  background-color: var(--accent)  40%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
@@ -406,13 +406,13 @@ select.button:active {
 }
 
 .system_info {
-  background-color: var(--accent);
+  background-color: var(--accent) 40%;
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--accent);
-  width: 40%;
+  width: 60%;
   height: 100%;
   padding: 5%;
 }
@@ -477,7 +477,7 @@ h3 {
     flex-direction: column;
   }
 
-  .system_block {
+  .system_info {
     width: 90%;
   }
 
@@ -502,7 +502,7 @@ h3 {
   }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 700px) {
   html {
     height: 100%;
     flex-direction: column;
@@ -525,8 +525,8 @@ h3 {
     width: 40%;
   }
 
-  .system_block {
-    width: 40%;
+  .system_info {
+    width: 60%;
   }
 }
 
@@ -537,5 +537,9 @@ h3 {
 
   .summary_data_2 {
     width: 20%;
+  }
+
+  .system_info {
+    width: 35%;
   }
 }

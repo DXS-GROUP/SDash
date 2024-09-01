@@ -62,10 +62,10 @@ fetch('/get_os')
             console.debug(logoPath)
             console.debug(logoColor)
 
-            system_block.style.backgroundImage = `url('${logoPath}')`;
-            system_block.style.backgroundRepeat = 'no-repeat';
-            system_block.style.backgroundPosition = 'center';
-            system_block.style.backgroundSize = '30%';
+            main_block.style.backgroundImage = `url('${logoPath}')`;
+            main_block.style.backgroundRepeat = 'no-repeat';
+            main_block.style.backgroundPosition = 'center';
+            main_block.style.backgroundSize = '25%';
 
             document.documentElement.style.setProperty('--accent-hover', logoColor);
         } else {
