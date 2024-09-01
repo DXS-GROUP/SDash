@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #232634;
-  --fg: #c6d0f5;
-  --accent: #303446;
+  --bg: #181926;
+  --fg: #cad3f5;
+  --accent: #24273a;
   --accent-hover: #ca9ee6;
   --accent-pressed: #babbf1;
-  --critical: #e78284;
+  --critical: #ed8796;
   --warning: #e5c890;
-  --normal: #a6d189;
+  --normal: #a6da95;
 }
 
 html {
@@ -212,7 +212,7 @@ p {
 }
 
 select.button {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent);
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -366,7 +366,7 @@ select.button:active {
 }
 
 .summary_data {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent);
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -386,7 +386,7 @@ select.button:active {
 }
 
 .summary_data_2 {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent);
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
@@ -406,7 +406,7 @@ select.button:active {
 }
 
 .system_info {
-  background: rgba(48, 52, 70, 0.49);
+  background-color: var(--accent);
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
