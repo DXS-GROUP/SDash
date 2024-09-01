@@ -366,7 +366,6 @@ select.button:active {
   width: 80%;
   height: auto;
   margin-left: 10%;
-  display: block;
   border-radius: 30px;
   background-color: transparent;
   animation: fadeIn 2s ease;
@@ -392,7 +391,7 @@ select.button:active {
   padding: 10px;
   margin: 10px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
 .summary_data_2 {
@@ -412,7 +411,7 @@ select.button:active {
   padding: 10px;
   margin: 10px;
   opacity: 0;
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 2s ease forwards;
 }
 
 .system_info {
@@ -476,10 +475,12 @@ h3 {
 
 .summary_data:hover {
   transform: scale(1.06);
+  box-shadow: 0 4px 40px var(--accent);
 }
 
 .summary_data_2:hover {
   transform: scale(1.06);
+  box-shadow: 0 4px 40px var(--accent);
 }
 
 @media screen and (max-width: 799px) {
