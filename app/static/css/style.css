@@ -199,13 +199,14 @@ body {
   justify-content: center;
   transition:
     transform 0.3s,
-    background-color 0.3s;
+    background-color 0.3s,
+    fill 0.5s;
   background-color: var(--bg2);
   backdrop-filter: blur(10px);
   animation: fadeIn 2s ease;
 }
 
-.power_button img {
+.power_button svg {
   height: 5vh;
   aspect-ratio: 1 / 1;
 }
@@ -213,6 +214,18 @@ body {
 .power_button:hover {
   transform: scale(1.05);
   background-color: var(--accent-hover);
+}
+
+.power_button:hover svg path {
+  fill: var(--bg);
+}
+
+.power_button svg path stroke {
+  fill: var(--accent-hover);
+}
+
+.power_button svg path {
+  fill: var(--accent-hover);
 }
 
 .content-title {
@@ -502,12 +515,12 @@ h3 {
 }
 
 .summary_data:hover {
-  box-shadow: 0 4px 40px var(--accent-hover);
+  /*box-shadow: 0 4px 40px var(--accent-hover);*/
   transform: scale(1.02);
 }
 
 .summary_data_2:hover {
-  box-shadow: 0 4px 40px var(--accent-hover);
+  /*box-shadow: 0 4px 40px var(--accent-hover);*/
   transform: scale(1.02);
 }
 
