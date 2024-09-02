@@ -23,7 +23,6 @@ fetch('/get_os')
             let logoColor = system_colors.default;
             let logoPath = "../static/logo/os.svg";
 
-            /*
             if (osName.toLowerCase().includes('arch')) {
                 logoColor = system_colors.arch;
                 logoPath = "../static/logo/arch.svg";
@@ -61,7 +60,7 @@ fetch('/get_os')
                 logoColor = system_colors.centos;
                 logoPath = "../static/logo/mac.svg";
             }
-            */
+
 
             console.debug(logoPath)
             console.debug(logoColor)
@@ -78,7 +77,7 @@ fetch('/get_os')
                     main_block.style.backgroundPosition = 'center';
                     main_block.style.backgroundSize = '25%';
 
-                    document.documentElement.style.setProperty('--accent-hover', logoColor);
+                    // document.documentElement.style.setProperty('--accent-hover', logoColor);
                 });
         } else {
             console.error("Element with class 'html' not found.");
