@@ -74,10 +74,10 @@ fetch('/get_os')
 
                     pathElement.style.fill = logoColor;
 
-                    // main_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
-                    main_block.style.backgroundRepeat = 'no-repeat';
-                    main_block.style.backgroundPosition = 'center';
-                    main_block.style.backgroundSize = '25%';
+                    system_block.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+                    system_block.style.backgroundRepeat = 'no-repeat';
+                    system_block.style.backgroundPosition = 'center';
+                    system_block.style.backgroundSize = '40%';
                 });
         } else {
             console.error("Element with class 'html' not found.");
