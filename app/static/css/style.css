@@ -30,12 +30,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: "M PLUS Rounded 1c", system-ui;
-  color: var(--fg);
+  color: var(--accent-hover);
   font-size: small;
   animation: fadeIn 2s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.clock h1 {
+  font-size: 350%;
+  color: var(--accent-hover);
+}
+
+.clock h3 {
+  font-size: 200%;
+  color: var(--accent-hover);
 }
 
 .center {
@@ -226,7 +236,7 @@ select.button {
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--accent);
   font-family: "M PLUS Rounded 1c", system-ui;
-  color: var(--fg);
+  color: var(--accent-hover);
   cursor: pointer;
   transition:
     background-color 0.7s ease,
@@ -446,13 +456,21 @@ h3 {
   margin-bottom: auto;
 }
 
-.summary_data img {
+.summary_data svg {
   width: 20%;
 }
 
-.summary_data_2 img {
+.summary_data_2 svg {
   margin-top: 1%;
   width: 10%;
+}
+
+.summary_data svg path {
+  fill: var(--accent-hover);
+}
+
+.summary_data_2 svg g path {
+  fill: var(--accent-hover);
 }
 
 .summary_data_2 div {
@@ -463,7 +481,7 @@ h3 {
 }
 
 .summary_data_2 h3 {
-  color: var(--fg);
+  color: var(--accent-hover);
   font-size: 13px;
   font-weight: bold;
 }
@@ -497,7 +515,7 @@ h3 {
     flex-direction: column;
   }
 
-  .summary_data img {
+  .summary_data svg {
     width: 15%;
   }
 
@@ -545,11 +563,11 @@ h3 {
     width: 60%;
   }
 
-  .summary_data_2 img {
+  .summary_data_2 svg {
     width: 6%;
   }
 
-  .summary_data img {
+  .summary_data svg {
     width: 17%;
   }
 }
@@ -575,11 +593,11 @@ h3 {
 }
 
 @media screen and (min-width: 2000px) {
-  .summary_data_2 img {
+  .summary_data_2 svg {
     width: 5%;
   }
 
-  .summary_data img {
+  .summary_data svg {
     width: 15%;
   }
 }

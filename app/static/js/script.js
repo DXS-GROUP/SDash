@@ -10,11 +10,12 @@ const colors = {
 
 const updateIndicators = async () => {
     try {
-        const [usage, cpuTemp, gpuTemp, userIP] = await Promise.all([
+        const [usage, cpuTemp, gpuTemp, userIP, clockBlock] = await Promise.all([
             fetch('/api/usage').then(response => response.json()),
             fetch('/api/cpu_temp').then(response => response.json()),
             fetch('/api/gpu_temp').then(response => response.json()),
-            fetch('/api/user_ip').then(response => response.json())
+            fetch('/api/user_ip').then(response => response.json()),
+            fetch('/api/server_clock').then(response => response.json())
         ]);
 
         updateProgressBars(usage);
@@ -23,9 +24,18 @@ const updateIndicators = async () => {
         updateCpuTemperature(cpuTemp);
         updateGpuTemperature(gpuTemp);
         getUserIp(userIP);
+        updateClock(clockBlock);
     } catch (error) {
         console.error('Error updating indicators:', error);
     }
+};
+
+const updateClock = (clock) => {
+    document.getElementById('clock_data').innerText = clock.current_time;
+    document.getElementById('date_data').innerText = clock.current_date;
+
+    console.debug("Current Time: " + clock.current_time);
+    console.debug("Current Date: " + clock.current_date);
 };
 
 const getUserIp = (userIP) => {
@@ -159,13 +169,6 @@ const fetchBatteryStatus = async () => {
 
             chargeElement.innerHTML = `BATTERY USAGE: <br>${charge}%`;
             batteryProgress.style.width = `${charge}%`;
-
-            if (data.plugged) {
-                batteryProgress.style.backgroundColor = colors.accent_hover;
-                imgElement.src = "../static/icons/battery-bolt.svg";
-            } else {
-                setBatteryStatus(charge, batteryProgress, imgElement);
-            }
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
         }
@@ -180,7 +183,6 @@ const setBatteryStatus = (charge, batteryProgress, imgElement) => {
 
     if (charge < 15) {
         backgroundColor = colors.critical;
-        imgSrc = "../static/icons/battery-exclamation.svg";
     } else if (charge < 20) {
         backgroundColor = colors.warning;
     } else {
@@ -188,7 +190,6 @@ const setBatteryStatus = (charge, batteryProgress, imgElement) => {
     }
 
     batteryProgress.style.backgroundColor = backgroundColor;
-    imgElement.src = imgSrc;
 }
 
 setInterval(fetchBatteryStatus, 1000);

@@ -3,6 +3,7 @@ import os
 import platform
 import subprocess
 import time
+from datetime import datetime
 from logging.config import dictConfig
 
 import psutil
@@ -15,6 +16,14 @@ from get_info import (fetch_arch, fetch_cpu_info, get_ip_address, get_uptime,
 
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
+
+
+@app.route("/api/server_clock", methods=["GET"])
+def get_time():
+    current_time = datetime.now().strftime("%H:%M")
+    current_date = datetime.now().strftime("%d %b %Y")
+
+    return jsonify(current_time=current_time, current_date=current_date)
 
 
 @app.route("/api/usage")
