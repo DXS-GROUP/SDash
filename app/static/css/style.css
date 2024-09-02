@@ -532,6 +532,19 @@ h3 {
   transform: scale(1.02);
 }
 
+.port-table {
+  background-color: rgba(24, 25, 38, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 2px solid var(--bg2);
+
+  margin: 3%;
+  padding: 2%;
+  height: 100%;
+}
+
 @media screen and (max-width: 800px) {
   .cards {
     flex-direction: column;

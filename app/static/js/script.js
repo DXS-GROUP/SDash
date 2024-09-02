@@ -155,15 +155,28 @@ const updateSystemInfo = async () => {
     }
 };
 
-const fetchOpenPorts = async () => {
+const fetchPorts = async () => {
     try {
         const response = await fetch('/api/ports');
         const data = await response.json();
-        document.getElementById('ports_text').innerHTML = data.ports;
+        const tableBody = document.getElementById('ports-table-body');
+        tableBody.innerHTML = '';
+
+        for (const [port, service] of Object.entries(data)) {
+            const row = document.createElement('tr');
+            const portCell = document.createElement('td');
+            const serviceCell = document.createElement('td');
+            portCell.textContent = port;
+            serviceCell.textContent = service;
+            row.appendChild(portCell);
+            row.appendChild(serviceCell);
+            tableBody.appendChild(row);
+        }
     } catch (error) {
-        console.error('Error fetching open ports:', error);
+        console.error('PORTS ERROR:', error);
     }
-}
+};
+
 
 const fetchBatteryStatus = async () => {
     try {
@@ -209,4 +222,4 @@ const determineBackgroundColor = (plugged, charge) => {
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
-setInterval(fetchOpenPorts, 1000);
+setInterval(fetchPorts, 1000);

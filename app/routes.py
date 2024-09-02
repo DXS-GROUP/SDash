@@ -19,15 +19,10 @@ prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
 
-@app.route("/api/ports", methods=["GET"])
-def get_ports():
+@app.route("/api/ports")
+def api_ports():
     ports_and_services = get_open_ports_and_services()
-
-    ports = ""
-    for port, service in ports_and_services.items():
-        ports += f"Port: {port}, Service: {service}<br>"
-
-    return jsonify(ports=ports)
+    return jsonify(ports_and_services)
 
 
 @app.route("/api/server_clock", methods=["GET"])

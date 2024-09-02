@@ -11,7 +11,6 @@ from func import convert_seconds_to_hhmm, run_command, truncate_string
 
 def get_open_ports_and_services():
     connections = psutil.net_connections(kind="inet")
-
     open_ports = {}
 
     for conn in connections:
