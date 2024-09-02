@@ -21,9 +21,13 @@ def get_open_ports_and_services():
             try:
                 process = psutil.Process(pid)
                 service_name = process.name()
-                open_ports[local_port] = service_name
+                username = process.username()
+                open_ports[local_port] = {"service": service_name, "user": username}
             except (psutil.NoSuchProcess, psutil.AccessDenied):
-                open_ports[local_port] = "Unknown service"
+                open_ports[local_port] = {
+                    "service": "Unknown service",
+                    "user": "Unknown user",
+                }
 
     return open_ports
 

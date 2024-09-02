@@ -162,18 +162,24 @@ const fetchPorts = async () => {
         const tableBody = document.getElementById('ports-table-body');
         tableBody.innerHTML = '';
 
-        for (const [port, service] of Object.entries(data)) {
+        // Обработка данных и добавление строк в таблицу
+        for (const [port, info] of Object.entries(data)) {
             const row = document.createElement('tr');
             const portCell = document.createElement('td');
             const serviceCell = document.createElement('td');
+            const userCell = document.createElement('td');
+
             portCell.textContent = port;
-            serviceCell.textContent = service;
+            serviceCell.textContent = info.service; // Имя сервиса
+            userCell.textContent = info.user; // Имя пользователя
+
             row.appendChild(portCell);
             row.appendChild(serviceCell);
+            row.appendChild(userCell);
             tableBody.appendChild(row);
         }
     } catch (error) {
-        console.error('PORTS ERROR:', error);
+        console.error('PORT ERROR:', error);
     }
 };
 
