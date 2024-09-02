@@ -158,43 +158,46 @@ const updateSystemInfo = async () => {
 const fetchBatteryStatus = async () => {
     try {
         const response = await fetch('/api/battery');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        
         const data = await response.json();
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
-
+        
+        const charge = data.charge !== null ? data.charge.toFixed(2) : null;
         const status = data.plugged ? "Charging" : "Not Charging";
+        const backgroundColor = determineBackgroundColor(data.plugged, charge);
 
-        if (data.charge !== null) {
-            const charge = data.charge.toFixed(2);
+        if (charge !== null) {
             console.debug(`BATTERY: ${charge}%`);
-
             chargeElement.innerHTML = `BATTERY: ${charge}%<br>${status}`;
             batteryProgress.style.width = `${charge}%`;
         } else {
             chargeElement.innerHTML = "No battery detected <br> None";
         }
+
+        batteryProgress.style.backgroundColor = backgroundColor;
     } catch (error) {
         console.error('Error fetching battery status:', error);
     }
-}
+};
+
+const determineBackgroundColor = (plugged, charge) => {
+    if (plugged) {
+        return colors.normal;
+    } else if (charge < 15) {
+        return colors.critical;
+    } else if (charge < 20) {
+        return colors.warning;
+    } else {
+        return colors.normal;
+    }
+};
 
 const setBatteryStatus = (charge, batteryProgress, imgElement) => {
-    let backgroundColor;
 
-    if (data.plugged) {
-        backgroundColor = colors.normal;
-    }
-    else {
-        if (charge < 15) {
-            backgroundColor = colors.critical;
-        } else if (charge < 20) {
-            backgroundColor = colors.warning;
-        } else {
-            backgroundColor = colors.normal;
-        }
-    }
-
-    batteryProgress.style.backgroundColor = backgroundColor;
 }
 
 setInterval(fetchBatteryStatus, 1000);
