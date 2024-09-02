@@ -161,7 +161,6 @@ const fetchBatteryStatus = async () => {
         const data = await response.json();
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
-        const imgElement = document.querySelector('#battery-status img');
 
         const status = data.plugged ? "Charging" : "Not Charging";
 
