@@ -23,7 +23,7 @@
   cd SDash/app
   python3 -m venv SDash
   source SDash/bin/activate
-  pip3 install -r requirements.txt
+  pip3 install -r ../requirements.txt
   ```
   </div>
   
