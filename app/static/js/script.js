@@ -200,3 +200,4 @@ const setBatteryStatus = (charge, batteryProgress, imgElement) => {
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
+setInterval(setBatteryStatus, 1000);
