@@ -39,7 +39,7 @@ body {
 }
 
 .clock h1 {
-  font-size: 350%;
+  font-size: 500%;
   color: var(--accent-hover);
 }
 
@@ -580,7 +580,7 @@ h3 {
   }
 
   .summary_data {
-    width: 20%;
+    width: 40%;
   }
 
   .summary_data_2 {

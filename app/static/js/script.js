@@ -161,11 +161,11 @@ const fetchBatteryStatus = async () => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        
+
         const data = await response.json();
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
-        
+
         const charge = data.charge !== null ? data.charge.toFixed(2) : null;
         const status = data.plugged ? "Charging" : "Not Charging";
         const backgroundColor = determineBackgroundColor(data.plugged, charge);

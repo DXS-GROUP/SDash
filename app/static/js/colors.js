@@ -7,7 +7,8 @@ const system_colors = {
     debian: "#e78284",
     ubuntu: "#e5c890",
     suse: "#a6d189",
-    parrot: "#ca9ee6"
+    parrot: "#ca9ee6",
+    default: "#ca9ee6"
 }
 
 fetch('/get_os')
@@ -19,9 +20,10 @@ fetch('/get_os')
 
         if (main_block) {
             const osName = data.os_name;
-            let logoColor = 'gray';
+            let logoColor = system_colors.default;
             let logoPath = "../static/logo/os.svg";
 
+            /*
             if (osName.toLowerCase().includes('arch')) {
                 logoColor = system_colors.arch;
                 logoPath = "../static/logo/arch.svg";
@@ -59,6 +61,7 @@ fetch('/get_os')
                 logoColor = system_colors.centos;
                 logoPath = "../static/logo/mac.svg";
             }
+            */
 
             console.debug(logoPath)
             console.debug(logoColor)
