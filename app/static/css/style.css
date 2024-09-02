@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #181926;
-  --bg2: #24273a;
+  --bg: rgb(24, 25, 38);
+  --bg2: rgba(24, 25, 38, 30);
   --fg: #cad3f5;
   --accent: #ca9ee6;
   --accent-hover: #ca9ee6;
@@ -15,12 +15,12 @@
 html {
   width: 100%;
   height: auto;
-  background-color: var(--bg);
+  background-image: url("../bg.jpg");
   display: flex;
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
@@ -39,8 +39,12 @@ body {
   justify-content: center;
 }
 
+.clock {
+  margin: 0%;
+}
+
 .clock h1 {
-  font-size: 500%;
+  font-size: 700%;
   height: 100%;
   color: var(--accent-hover);
 }
@@ -75,7 +79,8 @@ body {
 }
 
 .modal-content {
-  background-color: var(--bg);
+  background-color: rgba(24, 25, 38, 0.4);
+  backdrop-filter: blur(8.3px);
   margin: 15% auto;
   border: 2px solid var(--bg2);
   width: 50%;
@@ -203,7 +208,7 @@ body {
     transform 0.3s,
     background-color 0.3s,
     fill 0.5s;
-  background-color: var(--bg2);
+  background-color: rgba(24, 25, 38, 0.4);
   backdrop-filter: blur(10px);
   animation: fadeIn 2s ease;
 }
@@ -245,7 +250,7 @@ p {
 }
 
 select.button {
-  background-color: var(--bg2);
+  background-color: rgba(24, 25, 38, 0.4);
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
@@ -269,7 +274,7 @@ select.button:hover {
 }
 
 select.button:active {
-  background-color: var(--accent-hover);
+  background-color: rgba(24, 25, 38, 0.4);
   color: var(--bg);
 }
 
@@ -343,13 +348,13 @@ select.button:active {
   }
 }
 
-@media (max-width: 992px) {
+@media (max-height: 992px) {
   .button {
-    height: 5vh;
+    height: 7vh;
   }
 }
 
-@media (min-width: 2000px) {
+@media (min-height: 1300px) {
   .button {
     height: 3vh;
   }
@@ -405,12 +410,12 @@ select.button:active {
 }
 
 .summary_data {
-  background-color: var(--bg2);
+  background-color: rgba(24, 25, 38, 0.4);
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid var(--bg2);
+  border: 1px solid var(--bg2);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
     transform 0.5s,
@@ -428,12 +433,12 @@ select.button:active {
 }
 
 .summary_data_2 {
-  background-color: var(--bg2);
+  background-color: rgba(24, 25, 38, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid var(--bg2);
+  border: 1px solid var(--bg2);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
     transform 0.5s,
@@ -452,7 +457,7 @@ select.button:active {
 }
 
 .system_info {
-  background-color: var(--bg2);
+  background-color: rgba(24, 25, 38, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8.3px);
@@ -460,6 +465,7 @@ select.button:active {
   border: 2px solid var(--bg2);
   width: 60%;
   padding: 5%;
+  transition: backdrop 0.5s;
 }
 
 h3 {
@@ -526,6 +532,29 @@ h3 {
   transform: scale(1.02);
 }
 
+.port-table {
+  background-color: rgba(24, 25, 38, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  border: 2px solid var(--bg2);
+
+  margin: 3%;
+  padding: 2%;
+  height: 100%;
+}
+
+.port-table table thead tr th {
+  text-align: center;
+  padding: 1%;
+}
+
+.port-table table tbody tr th {
+  text-align: center;
+  padding: 1%;
+}
+
 @media screen and (max-width: 800px) {
   .cards {
     flex-direction: column;
@@ -572,7 +601,7 @@ h3 {
   }
 
   .summary_data_2 {
-    width: 40%;
+    width: 25%;
   }
 
   .system_info {
@@ -596,11 +625,11 @@ h3 {
   }
 
   .summary_data {
-    width: 40%;
+    width: 30%;
   }
 
   .summary_data_2 {
-    width: 25%;
+    width: 20%;
   }
 
   .system_info {

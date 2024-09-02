@@ -43,11 +43,11 @@ python3 server.py
   
   <h3>Screenshots</h3>
 
-![Снимок экрана от 2024-09-02 16-16-55](https://github.com/user-attachments/assets/8b6a340c-cbb0-4937-b237-6375aa3dc67a)
-![Снимок экрана от 2024-09-02 16-16-58](https://github.com/user-attachments/assets/f03e8cb0-c8c8-4741-9c0a-2e758cb0c06b)
-![Снимок экрана от 2024-09-02 16-17-02](https://github.com/user-attachments/assets/7c67cb42-9930-4ff3-90f4-9a376af9586d)
-![Снимок экрана от 2024-09-02 16-17-16](https://github.com/user-attachments/assets/ef115ec9-dd10-4c66-9d4b-78069fba801c)
-![Снимок экрана от 2024-09-02 16-17-18](https://github.com/user-attachments/assets/37666e7d-0dc7-4c05-908a-4b1744dbf924)
-![Снимок экрана от 2024-09-02 16-17-22](https://github.com/user-attachments/assets/51fd79ce-0dd7-4e97-be22-4473bb01a7ee)
+![Снимок экрана от 2024-09-02 21-55-37](https://github.com/user-attachments/assets/13d94575-1c10-4b6d-b081-f2100144b012)
+![Снимок экрана от 2024-09-02 21-55-47](https://github.com/user-attachments/assets/a44b02bc-fa3b-42db-9d7a-544fa46bb73d)
+![Снимок экрана от 2024-09-02 21-56-18](https://github.com/user-attachments/assets/0c8bc0e1-5ded-469a-8382-c23ebd189fa3)
+![Снимок экрана от 2024-09-02 21-56-30](https://github.com/user-attachments/assets/addda1e1-3826-4ad7-914e-762d0e1338b5)
+![Снимок экрана от 2024-09-02 21-56-34](https://github.com/user-attachments/assets/1aa26388-218a-4532-96d8-ad22760c883e)
+![Снимок экрана от 2024-09-02 21-56-42](https://github.com/user-attachments/assets/eedcc307-64b4-450e-842f-b207fdcd144f)
 
 </div>
