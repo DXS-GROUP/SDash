@@ -41,11 +41,13 @@ body {
 
 .clock h1 {
   font-size: 500%;
+  height: 100%;
   color: var(--accent-hover);
 }
 
 .clock h3 {
   font-size: 200%;
+  height: 100%;
   color: var(--accent-hover);
 }
 
