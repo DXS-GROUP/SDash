@@ -545,6 +545,16 @@ h3 {
   height: 100%;
 }
 
+.port-table table thead tr th {
+  text-align: center;
+  padding: 1%;
+}
+
+.port-table table tbody tr th {
+  text-align: center;
+  padding: 1%;
+}
+
 @media screen and (max-width: 800px) {
   .cards {
     flex-direction: column;
