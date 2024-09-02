@@ -53,29 +53,29 @@ const updateProgressBars = (usage) => {
 
     progressElements.cpu.style.width = `${usage.cpu_usage}%`;
     if (usage.cpu_usage > 90) {
-        // progressElements.cpu.style.backgroundColor = colors.critical;
+        progressElements.cpu.style.backgroundColor = colors.critical;
     } else if (usage.cpu_usage > 70) {
-        // progressElements.cpu.style.backgroundColor = colors.warning;
+        progressElements.cpu.style.backgroundColor = colors.warning;
     } else {
-        // progressElements.cpu.style.backgroundColor = colors.normal;
+        progressElements.cpu.style.backgroundColor = colors.accent_hover;
     }
 
     progressElements.ram.style.width = `${usage.ram_usage}%`;
     if (usage.ram_usage > 90) {
-        // progressElements.ram.style.backgroundColor = colors.critical;
+        progressElements.ram.style.backgroundColor = colors.critical;
     } else if (usage.ram_usage > 80) {
-        // progressElements.ram.style.backgroundColor = colors.warning;
+        progressElements.ram.style.backgroundColor = colors.warning;
     } else {
-        // progressElements.ram.style.backgroundColor = colors.normal;
+        progressElements.ram.style.backgroundColor = colors.accent_hover;
     }
 
     progressElements.disk.style.width = `${usage.disk_usage}%`;
     if (usage.disk_usage > 90) {
-        // progressElements.disk.style.backgroundColor = colors.critical;
+        progressElements.disk.style.backgroundColor = colors.critical;
     } else if (usage.disk_usage > 80) {
-        // progressElements.disk.style.backgroundColor = colors.warning;
+        progressElements.disk.style.backgroundColor = colors.warning;
     } else {
-        // progressElements.disk.style.backgroundColor = colors.normal;
+        progressElements.disk.style.backgroundColor = colors.accent_hover;
     }
 };
 
@@ -100,11 +100,11 @@ const updateNetworkSpeeds = (usage) => {
 const updateCpuTemperature = (cpuTemp) => {
     document.getElementById('summary_data_cpu_temp_text').innerHTML = `CPU: ${cpuTemp.cpu_temp.toFixed(1)}°C - ${(cpuTemp.cpu_freq / 1000).toFixed(1)}GHz`;
     if (cpuTemp.cpu_temp.toFixed(0) > 45) {
-        document.getElementById('summary_data_cpu_temp_text');// .style.color = colors.warning;
+        document.getElementById('summary_data_cpu_temp_text').style.color = colors.warning;
     } else if (cpuTemp.cpu_temp.toFixed(0) > 60) {
-        document.getElementById('summary_data_cpu_temp_text');// .style.color = colors.critical;
+        document.getElementById('summary_data_cpu_temp_text').style.color = colors.critical;
     } else {
-        document.getElementById('summary_data_cpu_temp_text');// .style.color = "";
+        document.getElementById('summary_data_cpu_temp_text').style.color = colors.accent_hover;
     }
 
     console.debug(`CPU TEMP: ${cpuTemp.cpu_temp.toFixed(1)}°C - ${(cpuTemp.cpu_freq / 1000).toFixed(1)}GHz`);
@@ -114,15 +114,15 @@ const updateGpuTemperature = (gpuTemp) => {
     if (gpuTemp.gpu_temp != "None") {
         document.getElementById('summary_data_gpu_temp_text').innerHTML = "GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz";
         if (gpuTemp.gpu_temp > 45) {
-            document.getElementById('summary_data_gpu_temp_text');//.style.color = colors.warning;
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.warning;
         } else if (gpuTemp.gpu_temp > 60) {
-            document.getElementById('summary_data_gpu_temp_text');//.style.color = colors.critical;
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.critical;
         } else {
-            document.getElementById('summary_data_gpu_temp_text');//.style.color = "";
+            document.getElementById('summary_data_gpu_temp_text').style.color = colors.accent_hover;
         }
     }
     else {
-        document.getElementById('summary_data_gpu_temp_text');//.style.display = "None";
+        document.getElementById('summary_data_gpu_temp_text').style.display = "None";
     }
 
     console.debug("GPU: " + gpuTemp.gpu_temp + "°C - " + gpuTemp.gpu_freq + "MHz");
@@ -178,7 +178,7 @@ const fetchBatteryStatus = async () => {
             chargeElement.innerHTML = "No battery detected <br> None";
         }
 
-        // batteryProgress.style.backgroundColor = backgroundColor;
+        batteryProgress.style.backgroundColor = backgroundColor;
     } catch (error) {
         console.error('Error fetching battery status:', error);
     }
@@ -192,7 +192,7 @@ const determineBackgroundColor = (plugged, charge) => {
     } else if (charge < 20) {
         return colors.warning;
     } else {
-        return colors.normal;
+        return colors.accent_hover;
     }
 };
 
