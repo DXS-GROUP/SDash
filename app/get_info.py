@@ -9,6 +9,26 @@ import psutil
 from func import convert_seconds_to_hhmm, run_command, truncate_string
 
 
+def get_open_ports_and_services():
+    connections = psutil.net_connections(kind="inet")
+
+    open_ports = {}
+
+    for conn in connections:
+        local_address, local_port = conn.laddr
+        pid = conn.pid
+
+        if pid is not None:
+            try:
+                process = psutil.Process(pid)
+                service_name = process.name()
+                open_ports[local_port] = service_name
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                open_ports[local_port] = "Unknown service"
+
+    return open_ports
+
+
 def get_uptime():
     if platform.system() != "Linux":
         return "Error."

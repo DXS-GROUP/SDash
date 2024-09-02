@@ -32,7 +32,7 @@ const updateIndicators = async () => {
 
 const updateClock = (clock) => {
     document.getElementById('clock_data').innerText = clock.current_time;
-    document.getElementById('date_data').innerText = clock.current_date;
+    // document.getElementById('date_data').innerText = clock.current_date;
 
     console.debug("Current Time: " + clock.current_time);
     console.debug("Current Date: " + clock.current_date);
@@ -155,6 +155,16 @@ const updateSystemInfo = async () => {
     }
 };
 
+const fetchOpenPorts = async () => {
+    try {
+        const response = await fetch('/api/ports');
+        const data = await response.json();
+        document.getElementById('ports_text').innerHTML = data.ports;
+    } catch (error) {
+        console.error('Error fetching open ports:', error);
+    }
+}
+
 const fetchBatteryStatus = async () => {
     try {
         const response = await fetch('/api/battery');
@@ -199,3 +209,4 @@ const determineBackgroundColor = (plugged, charge) => {
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
+setInterval(fetchOpenPorts, 1000);

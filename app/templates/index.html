@@ -11,6 +11,7 @@
     <select id="tab-selector" class="button" onchange="switchTab(this.value)">
         <option value="monitor">Dashboard</option>
         <option value="info">Info</option>
+        <option value="ports">Services</option>
         <option value="control">Control</option>
     </select>
 </div>
@@ -20,6 +21,7 @@
             <div class="tab-buttons">
                 <button class="tab-button active" data-tab="monitor">Dashboard</button>
                 <button class="tab-button" data-tab="info">Info</button>
+                <button class="tab-button" data-tab="ports">Services</button>
                 <button class="tab-button" data-tab="control">Control</button>
             </div>
             <a href="https://github.com/SDashS/SDash">
@@ -35,7 +37,7 @@
                 <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
                     <div class="clock" id="clockBlock">
                         <h1 id="clock_data" align="center">Clock</h1>
-                        <h3 id="date_data" align="center">Date</h3></div>
+                            <!--<h3 id="date_data" align="center">Date</h3>--></div>
                     <div class="cards">
                         <div id="os-logos"></div>
                         <div class="summary_data" align="center" id="summary_data_cpu">
@@ -176,6 +178,10 @@
                         <h3 id="summary_data_cpu_temp_text"></h3>
                         <h3 id="summary_data_gpu_temp_text"></h3></div>
                 </div>
+            </div>
+            <div class="tab-content" id="ports" align="center">
+                <h1>Open ports</h1>
+                <h3 id="ports_text"></h3>
             </div>
             <div id="info" class="tab-content" align="center">
                 <div class="system_info" id="system_info">
@@ -338,10 +344,7 @@
                 </div>
             </div>
         </div>
-</div>
-</div>
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-<script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
-</body>
-
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+    </body>
 </html>
