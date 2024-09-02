@@ -156,7 +156,7 @@ body {
   font-family: "M PLUS Rounded 1c", system-ui;
   width: 0%;
   height: 100%;
-  background-color: var(--normal);
+  background-color: var(--accent);
   transition: width 0.5s ease-in-out;
 }
 
