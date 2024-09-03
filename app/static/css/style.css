@@ -588,6 +588,10 @@ h3 {
   .system_info {
     width: 90%;
   }
+
+  .port-table {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 800px) {
