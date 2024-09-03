@@ -32,7 +32,6 @@ const updateIndicators = async () => {
 
 const updateClock = (clock) => {
     document.getElementById('clock_data').innerText = clock.current_time;
-    // document.getElementById('date_data').innerText = clock.current_date;
 
     console.debug("Current Time: " + clock.current_time);
     console.debug("Current Date: " + clock.current_date);
@@ -83,9 +82,9 @@ const updateSummaryTexts = (usage) => {
     document.getElementById('cpu-value').textContent = `CPU: ${usage.cpu_usage.toFixed(2)}%`;
     document.getElementById('ram-value').textContent = `RAM: ${(usage.ram_used / (1024 ** 3)).toFixed(1)}GB / ${(usage.ram_total / (1024 ** 3)).toFixed(1)}GB - ${usage.ram_usage.toFixed(1)}%`;
     document.getElementById('disk-value').textContent = `Disk: ${(usage.disk_used / (1024 ** 3)).toFixed(1)}GB / ${(usage.disk_total / (1024 ** 3)).toFixed(1)}GB - ${usage.disk_usage.toFixed(2)}%`;
-    document.getElementById('summary_data_cpu_text').innerHTML = `CPU USAGE: <br>${usage.cpu_usage}%`;
-    document.getElementById('summary_data_ram_text').innerHTML = `RAM USAGE: <br>${usage.ram_usage}%`;
-    document.getElementById('summary_data_disk_text').innerHTML = `DISK USAGE: <br>${usage.disk_usage}%`;
+    document.getElementById('summary_data_cpu_text').innerHTML = `CPU USAGE:  ${usage.cpu_usage}%`;
+    document.getElementById('summary_data_ram_text').innerHTML = `RAM USAGE:  ${usage.ram_usage}%`;
+    document.getElementById('summary_data_disk_text').innerHTML = `DISK USAGE:  ${usage.disk_usage}%`;
 
     console.debug("CPU USAGE: " + usage.cpu_usage);
     console.debug("RAM USAGE: " + usage.ram_usage);
@@ -162,7 +161,6 @@ const fetchPorts = async () => {
         const tableBody = document.getElementById('ports-table-body');
         tableBody.innerHTML = '';
 
-        // Обработка данных и добавление строк в таблицу
         for (const [port, info] of Object.entries(data)) {
             const row = document.createElement('tr');
             const portCell = document.createElement('td');
@@ -170,8 +168,8 @@ const fetchPorts = async () => {
             const userCell = document.createElement('td');
 
             portCell.textContent = port;
-            serviceCell.textContent = info.service; // Имя сервиса
-            userCell.textContent = info.user; // Имя пользователя
+            serviceCell.textContent = info.service;
+            userCell.textContent = info.user;
 
             row.appendChild(portCell);
             row.appendChild(serviceCell);
@@ -201,10 +199,10 @@ const fetchBatteryStatus = async () => {
 
         if (charge !== null) {
             console.debug(`BATTERY: ${charge}%`);
-            chargeElement.innerHTML = `BATTERY: ${charge}%<br>${status}`;
+            chargeElement.innerHTML = `BATTERY: ${charge}% ${status}`;
             batteryProgress.style.width = `${charge}%`;
         } else {
-            chargeElement.innerHTML = "No battery detected <br> None";
+            chargeElement.innerHTML = "No battery detected";
         }
 
         batteryProgress.style.backgroundColor = backgroundColor;
