@@ -167,6 +167,27 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/api/actions/reboot", methods=["POST"])
+def reboot_server():
+    os.system("systemctl reboot")
+
+    return "Rebooting..."
+
+
+@app.route("/api/actions/shutdown", methods=["POST"])
+def shutdown_server():
+    os.system("systemctl poweroff")
+
+    return "Shutting down..."
+
+
+@app.route("/api/actions/sleep", methods=["POST"])
+def sleep_server():
+    os.system("systemctl suspend")
+
+    return "Sleeping..."
+
+
 @app.errorhandler(404)
 def not_found(error):
     return render_template("error.html"), 404

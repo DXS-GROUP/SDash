@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
     <title>SDashboard</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
 </head>
@@ -17,13 +17,17 @@
 </div>
 <div class="root">
     <div id="modal" class="modal">
-        <div class="modal-content"><span class="close-button">&times;</span>
+        <div class="modal-content" align="center"><span class="close-button">&times;</span>
             <div class="tab-buttons">
                 <button class="tab-button active" data-tab="monitor">Dashboard</button>
                 <button class="tab-button" data-tab="info">Info</button>
                 <button class="tab-button" data-tab="ports">Services</button>
                 <button class="tab-button" data-tab="control">Control</button>
             </div>
+            <a href="https://github.com/SDashS/SDash">
+                <button class="button">Source</button>
+            </a>
+            <br>
         </div>
     </div>
 
@@ -32,10 +36,11 @@
             <div id="monitor" class="tab-content active">
                 <div class="main-cards" style="display: flex; flex-direction: column; align-items: center;">
                     <div class="clock" id="clockBlock">
-                        <h1 id="clock_data">Clock</h1></div>
+                        <h1 id="clock_data" align="center">Clock</h1>
+                            <!--<h3 id="date_data" align="center">Date</h3>--></div>
                     <div class="cards">
                         <div id="os-logos"></div>
-                        <div class="summary_data" id="summary_data_cpu">
+                        <div class="summary_data" align="center" id="summary_data_cpu">
                             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg viewBox="0 0 24 24" fill="none" version="1.1" id="svg2" sodipodi:docname="cpu.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -51,11 +56,11 @@
                                         fill="#232634" id="path2" style="fill-opacity:1" />
                                     </g>
                                 </svg>
-                                <h3 class="summary_data_text" id="summary_data_cpu_text"></h3>
-                                <div class="progress-bar">
+                                <h3 id="summary_data_cpu_text"></h3>
+                                <div class="progress-bar" align="left">
                                     <div class="progress" id="cpu-progress"></div><span id="cpu-value"></span></div>
                         </div>
-                        <div class="summary_data" id="summary_data_ram">
+                        <div class="summary_data" align="center" id="summary_data_ram">
                             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg viewBox="0 0 1069 1069" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;" version="1.1" xml:space="preserve" id="svg2" sodipodi:docname="ram.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
                                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -75,13 +80,13 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <h3 class="summary_data_text" id="summary_data_ram_text"></h3>
-                                <div class="progress-bar">
+                                <h3 id="summary_data_ram_text"></h3>
+                                <div class="progress-bar" align="left">
                                     <div class="progress" id="ram-progress"></div><span id="ram-value"></span></div>
                         </div>
                     </div>
                     <div class="cards">
-                        <div class="summary_data" id="summary_data_disk">
+                        <div class="summary_data" align="center" id="summary_data_disk">
                             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg viewBox="0 0 24 24" version="1.1" fill="none" id="svg1" sodipodi:docname="storage.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -101,11 +106,11 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <h3 class="summary_data_text" id="summary_data_disk_text"></h3>
-                                <div class="progress-bar">
+                                <h3 id="summary_data_disk_text"></h3>
+                                <div class="progress-bar" align="left">
                                     <div class="progress" id="disk-progress"></div><span id="disk-value"></span></div>
                         </div>
-                        <div id="battery-status" class="summary_data">
+                        <div id="battery-status" class="summary_data" align="center">
                             <svg id="battery-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -117,7 +122,7 @@
                                 </g>
                             </svg>
                             <h3 id="charge"></h3>
-                            <div class="progress-bar">
+                            <div class="progress-bar" align="left">
                                 <div class="progress" id="battery-progress"></div><span id="battery-value"></span></div>
                         </div>
                     </div>
@@ -131,7 +136,7 @@
                     flex-direction: column;
                 ">
                     <div class="summary_data_2" id="summary_data_2">
-                        <div style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
                             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg id="temp-icon" fill="#232634" viewBox="-128 0 512 512" stroke="#232634" version="1.1" id="svg1" sodipodi:docname="arrow.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                                 xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -145,11 +150,11 @@
                                         id="path1" style="stroke-opacity:1;fill-opacity:1" />
                                     </g>
                                 </svg>
-                                <h3>NETWORK</h3></div>
+                                <h3 style="width: 100%;" align="right">NETWORK</h3></div>
                         <h3 id="upload_speed">UPLOAD SPEED</h3>
                         <h3 id="download_speed">DOWNLOAD SPEED</h3></div>
                     <div id="summary_temp_data" class="summary_data_2">
-                        <div style="width: 100%; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
                             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                                 <svg viewBox="0 0 24 24" version="1.1" id="svg1" sodipodi:docname="temp.svg" inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
                                 xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
@@ -169,9 +174,30 @@
                                         </g>
                                     </g>
                                 </svg>
-                                <h3>TEMPERATURE</h3></div>
-                        <h3 class="summary_data_text" id="summary_data_cpu_temp_text"></h3>
-                        <h3 class="summary_data_text" id="summary_data_gpu_temp_text"></h3></div>
+                                <h3 style="width: 100%;" align="right">TEMPERATURE</h3></div>
+                        <h3 id="summary_data_cpu_temp_text"></h3>
+                        <h3 id="summary_data_gpu_temp_text"></h3></div>
+                </div>
+            </div>
+            <div class="tab-content" id="ports" align="center">
+                <div class="port-table">
+                    <h1>Open ports</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Port</th>
+                                    <th>Service</th>
+                                    <th>User</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ports-table-body">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                 </div>
             </div>
             <div id="info" class="tab-content" align="center">
@@ -184,7 +210,7 @@
                     </p>
                     <br />
                     <br />
-                    <div>
+                    <div style="margin-left: 10%;" align="left">
                         <p>UPTIME:
                             <a id="device_uptime" style="font-size: 15px; font-weight: bold;"></a>
                         </p>
@@ -334,29 +360,10 @@
                     </form>
                 </div>
             </div>
-            <div class="tab-content" id="ports" align="center">
-                <div class="port-table">
-                    <table>
-                        <caption>Open ports</caption>
-                        <thead>
-                            <tr>
-                                <th>Port</th>
-                                <th>Service</th>
-                                <th>User</th>
-                            </tr>
-                        </thead>
-                        <tbody id="ports-table-body">
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     </body>
 </html>
+
+
