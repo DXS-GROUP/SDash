@@ -564,6 +564,14 @@ h3 {
   padding: 1%;
 }
 
+.main-cards {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 @media screen and (max-width: 800px) {
   .cards {
     flex-direction: column;
@@ -586,6 +594,10 @@ h3 {
   }
 
   .system_info {
+    width: 90%;
+  }
+
+  .port-table {
     width: 90%;
   }
 }
