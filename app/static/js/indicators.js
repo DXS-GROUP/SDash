@@ -238,7 +238,7 @@ function createPortBlock(port) {
     const userLabel = document.createElement('p');
     userLabel.textContent = `User: ${port.user}`;
 
-    portBlock.appendChild(icon);
+    // portBlock.appendChild(icon);
     portBlock.appendChild(portLabel);
     portBlock.appendChild(serviceLabel);
     portBlock.appendChild(userLabel);
