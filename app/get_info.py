@@ -8,7 +8,6 @@ from subprocess import DEVNULL, PIPE, Popen
 import psutil
 from func import convert_seconds_to_hhmm, run_command, truncate_string
 
-
 def get_open_ports():
     connections = psutil.net_connections(kind="inet")
     open_ports = []

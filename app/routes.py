@@ -21,7 +21,7 @@ prev_time = time.time()
 @app.route('/api/open-ports')
 def open_ports():
     ports = get_open_ports()
-    return jsonify(ports)  # Change this line to return just the array
+    return jsonify(ports)
 
 
 @app.route("/api/server_clock", methods=["GET"])
