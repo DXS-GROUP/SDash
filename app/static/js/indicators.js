@@ -198,17 +198,16 @@ const determineBackgroundColor = (plugged, charge) => {
 
 const fetchOpenPorts = async () => {
     const portContainer = document.getElementById('port-container');
-    portContainer.innerHTML = '';
 
     fetch('/api/open-ports')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
-            return response.json();
+            return response.json();  // Parse the JSON response
         })
         .then(data => {
-            if (Array.isArray(data)) {
+            if (Array.isArray(data)) {  // Check if data is an array
                 data.forEach(port => {
                     const portBlock = createPortBlock(port);
                     portContainer.appendChild(portBlock);
@@ -227,7 +226,7 @@ function createPortBlock(port) {
     portBlock.classList.add('port-block');
 
     const icon = document.createElement('img');
-    icon.src = 'static/icons/service.svg';
+    icon.src = 'static/icons/service.svg';  // Adjust the path as needed
     icon.alt = 'Port Icon';
 
     const portLabel = document.createElement('p');
@@ -239,7 +238,7 @@ function createPortBlock(port) {
     const userLabel = document.createElement('p');
     userLabel.textContent = `User: ${port.user}`;
 
-//    portBlock.appendChild(icon);
+    portBlock.appendChild(icon);
     portBlock.appendChild(portLabel);
     portBlock.appendChild(serviceLabel);
     portBlock.appendChild(userLabel);
