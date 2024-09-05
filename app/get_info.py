@@ -8,7 +8,6 @@ from subprocess import DEVNULL, PIPE, Popen
 import psutil
 from func import convert_seconds_to_hhmm, run_command, truncate_string
 
-
 def get_open_ports_and_services():
     connections = psutil.net_connections(kind="inet")
     open_ports = {}
@@ -30,7 +29,6 @@ def get_open_ports_and_services():
                 }
 
     return open_ports
-
 
 def get_uptime():
     if platform.system() != "Linux":

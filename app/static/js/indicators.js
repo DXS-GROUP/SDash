@@ -154,33 +154,6 @@ const updateSystemInfo = async () => {
     }
 };
 
-const fetchPorts = async () => {
-    try {
-        const response = await fetch('/api/ports');
-        const data = await response.json();
-        const tableBody = document.getElementById('ports-table-body');
-        tableBody.innerHTML = '';
-
-        for (const [port, info] of Object.entries(data)) {
-            const row = document.createElement('tr');
-            const portCell = document.createElement('td');
-            const serviceCell = document.createElement('td');
-            const userCell = document.createElement('td');
-
-            portCell.textContent = port;
-            serviceCell.textContent = info.service;
-            userCell.textContent = info.user;
-
-            row.appendChild(portCell);
-            row.appendChild(serviceCell);
-            row.appendChild(userCell);
-            tableBody.appendChild(row);
-        }
-    } catch (error) {
-        console.error('PORT ERROR:', error);
-    }
-};
-
 
 const fetchBatteryStatus = async () => {
     try {
@@ -223,7 +196,59 @@ const determineBackgroundColor = (plugged, charge) => {
     }
 };
 
+const fetchOpenPorts = async () => {
+    const portContainer = document.getElementById('port-container');
+    portContainer.innerHTML = '';
+
+    try {
+        const response = await fetch('/api/open-ports');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.debug(data);
+
+        for (const port in data) {
+            const portBlock = createPortBlock({
+                port: port,
+                service: data[port].service,
+                user: data[port].user
+            });
+            portContainer.appendChild(portBlock);
+        }
+    } catch (error) {
+        console.error('Error fetching open ports:', error);
+    }
+};
+
+function createPortBlock(port) {
+    const portBlock = document.createElement('div');
+    portBlock.classList.add('port-block');
+
+    const icon = document.createElement('img');
+    icon.src = 'static/icons/service.svg';
+    icon.alt = 'Port Icon';
+
+    const portLabel = document.createElement('p');
+    portLabel.textContent = `Port: ${port.port}`;
+
+    const serviceLabel = document.createElement('p');
+    serviceLabel.textContent = `Service: ${port.service}`;
+
+    const userLabel = document.createElement('p');
+    userLabel.textContent = `User: ${port.user}`;
+
+    // portBlock.appendChild(icon);
+    portBlock.appendChild(portLabel);
+    portBlock.appendChild(serviceLabel);
+    portBlock.appendChild(userLabel);
+
+    return portBlock;
+};
+
+fetchOpenPorts();
+
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
-setInterval(fetchPorts, 1000);
+setInterval(fetchOpenPorts, 30000);

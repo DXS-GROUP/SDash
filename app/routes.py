@@ -18,10 +18,10 @@ from get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
-@app.route("/api/ports")
-def api_ports():
-    ports_and_services = get_open_ports_and_services()
-    return jsonify(ports_and_services)
+@app.route('/api/open-ports')
+def open_ports():
+    ports = get_open_ports_and_services()
+    return jsonify(ports)
 
 
 @app.route("/api/server_clock", methods=["GET"])
