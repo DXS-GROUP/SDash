@@ -198,14 +198,14 @@ const determineBackgroundColor = (plugged, charge) => {
 
 const fetchOpenPorts = async () => {
     const portContainer = document.getElementById('port-container');
-    portContainer.innerHTML = ''; // Clear the existing content before fetching new data
+    portContainer.innerHTML = '';
 
     try {
         const response = await fetch('/api/open-ports');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        const data = await response.json();  // Parse the JSON response
+        const data = await response.json();
         console.debug(data);
 
         for (const port in data) {
@@ -226,7 +226,7 @@ function createPortBlock(port) {
     portBlock.classList.add('port-block');
 
     const icon = document.createElement('img');
-    icon.src = 'static/icons/service.svg';  // Adjust the path as needed
+    icon.src = 'static/icons/service.svg';
     icon.alt = 'Port Icon';
 
     const portLabel = document.createElement('p');

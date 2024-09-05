@@ -605,6 +605,8 @@ h3 {
   width: 15%;
   height: auto;
 
+  line-height: 1%;
+
   transition:
     transform 0.6s ease;
 }
@@ -619,7 +621,7 @@ h3 {
 
 @media screen and (max-width: 800px) {
   .port-block {
-    width: 80%;
+    width: 70%;
     margin: 1%;
     padding: 4%;
   }
