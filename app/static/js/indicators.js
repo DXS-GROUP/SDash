@@ -246,8 +246,9 @@ function createPortBlock(port) {
     return portBlock;
 };
 
+fetchOpenPorts();
+
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
-
-fetchOpenPorts();
+setInterval(fetchOpenPorts, 30000);
