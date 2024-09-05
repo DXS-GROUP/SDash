@@ -8,9 +8,9 @@ from subprocess import DEVNULL, PIPE, Popen
 import psutil
 from func import convert_seconds_to_hhmm, run_command, truncate_string
 
-def get_open_ports():
+def get_open_ports_and_services():
     connections = psutil.net_connections(kind="inet")
-    open_ports = []
+    open_ports = {}
 
     for conn in connections:
         localAddress, localPort = conn.laddr
@@ -21,20 +21,14 @@ def get_open_ports():
                 process = psutil.Process(pid)
                 service_name = process.name()
                 username = process.username()
-                open_ports.append({
-                    "port": localPort,
-                    "service": service_name,
-                    "user": username
-                })
+                open_ports[localPort] = {"service": service_name, "user": username}
             except (psutil.NoSuchProcess, psutil.AccessDenied):
-                open_ports.append({
-                    "port": localPort,
+                open_ports[localPort] = {
                     "service": "Unknown service",
                     "user": "Unknown user",
-                })
+                }
 
     return open_ports
-
 
 def get_uptime():
     if platform.system() != "Linux":

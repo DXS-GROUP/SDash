@@ -198,27 +198,27 @@ const determineBackgroundColor = (plugged, charge) => {
 
 const fetchOpenPorts = async () => {
     const portContainer = document.getElementById('port-container');
+    portContainer.innerHTML = ''; // Clear the existing content before fetching new data
 
-    fetch('/api/open-ports')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();  // Parse the JSON response
-        })
-        .then(data => {
-            if (Array.isArray(data)) {  // Check if data is an array
-                data.forEach(port => {
-                    const portBlock = createPortBlock(port);
-                    portContainer.appendChild(portBlock);
-                });
-            } else {
-                console.error('Expected an array but got:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching open ports:', error);
-        });
+    try {
+        const response = await fetch('/api/open-ports');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();  // Parse the JSON response
+        console.debug(data);
+
+        for (const port in data) {
+            const portBlock = createPortBlock({
+                port: port,
+                service: data[port].service,
+                user: data[port].user
+            });
+            portContainer.appendChild(portBlock);
+        }
+    } catch (error) {
+        console.error('Error fetching open ports:', error);
+    }
 };
 
 function createPortBlock(port) {
@@ -244,7 +244,7 @@ function createPortBlock(port) {
     portBlock.appendChild(userLabel);
 
     return portBlock;
-}
+};
 
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
