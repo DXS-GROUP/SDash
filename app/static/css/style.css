@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: rgb(24, 25, 38);
+  --bg: #142943;
   --bg2: rgba(24, 25, 38, 30);
   --fg: #cad3f5;
-  --accent: #ca9ee6;
-  --accent-hover: #ca9ee6;
+  --accent: #9ABFE5;
+  --accent-hover: #9ABFE5;
   --accent-pressed: #babbf1;
   --critical: #ed8796;
   --warning: #e5c890;
@@ -46,7 +46,7 @@ body {
 .clock h1 {
   font-size: 700%;
   height: 100%;
-  color: var(--accent-hover);
+  color: var(--bg);
 }
 
 .clock h3 {

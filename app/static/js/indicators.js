@@ -1,8 +1,8 @@
 const colors = {
-    bg: "#181926",
+    bg: "#142943",
     fg: "#cad3f5",
-    accent: "#24273a",
-    accent_hover: "#ca9ee6",
+    accent: "#9ABFE5",
+    accent_hover: "#9ABFE5",
     critical: "#ed8796",
     warning: "#e5c890",
     normal: "#a6da95"
