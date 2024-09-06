@@ -33,7 +33,7 @@ body {
   font-family: "M PLUS Rounded 1c", system-ui;
   color: var(--accent-hover);
   font-size: small;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +155,7 @@ body {
   background-color: var(--bg);
   border-radius: 10px;
   overflow: hidden;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
   box-shadow: 2px 2px 10px var(--bg);
   display: block;
   text-align: left;
@@ -173,7 +173,7 @@ body {
   font-family: "M PLUS Rounded 1c", system-ui;
   border-collapse: collapse;
   font-size: 16px;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .info-table td {
@@ -187,7 +187,7 @@ body {
   font-family: "M PLUS Rounded 1c", system-ui;
   height: 100vh;
   display: flex;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .p_buttons {
@@ -212,7 +212,8 @@ body {
     fill 0.5s;
   background-color: rgba(24, 25, 38, 0.4);
   backdrop-filter: blur(10px);
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease,
+  slideInDown 1s ease;
 }
 
 .power_button svg {
@@ -237,14 +238,14 @@ body {
   font-family: "Pacifico", cursive;
   font-size: 70px;
   font-weight: bold;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
   margin-top: 2%;
   margin-bottom: 2%;
 }
 
 p {
   font-size: small;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 select.button {
@@ -366,7 +367,7 @@ select.button:active {
   height: auto;
   justify-content: center;
   z-index: 56;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 @media (min-width: 800px) {
@@ -383,7 +384,7 @@ select.button:active {
 .tab-content.active {
   display: block;
   opacity: 1;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .tab-content.hidden {
@@ -401,7 +402,7 @@ select.button:active {
   margin-left: 10%;
   border-radius: 30px;
   background-color: transparent;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -470,6 +471,8 @@ select.button:active {
   width: 60%;
   padding: 5%;
   transition: backdrop 0.5s;
+  animation:slideInDown 1s ease,
+            fadeIn 0.5s ease;
 }
 
 h3 {
@@ -523,7 +526,7 @@ h3 {
   align-items: center;
   justify-content: center;
   font-family: "M PLUS Rounded 1c", system-ui;
-  animation: fadeIn 2s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .summary_data:hover {
@@ -609,6 +612,7 @@ h3 {
 
   transition:
     transform 0.6s ease;
+  animation: fadeIn 0.5s ease;
 }
 
 .port-block:hover {
