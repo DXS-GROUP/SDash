@@ -37,6 +37,18 @@
 python3 server.py
 ```
 
+<h3 align="center">Using docker</h3>
+
+```
+docker pull nighty3098/sdash
+```
+
+<h3 align="center">Run server</h3>
+
+```
+docker run nighty3098/sdash
+```
+
 <div align="center">
   <h3>Usage</h3>
   Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC

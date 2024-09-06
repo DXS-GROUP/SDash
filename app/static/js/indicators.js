@@ -251,4 +251,4 @@ fetchOpenPorts();
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
-setInterval(fetchOpenPorts, 30000);
+setInterval(fetchOpenPorts, 10000);
