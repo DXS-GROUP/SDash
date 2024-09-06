@@ -54,12 +54,11 @@ docker run nighty3098/sdash
   Use:  <kbd> <br>   Shift   <br> </kbd> + <kbd> <br>   C   <br> </kbd> to open the command palette on PC
   
   <h3>Screenshots</h3>
-
-![Снимок экрана от 2024-09-02 21-55-37](https://github.com/user-attachments/assets/13d94575-1c10-4b6d-b081-f2100144b012)
-![Снимок экрана от 2024-09-02 21-55-47](https://github.com/user-attachments/assets/a44b02bc-fa3b-42db-9d7a-544fa46bb73d)
-![Снимок экрана от 2024-09-02 21-56-18](https://github.com/user-attachments/assets/0c8bc0e1-5ded-469a-8382-c23ebd189fa3)
-![Снимок экрана от 2024-09-02 21-56-30](https://github.com/user-attachments/assets/addda1e1-3826-4ad7-914e-762d0e1338b5)
-![Снимок экрана от 2024-09-02 21-56-34](https://github.com/user-attachments/assets/1aa26388-218a-4532-96d8-ad22760c883e)
-![Снимок экрана от 2024-09-02 21-56-42](https://github.com/user-attachments/assets/eedcc307-64b4-450e-842f-b207fdcd144f)
+  
+![Снимок экрана от 2024-09-06 23-32-27](https://github.com/user-attachments/assets/b86af984-d512-4d3f-9b02-d0856f8a41ab)
+![Снимок экрана от 2024-09-06 23-32-37](https://github.com/user-attachments/assets/9450d635-245e-489d-9d43-ae014b73af96)
+![Снимок экрана от 2024-09-06 23-32-30](https://github.com/user-attachments/assets/5e60565d-481e-4d47-a091-6897248e830a)
+![Снимок экрана от 2024-09-06 23-32-41](https://github.com/user-attachments/assets/608902d0-e998-491c-9b58-9931790c2fe7)
+![Снимок экрана от 2024-09-06 23-32-33](https://github.com/user-attachments/assets/59a4adaf-98c3-40e1-a5dd-3158d6b3d8ba)
 
 </div>
