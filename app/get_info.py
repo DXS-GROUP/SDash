@@ -6,6 +6,8 @@ from os import environ, path
 from subprocess import DEVNULL, PIPE, Popen
 import psutil
 
+from func import truncate_string
+
 def run_command(command):
     """Run a shell command and return the output."""
     with Popen(command, shell=True, stdout=PIPE, stderr=DEVNULL) as proc:
@@ -95,7 +97,9 @@ def gpu_info():
     if platform.system() == "Darwin":
         return run_command("system_profiler SPDisplaysDataType | awk '/Chipset Model:/ {print $3, $4, $5, $6, $7}'").strip()
     elif platform.system() == "Linux":
-        return run_command("lspci | grep -i vga").strip()  # Linux GPU command
+        return truncate_string(
+            run_command("lspci | grep -i vga").split(":")[2].split("(")[0].strip(), 50
+        )
     elif platform.system() == "Windows":
         return run_command("wmic path win32_videocontroller get name")  # Windows GPU command
     return "Unknown GPU"
