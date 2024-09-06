@@ -233,14 +233,14 @@ function createPortBlock(port) {
     portLabel.textContent = `Port: ${port.port}`;
 
     const serviceLabel = document.createElement('p');
-    serviceLabel.textContent = `Service: ${port.service}`;
+    serviceLabel.textContent = `${port.service}`;
 
     const userLabel = document.createElement('p');
     userLabel.textContent = `User: ${port.user}`;
 
     // portBlock.appendChild(icon);
-    portBlock.appendChild(portLabel);
     portBlock.appendChild(serviceLabel);
+    portBlock.appendChild(portLabel);
     portBlock.appendChild(userLabel);
 
     return portBlock;
