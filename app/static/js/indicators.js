@@ -1,8 +1,8 @@
 const colors = {
-    bg: "#181926",
+    bg: "#142943",
     fg: "#cad3f5",
-    accent: "#24273a",
-    accent_hover: "#ca9ee6",
+    accent: "#9ABFE5",
+    accent_hover: "#9ABFE5",
     critical: "#ed8796",
     warning: "#e5c890",
     normal: "#a6da95"
@@ -233,14 +233,14 @@ function createPortBlock(port) {
     portLabel.textContent = `Port: ${port.port}`;
 
     const serviceLabel = document.createElement('p');
-    serviceLabel.textContent = `Service: ${port.service}`;
+    serviceLabel.textContent = `${port.service}`;
 
     const userLabel = document.createElement('p');
     userLabel.textContent = `User: ${port.user}`;
 
     // portBlock.appendChild(icon);
-    portBlock.appendChild(portLabel);
     portBlock.appendChild(serviceLabel);
+    portBlock.appendChild(portLabel);
     portBlock.appendChild(userLabel);
 
     return portBlock;
