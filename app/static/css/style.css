@@ -426,8 +426,8 @@ select.button:active {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  margin: 10px;
+  padding: 4%;
+  margin: 1%;
   opacity: 0;
   animation: fadeIn 2s ease forwards;
 }
@@ -435,30 +435,6 @@ select.button:active {
 .summary_data_text {
   align-items: center;
   align-content: center;
-}
-
-.summary_data_2 {
-  background-color: rgba(24, 25, 38, 0.4);
-  border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
-  border: 1px solid var(--bg2);
-  font-family: "M PLUS Rounded 1c", system-ui;
-  transition:
-    transform 0.5s,
-    opacity 0.5s,
-    box-shadow 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 20%;
-  height: auto;
-  padding: 10px;
-  margin: 10px;
-  opacity: 0;
-  animation: fadeIn 2s ease forwards;
 }
 
 .system_info {
@@ -489,34 +465,11 @@ h3 {
   width: 20%;
 }
 
-.summary_data_2 svg {
-  margin-top: 1%;
-  width: 10%;
-}
-
 .summary_data svg path {
   fill: var(--accent-hover);
 }
 
-.summary_data_2 svg path {
-  fill: var(--accent-hover);
-}
-
-.summary_data_2 div {
-  padding: 1%;
-  margin: 1%;
-  display: flex;
-  width: 100%;
-}
-
-.summary_data_2 h3 {
-  color: var(--accent-hover);
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.summary_data,
-.summary_data_2 span {
+.summary_data span {
   font-size: 13px;
   font-weight: bold;
 }
@@ -530,10 +483,6 @@ h3 {
 }
 
 .summary_data:hover {
-  transform: scale(1.05);
-}
-
-.summary_data_2:hover {
   transform: scale(1.05);
 }
 
@@ -642,10 +591,6 @@ h3 {
     width: 50%;
   }
 
-  .summary_data_2 {
-    width: 85%;
-  }
-
   .summary_data {
     width: 85%;
   }
@@ -662,11 +607,15 @@ h3 {
   .p_buttons {
     margin-top: 20%;
   }
+
+  select.button {
+    height: 50px;
+  }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 800px) {
   html {
-    height: auto;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
   }
@@ -683,16 +632,8 @@ h3 {
     width: 35%;
   }
 
-  .summary_data_2 {
-    width: 25%;
-  }
-
   .system_info {
     width: 60%;
-  }
-
-  .summary_data_2 svg {
-    width: 6%;
   }
 
   .summary_data svg {
@@ -722,10 +663,6 @@ h3 {
     width: 100%;
   }
 
-  .summary_data_2 {
-    width: 20%;
-  }
-
   .system_info {
     width: 35%;
   }
@@ -737,10 +674,6 @@ h3 {
 }
 
 @media screen and (min-width: 2000px) {
-  .summary_data_2 svg {
-    width: 5%;
-  }
-
   .summary_data svg {
     width: 15%;
   }
