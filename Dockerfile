@@ -1,4 +1,5 @@
-FROM python:3.9
+FROM debian:latest
+FROM python:3.11
 
 WORKDIR /app
 
