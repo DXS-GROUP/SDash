@@ -429,7 +429,7 @@ select.button:active {
     box-shadow 0.5s;
   display: flex;
   width: 30%;
-  aspect-ratio: 2 / 1.1;
+  aspect-ratio: 2 / 1.2;
   display: flex;
   flex-direction: column;
   align-items: center;
