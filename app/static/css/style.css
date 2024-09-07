@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Pacifico&display=swap");
 
 :root {
-  --bg: #142943;
-  --bg2: rgba(24, 25, 38, 30);
+  --bg: #2F3541;
+  --bg2: rgba(47, 53, 65, 30);
   --fg: #cad3f5;
   --accent: #9ABFE5;
   --accent-hover: #9ABFE5;
@@ -15,7 +15,7 @@
 html {
   width: 100%;
   height: auto;
-  background-image: url("../bg.jpg");
+  background-image: url("../bg.png");
   display: flex;
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
@@ -63,14 +63,14 @@ body {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   animation: fadeOut 1s ease;
 }
 
 .modal-content {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   backdrop-filter: blur(8.3px);
-  margin: 15% auto;
+  margin: 3% auto;
   border: 2px solid var(--bg2);
   width: 50%;
   padding: 20px;
@@ -80,7 +80,7 @@ body {
 
 @media (max-width: 1000px) {
   .modal-content {
-    margin: 30% auto;
+    margin: 50% auto;
     width: 70%;
   }
 }
@@ -108,27 +108,28 @@ body {
   justify-content: center;
 }
 
-@media (max-width: 1000px) {
-  .tab-buttons {
-    flex-direction: column;
-  }
-}
-
 .tab-button {
-  background-color: var(--accent-pressed);
-  color: var(--bg);
+  background-color: rgba(47, 53, 65, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
+  color: var(--fg);
   outline: none;
   cursor: pointer;
   padding: 10px 20px;
   margin: 1%;
   border-radius: 10px;
+  width: 20%;
   transition:
     background-color 0.6s ease,
+    color 0.6s ease,
     transform 0.6s ease;
 }
 
 .tab-button.active {
+  color: var(--bg);
   background-color: var(--accent-hover);
 }
 
@@ -140,6 +141,16 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .tab-buttons {
+    flex-direction: column;
+  }
+
+  .tab-button {
+    width: 100%;
+  }
 }
 
 .context-menu li {
@@ -213,7 +224,7 @@ body {
     transform 0.3s,
     background-color 0.3s,
     fill 0.5s;
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   backdrop-filter: blur(10px);
   animation: fadeIn 0.5s ease,
   slideInDown 1s ease;
@@ -251,39 +262,10 @@ p {
   animation: fadeIn 0.5s ease;
 }
 
-select.button {
-  background-color: rgba(24, 25, 38, 0.4);
-  border-radius: 16px;
-  box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
-  border: 2px solid var(--bg2);
-  font-family: "M PLUS Rounded 1c", system-ui;
-  color: var(--accent-hover);
-  cursor: pointer;
-  transition:
-    background-color 0.7s ease,
-    transform 0.6s ease;
-  z-index: 10000;
-  margin-bottom: 2%;
-  animation: slideInDown 1s ease;
-}
-
-select.button:hover {
-  background-color: var(--accent-hover);
-  color: var(--bg);
-  transform: scale(1.05);
-}
-
-select.button:active {
-  background-color: rgba(24, 25, 38, 0.4);
-  color: var(--bg);
-}
-
 .button {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
@@ -369,7 +351,7 @@ select.button:active {
 .dock {
   align-items: center;
   display: flex;
-  margin-top: 1%;
+  margin-top: 3%;
   width: 100%;
   height: auto;
   justify-content: center;
@@ -416,9 +398,9 @@ select.button:active {
 }
 
 .summary_data {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 10 40px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 10 40px 40px rgba(47, 53, 65, 0.4);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 1px solid var(--bg2);
@@ -445,13 +427,13 @@ select.button:active {
 }
 
 .system_info {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
-  width: 60%;
+  width: 80%;
   padding: 5%;
   transition: backdrop 0.5s;
   animation:slideInDown 1s ease,
@@ -494,9 +476,9 @@ h3 {
 }
 
 .port-table {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
@@ -531,6 +513,37 @@ h3 {
   text-align: center;
 }
 
+.settings {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.settings h1 {
+  font-size: 70px;
+  margin: 0px;
+}
+
+.settings h3 {
+  font-size: 20px;
+  margin: 0px;
+}
+
+.settings svg {
+  aspect-ratio: 1/1;
+  width: 30px;
+  fill: var(--accent);
+  margin: 0px;
+  margin-left: 30px;
+  transition: fill 0.6s ease;
+}
+
+.settings svg:hover {
+  fill: var(--fg);
+}
+
 .port-container {
   display: flex;
   flex-direction: row;
@@ -544,9 +557,9 @@ h3 {
 }
 
 .port-block {
-  background-color: rgba(24, 25, 38, 0.4);
+  background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
@@ -676,7 +689,7 @@ h3 {
   }
 
   .system_info {
-    width: 35%;
+    width: 50%;
   }
 
   .port-container {
