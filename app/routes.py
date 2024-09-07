@@ -23,15 +23,6 @@ def open_ports():
     ports = get_open_ports_and_services()
     return jsonify(ports)
 
-
-@app.route("/api/server_clock", methods=["GET"])
-def get_time():
-    current_time = datetime.now().strftime("%H:%M")
-    current_date = datetime.now().strftime("%d %b %Y")
-
-    return jsonify(current_time=current_time, current_date=current_date)
-
-
 @app.route("/api/usage")
 def usage():
     global prev_net_io, prev_time

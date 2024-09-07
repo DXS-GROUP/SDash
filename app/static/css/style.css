@@ -39,20 +39,9 @@ body {
   justify-content: center;
 }
 
-.clock {
+.summary_data h1 {
   margin: 0%;
-}
-
-.clock h1 {
-  font-size: 900%;
-  height: 100%;
   color: var(--bg);
-}
-
-.clock h3 {
-  font-size: 300%;
-  height: 100%;
-  color: var(--accent-hover);
 }
 
 .center {
