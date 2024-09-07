@@ -10,15 +10,9 @@
     />
     <link rel="import" href="/cpu_block.html" />
   </head>
-  <div class="dock">
-    <select id="tab-selector" class="button" onchange="switchTab(this.value)">
-      <option value="monitor">Dashboard</option>
-      <option value="info">Info</option>
-      <option value="ports">Services</option>
-      <option value="control">Control</option>
-    </select>
-  </div>
-  <div class="root">
+    <div class="dock">
+      <button class="button" id="open-modal-button">Open menu</button>
+    </div>
     <div id="modal" class="modal">
       <div class="modal-content">
         <span class="close-button">&times;</span>
@@ -33,7 +27,6 @@
         <br />
       </div>
     </div>
-
     <body>
       <div class="container">
         <div id="monitor" class="tab-content active">
@@ -670,5 +663,4 @@
       <script src="{{ url_for('static', filename='js/indicators.js') }}"></script>
       <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     </body>
-  </div>
 </html>
