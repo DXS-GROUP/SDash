@@ -562,6 +562,11 @@ h3 {
 }
 
 @media screen and (max-width: 800px) {
+  .main-cards {
+    margin-top: 30%;
+    margin-bottom: 10%;
+  }
+
   .port-block {
     width: 70%;
     margin: 1%;
@@ -581,7 +586,7 @@ h3 {
   }
 
   .summary_data {
-    width: 85%;
+    width: 100%;
   }
 
   .system_info {
