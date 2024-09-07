@@ -1,30 +1,17 @@
-function switchTab(tab) {
-    const tabs = ['monitor', 'info', 'control', 'ports'];
-    tabs.forEach(t => {
-        const tabContent = document.getElementById(t);
-        if (t === tab) {
-            tabContent.classList.add('active');
-            tabContent.classList.remove('hidden');
-        } else {
-            tabContent.classList.remove('active');
-            tabContent.classList.add('hidden');
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    switchTab('monitor');
-});
-
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('modal');
     const closeButton = document.getElementsByClassName('close-button')[0];
     const tabButtons = document.getElementsByClassName('tab-button');
+    const openModalButton = document.getElementById('open-modal-button'); 
 
     document.addEventListener('keydown', function(event) {
         if (event.shiftKey && event.key === 'C') {
             modal.style.display = 'block';
         }
+    });
+
+    openModalButton.addEventListener('click', function() {
+        modal.style.display = 'block';
     });
 
     closeButton.addEventListener('click', function() {

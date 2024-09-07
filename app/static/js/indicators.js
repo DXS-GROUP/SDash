@@ -10,12 +10,11 @@ const colors = {
 
 const updateIndicators = async () => {
     try {
-        const [usage, cpuTemp, gpuTemp, userIP, clockBlock] = await Promise.all([
+        const [usage, cpuTemp, gpuTemp, userIP] = await Promise.all([
             fetch('/api/usage').then(response => response.json()),
             fetch('/api/cpu_temp').then(response => response.json()),
             fetch('/api/gpu_temp').then(response => response.json()),
-            fetch('/api/user_ip').then(response => response.json()),
-            fetch('/api/server_clock').then(response => response.json())
+            fetch('/api/user_ip').then(response => response.json())
         ]);
 
         updateProgressBars(usage);
@@ -24,17 +23,9 @@ const updateIndicators = async () => {
         updateCpuTemperature(cpuTemp);
         updateGpuTemperature(gpuTemp);
         getUserIp(userIP);
-        updateClock(clockBlock);
     } catch (error) {
         console.error('Error updating indicators:', error);
     }
-};
-
-const updateClock = (clock) => {
-    document.getElementById('clock_data').innerText = clock.current_time;
-
-    console.debug("Current Time: " + clock.current_time);
-    console.debug("Current Date: " + clock.current_date);
 };
 
 const getUserIp = (userIP) => {
