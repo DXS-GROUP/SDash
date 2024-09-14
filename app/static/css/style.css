@@ -79,7 +79,7 @@ body {
 
 @media (max-width: 1000px) {
   .modal-content {
-    margin: 20% auto;
+    margin: 10% auto;
     width: 70%;
   }
 }
@@ -264,7 +264,6 @@ p {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
   color: var(--fg);
 
@@ -399,7 +398,6 @@ p {
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(47, 53, 65, 0.4);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 1px solid var(--bg2);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
@@ -427,7 +425,6 @@ p {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
   width: 80%;
   padding: 5%;
@@ -478,7 +475,6 @@ h3 {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
 
   margin: 3%;
@@ -558,7 +554,6 @@ h3 {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
 
   display: flex;
@@ -649,7 +644,7 @@ h3 {
   }
 
   .system_info {
-    width: 60%;
+    width: 80%;
   }
 
   .summary_data svg {
