@@ -410,7 +410,7 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 4%;
-  margin: 2%;
+  margin: 2% 0%;
   opacity: 0;
   animation: fadeIn 2s ease forwards;
 }
@@ -586,8 +586,13 @@ h3 {
 
 @media screen and (max-width: 800px) {
   .main-cards {
-    margin-top: 30%;
+    margin-top: 10%;
     margin-bottom: 10%;
+    width: 100%;
+  }
+
+  .summary_data {
+    width: 90%;
   }
 
   .summary_data svg {
@@ -612,6 +617,7 @@ h3 {
   }
 
   .cards {
+    width: 100%;
     grid-template-columns: 100%;
     grid-gap: 0%;
   }
