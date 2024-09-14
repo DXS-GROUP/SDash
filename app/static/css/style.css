@@ -68,8 +68,7 @@ body {
 }
 
 .modal-content {
-  background-color: rgba(47, 53, 65, 0.4);
-  backdrop-filter: blur(8.3px);
+  background-color: rgba(47, 53, 65, 1.0);
   margin: 3% auto;
   border: 2px solid var(--bg2);
   width: 50%;
@@ -80,7 +79,7 @@ body {
 
 @media (max-width: 1000px) {
   .modal-content {
-    margin: 50% auto;
+    margin: 10% auto;
     width: 70%;
   }
 }
@@ -112,8 +111,6 @@ body {
   background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
-  backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
   color: var(--fg);
   outline: none;
@@ -267,7 +264,6 @@ p {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
   color: var(--fg);
 
@@ -302,7 +298,7 @@ p {
 
 @keyframes fadeIn {
   from {
-    opacity: 0;2
+    opacity: 0;
   }
   to {
     opacity: 1;
@@ -311,7 +307,7 @@ p {
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-10%);
   }
   to {
     transform: translateX(0);
@@ -320,7 +316,7 @@ p {
 
 @keyframes slideInDown {
   from {
-    transform: translateY(-100%);
+    transform: translateY(-10%);
   }
   to {
     transform: translateY(0);
@@ -329,7 +325,7 @@ p {
 
 @keyframes slideInUp {
   from {
-    transform: translateY(100%);
+    transform: translateY(10%);
   }
   to {
     transform: translateY(0);
@@ -402,7 +398,6 @@ p {
   border-radius: 16px;
   box-shadow: 10 40px 40px rgba(47, 53, 65, 0.4);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 1px solid var(--bg2);
   font-family: "M PLUS Rounded 1c", system-ui;
   transition:
@@ -410,7 +405,6 @@ p {
     opacity 0.5s,
     box-shadow 0.5s;
   display: flex;
-  width: 30%;
   aspect-ratio: 2 / 1.2;
   display: flex;
   flex-direction: column;
@@ -431,7 +425,6 @@ p {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
   width: 80%;
   padding: 5%;
@@ -464,7 +457,9 @@ h3 {
 }
 
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 5%;
   align-items: center;
   justify-content: center;
   font-family: "M PLUS Rounded 1c", system-ui;
@@ -480,7 +475,6 @@ h3 {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
 
   margin: 3%;
@@ -545,13 +539,12 @@ h3 {
 }
 
 .port-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  height: auto;
-
+  display: grid;
+  grid-gap: 2%;
+  grid-template-columns: 30% 30% 30%;
   align-items: center;
   justify-content: center;
+  height: auto;
 
   animation: slideInDown 1s ease;
 }
@@ -561,7 +554,6 @@ h3 {
   border-radius: 16px;
   box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
-  -webkit-backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
 
   display: flex;
@@ -574,7 +566,7 @@ h3 {
   margin: 1%;
   padding: 1%;
 
-  width: 15%;
+  width: auto;
   height: auto;
 
   line-height: 1%;
@@ -598,16 +590,6 @@ h3 {
     margin-bottom: 10%;
   }
 
-  .port-block {
-    width: 70%;
-    margin: 1%;
-    padding: 4%;
-  }
-
-  .cards {
-    flex-direction: column;
-  }
-
   .summary_data svg {
     width: 15%;
   }
@@ -616,17 +598,9 @@ h3 {
     width: 50%;
   }
 
-  .summary_data {
-    width: 100%;
-  }
-
   .system_info {
     margin-top: 20%;
     width: 100%;
-  }
-
-  .port-table {
-    width: 90%;
   }
 
   .p_buttons {
@@ -635,6 +609,22 @@ h3 {
 
   select.button {
     height: 50px;
+  }
+
+  .cards {
+    grid-template-columns: 100%;
+    grid-gap: 0%;
+  }
+
+  .port-container {
+    display: grid;
+    grid-gap: 0%;
+    grid-template-columns: 100%;
+    width: 100%;
+  }
+
+  .port-block {
+    width: 100%;
   }
 }
 
@@ -653,12 +643,8 @@ h3 {
     animation: slideInUp 1s ease;
   }
 
-  .summary_data {
-    width: 35%;
-  }
-
   .system_info {
-    width: 60%;
+    width: 80%;
   }
 
   .summary_data svg {
@@ -666,14 +652,19 @@ h3 {
   }
 
   .port-container {
-    height: 100%;
+    display: grid;
+    grid-gap: 0%;
+    grid-template-columns: 100%;
     width: 100%;
   }
 
   .port-block {
-    width: 30%;
-    margin: 1%;
-    padding: 4%;
+    width: 100%;
+  }
+
+  .cards {
+    grid-template-columns: 100%;
+    grid-gap: 0%;
   }
 }
 
@@ -682,10 +673,6 @@ h3 {
     height: 100%;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .summary_data {
-    width: 100%;
   }
 
   .system_info {
