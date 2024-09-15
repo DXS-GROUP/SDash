@@ -14,6 +14,7 @@
   <img src="https://github.com/Nighty3098/DevIcons/blob/main/badges/badges_html.png?raw=true" width="50px" />
   <img src="https://github.com/Nighty3098/DevIcons/blob/main/badges/badges_css.png?raw=true" width="50px" />
   <img src="https://github.com/Nighty3098/DevIcons/blob/main/badges/badges_javascript.png?raw=true" width="50px" />
+  <img src="https://github.com/Nighty3098/DevIcons/blob/main/badges/badges_docker.png?raw=true" width="50px" />
   <br>
   <h3>Installing</h3>
   <div align="left">
