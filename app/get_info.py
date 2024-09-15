@@ -21,7 +21,7 @@ def get_open_ports_and_services():
     open_ports = {}
 
     for conn in connections:
-        localAddress, localPort = conn.laddr
+        _, localPort = conn.laddr
         pid = conn.pid
 
         if pid is not None:
@@ -40,12 +40,6 @@ def get_open_ports_and_services():
                     "service": "Unknown service",
                     "user": "Unknown user",
                     "status": "No such process",
-                }
-            except psutil.AccessDenied:
-                open_ports[localPort] = {
-                    "service": "Access denied",
-                    "user": "Access denied",
-                    "status": "Access denied",
                 }
             except Exception as e:
                 open_ports[localPort] = {
