@@ -8,8 +8,9 @@ from logging.config import dictConfig
 
 import psutil
 import pynvml
-from config import app, dictConfig
 from flask import Flask, jsonify, redirect, render_template, request
+
+from config import app, app_version, dictConfig
 from func import convert_seconds_to_hhmm
 from get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
                       get_open_ports_and_services, get_uptime, gpu_info,
@@ -18,10 +19,17 @@ from get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
-@app.route('/api/open-ports')
+
+@app.route("/api/version")
+def get_version():
+    return jsonify(version=app_version)
+
+
+@app.route("/api/open-ports")
 def open_ports():
     ports = get_open_ports_and_services()
     return jsonify(ports)
+
 
 @app.route("/api/usage")
 def usage():
