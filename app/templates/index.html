@@ -10,37 +10,498 @@
     />
     <link rel="import" href="/cpu_block.html" />
   </head>
-    <div class="dock">
-      <button class="button" id="open-modal-button">MENU</button>
-    </div>
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <div class="tab-buttons">
-          <button class="tab-button active" data-tab="monitor">
-            Dashboard
-          </button>
-          <button class="tab-button" data-tab="info">Info</button>
-          <button class="tab-button" data-tab="ports">Services</button>
-          <button class="tab-button" data-tab="control">Control</button>
-          <button class="tab-button" data-tab="settings">Settings</button>
-        </div>
-        <br />
+  <div class="dock">
+    <button class="button" id="open-modal-button">MENU</button>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="monitor">Dashboard</button>
+        <button class="tab-button" data-tab="info">Info</button>
+        <button class="tab-button" data-tab="ports">Services</button>
+        <button class="tab-button" data-tab="control">Control</button>
+        <button class="tab-button" data-tab="settings">Settings</button>
       </div>
+      <br />
     </div>
-    <body>
-      <div class="container">
-        <div id="monitor" class="tab-content active">
-          <div class="main-cards">
-            <div class="cards">
-              <div class="summary_data" id="summary_data_cpu">
+  </div>
+  <body>
+    <div class="container">
+      <div id="monitor" class="tab-content active">
+        <div class="main-cards">
+          <div class="cards">
+            <div class="summary_data" id="summary_data_cpu">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                version="1.1"
+                id="svg2"
+                sodipodi:docname="cpu.svg"
+                inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:svg="http://www.w3.org/2000/svg"
+              >
+                <defs id="defs2" />
+                <sodipodi:namedview
+                  id="namedview2"
+                  pagecolor="#505050"
+                  bordercolor="#ffffff"
+                  borderopacity="1"
+                  inkscape:showpageshadow="0"
+                  inkscape:pageopacity="0"
+                  inkscape:pagecheckerboard="1"
+                  inkscape:deskcolor="#505050"
+                  inkscape:zoom="1.95"
+                  inkscape:cx="71.282051"
+                  inkscape:cy="446.92308"
+                  inkscape:window-width="2560"
+                  inkscape:window-height="1378"
+                  inkscape:window-x="0"
+                  inkscape:window-y="26"
+                  inkscape:window-maximized="1"
+                  inkscape:current-layer="svg2"
+                />
+                <g
+                  id="SVGRepo_bgCarrier"
+                  stroke-width="0"
+                  style="fill-opacity: 1"
+                />
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="fill-opacity: 1"
+                />
+                <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
+                  <path
+                    d="M9.18109 10.1811C9.2342 10.128 9.32905 10.0623 9.63166 10.0216C9.95434 9.97823 10.3923 9.97675 11.0698 9.97675H12.9302C13.6077 9.97675 14.0457 9.97823 14.3683 10.0216C14.671 10.0623 14.7658 10.128 14.8189 10.1811C14.872 10.2342 14.9377 10.329 14.9784 10.6317C15.0218 10.9543 15.0233 11.3923 15.0233 12.0698V13.9302C15.0233 14.6077 15.0218 15.0457 14.9784 15.3683C14.9377 15.671 14.872 15.7658 14.8189 15.8189C14.7658 15.872 14.671 15.9377 14.3683 15.9784C14.0457 16.0218 13.6077 16.0233 12.9302 16.0233H11.0698C10.3923 16.0233 9.95434 16.0218 9.63166 15.9784C9.32905 15.9377 9.2342 15.872 9.18109 15.8189C9.12798 15.7658 9.0623 15.671 9.02161 15.3683C8.97823 15.0457 8.97675 14.6077 8.97675 13.9302V12.0698C8.97675 11.3923 8.97823 10.9543 9.02161 10.6317C9.0623 10.329 9.12798 10.2342 9.18109 10.1811Z"
+                    fill="#232634"
+                    id="path1"
+                    style="fill-opacity: 1"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M12 3C12.3853 3 12.6977 3.31236 12.6977 3.69767V6.48884C13.2084 6.48991 13.6717 6.49342 14.0932 6.50495L14.093 6.48837V3.69767C14.093 3.31236 14.4054 3 14.7907 3C15.176 3 15.4884 3.31236 15.4884 3.69767V6.48837C15.4884 6.52487 15.4856 6.56072 15.4802 6.5957C16.4162 6.71067 17.0648 6.94879 17.558 7.44198C18.0512 7.93517 18.2893 8.58381 18.4043 9.51984C18.4393 9.51443 18.4751 9.51163 18.5116 9.51163H21.3023C21.6876 9.51163 22 9.82399 22 10.2093C22 10.5946 21.6876 10.907 21.3023 10.907H18.5116L18.495 10.9068C18.5066 11.3283 18.5106 11.7916 18.5116 12.3023H21.3023C21.6876 12.3023 22 12.6147 22 13C22 13.3853 21.6876 13.6977 21.3023 13.6977L18.5112 13.6977C18.5101 14.2084 18.5066 14.6717 18.495 15.0932L18.5116 15.093H21.3023C21.6876 15.093 22 15.4054 22 15.7907C22 16.176 21.6876 16.4884 21.3023 16.4884H18.5116C18.4751 16.4884 18.4393 16.4856 18.4043 16.4802C18.2893 17.4162 18.0512 18.0648 17.558 18.558C17.0648 19.0512 16.4162 19.2893 15.4802 19.4043C15.4856 19.4393 15.4884 19.4751 15.4884 19.5116V22.3023C15.4884 22.6876 15.176 23 14.7907 23C14.4054 23 14.093 22.6876 14.093 22.3023V19.5116L14.0932 19.495C13.6717 19.5066 13.2084 19.5106 12.6977 19.5116V22.3023C12.6977 22.6876 12.3853 23 12 23C11.6147 23 11.3023 22.6876 11.3023 22.3023L11.3023 19.5112C10.7916 19.5101 10.3283 19.5066 9.90678 19.495L9.90698 19.5116V22.3023C9.90698 22.6876 9.59462 23 9.2093 23C8.82399 23 8.51163 22.6876 8.51163 22.3023V19.5116C8.51163 19.4751 8.51443 19.4393 8.51984 19.4043C7.58381 19.2893 6.93517 19.0512 6.44198 18.558C5.94879 18.0648 5.71067 17.4162 5.5957 16.4802C5.56071 16.4856 5.52487 16.4884 5.48837 16.4884H2.69767C2.31236 16.4884 2 16.176 2 15.7907C2 15.4054 2.31236 15.093 2.69767 15.093H5.48837L5.50495 15.0932C5.49342 14.6717 5.48944 14.2084 5.48837 13.6977H2.69767C2.31236 13.6977 2 13.3853 2 13C2 12.6147 2.31236 12.3023 2.69767 12.3023L5.48884 12.3023C5.48991 11.7916 5.49342 11.3283 5.50495 10.9068L5.48837 10.907H2.69767C2.31236 10.907 2 10.5946 2 10.2093C2 9.82399 2.31236 9.51163 2.69767 9.51163H5.48837C5.52487 9.51163 5.56071 9.51443 5.5957 9.51984C5.71067 8.58381 5.94879 7.93517 6.44198 7.44198C6.93517 6.94879 7.58381 6.71067 8.51984 6.5957C8.51443 6.56072 8.51163 6.52487 8.51163 6.48837V3.69767C8.51163 3.31236 8.82399 3 9.2093 3C9.59462 3 9.90698 3.31236 9.90698 3.69767V6.48837L9.90678 6.50495C10.3283 6.49342 10.7916 6.48944 11.3023 6.48837V3.69767C11.3023 3.31236 11.6147 3 12 3ZM11.0238 8.5814C10.4054 8.58136 9.87247 8.58133 9.44573 8.63871C8.98839 8.70019 8.55001 8.83885 8.19443 9.19443C7.83885 9.55001 7.70019 9.98839 7.63871 10.4457C7.58133 10.8725 7.58136 11.4054 7.5814 12.0238V13.9762C7.58136 14.5946 7.58133 15.1275 7.63871 15.5543C7.70019 16.0116 7.83885 16.45 8.19443 16.8056C8.55001 17.1612 8.98839 17.2998 9.44573 17.3613C9.87247 17.4187 10.4054 17.4186 11.0238 17.4186H12.9762C13.5946 17.4186 14.1275 17.4187 14.5543 17.3613C15.0116 17.2998 15.45 17.1612 15.8056 16.8056C16.1612 16.45 16.2998 16.0116 16.3613 15.5543C16.4187 15.1275 16.4186 14.5946 16.4186 13.9762V12.0238C16.4186 11.4054 16.4187 10.8725 16.3613 10.4457C16.2998 9.98839 16.1612 9.55001 15.8056 9.19443C15.45 8.83885 15.0116 8.70019 14.5543 8.63871C14.1275 8.58133 13.5947 8.58136 12.9762 8.5814H11.0238Z"
+                    fill="#232634"
+                    id="path2"
+                    style="fill-opacity: 1"
+                  />
+                </g>
+              </svg>
+              <h3 id="summary_data_cpu_text"></h3>
+              <div class="progress-bar">
+                <div class="progress" id="cpu-progress"></div>
+                <span id="cpu-value"></span>
+              </div>
+            </div>
+            <div class="summary_data" id="summary_data_ram">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg
+                viewBox="0 0 1069 1069"
+                style="
+                  fill-rule: evenodd;
+                  clip-rule: evenodd;
+                  stroke-linejoin: round;
+                  stroke-miterlimit: 2;
+                "
+                version="1.1"
+                xml:space="preserve"
+                id="svg2"
+                sodipodi:docname="ram.svg"
+                inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:svg="http://www.w3.org/2000/svg"
+              >
+                <defs id="defs2" />
+                <sodipodi:namedview
+                  id="namedview2"
+                  pagecolor="#505050"
+                  bordercolor="#ffffff"
+                  borderopacity="1"
+                  inkscape:showpageshadow="0"
+                  inkscape:pageopacity="0"
+                  inkscape:pagecheckerboard="1"
+                  inkscape:deskcolor="#505050"
+                  inkscape:zoom="1.3788582"
+                  inkscape:cx="492.43642"
+                  inkscape:cy="360.08053"
+                  inkscape:window-width="2560"
+                  inkscape:window-height="1378"
+                  inkscape:window-x="0"
+                  inkscape:window-y="26"
+                  inkscape:window-maximized="1"
+                  inkscape:current-layer="SVGRepo_iconCarrier"
+                />
+                <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <g id="SVGRepo_iconCarrier">
+                  <rect
+                    height="1066.67"
+                    id="Ram"
+                    fill="none"
+                    width="1066.67"
+                    x="0.031"
+                    y="0.592"
+                  />
+                  <g id="g2" style="fill-opacity: 1">
+                    <path
+                      d="M252.329,815.175c0,-0 104.167,-0 104.167,-0l1.343,-0.162c5.981,-0.865 29.907,-5.925 29.907,-31.508l-0,-30.831c-0,-46.023 -37.31,-83.332 -83.333,-83.332l-0.084,-0c-45.977,-0 -83.25,37.272 -83.25,83.249l0,30.912l31.25,31.672Zm218.535,-0c0,-0 104.167,-0 104.167,-0l1.342,-0.162c5.982,-0.865 29.908,-5.925 29.908,-31.508l-0,-30.831c-0.001,-46.023 -37.31,-83.332 -83.334,-83.332c17.259,-0 31.25,13.991 31.25,31.25c0,17.259 -13.991,31.25 -31.25,31.25c17.259,-0 31.25,-13.991 31.25,-31.25c0,-17.259 -13.991,-31.25 -31.25,-31.25c-46.023,-0 -83.333,37.309 -83.333,83.332l0,30.831l31.25,31.67Zm-145.618,-62.5l-0,-0.002c-0.001,-11.505 -9.328,-20.831 -20.833,-20.831c-0,-0 -0.082,-0 -0.086,-0c-11.458,0.001 -20.747,9.289 -20.748,20.751l0,0.082l41.667,-0Zm218.535,-0l-0,-0.002c-0.001,-11.505 -9.328,-20.831 -20.834,-20.831c-11.505,-0 -20.832,9.326 -20.833,20.833l41.667,-0Zm364.583,-208.333l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.248 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.002 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm-812.5,-0l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.248 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.002 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm812.5,-104.167l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.247 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.003 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm-812.5,-0l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.247 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.003 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Z"
+                      style="fill-opacity: 1"
+                      id="path1"
+                    />
+                    <path
+                      d="M887.532,252.675l-708.335,-0c-63.283,0 -114.583,51.301 -114.583,114.583l0,333.334c0,63.282 51.3,114.582 114.583,114.583l708.334,-0c63.283,-0.001 114.583,-51.301 114.583,-114.583l0,-333.334c-0,-63.282 -51.3,-114.583 -114.582,-114.583Zm-175.947,62.5c-0.6,28.918 -11.172,56.436 -29.187,76.943c-19.911,22.664 -47.086,35.033 -75.243,35.033l-146.417,0c-28.157,0 -55.332,-12.369 -75.243,-35.033c-18.014,-20.507 -28.587,-48.025 -29.187,-76.943l-177.113,-0c-28.763,0.001 -52.08,23.318 -52.081,52.083l0,218.75l739.583,0c17.248,0 31.25,14.003 31.25,31.25c0,17.248 -14.002,31.25 -31.25,31.25l-739.583,0l0,52.086c0.001,28.763 23.318,52.08 52.083,52.081c0,-0 708.333,-0 708.336,-0c28.763,-0.001 52.08,-23.318 52.081,-52.083l0,-333.336c-0.001,-28.763 -23.318,-52.08 -52.083,-52.081l-175.946,-0Zm-62.527,-0c-0.54,13.395 -5.252,26.174 -13.615,35.694c-7.548,8.592 -17.612,13.782 -28.287,13.782c-0.002,0 -146.417,0 -146.417,0c-10.677,-0 -20.741,-5.19 -28.289,-13.782c-8.363,-9.52 -13.075,-22.299 -13.615,-35.694l230.223,-0Z"
+                      id="path2"
+                      style="fill-opacity: 1"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <h3 id="summary_data_ram_text"></h3>
+              <div class="progress-bar">
+                <div class="progress" id="ram-progress"></div>
+                <span id="ram-value"></span>
+              </div>
+            </div>
+
+            <div class="summary_data" id="summary_data_disk">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg
+                viewBox="0 0 24 24"
+                version="1.1"
+                fill="none"
+                id="svg1"
+                sodipodi:docname="storage.svg"
+                inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:svg="http://www.w3.org/2000/svg"
+              >
+                <defs id="defs1" />
+                <sodipodi:namedview
+                  id="namedview1"
+                  pagecolor="#505050"
+                  bordercolor="#ffffff"
+                  borderopacity="1"
+                  inkscape:showpageshadow="0"
+                  inkscape:pageopacity="0"
+                  inkscape:pagecheckerboard="1"
+                  inkscape:deskcolor="#505050"
+                  inkscape:zoom="0.975"
+                  inkscape:cx="355.89744"
+                  inkscape:cy="357.4359"
+                  inkscape:window-width="2560"
+                  inkscape:window-height="1378"
+                  inkscape:window-x="0"
+                  inkscape:window-y="26"
+                  inkscape:window-maximized="1"
+                  inkscape:current-layer="svg1"
+                />
+                <g
+                  id="SVGRepo_bgCarrier"
+                  stroke-width="0"
+                  style="fill-opacity: 1"
+                />
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  style="fill-opacity: 1"
+                />
+                <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
+                  <title id="title1">ic_fluent_storage_24_regular</title>
+                  <desc id="desc1">Created with Sketch.</desc>
+                  <g
+                    id="🔍-Product-Icons"
+                    stroke="none"
+                    stroke-width="1"
+                    fill="none"
+                    fill-rule="evenodd"
+                    style="fill-opacity: 1"
+                  >
+                    <g
+                      id="ic_fluent_storage_24_regular"
+                      fill="#232634"
+                      fill-rule="nonzero"
+                      style="fill-opacity: 1"
+                    >
+                      <path
+                        d="M5,7 L19,7 C20.597725,7 21.903664,8.24892392 21.9949075,9.82372764 L22,10 L22,14 C22,15.597725 20.7511226,16.903664 19.1762773,16.9949075 L19,17 L5,17 C3.40232321,17 2.09633941,15.7511226 2.00509271,14.1762773 L2,14 L2,10 C2,8.40232321 3.24892392,7.09633941 4.82372764,7.00509271 L5,7 L19,7 L5,7 Z M19,8.5 L5,8.5 C4.17157,8.5 3.5,9.1716 3.5,10 L3.5,14 C3.5,14.8284 4.17157,15.5 5,15.5 L19,15.5 C19.8284,15.5 20.5,14.8284 20.5,14 L20.5,10 C20.5,9.1716 19.8284,8.5 19,8.5 Z M18,10 C18.5523,10 19,10.4477 19,11 C19,11.5523 18.5523,12 18,12 C17.4477,12 17,11.5523 17,11 C17,10.4477 17.4477,10 18,10 Z M14,10 C14.5523,10 15,10.4477 15,11 C15,11.5523 14.5523,12 14,12 C13.4477,12 13,11.5523 13,11 C13,10.4477 13.4477,10 14,10 Z"
+                        id="🎨-Color"
+                        style="fill-opacity: 1"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <h3 id="summary_data_disk_text"></h3>
+              <div class="progress-bar">
+                <div class="progress" id="disk-progress"></div>
+                <span id="disk-value"></span>
+              </div>
+            </div>
+            <div id="battery-status" class="summary_data">
+              <svg
+                id="battery-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <rect width="24" height="24"></rect>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M21 10C21.5523 10 22 10.4477 22 11V13C22 13.5523 21.5523 14 21 14C20.4477 14 20 13.5523 20 13V11C20 10.4477 20.4477 10 21 10Z"
+                    fill="#323232"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M6.93417 7C6.95604 7 6.97799 7 7 7L14.0658 7C14.9523 6.99995 15.7161 6.99991 16.3278 7.08215C16.9833 7.17028 17.6117 7.36902 18.1213 7.87868C18.631 8.38835 18.8297 9.0167 18.9179 9.67221C19.0001 10.2839 19.0001 11.0477 19 11.9342V12.0658C19.0001 12.9523 19.0001 13.7161 18.9179 14.3278C18.8297 14.9833 18.631 15.6117 18.1213 16.1213C17.6117 16.631 16.9833 16.8297 16.3278 16.9179C15.7161 17.0001 14.9523 17.0001 14.0658 17H6.93417C6.04769 17.0001 5.28387 17.0001 4.67221 16.9179C4.0167 16.8297 3.38835 16.631 2.87868 16.1213C2.36902 15.6117 2.17028 14.9833 2.08215 14.3278C1.99991 13.7161 1.99995 12.9523 2 12.0658C2 12.044 2 12.022 2 12C2 11.978 2 11.956 2 11.9342C1.99995 11.0477 1.99991 10.2839 2.08215 9.67221C2.17028 9.0167 2.36902 8.38835 2.87868 7.87868C3.38835 7.36902 4.0167 7.17028 4.67221 7.08215C5.28387 6.99991 6.04769 6.99995 6.93417 7Z"
+                    fill="#323232"
+                  ></path>
+                </g>
+              </svg>
+              <h3 id="charge"></h3>
+              <div class="progress-bar">
+                <div class="progress" id="battery-progress"></div>
+                <span id="battery-value"></span>
+              </div>
+            </div>
+
+            <div class="summary_data" id="summary_data">
+              <div>
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg
+                  id="temp-icon"
+                  fill="#232634"
+                  viewBox="-128 0 512 512"
+                  stroke="#232634"
+                  version="1.1"
+                  id="svg1"
+                  sodipodi:docname="arrow.svg"
+                  inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:svg="http://www.w3.org/2000/svg"
+                >
+                  <defs id="defs1" />
+                  <sodipodi:namedview
+                    id="namedview1"
+                    pagecolor="#505050"
+                    bordercolor="#ffffff"
+                    borderopacity="1"
+                    inkscape:showpageshadow="0"
+                    inkscape:pageopacity="0"
+                    inkscape:pagecheckerboard="1"
+                    inkscape:deskcolor="#505050"
+                    inkscape:zoom="3.1707317"
+                    inkscape:cx="130.56923"
+                    inkscape:cy="120.31923"
+                    inkscape:window-width="2560"
+                    inkscape:window-height="1378"
+                    inkscape:window-x="0"
+                    inkscape:window-y="26"
+                    inkscape:window-maximized="1"
+                    inkscape:current-layer="svg1"
+                  />
+                  <g
+                    id="SVGRepo_bgCarrier"
+                    stroke-width="0"
+                    style="stroke-opacity: 1; fill-opacity: 1"
+                  />
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="stroke-opacity: 1; fill-opacity: 1"
+                  />
+                  <g
+                    id="SVGRepo_iconCarrier"
+                    style="stroke-opacity: 1; fill-opacity: 1"
+                  >
+                    <path
+                      d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
+                      id="path1"
+                      style="stroke-opacity: 1; fill-opacity: 1"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <h3 id="upload_speed">UPLOAD SPEED</h3>
+              <h3 id="download_speed">DOWNLOAD SPEED</h3>
+            </div>
+            <div id="summary_temp_data" class="summary_data">
+              <div>
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <svg
                   viewBox="0 0 24 24"
-                  fill="none"
+                  version="1.1"
+                  id="svg1"
+                  sodipodi:docname="temp.svg"
+                  inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:svg="http://www.w3.org/2000/svg"
+                >
+                  <defs id="defs1" />
+                  <sodipodi:namedview
+                    id="namedview1"
+                    pagecolor="#505050"
+                    bordercolor="#ffffff"
+                    borderopacity="1"
+                    inkscape:showpageshadow="0"
+                    inkscape:pageopacity="0"
+                    inkscape:pagecheckerboard="1"
+                    inkscape:deskcolor="#505050"
+                    inkscape:zoom="1.3788582"
+                    inkscape:cx="380.02457"
+                    inkscape:cy="384.01338"
+                    inkscape:window-width="2560"
+                    inkscape:window-height="1378"
+                    inkscape:window-x="0"
+                    inkscape:window-y="26"
+                    inkscape:window-maximized="1"
+                    inkscape:current-layer="svg1"
+                  />
+                  <g
+                    id="SVGRepo_bgCarrier"
+                    stroke-width="0"
+                    style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
+                  />
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
+                  />
+                  <g
+                    id="SVGRepo_iconCarrier"
+                    style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
+                  >
+                    <title id="title1">ic_fluent_temperature_24_regular</title>
+                    <desc id="desc1">Created with Sketch.</desc>
+                    <g
+                      id="🔍-Product-Icons"
+                      stroke="none"
+                      stroke-width="1"
+                      fill="none"
+                      fill-rule="evenodd"
+                      style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
+                    >
+                      <g
+                        id="ic_fluent_temperature_24_regular"
+                        fill-rule="nonzero"
+                        style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
+                      >
+                        <path
+                          d="M12,2 C13.7330315,2 15.1492459,3.35645477 15.2448552,5.06545968 L15.25,5.24987066 L15.251,13.202 L15.3310301,13.270935 C16.2565465,14.097507 16.8481697,15.2418033 16.9745652,16.4939066 L16.9936024,16.7457024 L17,17 C17,19.7614237 14.7614237,22 12,22 C9.23857625,22 7,19.7614237 7,17 C7,15.637307 7.54959924,14.3654986 8.48922288,13.4395696 L8.66993395,13.2700735 L8.749,13.202 L8.75,5.25 C8.75,3.57886252 10.0112953,2.20231635 11.6338512,2.02039625 L11.8155761,2.00514479 L12,2 Z M12,3.5 C11.0818266,3.5 10.3288077,4.20711027 10.2558012,5.10650661 L10.25,5.25003944 L10.2495427,13.9444921 L9.94128095,14.1691409 C9.04185425,14.824607 8.5,15.8663631 8.5,17 C8.5,18.9329966 10.0670034,20.5 12,20.5 C13.9329966,20.5 15.5,18.9329966 15.5,17 C15.5,15.9375513 15.0240648,14.955799 14.2238599,14.2971002 L14.0595403,14.1697396 L13.7514995,13.9451154 L13.75,5.25 C13.75,4.28350169 12.9664983,3.5 12,3.5 Z M12,8 C12.4142136,8 12.75,8.33578644 12.75,8.75 L12.7505732,14.6146307 C13.7645539,14.9333735 14.5,15.8808004 14.5,17 C14.5,18.3807119 13.3807119,19.5 12,19.5 C10.6192881,19.5 9.5,18.3807119 9.5,17 C9.5,15.8804347 10.2359268,14.9327543 11.250421,14.6143184 L11.25,8.75 C11.25,8.33578644 11.5857864,8 12,8 Z"
+                          id="🎨-Color"
+                          style="
+                            fill-opacity: 1;
+                            stroke: none;
+                            stroke-opacity: 1;
+                          "
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <h3 id="summary_data_cpu_temp_text"></h3>
+              <h3 id="summary_data_gpu_temp_text"></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="tab-content" id="ports">
+        <div class="main-cards">
+          <div class="port-container" id="port-container"></div>
+        </div>
+      </div>
+      <div id="info" class="tab-content">
+        <div class="main-cards">
+          <div class="system_info" id="system_info">
+            <p>
+              <a
+                id="device_name"
+                style="font-size: 40px; text-decoration: underline"
+              ></a>
+            </p>
+            <p>
+              <a id="platform" style="font-size: 30px"></a>
+            </p>
+            <br />
+            <br />
+            <div>
+              <p>
+                ARCH:
+                <a id="cpu_arch" style="font-size: 13px; font-weight: bold"></a>
+              </p>
+              <p>
+                IP:
+                <a
+                  id="device_ip"
+                  style="font-size: 13px; font-weight: bold"
+                ></a>
+              </p>
+              <p>
+                UPTIME:
+                <a
+                  id="device_uptime"
+                  style="font-size: 13px; font-weight: bold"
+                ></a>
+              </p>
+              <p>
+                MODEL:
+                <a id="model" style="font-size: 13px; font-weight: bold"></a>
+              </p>
+              <p>
+                CPU:
+                <a id="cpu" style="font-size: 13px; font-weight: bold"></a>
+              </p>
+              <p>
+                GPU:
+                <a id="gpu" style="font-size: 13px; font-weight: bold"></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="control" class="tab-content">
+        <div class="main-cards">
+          <div class="p_buttons">
+            <form action="/api/actions/shutdown" method="post">
+              <button class="power_button" type="submit">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg
+                  fill="#232634"
+                  viewBox="0 0 96 96"
                   version="1.1"
                   id="svg2"
-                  sodipodi:docname="cpu.svg"
+                  sodipodi:docname="off.svg"
                   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
                   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -57,9 +518,9 @@
                     inkscape:pageopacity="0"
                     inkscape:pagecheckerboard="1"
                     inkscape:deskcolor="#505050"
-                    inkscape:zoom="1.95"
-                    inkscape:cx="71.282051"
-                    inkscape:cy="446.92308"
+                    inkscape:zoom="0.975"
+                    inkscape:cx="356.92308"
+                    inkscape:cy="467.17949"
                     inkscape:window-width="2560"
                     inkscape:window-height="1378"
                     inkscape:window-x="0"
@@ -79,184 +540,26 @@
                     style="fill-opacity: 1"
                   />
                   <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
-                    <path
-                      d="M9.18109 10.1811C9.2342 10.128 9.32905 10.0623 9.63166 10.0216C9.95434 9.97823 10.3923 9.97675 11.0698 9.97675H12.9302C13.6077 9.97675 14.0457 9.97823 14.3683 10.0216C14.671 10.0623 14.7658 10.128 14.8189 10.1811C14.872 10.2342 14.9377 10.329 14.9784 10.6317C15.0218 10.9543 15.0233 11.3923 15.0233 12.0698V13.9302C15.0233 14.6077 15.0218 15.0457 14.9784 15.3683C14.9377 15.671 14.872 15.7658 14.8189 15.8189C14.7658 15.872 14.671 15.9377 14.3683 15.9784C14.0457 16.0218 13.6077 16.0233 12.9302 16.0233H11.0698C10.3923 16.0233 9.95434 16.0218 9.63166 15.9784C9.32905 15.9377 9.2342 15.872 9.18109 15.8189C9.12798 15.7658 9.0623 15.671 9.02161 15.3683C8.97823 15.0457 8.97675 14.6077 8.97675 13.9302V12.0698C8.97675 11.3923 8.97823 10.9543 9.02161 10.6317C9.0623 10.329 9.12798 10.2342 9.18109 10.1811Z"
-                      fill="#232634"
-                      id="path1"
-                      style="fill-opacity: 1"
-                    />
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 3C12.3853 3 12.6977 3.31236 12.6977 3.69767V6.48884C13.2084 6.48991 13.6717 6.49342 14.0932 6.50495L14.093 6.48837V3.69767C14.093 3.31236 14.4054 3 14.7907 3C15.176 3 15.4884 3.31236 15.4884 3.69767V6.48837C15.4884 6.52487 15.4856 6.56072 15.4802 6.5957C16.4162 6.71067 17.0648 6.94879 17.558 7.44198C18.0512 7.93517 18.2893 8.58381 18.4043 9.51984C18.4393 9.51443 18.4751 9.51163 18.5116 9.51163H21.3023C21.6876 9.51163 22 9.82399 22 10.2093C22 10.5946 21.6876 10.907 21.3023 10.907H18.5116L18.495 10.9068C18.5066 11.3283 18.5106 11.7916 18.5116 12.3023H21.3023C21.6876 12.3023 22 12.6147 22 13C22 13.3853 21.6876 13.6977 21.3023 13.6977L18.5112 13.6977C18.5101 14.2084 18.5066 14.6717 18.495 15.0932L18.5116 15.093H21.3023C21.6876 15.093 22 15.4054 22 15.7907C22 16.176 21.6876 16.4884 21.3023 16.4884H18.5116C18.4751 16.4884 18.4393 16.4856 18.4043 16.4802C18.2893 17.4162 18.0512 18.0648 17.558 18.558C17.0648 19.0512 16.4162 19.2893 15.4802 19.4043C15.4856 19.4393 15.4884 19.4751 15.4884 19.5116V22.3023C15.4884 22.6876 15.176 23 14.7907 23C14.4054 23 14.093 22.6876 14.093 22.3023V19.5116L14.0932 19.495C13.6717 19.5066 13.2084 19.5106 12.6977 19.5116V22.3023C12.6977 22.6876 12.3853 23 12 23C11.6147 23 11.3023 22.6876 11.3023 22.3023L11.3023 19.5112C10.7916 19.5101 10.3283 19.5066 9.90678 19.495L9.90698 19.5116V22.3023C9.90698 22.6876 9.59462 23 9.2093 23C8.82399 23 8.51163 22.6876 8.51163 22.3023V19.5116C8.51163 19.4751 8.51443 19.4393 8.51984 19.4043C7.58381 19.2893 6.93517 19.0512 6.44198 18.558C5.94879 18.0648 5.71067 17.4162 5.5957 16.4802C5.56071 16.4856 5.52487 16.4884 5.48837 16.4884H2.69767C2.31236 16.4884 2 16.176 2 15.7907C2 15.4054 2.31236 15.093 2.69767 15.093H5.48837L5.50495 15.0932C5.49342 14.6717 5.48944 14.2084 5.48837 13.6977H2.69767C2.31236 13.6977 2 13.3853 2 13C2 12.6147 2.31236 12.3023 2.69767 12.3023L5.48884 12.3023C5.48991 11.7916 5.49342 11.3283 5.50495 10.9068L5.48837 10.907H2.69767C2.31236 10.907 2 10.5946 2 10.2093C2 9.82399 2.31236 9.51163 2.69767 9.51163H5.48837C5.52487 9.51163 5.56071 9.51443 5.5957 9.51984C5.71067 8.58381 5.94879 7.93517 6.44198 7.44198C6.93517 6.94879 7.58381 6.71067 8.51984 6.5957C8.51443 6.56072 8.51163 6.52487 8.51163 6.48837V3.69767C8.51163 3.31236 8.82399 3 9.2093 3C9.59462 3 9.90698 3.31236 9.90698 3.69767V6.48837L9.90678 6.50495C10.3283 6.49342 10.7916 6.48944 11.3023 6.48837V3.69767C11.3023 3.31236 11.6147 3 12 3ZM11.0238 8.5814C10.4054 8.58136 9.87247 8.58133 9.44573 8.63871C8.98839 8.70019 8.55001 8.83885 8.19443 9.19443C7.83885 9.55001 7.70019 9.98839 7.63871 10.4457C7.58133 10.8725 7.58136 11.4054 7.5814 12.0238V13.9762C7.58136 14.5946 7.58133 15.1275 7.63871 15.5543C7.70019 16.0116 7.83885 16.45 8.19443 16.8056C8.55001 17.1612 8.98839 17.2998 9.44573 17.3613C9.87247 17.4187 10.4054 17.4186 11.0238 17.4186H12.9762C13.5946 17.4186 14.1275 17.4187 14.5543 17.3613C15.0116 17.2998 15.45 17.1612 15.8056 16.8056C16.1612 16.45 16.2998 16.0116 16.3613 15.5543C16.4187 15.1275 16.4186 14.5946 16.4186 13.9762V12.0238C16.4186 11.4054 16.4187 10.8725 16.3613 10.4457C16.2998 9.98839 16.1612 9.55001 15.8056 9.19443C15.45 8.83885 15.0116 8.70019 14.5543 8.63871C14.1275 8.58133 13.5947 8.58136 12.9762 8.5814H11.0238Z"
-                      fill="#232634"
-                      id="path2"
-                      style="fill-opacity: 1"
-                    />
-                  </g>
-                </svg>
-                <h3 id="summary_data_cpu_text"></h3>
-                <div class="progress-bar">
-                  <div class="progress" id="cpu-progress"></div>
-                  <span id="cpu-value"></span>
-                </div>
-              </div>
-              <div class="summary_data" id="summary_data_ram">
-                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                <svg
-                  viewBox="0 0 1069 1069"
-                  style="
-                    fill-rule: evenodd;
-                    clip-rule: evenodd;
-                    stroke-linejoin: round;
-                    stroke-miterlimit: 2;
-                  "
-                  version="1.1"
-                  xml:space="preserve"
-                  id="svg2"
-                  sodipodi:docname="ram.svg"
-                  inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:svg="http://www.w3.org/2000/svg"
-                >
-                  <defs id="defs2" />
-                  <sodipodi:namedview
-                    id="namedview2"
-                    pagecolor="#505050"
-                    bordercolor="#ffffff"
-                    borderopacity="1"
-                    inkscape:showpageshadow="0"
-                    inkscape:pageopacity="0"
-                    inkscape:pagecheckerboard="1"
-                    inkscape:deskcolor="#505050"
-                    inkscape:zoom="1.3788582"
-                    inkscape:cx="492.43642"
-                    inkscape:cy="360.08053"
-                    inkscape:window-width="2560"
-                    inkscape:window-height="1378"
-                    inkscape:window-x="0"
-                    inkscape:window-y="26"
-                    inkscape:window-maximized="1"
-                    inkscape:current-layer="SVGRepo_iconCarrier"
-                  />
-                  <g id="SVGRepo_bgCarrier" stroke-width="0" />
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <g id="SVGRepo_iconCarrier">
-                    <rect
-                      height="1066.67"
-                      id="Ram"
-                      fill="none"
-                      width="1066.67"
-                      x="0.031"
-                      y="0.592"
-                    />
+                    <title id="title1" />
                     <g id="g2" style="fill-opacity: 1">
                       <path
-                        d="M252.329,815.175c0,-0 104.167,-0 104.167,-0l1.343,-0.162c5.981,-0.865 29.907,-5.925 29.907,-31.508l-0,-30.831c-0,-46.023 -37.31,-83.332 -83.333,-83.332l-0.084,-0c-45.977,-0 -83.25,37.272 -83.25,83.249l0,30.912l31.25,31.672Zm218.535,-0c0,-0 104.167,-0 104.167,-0l1.342,-0.162c5.982,-0.865 29.908,-5.925 29.908,-31.508l-0,-30.831c-0.001,-46.023 -37.31,-83.332 -83.334,-83.332c17.259,-0 31.25,13.991 31.25,31.25c0,17.259 -13.991,31.25 -31.25,31.25c17.259,-0 31.25,-13.991 31.25,-31.25c0,-17.259 -13.991,-31.25 -31.25,-31.25c-46.023,-0 -83.333,37.309 -83.333,83.332l0,30.831l31.25,31.67Zm-145.618,-62.5l-0,-0.002c-0.001,-11.505 -9.328,-20.831 -20.833,-20.831c-0,-0 -0.082,-0 -0.086,-0c-11.458,0.001 -20.747,9.289 -20.748,20.751l0,0.082l41.667,-0Zm218.535,-0l-0,-0.002c-0.001,-11.505 -9.328,-20.831 -20.834,-20.831c-11.505,-0 -20.832,9.326 -20.833,20.833l41.667,-0Zm364.583,-208.333l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.248 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.002 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm-812.5,-0l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.248 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.002 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm812.5,-104.167l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.247 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.003 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Zm-812.5,-0l62.5,-0c17.247,-0 31.25,-14.003 31.25,-31.25c0,-17.247 -14.003,-31.25 -31.25,-31.25l-62.5,-0c-17.247,-0 -31.25,14.003 -31.25,31.25c0,17.247 14.003,31.25 31.25,31.25Z"
-                        style="fill-opacity: 1"
+                        d="M48,36a5.9966,5.9966,0,0,0,6-6V6A6,6,0,0,0,42,6V30A5.9966,5.9966,0,0,0,48,36Z"
                         id="path1"
+                        style="fill-opacity: 1"
                       />
                       <path
-                        d="M887.532,252.675l-708.335,-0c-63.283,0 -114.583,51.301 -114.583,114.583l0,333.334c0,63.282 51.3,114.582 114.583,114.583l708.334,-0c63.283,-0.001 114.583,-51.301 114.583,-114.583l0,-333.334c-0,-63.282 -51.3,-114.583 -114.582,-114.583Zm-175.947,62.5c-0.6,28.918 -11.172,56.436 -29.187,76.943c-19.911,22.664 -47.086,35.033 -75.243,35.033l-146.417,0c-28.157,0 -55.332,-12.369 -75.243,-35.033c-18.014,-20.507 -28.587,-48.025 -29.187,-76.943l-177.113,-0c-28.763,0.001 -52.08,23.318 -52.081,52.083l0,218.75l739.583,0c17.248,0 31.25,14.003 31.25,31.25c0,17.248 -14.002,31.25 -31.25,31.25l-739.583,0l0,52.086c0.001,28.763 23.318,52.08 52.083,52.081c0,-0 708.333,-0 708.336,-0c28.763,-0.001 52.08,-23.318 52.081,-52.083l0,-333.336c-0.001,-28.763 -23.318,-52.08 -52.083,-52.081l-175.946,-0Zm-62.527,-0c-0.54,13.395 -5.252,26.174 -13.615,35.694c-7.548,8.592 -17.612,13.782 -28.287,13.782c-0.002,0 -146.417,0 -146.417,0c-10.677,-0 -20.741,-5.19 -28.289,-13.782c-8.363,-9.52 -13.075,-22.299 -13.615,-35.694l230.223,-0Z"
+                        d="M76.0078,22.9746a6,6,0,0,0-8.0156,8.93A29.39,29.39,0,0,1,78,54a30,30,0,0,1-60,0A29.39,29.39,0,0,1,28.0078,31.9043a6,6,0,0,0-8.0156-8.93,42.0009,42.0009,0,1,0,56.0156,0Z"
                         id="path2"
                         style="fill-opacity: 1"
                       />
                     </g>
                   </g>
                 </svg>
-                <h3 id="summary_data_ram_text"></h3>
-                <div class="progress-bar">
-                  <div class="progress" id="ram-progress"></div>
-                  <span id="ram-value"></span>
-                </div>
-              </div>
-
-              <div class="summary_data" id="summary_data_disk">
-                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              </button>
+            </form>
+            <form action="/api/actions/reboot" method="post">
+              <button class="power_button" type="submit">
                 <svg
-                  viewBox="0 0 24 24"
-                  version="1.1"
-                  fill="none"
-                  id="svg1"
-                  sodipodi:docname="storage.svg"
-                  inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:svg="http://www.w3.org/2000/svg"
-                >
-                  <defs id="defs1" />
-                  <sodipodi:namedview
-                    id="namedview1"
-                    pagecolor="#505050"
-                    bordercolor="#ffffff"
-                    borderopacity="1"
-                    inkscape:showpageshadow="0"
-                    inkscape:pageopacity="0"
-                    inkscape:pagecheckerboard="1"
-                    inkscape:deskcolor="#505050"
-                    inkscape:zoom="0.975"
-                    inkscape:cx="355.89744"
-                    inkscape:cy="357.4359"
-                    inkscape:window-width="2560"
-                    inkscape:window-height="1378"
-                    inkscape:window-x="0"
-                    inkscape:window-y="26"
-                    inkscape:window-maximized="1"
-                    inkscape:current-layer="svg1"
-                  />
-                  <g
-                    id="SVGRepo_bgCarrier"
-                    stroke-width="0"
-                    style="fill-opacity: 1"
-                  />
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    style="fill-opacity: 1"
-                  />
-                  <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
-                    <title id="title1">ic_fluent_storage_24_regular</title>
-                    <desc id="desc1">Created with Sketch.</desc>
-                    <g
-                      id="🔍-Product-Icons"
-                      stroke="none"
-                      stroke-width="1"
-                      fill="none"
-                      fill-rule="evenodd"
-                      style="fill-opacity: 1"
-                    >
-                      <g
-                        id="ic_fluent_storage_24_regular"
-                        fill="#232634"
-                        fill-rule="nonzero"
-                        style="fill-opacity: 1"
-                      >
-                        <path
-                          d="M5,7 L19,7 C20.597725,7 21.903664,8.24892392 21.9949075,9.82372764 L22,10 L22,14 C22,15.597725 20.7511226,16.903664 19.1762773,16.9949075 L19,17 L5,17 C3.40232321,17 2.09633941,15.7511226 2.00509271,14.1762773 L2,14 L2,10 C2,8.40232321 3.24892392,7.09633941 4.82372764,7.00509271 L5,7 L19,7 L5,7 Z M19,8.5 L5,8.5 C4.17157,8.5 3.5,9.1716 3.5,10 L3.5,14 C3.5,14.8284 4.17157,15.5 5,15.5 L19,15.5 C19.8284,15.5 20.5,14.8284 20.5,14 L20.5,10 C20.5,9.1716 19.8284,8.5 19,8.5 Z M18,10 C18.5523,10 19,10.4477 19,11 C19,11.5523 18.5523,12 18,12 C17.4477,12 17,11.5523 17,11 C17,10.4477 17.4477,10 18,10 Z M14,10 C14.5523,10 15,10.4477 15,11 C15,11.5523 14.5523,12 14,12 C13.4477,12 13,11.5523 13,11 C13,10.4477 13.4477,10 14,10 Z"
-                          id="🎨-Color"
-                          style="fill-opacity: 1"
-                        />
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-                <h3 id="summary_data_disk_text"></h3>
-                <div class="progress-bar">
-                  <div class="progress" id="disk-progress"></div>
-                  <span id="disk-value"></span>
-                </div>
-              </div>
-              <div id="battery-status" class="summary_data">
-                <svg
-                  id="battery-icon"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -268,406 +571,126 @@
                     stroke-linejoin="round"
                   ></g>
                   <g id="SVGRepo_iconCarrier">
-                    <rect width="24" height="24"></rect>
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M21 10C21.5523 10 22 10.4477 22 11V13C22 13.5523 21.5523 14 21 14C20.4477 14 20 13.5523 20 13V11C20 10.4477 20.4477 10 21 10Z"
-                      fill="#323232"
+                      d="M3.67981 11.3333H2.92981H3.67981ZM3.67981 13L3.15157 13.5324C3.44398 13.8225 3.91565 13.8225 4.20805 13.5324L3.67981 13ZM5.88787 11.8657C6.18191 11.574 6.18377 11.0991 5.89203 10.8051C5.60029 10.511 5.12542 10.5092 4.83138 10.8009L5.88787 11.8657ZM2.52824 10.8009C2.2342 10.5092 1.75933 10.511 1.46759 10.8051C1.17585 11.0991 1.17772 11.574 1.47176 11.8657L2.52824 10.8009ZM18.6156 7.39279C18.8325 7.74565 19.2944 7.85585 19.6473 7.63892C20.0001 7.42199 20.1103 6.96007 19.8934 6.60721L18.6156 7.39279ZM12.0789 2.25C7.03155 2.25 2.92981 6.3112 2.92981 11.3333H4.42981C4.42981 7.15072 7.84884 3.75 12.0789 3.75V2.25ZM2.92981 11.3333L2.92981 13H4.42981L4.42981 11.3333H2.92981ZM4.20805 13.5324L5.88787 11.8657L4.83138 10.8009L3.15157 12.4676L4.20805 13.5324ZM4.20805 12.4676L2.52824 10.8009L1.47176 11.8657L3.15157 13.5324L4.20805 12.4676ZM19.8934 6.60721C18.287 3.99427 15.3873 2.25 12.0789 2.25V3.75C14.8484 3.75 17.2727 5.20845 18.6156 7.39279L19.8934 6.60721Z"
+                      fill="#1C274C"
                     ></path>
                     <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M6.93417 7C6.95604 7 6.97799 7 7 7L14.0658 7C14.9523 6.99995 15.7161 6.99991 16.3278 7.08215C16.9833 7.17028 17.6117 7.36902 18.1213 7.87868C18.631 8.38835 18.8297 9.0167 18.9179 9.67221C19.0001 10.2839 19.0001 11.0477 19 11.9342V12.0658C19.0001 12.9523 19.0001 13.7161 18.9179 14.3278C18.8297 14.9833 18.631 15.6117 18.1213 16.1213C17.6117 16.631 16.9833 16.8297 16.3278 16.9179C15.7161 17.0001 14.9523 17.0001 14.0658 17H6.93417C6.04769 17.0001 5.28387 17.0001 4.67221 16.9179C4.0167 16.8297 3.38835 16.631 2.87868 16.1213C2.36902 15.6117 2.17028 14.9833 2.08215 14.3278C1.99991 13.7161 1.99995 12.9523 2 12.0658C2 12.044 2 12.022 2 12C2 11.978 2 11.956 2 11.9342C1.99995 11.0477 1.99991 10.2839 2.08215 9.67221C2.17028 9.0167 2.36902 8.38835 2.87868 7.87868C3.38835 7.36902 4.0167 7.17028 4.67221 7.08215C5.28387 6.99991 6.04769 6.99995 6.93417 7Z"
-                      fill="#323232"
+                      d="M20.3139 11L20.8411 10.4666C20.549 10.1778 20.0788 10.1778 19.7867 10.4666L20.3139 11ZM18.1004 12.1333C17.8058 12.4244 17.8031 12.8993 18.0942 13.1939C18.3854 13.4885 18.8603 13.4913 19.1549 13.2001L18.1004 12.1333ZM21.4729 13.2001C21.7675 13.4913 22.2424 13.4885 22.5335 13.1939C22.8247 12.8993 22.822 12.4244 22.5274 12.1332L21.4729 13.2001ZM5.31794 16.6061C5.1004 16.2536 4.6383 16.1442 4.28581 16.3618C3.93331 16.5793 3.82391 17.0414 4.04144 17.3939L5.31794 16.6061ZM11.8827 21.75C16.9451 21.75 21.0639 17.6915 21.0639 12.6667H19.5639C19.5639 16.8466 16.1332 20.25 11.8827 20.25V21.75ZM21.0639 12.6667V11H19.5639V12.6667H21.0639ZM19.7867 10.4666L18.1004 12.1333L19.1549 13.2001L20.8411 11.5334L19.7867 10.4666ZM19.7867 11.5334L21.4729 13.2001L22.5274 12.1332L20.8411 10.4666L19.7867 11.5334ZM4.04144 17.3939C5.65405 20.007 8.56403 21.75 11.8827 21.75V20.25C9.10023 20.25 6.66584 18.7903 5.31794 16.6061L4.04144 17.3939Z"
+                      fill="#1C274C"
                     ></path>
                   </g>
                 </svg>
-                <h3 id="charge"></h3>
-                <div class="progress-bar">
-                  <div class="progress" id="battery-progress"></div>
-                  <span id="battery-value"></span>
-                </div>
-              </div>
+              </button>
+            </form>
+            <form action="/api/actions/sleep" method="post">
+              <button class="power_button" type="submit">
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg
+                  fill="none"
+                  version="1.1"
+                  id="Capa_1"
+                  viewBox="0 0 202.748 202.748"
+                  xml:space="preserve"
+                  sodipodi:docname="sleep.svg"
+                  inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
+                  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+                  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:svg="http://www.w3.org/2000/svg"
+                >
+                  <defs id="defs1" />
+                  <sodipodi:namedview
+                    id="namedview1"
+                    borderopacity="1"
+                    pagecolor="#505050"
+                    bordercolor="#ffffff"
+                    inkscape:showpageshadow="0"
+                    inkscape:pageopacity="0"
+                    inkscape:pagecheckerboard="1"
+                    inkscape:deskcolor="#505050"
+                    inkscape:zoom="0.975"
+                    inkscape:cx="418.46154"
+                    inkscape:cy="447.69231"
+                    inkscape:window-width="2560"
+                    inkscape:window-height="1378"
+                    inkscape:window-x="0"
+                    inkscape:window-y="26"
+                    inkscape:window-maximized="1"
+                    inkscape:current-layer="Capa_1"
+                  />
 
-              <div class="summary_data" id="summary_data">
-                <div>
-                  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                  <svg
-                    id="temp-icon"
-                    fill="#232634"
-                    viewBox="-128 0 512 512"
-                    stroke="#232634"
-                    version="1.1"
-                    id="svg1"
-                    sodipodi:docname="arrow.svg"
-                    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                  >
-                    <defs id="defs1" />
-                    <sodipodi:namedview
-                      id="namedview1"
-                      pagecolor="#505050"
-                      bordercolor="#ffffff"
-                      borderopacity="1"
-                      inkscape:showpageshadow="0"
-                      inkscape:pageopacity="0"
-                      inkscape:pagecheckerboard="1"
-                      inkscape:deskcolor="#505050"
-                      inkscape:zoom="3.1707317"
-                      inkscape:cx="130.56923"
-                      inkscape:cy="120.31923"
-                      inkscape:window-width="2560"
-                      inkscape:window-height="1378"
-                      inkscape:window-x="0"
-                      inkscape:window-y="26"
-                      inkscape:window-maximized="1"
-                      inkscape:current-layer="svg1"
-                    />
-                    <g
-                      id="SVGRepo_bgCarrier"
-                      stroke-width="0"
-                      style="stroke-opacity: 1; fill-opacity: 1"
-                    />
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      style="stroke-opacity: 1; fill-opacity: 1"
-                    />
-                    <g
-                      id="SVGRepo_iconCarrier"
-                      style="stroke-opacity: 1; fill-opacity: 1"
-                    >
-                      <path
-                        d="M214.059 377.941H168V134.059h46.059c21.382 0 32.09-25.851 16.971-40.971L144.971 7.029c-9.373-9.373-24.568-9.373-33.941 0L24.971 93.088c-15.119 15.119-4.411 40.971 16.971 40.971H88v243.882H41.941c-21.382 0-32.09 25.851-16.971 40.971l86.059 86.059c9.373 9.373 24.568 9.373 33.941 0l86.059-86.059c15.12-15.119 4.412-40.971-16.97-40.971z"
-                        id="path1"
-                        style="stroke-opacity: 1; fill-opacity: 1"
-                      />
-                    </g>
-                  </svg>
-                </div>
-                <h3 id="upload_speed">UPLOAD SPEED</h3>
-                <h3 id="download_speed">DOWNLOAD SPEED</h3>
-              </div>
-              <div id="summary_temp_data" class="summary_data">
-                <div>
-                  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                  <svg
-                    viewBox="0 0 24 24"
-                    version="1.1"
-                    id="svg1"
-                    sodipodi:docname="temp.svg"
-                    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                  >
-                    <defs id="defs1" />
-                    <sodipodi:namedview
-                      id="namedview1"
-                      pagecolor="#505050"
-                      bordercolor="#ffffff"
-                      borderopacity="1"
-                      inkscape:showpageshadow="0"
-                      inkscape:pageopacity="0"
-                      inkscape:pagecheckerboard="1"
-                      inkscape:deskcolor="#505050"
-                      inkscape:zoom="1.3788582"
-                      inkscape:cx="380.02457"
-                      inkscape:cy="384.01338"
-                      inkscape:window-width="2560"
-                      inkscape:window-height="1378"
-                      inkscape:window-x="0"
-                      inkscape:window-y="26"
-                      inkscape:window-maximized="1"
-                      inkscape:current-layer="svg1"
-                    />
-                    <g
-                      id="SVGRepo_bgCarrier"
-                      stroke-width="0"
-                      style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
-                    />
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
-                    />
-                    <g
-                      id="SVGRepo_iconCarrier"
-                      style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
-                    >
-                      <title id="title1">
-                        ic_fluent_temperature_24_regular
-                      </title>
-                      <desc id="desc1">Created with Sketch.</desc>
-                      <g
-                        id="🔍-Product-Icons"
-                        stroke="none"
-                        stroke-width="1"
-                        fill="none"
-                        fill-rule="evenodd"
-                        style="fill-opacity: 1; stroke: none; stroke-opacity: 1"
-                      >
-                        <g
-                          id="ic_fluent_temperature_24_regular"
-                          fill-rule="nonzero"
-                          style="
-                            fill-opacity: 1;
-                            stroke: none;
-                            stroke-opacity: 1;
-                          "
-                        >
-                          <path
-                            d="M12,2 C13.7330315,2 15.1492459,3.35645477 15.2448552,5.06545968 L15.25,5.24987066 L15.251,13.202 L15.3310301,13.270935 C16.2565465,14.097507 16.8481697,15.2418033 16.9745652,16.4939066 L16.9936024,16.7457024 L17,17 C17,19.7614237 14.7614237,22 12,22 C9.23857625,22 7,19.7614237 7,17 C7,15.637307 7.54959924,14.3654986 8.48922288,13.4395696 L8.66993395,13.2700735 L8.749,13.202 L8.75,5.25 C8.75,3.57886252 10.0112953,2.20231635 11.6338512,2.02039625 L11.8155761,2.00514479 L12,2 Z M12,3.5 C11.0818266,3.5 10.3288077,4.20711027 10.2558012,5.10650661 L10.25,5.25003944 L10.2495427,13.9444921 L9.94128095,14.1691409 C9.04185425,14.824607 8.5,15.8663631 8.5,17 C8.5,18.9329966 10.0670034,20.5 12,20.5 C13.9329966,20.5 15.5,18.9329966 15.5,17 C15.5,15.9375513 15.0240648,14.955799 14.2238599,14.2971002 L14.0595403,14.1697396 L13.7514995,13.9451154 L13.75,5.25 C13.75,4.28350169 12.9664983,3.5 12,3.5 Z M12,8 C12.4142136,8 12.75,8.33578644 12.75,8.75 L12.7505732,14.6146307 C13.7645539,14.9333735 14.5,15.8808004 14.5,17 C14.5,18.3807119 13.3807119,19.5 12,19.5 C10.6192881,19.5 9.5,18.3807119 9.5,17 C9.5,15.8804347 10.2359268,14.9327543 11.250421,14.6143184 L11.25,8.75 C11.25,8.33578644 11.5857864,8 12,8 Z"
-                            id="🎨-Color"
-                            style="
-                              fill-opacity: 1;
-                              stroke: none;
-                              stroke-opacity: 1;
-                            "
-                          />
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                </div>
-                <h3 id="summary_data_cpu_temp_text"></h3>
-                <h3 id="summary_data_gpu_temp_text"></h3>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div class="tab-content" id="ports">
-          <div class="main-cards">
-            <div class="port-container" id="port-container"></div>
-          </div>
-        </div>
-        <div id="info" class="tab-content">
-          <div class="main-cards">
-            <div class="system_info" id="system_info">
-              <p>
-                <a
-                  id="device_name"
-                  style="font-size: 40px; text-decoration: underline"
-                ></a>
-              </p>
-              <p>
-                <a id="platform" style="font-size: 30px"></a>
-              </p>
-              <br />
-              <br />
-              <div>
-                <p>
-                  ARCH:
-                  <a
-                    id="cpu_arch"
-                    style="font-size: 13px; font-weight: bold"
-                  ></a>
-                </p>
-                <p>
-                  IP:
-                  <a
-                    id="device_ip"
-                    style="font-size: 13px; font-weight: bold"
-                  ></a>
-                </p>
-                <p>
-                  UPTIME:
-                  <a
-                    id="device_uptime"
-                    style="font-size: 13px; font-weight: bold"
-                  ></a>
-                </p>
-                <p>
-                  MODEL:
-                  <a id="model" style="font-size: 13px; font-weight: bold"></a>
-                </p>
-                <p>
-                  CPU:
-                  <a id="cpu" style="font-size: 13px; font-weight: bold"></a>
-                </p>
-                <p>
-                  GPU:
-                  <a id="gpu" style="font-size: 13px; font-weight: bold"></a>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="control" class="tab-content">
-          <div class="main-cards">
-            <div class="p_buttons">
-              <form action="/api/actions/shutdown" method="post">
-                <button class="power_button" type="submit">
-                  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                  <svg
-                    fill="#232634"
-                    viewBox="0 0 96 96"
-                    version="1.1"
-                    id="svg2"
-                    sodipodi:docname="off.svg"
-                    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                  >
-                    <defs id="defs2" />
-                    <sodipodi:namedview
-                      id="namedview2"
-                      pagecolor="#505050"
-                      bordercolor="#ffffff"
-                      borderopacity="1"
-                      inkscape:showpageshadow="0"
-                      inkscape:pageopacity="0"
-                      inkscape:pagecheckerboard="1"
-                      inkscape:deskcolor="#505050"
-                      inkscape:zoom="0.975"
-                      inkscape:cx="356.92308"
-                      inkscape:cy="467.17949"
-                      inkscape:window-width="2560"
-                      inkscape:window-height="1378"
-                      inkscape:window-x="0"
-                      inkscape:window-y="26"
-                      inkscape:window-maximized="1"
-                      inkscape:current-layer="svg2"
-                    />
-                    <g
-                      id="SVGRepo_bgCarrier"
-                      stroke-width="0"
+                  <g
+                    id="SVGRepo_bgCarrier"
+                    stroke-width="0"
+                    style="fill-opacity: 1"
+                  />
+
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="fill-opacity: 1"
+                  />
+
+                  <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
+                    <path
+                      d="M199.876,119.867c-2.405-1.886-5.715-2.124-8.366-0.6c-12.57,7.225-25.856,10.889-39.489,10.889 c-43.804,0-79.44-35.638-79.44-79.443c0-13.693,3.669-26.961,10.906-39.434c1.537-2.648,1.309-5.965-0.576-8.379 c-1.884-2.414-5.047-3.441-7.989-2.591c-21.161,6.1-40.207,19.042-53.629,36.441C7.363,54.809,0,76.437,0,99.297 c0,57.035,46.4,103.438,103.434,103.438c22.86,0,44.493-7.36,62.561-21.286c17.411-13.419,30.359-32.454,36.459-53.6 C203.302,124.911,202.282,121.754,199.876,119.867z M103.434,187.734C54.671,187.734,15,148.061,15,99.297 c0-32.898,18.825-62.836,47.436-77.882c-3.228,9.485-4.855,19.284-4.855,29.298c0,52.076,42.366,94.443,94.44,94.443 c10,0,19.816-1.634,29.347-4.873C166.324,168.9,136.36,187.734,103.434,187.734z"
+                      id="path1"
                       style="fill-opacity: 1"
                     />
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      style="fill-opacity: 1"
-                    />
-                    <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
-                      <title id="title1" />
-                      <g id="g2" style="fill-opacity: 1">
-                        <path
-                          d="M48,36a5.9966,5.9966,0,0,0,6-6V6A6,6,0,0,0,42,6V30A5.9966,5.9966,0,0,0,48,36Z"
-                          id="path1"
-                          style="fill-opacity: 1"
-                        />
-                        <path
-                          d="M76.0078,22.9746a6,6,0,0,0-8.0156,8.93A29.39,29.39,0,0,1,78,54a30,30,0,0,1-60,0A29.39,29.39,0,0,1,28.0078,31.9043a6,6,0,0,0-8.0156-8.93,42.0009,42.0009,0,1,0,56.0156,0Z"
-                          id="path2"
-                          style="fill-opacity: 1"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                </button>
-              </form>
-              <form action="/api/actions/reboot" method="post">
-                <button class="power_button" type="submit">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M3.67981 11.3333H2.92981H3.67981ZM3.67981 13L3.15157 13.5324C3.44398 13.8225 3.91565 13.8225 4.20805 13.5324L3.67981 13ZM5.88787 11.8657C6.18191 11.574 6.18377 11.0991 5.89203 10.8051C5.60029 10.511 5.12542 10.5092 4.83138 10.8009L5.88787 11.8657ZM2.52824 10.8009C2.2342 10.5092 1.75933 10.511 1.46759 10.8051C1.17585 11.0991 1.17772 11.574 1.47176 11.8657L2.52824 10.8009ZM18.6156 7.39279C18.8325 7.74565 19.2944 7.85585 19.6473 7.63892C20.0001 7.42199 20.1103 6.96007 19.8934 6.60721L18.6156 7.39279ZM12.0789 2.25C7.03155 2.25 2.92981 6.3112 2.92981 11.3333H4.42981C4.42981 7.15072 7.84884 3.75 12.0789 3.75V2.25ZM2.92981 11.3333L2.92981 13H4.42981L4.42981 11.3333H2.92981ZM4.20805 13.5324L5.88787 11.8657L4.83138 10.8009L3.15157 12.4676L4.20805 13.5324ZM4.20805 12.4676L2.52824 10.8009L1.47176 11.8657L3.15157 13.5324L4.20805 12.4676ZM19.8934 6.60721C18.287 3.99427 15.3873 2.25 12.0789 2.25V3.75C14.8484 3.75 17.2727 5.20845 18.6156 7.39279L19.8934 6.60721Z"
-                        fill="#1C274C"
-                      ></path>
-                      <path
-                        d="M20.3139 11L20.8411 10.4666C20.549 10.1778 20.0788 10.1778 19.7867 10.4666L20.3139 11ZM18.1004 12.1333C17.8058 12.4244 17.8031 12.8993 18.0942 13.1939C18.3854 13.4885 18.8603 13.4913 19.1549 13.2001L18.1004 12.1333ZM21.4729 13.2001C21.7675 13.4913 22.2424 13.4885 22.5335 13.1939C22.8247 12.8993 22.822 12.4244 22.5274 12.1332L21.4729 13.2001ZM5.31794 16.6061C5.1004 16.2536 4.6383 16.1442 4.28581 16.3618C3.93331 16.5793 3.82391 17.0414 4.04144 17.3939L5.31794 16.6061ZM11.8827 21.75C16.9451 21.75 21.0639 17.6915 21.0639 12.6667H19.5639C19.5639 16.8466 16.1332 20.25 11.8827 20.25V21.75ZM21.0639 12.6667V11H19.5639V12.6667H21.0639ZM19.7867 10.4666L18.1004 12.1333L19.1549 13.2001L20.8411 11.5334L19.7867 10.4666ZM19.7867 11.5334L21.4729 13.2001L22.5274 12.1332L20.8411 10.4666L19.7867 11.5334ZM4.04144 17.3939C5.65405 20.007 8.56403 21.75 11.8827 21.75V20.25C9.10023 20.25 6.66584 18.7903 5.31794 16.6061L4.04144 17.3939Z"
-                        fill="#1C274C"
-                      ></path>
-                    </g>
-                  </svg>
-                </button>
-              </form>
-              <form action="/api/actions/sleep" method="post">
-                <button class="power_button" type="submit">
-                  <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-                  <svg
-                    fill="none"
-                    version="1.1"
-                    id="Capa_1"
-                    viewBox="0 0 202.748 202.748"
-                    xml:space="preserve"
-                    sodipodi:docname="sleep.svg"
-                    inkscape:version="1.3.2 (091e20ef0f, 2023-11-25, custom)"
-                    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-                    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:svg="http://www.w3.org/2000/svg"
-                  >
-                    <defs id="defs1" />
-                    <sodipodi:namedview
-                      id="namedview1"
-                      borderopacity="1"
-                      pagecolor="#505050"
-                      bordercolor="#ffffff"
-                      inkscape:showpageshadow="0"
-                      inkscape:pageopacity="0"
-                      inkscape:pagecheckerboard="1"
-                      inkscape:deskcolor="#505050"
-                      inkscape:zoom="0.975"
-                      inkscape:cx="418.46154"
-                      inkscape:cy="447.69231"
-                      inkscape:window-width="2560"
-                      inkscape:window-height="1378"
-                      inkscape:window-x="0"
-                      inkscape:window-y="26"
-                      inkscape:window-maximized="1"
-                      inkscape:current-layer="Capa_1"
-                    />
-
-                    <g
-                      id="SVGRepo_bgCarrier"
-                      stroke-width="0"
-                      style="fill-opacity: 1"
-                    />
-
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      style="fill-opacity: 1"
-                    />
-
-                    <g id="SVGRepo_iconCarrier" style="fill-opacity: 1">
-                      <path
-                        d="M199.876,119.867c-2.405-1.886-5.715-2.124-8.366-0.6c-12.57,7.225-25.856,10.889-39.489,10.889 c-43.804,0-79.44-35.638-79.44-79.443c0-13.693,3.669-26.961,10.906-39.434c1.537-2.648,1.309-5.965-0.576-8.379 c-1.884-2.414-5.047-3.441-7.989-2.591c-21.161,6.1-40.207,19.042-53.629,36.441C7.363,54.809,0,76.437,0,99.297 c0,57.035,46.4,103.438,103.434,103.438c22.86,0,44.493-7.36,62.561-21.286c17.411-13.419,30.359-32.454,36.459-53.6 C203.302,124.911,202.282,121.754,199.876,119.867z M103.434,187.734C54.671,187.734,15,148.061,15,99.297 c0-32.898,18.825-62.836,47.436-77.882c-3.228,9.485-4.855,19.284-4.855,29.298c0,52.076,42.366,94.443,94.44,94.443 c10,0,19.816-1.634,29.347-4.873C166.324,168.9,136.36,187.734,103.434,187.734z"
-                        id="path1"
-                        style="fill-opacity: 1"
-                      />
-                    </g>
-                  </svg>
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-        <div class="tab-content" id="settings">
-          <div class="settings">
-            <h1>SDash</h1>
-            <div style="display: flex; flex-direction: row;">
-              <h3>Version: 0.3.5</h3>
-              <a href="https://github.com/SDashS/SDash"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-143 145 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M177.1,398.4c-8.6-1.5-17.6-1.3-26.4-0.8c-20,1.1-40,3-60,1.2c-9.5-0.9-19.1-1.8-28.7-1.6c-17.4,0.3-32,6-40.6,22.6 c-4.3,8.2-5.3,17-5,26.1c0.7,25.6,11.8,40.2,36.2,47.5c19.6,5.8,39.7,6.6,59.9,6.2c7.5,0,15,0.4,22.5-0.1 c15.5-0.9,30.7-3.2,45.4-8.6c15.2-5.6,24.3-16.3,27.6-31.8c1.3-6,1.9-12.3,1.8-18.4C209.6,420,195.6,401.5,177.1,398.4z M78.7,466.1c-6.5,7.1-15.9,7.2-22.6,0.3c-4.9-5-7.7-12.7-7.7-22.3c0.2-6.5,2.1-13.6,7.7-19.3c6.7-6.9,16.1-6.8,22.6,0.2 C88.5,435.6,88.5,455.5,78.7,466.1z M169.6,466.6c-6.1,6.3-14.9,6.5-21.4,0.7c-11.2-10.2-11.2-32.9,0-43.2 c6.4-5.9,15.2-5.7,21.4,0.6c5.7,5.8,7.6,13.1,7.9,20.9C177.2,453.5,175.2,460.7,169.6,466.6z"></path> <path d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M244.2,423.4 c-1.4,11.4-3.8,23.1-7.9,33.8c-12,30.7-36,47.6-67.8,52.7c-18.2,2.9-36.9,3-57.1,4.5c-18.1-1.6-38-1.8-57.3-5.2 c-37.4-6.6-62.8-32.8-70.2-70.3c-3.8-19.1-4.9-38.3,1-57.3c3.1-9.8,8.2-18.5,14.8-26.4c0.9-1,1.7-2.5,1.6-3.8 c-1.1-17.2,0.9-34.2,6-50.6c4.2-13.7,1.1-12.9,16.3-8.9c18.3,4.8,34.3,14.7,50,25c1.8,1.2,4.6,1.7,6.8,1.3 c22.2-3.4,44.3-3.6,66.5,0.3c1.6,0.3,3.7-0.3,5.2-1.2c13.5-8.8,27.4-16.7,42.6-22.2c5.5-2,11.3-3.3,16.9-5c2.5-0.7,3.6,0.2,4.5,2.6 c6.8,19,9.6,38.5,8.6,58.6c-0.1,1.1,0.5,2.6,1.2,3.5C243,374.6,247.3,398.2,244.2,423.4z"></path> </g> </g></svg></a>
-            </div>
+                  </g>
+                </svg>
+              </button>
+            </form>
           </div>
         </div>
       </div>
-      <script src="{{ url_for('static', filename='js/indicators.js') }}"></script>
-      <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
-    </body>
+      <div class="tab-content" id="settings">
+        <div class="settings">
+          <h1>SDash</h1>
+          <div style="display: flex; flex-direction: row">
+            <h3>Version:</h3>
+            <h3 id="version"></h3>
+            <a href="https://github.com/SDashS/SDash"
+              ><svg
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="-143 145 512 512"
+                xml:space="preserve"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <path
+                      d="M177.1,398.4c-8.6-1.5-17.6-1.3-26.4-0.8c-20,1.1-40,3-60,1.2c-9.5-0.9-19.1-1.8-28.7-1.6c-17.4,0.3-32,6-40.6,22.6 c-4.3,8.2-5.3,17-5,26.1c0.7,25.6,11.8,40.2,36.2,47.5c19.6,5.8,39.7,6.6,59.9,6.2c7.5,0,15,0.4,22.5-0.1 c15.5-0.9,30.7-3.2,45.4-8.6c15.2-5.6,24.3-16.3,27.6-31.8c1.3-6,1.9-12.3,1.8-18.4C209.6,420,195.6,401.5,177.1,398.4z M78.7,466.1c-6.5,7.1-15.9,7.2-22.6,0.3c-4.9-5-7.7-12.7-7.7-22.3c0.2-6.5,2.1-13.6,7.7-19.3c6.7-6.9,16.1-6.8,22.6,0.2 C88.5,435.6,88.5,455.5,78.7,466.1z M169.6,466.6c-6.1,6.3-14.9,6.5-21.4,0.7c-11.2-10.2-11.2-32.9,0-43.2 c6.4-5.9,15.2-5.7,21.4,0.6c5.7,5.8,7.6,13.1,7.9,20.9C177.2,453.5,175.2,460.7,169.6,466.6z"
+                    ></path>
+                    <path
+                      d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M244.2,423.4 c-1.4,11.4-3.8,23.1-7.9,33.8c-12,30.7-36,47.6-67.8,52.7c-18.2,2.9-36.9,3-57.1,4.5c-18.1-1.6-38-1.8-57.3-5.2 c-37.4-6.6-62.8-32.8-70.2-70.3c-3.8-19.1-4.9-38.3,1-57.3c3.1-9.8,8.2-18.5,14.8-26.4c0.9-1,1.7-2.5,1.6-3.8 c-1.1-17.2,0.9-34.2,6-50.6c4.2-13.7,1.1-12.9,16.3-8.9c18.3,4.8,34.3,14.7,50,25c1.8,1.2,4.6,1.7,6.8,1.3 c22.2-3.4,44.3-3.6,66.5,0.3c1.6,0.3,3.7-0.3,5.2-1.2c13.5-8.8,27.4-16.7,42.6-22.2c5.5-2,11.3-3.3,16.9-5c2.5-0.7,3.6,0.2,4.5,2.6 c6.8,19,9.6,38.5,8.6,58.6c-0.1,1.1,0.5,2.6,1.2,3.5C243,374.6,247.3,398.2,244.2,423.4z"
+                    ></path>
+                  </g>
+                </g></svg
+            ></a>
+          </div>
+          <button
+            id="check_updates_btn"
+            class="button"
+            onclick="checkLatestRelease()"
+          >
+            Chech for updates
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/indicators.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check_updates.js') }}"></script>
+  </body>
 </html>

@@ -9,6 +9,8 @@ log_file_path = os.path.join(home_dir, "logs/ServerPanel.log")
 
 app = Flask(__name__)
 
+app_version = "0.3.5"
+
 dictConfig(
     {
         "version": 1,
