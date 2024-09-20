@@ -1,0 +1,7 @@
+---
+services:
+  sdash:
+    image: nighty3098/sdash:latest
+    ports:
+      - '5000:5000'
+    restart: always
