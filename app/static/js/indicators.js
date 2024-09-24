@@ -216,10 +216,6 @@ function createPortBlock(port) {
     const portBlock = document.createElement('div');
     portBlock.classList.add('port-block');
 
-    const icon = document.createElement('img');
-    icon.src = 'static/icons/service.svg';
-    icon.alt = 'Port Icon';
-
     const portLabel = document.createElement('p');
     portLabel.textContent = `Port: ${port.port}`;
 
@@ -229,7 +225,6 @@ function createPortBlock(port) {
     const userLabel = document.createElement('p');
     userLabel.textContent = `User: ${port.user}`;
 
-    // portBlock.appendChild(icon);
     portBlock.appendChild(serviceLabel);
     portBlock.appendChild(portLabel);
     portBlock.appendChild(userLabel);

@@ -281,7 +281,6 @@ p {
     background-color 0.7s ease,
     color 0.7s ease,
     transform 0.6s ease;
-  animation: slideInDown 1s ease;
 }
 
 .button:hover {
@@ -306,7 +305,7 @@ p {
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-10%);
+    transform: translateX(-30%);
   }
   to {
     transform: translateX(0);
@@ -315,7 +314,7 @@ p {
 
 @keyframes slideInDown {
   from {
-    transform: translateY(-10%);
+    transform: translateY(-30%);
   }
   to {
     transform: translateY(0);
@@ -324,7 +323,7 @@ p {
 
 @keyframes slideInUp {
   from {
-    transform: translateY(10%);
+    transform: translateY(30%);
   }
   to {
     transform: translateY(0);
@@ -354,7 +353,7 @@ p {
   animation: fadeIn 0.5s ease;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 700px) {
   .dock {
     display: none;
   }
@@ -579,7 +578,7 @@ h3 {
 }
 
 .port-block img {
-  width: 10%;
+  width: 8%;
 }
 
 @media screen and (max-width: 700px) {
