@@ -10,11 +10,12 @@ const colors = {
 
 const updateIndicators = async () => {
     try {
-        const [usage, cpuTemp, gpuTemp, userIP] = await Promise.all([
+        const [usage, cpuTemp, gpuTemp, userIP, serverDate] = await Promise.all([
             fetch('/api/usage').then(response => response.json()),
             fetch('/api/cpu_temp').then(response => response.json()),
             fetch('/api/gpu_temp').then(response => response.json()),
-            fetch('/api/user_ip').then(response => response.json())
+            fetch('/api/user_ip').then(response => response.json()),
+            fetch('/api/date').then(response => response.json())
         ]);
 
         updateProgressBars(usage);
@@ -23,6 +24,7 @@ const updateIndicators = async () => {
         updateCpuTemperature(cpuTemp);
         updateGpuTemperature(gpuTemp);
         getUserIp(userIP);
+        getServerDate(serverDate);
     } catch (error) {
         console.error('Error updating indicators:', error);
     }
@@ -232,9 +234,22 @@ function createPortBlock(port) {
     return portBlock;
 };
 
+function getServerDate(serverDate) {
+    if (serverDate && serverDate.current_time && serverDate.current_date) {
+        const clock_block = document.getElementById("clock");
+        const date_block = document.getElementById("date");
+
+        clock_block.textContent = serverDate.current_time;
+        date_block.textContent = serverDate.current_date;
+    } else {
+        console.error('Invalid server date response:', serverDate);
+    }
+}
+
 fetchOpenPorts();
 
 setInterval(fetchBatteryStatus, 1000);
 setInterval(updateIndicators, 1000);
 setInterval(updateSystemInfo, 1000);
 setInterval(fetchOpenPorts, 10000);
+setInterval(getServerDate, 1000);

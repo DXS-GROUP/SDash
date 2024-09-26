@@ -19,6 +19,11 @@ from get_info import (fetch_arch, fetch_cpu_info, get_ip_address,
 prev_net_io = psutil.net_io_counters()
 prev_time = time.time()
 
+@app.route('/api/date', methods=['GET'])
+def get_server_date():
+    current_time = datetime.now().strftime("%H:%M")
+    current_date = datetime.now().strftime("%d %b %y")
+    return jsonify({'current_time': current_time, 'current_date': current_date})
 
 @app.route("/api/version")
 def get_version():
