@@ -640,8 +640,6 @@ p {
   .system_info {
     margin-top: 20%;
     width: 100%;
-    flex-direction: column;
-    text-align: left;
   }
 
   .subcontent {
