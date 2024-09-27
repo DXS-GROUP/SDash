@@ -503,35 +503,6 @@ p {
   transform: scale(1.05);
 }
 
-.port-table {
-  background-color: rgba(47, 53, 65, 0.4);
-  border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
-  backdrop-filter: blur(8.3px);
-  border: 2px solid var(--bg2);
-
-  margin: 3%;
-  padding: 2%;
-  height: 100%;
-  width: 30%;
-}
-
-.port-table caption {
-  font-family: "M PLUS Rounded 1c", system-ui;
-  font-size: 300%;
-  margin: 5%;
-}
-
-.port-table table thead tr th {
-  text-align: center;
-  padding: 1%;
-}
-
-.port-table table tbody tr th {
-  text-align: center;
-  padding: 1%;
-}
-
 .main-cards {
   display: flex;
   justify-content: center;
@@ -599,7 +570,7 @@ p {
   padding: 2%;
   margin: 0px;
 
-  width: calc(20% - 30px);
+  width: 30%;
   height: auto;
 
   line-height: 1%;
