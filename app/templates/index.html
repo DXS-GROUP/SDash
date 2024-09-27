@@ -15,7 +15,14 @@
   </div>
   <div id="modal" class="modal">
     <div class="modal-content">
-      <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
         <h2>SDash by Nighty3098</h2>
         <span class="close-button">&times;</span>
       </div>
@@ -266,7 +273,9 @@
               </div>
             </div>
             <div id="battery-status" class="summary_data">
-              <div class="block_header">
+              <div class="block_header" id="battery-status-header">
+                <svg id="unknown_battery" fill="#000000" viewBox="-5.5 0 19 19" xmlns="http://www.w3.org/2000/svg" class="cf-icon-svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M7.987 5.653a4.536 4.536 0 0 1-.149 1.213 4.276 4.276 0 0 1-.389.958 5.186 5.186 0 0 1-.533.773c-.195.233-.386.454-.568.658l-.024.026c-.17.18-.328.353-.468.516a3.596 3.596 0 0 0-.4.567 2.832 2.832 0 0 0-.274.677 3.374 3.374 0 0 0-.099.858v.05a1.03 1.03 0 0 1-2.058 0v-.05a5.427 5.427 0 0 1 .167-1.385 4.92 4.92 0 0 1 .474-1.17 5.714 5.714 0 0 1 .63-.89c.158-.184.335-.38.525-.579.166-.187.34-.39.52-.603a3.108 3.108 0 0 0 .319-.464 2.236 2.236 0 0 0 .196-.495 2.466 2.466 0 0 0 .073-.66 1.891 1.891 0 0 0-.147-.762 1.944 1.944 0 0 0-.416-.633 1.917 1.917 0 0 0-.62-.418 1.758 1.758 0 0 0-.723-.144 1.823 1.823 0 0 0-.746.146 1.961 1.961 0 0 0-1.06 1.062 1.833 1.833 0 0 0-.146.747v.028a1.03 1.03 0 1 1-2.058 0v-.028a3.882 3.882 0 0 1 .314-1.56 4.017 4.017 0 0 1 2.135-2.139 3.866 3.866 0 0 1 1.561-.314 3.792 3.792 0 0 1 1.543.314A3.975 3.975 0 0 1 7.678 4.09a3.933 3.933 0 0 1 .31 1.563zm-2.738 9.81a1.337 1.337 0 0 1 0 1.033 1.338 1.338 0 0 1-.71.71l-.005.003a1.278 1.278 0 0 1-.505.103 1.338 1.338 0 0 1-1.244-.816 1.313 1.313 0 0 1 .284-1.451 1.396 1.396 0 0 1 .434-.283 1.346 1.346 0 0 1 .526-.105 1.284 1.284 0 0 1 .505.103l.005.003a1.404 1.404 0 0 1 .425.281 1.28 1.28 0 0 1 .285.418z"></path></g></svg>
+                <svg id="battery-charging-icon" viewBox="0 0 24 24" fill="#000000" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect width="24" height="24" fill="transparent"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M21 10C21.5523 10 22 10.4477 22 11V13C22 13.5523 21.5523 14 21 14C20.4477 14 20 13.5523 20 13V11C20 10.4477 20.4477 10 21 10Z" fill="#323232"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6001 7.20006C13.0419 7.53143 13.1314 8.15823 12.8001 8.60006L11.0001 11.0001H12.8107C13.7128 11.0001 14.2277 12.0299 13.6865 12.7515L10.8001 16.6001C10.4687 17.0419 9.8419 17.1314 9.40007 16.8001C8.95824 16.4687 8.8687 15.8419 9.20007 15.4001L11.0001 13.0001H9.12195C8.24769 13.0001 7.74864 12.002 8.2732 11.3026L11.2001 7.40006C11.5314 6.95823 12.1582 6.86869 12.6001 7.20006Z" fill="#323232"></path> <path d="M13.8741 7.30134C13.8225 7.16244 13.9176 7 14.0658 7V7C14.9523 6.99995 15.7161 6.99991 16.3278 7.08215C16.9833 7.17028 17.6116 7.36902 18.1213 7.87868C18.631 8.38835 18.8297 9.0167 18.9178 9.67221C19.0001 10.2839 19 11.0477 19 11.9342V12.0658C19 12.9523 19.0001 13.7161 18.9178 14.3278C18.8297 14.9833 18.631 15.6117 18.1213 16.1213C17.6116 16.631 16.9833 16.8297 16.3278 16.9179C15.7161 17.0001 14.9523 17.0001 14.0658 17L12.5 17V17C12.191 17 12.0146 16.6472 12.2 16.4L14.4863 13.3516C15.4181 12.1093 14.714 10.3896 13.3065 10.057V10.057C13.1726 10.0254 13.1015 9.86461 13.1841 9.75456L13.5999 9.20012C14.0239 8.63475 14.1034 7.91795 13.8741 7.30134Z" fill="#323232"></path> <path d="M8.14967 16.7602C8.19471 16.8702 8.11881 17 8 17V17H6.93417C6.04769 17.0001 5.28387 17.0001 4.67221 16.9179C4.0167 16.8297 3.38835 16.631 2.87868 16.1213C2.36902 15.6117 2.17028 14.9833 2.08215 14.3278C1.99991 13.7161 1.99995 12.9523 2 12.0658V11.9342C1.99995 11.0477 1.99991 10.2839 2.08215 9.67221C2.17028 9.0167 2.36902 8.38835 2.87868 7.87868C3.38835 7.36902 4.0167 7.17028 4.67221 7.08215C5.28387 6.99991 6.04769 6.99995 6.93417 7L9.5 7V7C9.80903 7 9.98542 7.3528 9.80001 7.60002L7.47306 10.7026C6.52729 11.9636 7.29446 13.7245 8.76748 13.971V13.971C8.86708 13.9877 8.92109 14.1052 8.8605 14.186L8.39993 14.8001C7.96177 15.3843 7.89157 16.1303 8.14967 16.7602Z" fill="#323232"></path> </g></svg>
                 <svg
                   id="battery-icon"
                   viewBox="0 0 24 24"
@@ -297,7 +306,7 @@
                 </svg>
                 <h3 id="charge"></h3>
               </div>
-              <div class="progress-bar">
+              <div class="progress-bar" id="battery-progress-bar">
                 <div class="progress" id="battery-progress"></div>
                 <span id="battery-value"></span>
               </div>
@@ -364,8 +373,8 @@
                 </svg>
                 <h3>NETWORK SPEED</h3>
               </div>
-              <h3 id="upload_speed">UPLOAD </h3>
-              <h3 id="download_speed">DOWNLOAD </h3>
+              <h3 id="upload_speed">UPLOAD</h3>
+              <h3 id="download_speed">DOWNLOAD</h3>
             </div>
             <div id="summary_temp_data" class="summary_data">
               <div class="block_header">
@@ -461,52 +470,30 @@
       <div id="info" class="tab-content">
         <div class="main-cards">
           <div class="system_info" id="system_info">
-            <p>
-              <a
-                id="device_name"
-                style="font-size: 40px; text-decoration: underline"
-              ></a>
-            </p>
-            <p>
-              <a id="platform" style="font-size: 30px"></a>
-            </p>
-            <br />
-            <br />
-            <div>
+            <div class="subcontent">
+              <img src="../static/logo/arch.svg" class="os_icon" id="os_icon"/>
+            </div>
+            <div class="subcontent">
               <p>
-                ARCH:
-                <a id="cpu_arch" style="font-size: 13px; font-weight: bold"></a>
+                  <a id="device_name" style="font-size: 40px; text-decoration: underline"></a>
               </p>
               <p>
-                IP:
-                <a
-                  id="device_ip"
-                  style="font-size: 13px; font-weight: bold"
-                ></a>
+                  <a id="platform" style="font-size: 30px"></a>
               </p>
-              <p>
-                UPTIME:
-                <a
-                  id="device_uptime"
-                  style="font-size: 13px; font-weight: bold"
-                ></a>
-              </p>
-              <p>
-                MODEL:
-                <a id="model" style="font-size: 13px; font-weight: bold"></a>
-              </p>
-              <p>
-                CPU:
-                <a id="cpu" style="font-size: 13px; font-weight: bold"></a>
-              </p>
-              <p>
-                GPU:
-                <a id="gpu" style="font-size: 13px; font-weight: bold"></a>
-              </p>
+              <br />
+              <br />
+              <div>
+                  <p>ARCH: <a id="cpu_arch" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>IP: <a id="device_ip" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>UPTIME: <a id="device_uptime" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>MODEL: <a id="model" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>CPU: <a id="cpu" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>GPU: <a id="gpu" style="font-size: 13px; font-weight: bold"></a></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+    </div>
       <div id="control" class="tab-content">
         <div class="main-cards">
           <div class="p_buttons">
@@ -709,5 +696,6 @@
     <script src="{{ url_for('static', filename='js/indicators.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/check_updates.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/os_badge.js') }}"></script>
   </body>
 </html>

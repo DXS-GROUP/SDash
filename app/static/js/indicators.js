@@ -158,6 +158,11 @@ const fetchBatteryStatus = async () => {
         const data = await response.json();
         const chargeElement = document.getElementById('charge');
         const batteryProgress = document.getElementById('battery-progress');
+        const battery_block = document.getElementById('battery-progress-bar');
+
+        const battery_icon = document.getElementById('battery-icon');
+        const battery_unknown_icon = document.getElementById('unknown_battery');
+        const battery_charging_icon = document.getElementById('battery-charging-icon');
 
         const charge = data.charge !== null ? data.charge.toFixed(2) : null;
         const status = data.plugged ? "Charging" : "Not Charging";
@@ -167,8 +172,26 @@ const fetchBatteryStatus = async () => {
             console.debug(`BATTERY: ${charge}%`);
             chargeElement.innerHTML = `BATTERY: ${charge}% ${status}`;
             batteryProgress.style.width = `${charge}%`;
+            battery_unknown_icon.style.display = "None";
+
+            if (status == "Charging") {
+                battery_icon.style.display = "None";
+                battery_charging_icon.style.display = "normal";
+            }
+            else {
+                battery_icon.style.display = "normal";
+                battery_charging_icon.style.display = "None";
+            }
+
         } else {
-            chargeElement.innerHTML = "No battery detected";
+            chargeElement.style.display = "normal";
+            batteryProgress.style.display = "None";
+            battery_block.style.display = "None";
+            battery_icon.style.display = "None";
+            battery_charging_icon.style.display = "None";
+            battery_unknown_icon.style.display = "normal";
+            battery_unknown_icon.style.width = "35%";
+            chargeElement.innerHTML = `Battery not found`;
         }
 
         batteryProgress.style.backgroundColor = backgroundColor;
