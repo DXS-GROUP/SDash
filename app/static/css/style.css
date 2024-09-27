@@ -17,8 +17,11 @@ html {
   height: auto;
   background-image: url("../bg.png");
   display: flex;
+  flex-direction: column;
+
   scrollbar-color: var(--accent-hover) var(--bg);
   scrollbar-arrow-color: var(--bg) var(--bg);
+
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -54,6 +57,7 @@ h3 {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 5%;
   margin-bottom: 5%;
   width: 100%;
   height: 100%;
@@ -61,7 +65,6 @@ h3 {
 
 .clock {
   font-size: 70px;
-  margin: 0px;
 }
 
 .date {
@@ -335,7 +338,7 @@ p {
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-30%);
+    transform: translateX(-5%);
   }
   to {
     transform: translateX(0);
@@ -344,7 +347,7 @@ p {
 
 @keyframes slideInDown {
   from {
-    transform: translateY(-30%);
+    transform: translateY(-5%);
   }
   to {
     transform: translateY(0);
@@ -353,7 +356,7 @@ p {
 
 @keyframes slideInUp {
   from {
-    transform: translateY(30%);
+    transform: translateY(5%);
   }
   to {
     transform: translateY(0);
@@ -362,7 +365,7 @@ p {
 
 @media (max-height: 992px) {
   .button {
-    height: 7vh;
+    height: 6vh;
   }
 }
 
@@ -406,7 +409,7 @@ p {
 
 .container {
   font-family: "M PLUS Rounded 1c", system-ui;
-  margin-top: 1%;
+  margin-top: 5%;
   margin-bottom: 1%;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -500,35 +503,6 @@ p {
   transform: scale(1.05);
 }
 
-.port-table {
-  background-color: rgba(47, 53, 65, 0.4);
-  border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
-  backdrop-filter: blur(8.3px);
-  border: 2px solid var(--bg2);
-
-  margin: 3%;
-  padding: 2%;
-  height: 100%;
-  width: 30%;
-}
-
-.port-table caption {
-  font-family: "M PLUS Rounded 1c", system-ui;
-  font-size: 300%;
-  margin: 5%;
-}
-
-.port-table table thead tr th {
-  text-align: center;
-  padding: 1%;
-}
-
-.port-table table tbody tr th {
-  text-align: center;
-  padding: 1%;
-}
-
 .main-cards {
   display: flex;
   justify-content: center;
@@ -569,20 +543,22 @@ p {
 }
 
 .port-container {
-  display: grid;
-  grid-gap: 2%;
-  grid-template-columns: 30% 30% 30%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
   align-items: center;
   justify-content: center;
-  height: auto;
-
+  height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0px;
   animation: slideInDown 1s ease;
 }
 
 .port-block {
   background-color: rgba(47, 53, 65, 0.4);
   border-radius: 16px;
-  box-shadow: 0 4px 40px rgba(47, 53, 65, 0.1);
   backdrop-filter: blur(8.3px);
   border: 2px solid var(--bg2);
 
@@ -591,19 +567,21 @@ p {
   justify-content: center;
   align-content: center;
 
-  aspect-ratio: 2/1;
+  padding: 2%;
+  margin: 0px;
 
-  margin: 1%;
-  padding: 1%;
-
-  width: auto;
+  width: 30%;
   height: auto;
 
   line-height: 1%;
 
   transition:
-    transform 0.6s ease;
+      transform 0.6s ease;
   animation: fadeIn 0.5s ease;
+}
+
+.port-block p {
+  font-size: medium;
 }
 
 .port-block:hover {
@@ -638,14 +616,18 @@ p {
   }
 
   .system_info {
-    margin-top: 20%;
+    margin-top: 5%;
     width: 100%;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
   }
 
   .subcontent {
     width: 100%;
+  }
+
+  .os_icon {
+    width: 60%;
   }
 
   .p_buttons {
@@ -662,23 +644,15 @@ p {
     grid-gap: 0%;
   }
 
-  .port-container {
-    display: grid;
-    grid-gap: 0%;
-    grid-template-columns: 100%;
-    width: 100%;
-  }
-
   .port-block {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 700px) {
-  html {
-    height: auto;
-    flex-direction: column;
-    justify-content: center;
+  .system_info {
+    width: 70%;
+    text-align: center;
   }
 
   select.button {
@@ -691,13 +665,6 @@ p {
 
   .summary_data svg {
     width: 10%;
-  }
-
-  .port-container {
-    display: grid;
-    grid-gap: 0%;
-    grid-template-columns: 100%;
-    width: 100%;
   }
 
   .port-block {
@@ -716,19 +683,8 @@ p {
 }
 
 @media screen and (min-width: 1300px) {
-  html {
-    height: auto;
-    flex-direction: column;
-    justify-content: center;
-  }
-
   .system_info {
     width: 50%;
-  }
-
-  .port-container {
-    height: 100%;
-    width: 100%;
   }
 
   .summary_data svg {
@@ -739,9 +695,5 @@ p {
 @media screen and (min-width: 2000px) {
   .summary_data svg {
     width: 15%;
-  }
-
-  html {
-    height: 100%;
   }
 }
