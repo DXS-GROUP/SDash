@@ -470,52 +470,30 @@
       <div id="info" class="tab-content">
         <div class="main-cards">
           <div class="system_info" id="system_info">
-            <p>
-              <a
-                id="device_name"
-                style="font-size: 40px; text-decoration: underline"
-              ></a>
-            </p>
-            <p>
-              <a id="platform" style="font-size: 30px"></a>
-            </p>
-            <br />
-            <br />
-            <div>
+            <div class="subcontent">
+              <img src="../static/logo/arch.svg" class="os_icon" id="os_icon"/>
+            </div>
+            <div class="subcontent">
               <p>
-                ARCH:
-                <a id="cpu_arch" style="font-size: 13px; font-weight: bold"></a>
+                  <a id="device_name" style="font-size: 40px; text-decoration: underline"></a>
               </p>
               <p>
-                IP:
-                <a
-                  id="device_ip"
-                  style="font-size: 13px; font-weight: bold"
-                ></a>
+                  <a id="platform" style="font-size: 30px"></a>
               </p>
-              <p>
-                UPTIME:
-                <a
-                  id="device_uptime"
-                  style="font-size: 13px; font-weight: bold"
-                ></a>
-              </p>
-              <p>
-                MODEL:
-                <a id="model" style="font-size: 13px; font-weight: bold"></a>
-              </p>
-              <p>
-                CPU:
-                <a id="cpu" style="font-size: 13px; font-weight: bold"></a>
-              </p>
-              <p>
-                GPU:
-                <a id="gpu" style="font-size: 13px; font-weight: bold"></a>
-              </p>
+              <br />
+              <br />
+              <div>
+                  <p>ARCH: <a id="cpu_arch" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>IP: <a id="device_ip" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>UPTIME: <a id="device_uptime" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>MODEL: <a id="model" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>CPU: <a id="cpu" style="font-size: 13px; font-weight: bold"></a></p>
+                  <p>GPU: <a id="gpu" style="font-size: 13px; font-weight: bold"></a></p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+    </div>
       <div id="control" class="tab-content">
         <div class="main-cards">
           <div class="p_buttons">
@@ -718,5 +696,6 @@
     <script src="{{ url_for('static', filename='js/indicators.js') }}"></script>
     <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
     <script src="{{ url_for('static', filename='js/check_updates.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/os_badge.js') }}"></script>
   </body>
 </html>
