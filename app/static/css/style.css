@@ -335,7 +335,7 @@ p {
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-30%);
+    transform: translateX(-5%);
   }
   to {
     transform: translateX(0);
@@ -344,7 +344,7 @@ p {
 
 @keyframes slideInDown {
   from {
-    transform: translateY(-30%);
+    transform: translateY(-5%);
   }
   to {
     transform: translateY(0);
@@ -353,7 +353,7 @@ p {
 
 @keyframes slideInUp {
   from {
-    transform: translateY(30%);
+    transform: translateY(5%);
   }
   to {
     transform: translateY(0);
@@ -638,14 +638,18 @@ p {
   }
 
   .system_info {
-    margin-top: 20%;
+    margin-top: 5%;
     width: 100%;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
   }
 
   .subcontent {
     width: 100%;
+  }
+
+  .os_icon {
+    width: 60%;
   }
 
   .p_buttons {
@@ -679,6 +683,11 @@ p {
     height: auto;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .system_info {
+    width: 70%;
+    text-align: center;
   }
 
   select.button {
