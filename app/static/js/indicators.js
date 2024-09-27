@@ -176,20 +176,20 @@ const fetchBatteryStatus = async () => {
 
             if (status == "Charging") {
                 battery_icon.style.display = "None";
-                battery_charging_icon.style.display = "flex";
+                battery_charging_icon.style.display = "normal";
             }
             else {
-                battery_icon.style.display = "flex";
+                battery_icon.style.display = "normal";
                 battery_charging_icon.style.display = "None";
             }
 
         } else {
-            chargeElement.style.display = "flex";
+            chargeElement.style.display = "normal";
             batteryProgress.style.display = "None";
             battery_block.style.display = "None";
             battery_icon.style.display = "None";
             battery_charging_icon.style.display = "None";
-            battery_unknown_icon.style.display = "flex";
+            battery_unknown_icon.style.display = "normal";
             battery_unknown_icon.style.width = "35%";
             chargeElement.innerHTML = `Battery not found`;
         }
