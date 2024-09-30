@@ -64,7 +64,8 @@ h3 {
 }
 
 .clock {
-  font-size: 70px;
+  font-size: 100px;
+  margin: 0px;
 }
 
 .date {
@@ -338,28 +339,34 @@ p {
 
 @keyframes slideInLeft {
   from {
-    transform: translateX(-5%);
+    transform: translateX(-15%);
+    opacity: 0;
   }
   to {
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideInDown {
   from {
-    transform: translateY(-5%);
+    transform: translateY(-15%);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
 @keyframes slideInUp {
   from {
-    transform: translateY(5%);
+    transform: translateY(15%);
+    opacity: 0;
   }
   to {
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
@@ -376,20 +383,20 @@ p {
 }
 
 .dock {
-  align-items: center;
+  align-items: right;
   display: flex;
-  margin-top: 3%;
+  margin-top: 10px;
   width: 100%;
   height: auto;
-  justify-content: center;
+  justify-content: right;
   z-index: 56;
   animation: fadeIn 0.5s ease;
 }
 
-@media (min-width: 700px) {
-  .dock {
-    display: none;
-  }
+.dock button {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
 }
 
 .tab-content {

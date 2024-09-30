@@ -12,7 +12,7 @@ async function fetchCurrentVersion() {
 }
 
 async function fetchLatestRelease() {
-    const apiUrl = `https://api.github.com/repos/SDashS/SDash/releases/latest`;
+    const apiUrl = `https://api.github.com/repos/DXS-GROUP/SDash/releases/latest`;
     const response = await fetch(apiUrl, {
         method: 'GET',
         headers: {
