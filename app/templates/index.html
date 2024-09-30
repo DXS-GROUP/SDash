@@ -6,37 +6,37 @@
     <title>SDashboard</title>
     <link
       rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+      integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     />
-    <link rel="import" href="/cpu_block.html" />
+    <script
+      src="https://kit.fontawesome.com/a01328b26e.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <div class="dock">
-    <button class="button" id="open-modal-button">MENU &DownArrow;</button>
-  </div>
   <div id="modal" class="modal">
     <div class="modal-content">
-      <div
-        style="
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-        "
-      >
-        <h2>SDash by Nighty3098</h2>
         <span class="close-button">&times;</span>
-      </div>
       <div class="tab-buttons">
-        <button class="tab-button active" data-tab="monitor">Dashboard</button>
-        <button class="tab-button" data-tab="info">Info</button>
-        <button class="tab-button" data-tab="ports">Services</button>
-        <button class="tab-button" data-tab="control">Control</button>
-        <button class="tab-button" data-tab="settings">Settings</button>
+        <button class="tab-button active" data-tab="monitor"><i class="fa-solid fa-mug-hot"></i> Dashboard</button>
+        <button class="tab-button" data-tab="info"><i class="fa-solid fa-circle-info"></i> Info</button>
+        <button class="tab-button" data-tab="ports"><i class="fa-solid fa-rocket"></i> Services</button>
+        <button class="tab-button" data-tab="control"><i class="fa-solid fa-power-off"></i> Control</button>
+        <button class="tab-button" data-tab="settings"><i class="fa-solid fa-gear"></i> Settings</button>
       </div>
       <br />
     </div>
   </div>
   <body>
+    <div class="dock">
+      <a href="https://github.com/DXS-GROUP/SDash"><button class="button" id="open-settings-tab"><i class="fa-brands fa-github-alt"></i></button></a>
+      <button class="button" id="open-modal-button"><i class="fa-solid fa-compass"></i></button>
+    </div>
     <div class="container">
       <div id="monitor" class="tab-content active">
         <div class="main-cards">
@@ -688,7 +688,7 @@
             class="button"
             onclick="checkLatestRelease()"
           >
-            Chech for updates
+          <i class="fa-solid fa-arrow-rotate-right"></i>  Chech for updates
           </button>
         </div>
       </div>
