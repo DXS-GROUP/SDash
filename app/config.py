@@ -5,26 +5,10 @@ from logging.config import dictConfig
 from flask import Flask
 
 home_dir = os.path.expanduser("~")
-log_file_path = os.path.join(home_dir, "logs/ServerPanel.log")
+log_file_path = os.path.join(home_dir, "logs/SDashPanel.log")
 
 app = Flask(__name__)
 
 app_version = "0.3.6"
 
-dictConfig(
-    {
-        "version": 1,
-        "formatters": {
-            "default": {
-                "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
-            }
-        },
-        "handlers": {
-            "wsgi": {
-                "class": "logging.StreamHandler",
-                "stream": "ext://flask.logging.wsgi_errors_stream",
-                "formatter": "default",
-            },
-        },
-    }
-)
+logging.basicConfig(filename=log_file_path, encoding='utf-8', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.INFO, format='%(asctime)s | %(levelname)s | %(name)s | %(threadName)s : %(message)s')
