@@ -13,5 +13,5 @@ from setproctitle import getproctitle, setproctitle
 
 if __name__ == "__main__":
     setproctitle("SDash")
-    app.logger.warning("!!! New User logging in")
+    app.logger.critical("!!! New User logging in")
     app.run(debug=True, host=get_ip_address())
