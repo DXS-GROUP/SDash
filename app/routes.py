@@ -193,4 +193,5 @@ def sleep_server():
 
 @app.errorhandler(404)
 def not_found(error):
+    app.logger.warning("404 PAGE")
     return render_template("error.html"), 404
